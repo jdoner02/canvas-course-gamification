@@ -1,0 +1,135 @@
+# Canvas Integration Configuration Template
+# Copy this to canvas_integration.yml and fill in your values
+
+canvas:
+  # Canvas instance URL (without trailing slash)
+  base_url: "https://your-institution.instructure.com"
+  
+  # API access token (get from Canvas Account > Settings > Approved Integrations)
+  # Keep this secure! Consider using environment variables
+  api_token: "YOUR_CANVAS_API_TOKEN_HERE"
+  
+  # Account ID (usually 1 for main account, check URL when viewing account)
+  account_id: 1
+  
+  # Term ID (optional, leave null for default term)
+  term_id: null
+  
+  # Course settings
+  course:
+    prefix: "MATH231"
+    name: "Linear Algebra"
+    description: "Gamified Linear Algebra using skill trees and mastery-based learning"
+    
+    # Grading settings
+    grading:
+      scheme: "points"  # points, percent, pass_fail, letter_grade
+      late_policy:
+        enabled: true
+        penalty_percent: 10
+        grace_period_hours: 24
+    
+    # Module settings
+    modules:
+      require_sequential_progress: true
+      publish_immediately: false
+      unlock_prerequisites: true
+      
+    # Assessment defaults
+    assessments:
+      quiz_time_limit: 30  # minutes
+      quiz_attempts: 3
+      assignment_submission_types: ["online_text_entry", "online_upload"]
+      
+# Gamification Integration
+gamification:
+  # Badge settings
+  badges:
+    enabled: true
+    auto_award: true
+    
+  # XP tracking (requires custom integration)
+  xp_system:
+    enabled: true
+    track_in_gradebook: true
+    
+  # Outcomes integration
+  outcomes:
+    create_skill_outcomes: true
+    align_to_assessments: true
+    group_by_level: true
+    
+# Content Generation
+content:
+  # Auto-generate content templates
+  generate_templates: true
+  
+  # Include skill prerequisites in pages
+  show_prerequisites: true
+  
+  # Add skill tree navigation
+  include_navigation: true
+  
+  # Content structure
+  page_template: |
+    <h2>{skill_name}</h2>
+    <div class="skill-info">
+        <p><strong>Level:</strong> {level}</p>
+        <p><strong>XP Value:</strong> {xp_value}</p>
+        <p><strong>Prerequisites:</strong> {prerequisites}</p>
+    </div>
+    <h3>Learning Objectives</h3>
+    {learning_objectives}
+    <h3>Content</h3>
+    {content_body}
+    <h3>Examples</h3>
+    {examples}
+    
+# Development/Testing Settings
+development:
+  # Use sandbox course for testing
+  use_sandbox: true
+  
+  # Create a test course first
+  test_course_name: "TEST: MATH 231 Linear Algebra"
+  
+  # Dry run mode (validate but don't create)
+  dry_run: false
+  
+  # Verbose logging
+  debug_mode: true
+  
+# Integration Options
+integrations:
+  # Canvas Commons (for sharing)
+  commons:
+    enabled: false
+    share_modules: false
+    
+  # External tools
+  external_tools:
+    # GeoGebra for visualizations
+    geogebra:
+      enabled: false
+      consumer_key: ""
+      shared_secret: ""
+    
+    # Desmos for graphing
+    desmos:
+      enabled: false
+      
+    # WeBWorK for problem sets
+    webwork:
+      enabled: false
+      server_url: ""
+      
+# Backup and Export
+backup:
+  # Export course package after creation
+  create_export: true
+  
+  # Export format
+  export_format: "common_cartridge"  # common_cartridge, qti
+  
+  # Include all content
+  export_all_content: true
