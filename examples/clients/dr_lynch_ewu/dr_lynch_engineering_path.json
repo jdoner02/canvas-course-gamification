@@ -1,0 +1,225 @@
+{
+  "track": "engineering",
+  "name": "Engineering Applications Track",
+  "description": "Focus on engineering applications and computational methods",
+  "target_majors": [
+    "Mechanical Engineering",
+    "Electrical Engineering",
+    "Civil Engineering"
+  ],
+  "mastery_threshold": 0.75,
+  "skills": [
+    {
+      "name": "Basic Algebraic Operations",
+      "description": "Fundamental algebraic manipulation",
+      "xp_value": 50,
+      "prerequisites": [
+        "mthd_104"
+      ],
+      "sub_skills": [
+        "variable_manipulation",
+        "equation_solving",
+        "factoring",
+        "rational_expressions"
+      ]
+    },
+    {
+      "name": "Coordinate Geometry",
+      "description": "2D and 3D coordinate systems",
+      "xp_value": 50,
+      "prerequisites": [
+        "math_141"
+      ],
+      "sub_skills": [
+        "cartesian_coordinates",
+        "distance_formula",
+        "midpoint_formula",
+        "graphing_lines"
+      ]
+    },
+    {
+      "name": "Introduction to Vectors",
+      "description": "",
+      "xp_value": 100,
+      "prerequisites": [
+        "coordinate_geometry"
+      ],
+      "sub_skills": [
+        "vector_definition",
+        "vector_notation",
+        "geometric_interpretation",
+        "component_form"
+      ],
+      "track_description": "Emphasis on force vectors and physics applications"
+    },
+    {
+      "name": "Vector Operations",
+      "description": "",
+      "xp_value": 150,
+      "prerequisites": [
+        "vector_introduction",
+        "basic_algebra"
+      ],
+      "sub_skills": [
+        "vector_addition",
+        "scalar_multiplication",
+        "dot_product",
+        "cross_product",
+        "vector_magnitude"
+      ],
+      "track_description": "Resultant forces and moment calculations"
+    },
+    {
+      "name": "Systems of Linear Equations",
+      "description": "",
+      "xp_value": 200,
+      "prerequisites": [
+        "vector_operations",
+        "basic_algebra"
+      ],
+      "sub_skills": [
+        "gaussian_elimination",
+        "matrix_form",
+        "solution_classification",
+        "geometric_interpretation"
+      ],
+      "track_description": "Circuit analysis and structural systems"
+    },
+    {
+      "name": "Matrix Fundamentals",
+      "description": "",
+      "xp_value": 200,
+      "prerequisites": [
+        "linear_equations"
+      ],
+      "sub_skills": [
+        "matrix_definition",
+        "matrix_operations",
+        "special_matrices",
+        "matrix_properties"
+      ],
+      "track_description": "Transformation matrices and CAD applications"
+    },
+    {
+      "name": "Advanced Matrix Operations",
+      "description": "",
+      "xp_value": 250,
+      "prerequisites": [
+        "matrix_basics"
+      ],
+      "sub_skills": [
+        "matrix_multiplication",
+        "matrix_inverse",
+        "matrix_transpose",
+        "elementary_operations"
+      ]
+    },
+    {
+      "name": "Determinant Calculation",
+      "description": "",
+      "xp_value": 200,
+      "prerequisites": [
+        "matrix_algebra"
+      ],
+      "sub_skills": [
+        "determinant_definition",
+        "cofactor_expansion",
+        "properties_of_determinants",
+        "geometric_interpretation"
+      ],
+      "track_description": "Volume scaling and system stability"
+    },
+    {
+      "name": "Vector Space Concepts",
+      "description": "",
+      "xp_value": 300,
+      "prerequisites": [
+        "determinant_computation",
+        "vector_operations"
+      ],
+      "sub_skills": [
+        "vector_space_axioms",
+        "subspaces",
+        "linear_combinations",
+        "spanning_sets"
+      ],
+      "track_description": "Configuration spaces and degrees of freedom"
+    },
+    {
+      "name": "Linear Independence and Bases",
+      "description": "",
+      "xp_value": 350,
+      "prerequisites": [
+        "vector_space_theory"
+      ],
+      "sub_skills": [
+        "linear_independence_test",
+        "basis_definition",
+        "dimension_concept",
+        "coordinate_systems"
+      ]
+    },
+    {
+      "name": "Linear Transformations",
+      "description": "",
+      "xp_value": 400,
+      "prerequisites": [
+        "linear_independence",
+        "matrix_algebra"
+      ],
+      "sub_skills": [
+        "transformation_definition",
+        "matrix_representation",
+        "kernel_and_image",
+        "composition_of_transformations"
+      ],
+      "track_description": "Coordinate transformations and robotics"
+    },
+    {
+      "name": "Eigenvalues and Eigenvectors",
+      "description": "",
+      "xp_value": 500,
+      "prerequisites": [
+        "linear_transformations",
+        "determinant_computation"
+      ],
+      "sub_skills": [
+        "characteristic_polynomial",
+        "eigenvalue_computation",
+        "eigenvector_calculation",
+        "diagonalization"
+      ],
+      "track_description": "Vibration analysis and stability"
+    },
+    {
+      "name": "Rank-Nullity Theorem",
+      "description": "",
+      "xp_value": 300,
+      "prerequisites": [
+        "eigenvalue_theory",
+        "linear_independence"
+      ],
+      "sub_skills": [
+        "rank_computation",
+        "nullity_concept",
+        "fundamental_theorem",
+        "applications"
+      ]
+    },
+    {
+      "name": "Linear Algebra Applications",
+      "description": "",
+      "xp_value": 400,
+      "prerequisites": [
+        "rank_nullity"
+      ],
+      "sub_skills": [
+        "least_squares_regression",
+        "principal_component_analysis",
+        "markov_chains",
+        "optimization_problems"
+      ],
+      "track_description": "Control systems and signal processing"
+    }
+  ]
+}

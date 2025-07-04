@@ -233,11 +233,11 @@ Clear description of what needs to be done.
         educational_impact: str = "",
         estimated_effort: str = "2-4 hours",
         related_resources: List[str] = None,
-        auto_sync: bool = False
+        auto_sync: bool = False,
     ) -> Path:
         """
         Create an issue programmatically for AI agents with minimal user interaction.
-        
+
         Args:
             title: Issue title
             issue_type: Type of issue (bug, feature, task, documentation)
@@ -250,67 +250,124 @@ Clear description of what needs to be done.
             estimated_effort: Effort estimation
             related_resources: List of related resources/links
             auto_sync: Whether to automatically sync to GitHub
-            
+
         Returns:
             Path to the created issue file
         """
-        
+
         # Validate inputs
         valid_types = ["bug", "feature", "task", "documentation"]
         valid_priorities = ["P0", "P1", "P2", "P3"]
-        valid_components = ["canvas-api", "course-builder", "gamification", "validation", "cli", "documentation"]
-        
+        valid_components = [
+            "canvas-api",
+            "course-builder",
+            "gamification",
+            "validation",
+            "cli",
+            "documentation",
+        ]
+
         if issue_type not in valid_types:
             issue_type = "feature"
         if priority not in valid_priorities:
             priority = "P2"
         if component not in valid_components:
             component = "canvas-api"
-            
+
         # Set defaults
         if requirements is None:
             requirements = ["Requirement to be defined"]
         if acceptance_criteria is None:
-            acceptance_criteria = ["Task completed successfully", "Documentation updated", "Quality standards met"]
+            acceptance_criteria = [
+                "Task completed successfully",
+                "Documentation updated",
+                "Quality standards met",
+            ]
         if related_resources is None:
             related_resources = []
-            
+
         # Generate filename
         timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-        safe_title = "".join(c for c in title.lower() if c.isalnum() or c in (' ', '-', '_')).rstrip()
-        safe_title = safe_title.replace(' ', '_')[:50]
+        safe_title = "".join(
+            c for c in title.lower() if c.isalnum() or c in (" ", "-", "_")
+        ).rstrip()
+        safe_title = safe_title.replace(" ", "_")[:50]
         filename = f"{timestamp}_{safe_title}.md"
-        
+
         # Create content based on issue type
         if issue_type == "bug":
-            content = self._create_bug_content(title, priority, component, description, acceptance_criteria, educational_impact, estimated_effort)
+            content = self._create_bug_content(
+                title,
+                priority,
+                component,
+                description,
+                acceptance_criteria,
+                educational_impact,
+                estimated_effort,
+            )
         elif issue_type == "feature":
-            content = self._create_feature_content(title, priority, component, description, requirements, acceptance_criteria, educational_impact, estimated_effort, related_resources)
+            content = self._create_feature_content(
+                title,
+                priority,
+                component,
+                description,
+                requirements,
+                acceptance_criteria,
+                educational_impact,
+                estimated_effort,
+                related_resources,
+            )
         elif issue_type == "task":
-            content = self._create_task_content(title, priority, component, description, acceptance_criteria, estimated_effort)
+            content = self._create_task_content(
+                title,
+                priority,
+                component,
+                description,
+                acceptance_criteria,
+                estimated_effort,
+            )
         else:  # documentation
-            content = self._create_documentation_content(title, priority, component, description, acceptance_criteria, estimated_effort)
-        
+            content = self._create_documentation_content(
+                title,
+                priority,
+                component,
+                description,
+                acceptance_criteria,
+                estimated_effort,
+            )
+
         # Save issue file
         issue_file = self.issues_dir / filename
         issue_file.write_text(content)
-        
+
         console.print(f"✅ Issue created programmatically: {title}")
         console.print(f"📄 File: {issue_file}")
-        console.print(f"🏷️  Type: {issue_type}, Priority: {priority}, Component: {component}")
-        
+        console.print(
+            f"🏷️  Type: {issue_type}, Priority: {priority}, Component: {component}"
+        )
+
         # Auto-sync if requested
         if auto_sync:
             console.print("🔄 Auto-syncing to GitHub...")
             self.sync_single_issue(issue_file)
-        
+
         return issue_file
 
-    def _create_bug_content(self, title: str, priority: str, component: str, description: str, 
-                           acceptance_criteria: List[str], educational_impact: str, estimated_effort: str) -> str:
+    def _create_bug_content(
+        self,
+        title: str,
+        priority: str,
+        component: str,
+        description: str,
+        acceptance_criteria: List[str],
+        educational_impact: str,
+        estimated_effort: str,
+    ) -> str:
         """Create bug issue content."""
-        criteria_text = "\n".join(f"- [ ] {criteria}" for criteria in acceptance_criteria)
-        
+        criteria_text = "\n".join(
+            f"- [ ] {criteria}" for criteria in acceptance_criteria
+        )
+
         return f"""# {title}
 
 **Priority:** {priority}
@@ -349,14 +406,29 @@ What actually happens.
 **{estimated_effort}** - Bug investigation and resolution
 """
 
-    def _create_feature_content(self, title: str, priority: str, component: str, description: str,
-                               requirements: List[str], acceptance_criteria: List[str], 
-                               educational_impact: str, estimated_effort: str, related_resources: List[str]) -> str:
+    def _create_feature_content(
+        self,
+        title: str,
+        priority: str,
+        component: str,
+        description: str,
+        requirements: List[str],
+        acceptance_criteria: List[str],
+        educational_impact: str,
+        estimated_effort: str,
+        related_resources: List[str],
+    ) -> str:
         """Create feature issue content."""
         req_text = "\n".join(f"- [ ] {req}" for req in requirements)
-        criteria_text = "\n".join(f"- [ ] {criteria}" for criteria in acceptance_criteria)
-        resources_text = "\n".join(f"- {resource}" for resource in related_resources) if related_resources else "- To be determined"
-        
+        criteria_text = "\n".join(
+            f"- [ ] {criteria}" for criteria in acceptance_criteria
+        )
+        resources_text = (
+            "\n".join(f"- {resource}" for resource in related_resources)
+            if related_resources
+            else "- To be determined"
+        )
+
         return f"""# {title}
 
 **Priority:** {priority}
@@ -391,11 +463,20 @@ What problem does this solve for faculty or students?
 {resources_text}
 """
 
-    def _create_task_content(self, title: str, priority: str, component: str, description: str,
-                            acceptance_criteria: List[str], estimated_effort: str) -> str:
+    def _create_task_content(
+        self,
+        title: str,
+        priority: str,
+        component: str,
+        description: str,
+        acceptance_criteria: List[str],
+        estimated_effort: str,
+    ) -> str:
         """Create task issue content."""
-        criteria_text = "\n".join(f"- [ ] {criteria}" for criteria in acceptance_criteria)
-        
+        criteria_text = "\n".join(
+            f"- [ ] {criteria}" for criteria in acceptance_criteria
+        )
+
         return f"""# {title}
 
 **Priority:** {priority}
@@ -419,11 +500,20 @@ What problem does this solve for faculty or students?
 **{estimated_effort}** - Task completion and validation
 """
 
-    def _create_documentation_content(self, title: str, priority: str, component: str, description: str,
-                                     acceptance_criteria: List[str], estimated_effort: str) -> str:
+    def _create_documentation_content(
+        self,
+        title: str,
+        priority: str,
+        component: str,
+        description: str,
+        acceptance_criteria: List[str],
+        estimated_effort: str,
+    ) -> str:
         """Create documentation issue content."""
-        criteria_text = "\n".join(f"- [ ] {criteria}" for criteria in acceptance_criteria)
-        
+        criteria_text = "\n".join(
+            f"- [ ] {criteria}" for criteria in acceptance_criteria
+        )
+
         return f"""# {title}
 
 **Priority:** {priority}
@@ -657,25 +747,65 @@ Detailed description of the {issue_type}.
 @click.option("--setup", is_flag=True, help="Setup issue templates")
 # Programmatic issue creation options
 @click.option("--title", help="Issue title for programmatic creation")
-@click.option("--type", "issue_type", default="feature", 
-              type=click.Choice(["bug", "feature", "task", "documentation"]),
-              help="Issue type")
-@click.option("--priority", default="P2", 
-              type=click.Choice(["P0", "P1", "P2", "P3"]),
-              help="Priority level")
-@click.option("--component", default="canvas-api",
-              type=click.Choice(["canvas-api", "course-builder", "gamification", "validation", "cli", "documentation"]),
-              help="Primary component")
+@click.option(
+    "--type",
+    "issue_type",
+    default="feature",
+    type=click.Choice(["bug", "feature", "task", "documentation"]),
+    help="Issue type",
+)
+@click.option(
+    "--priority",
+    default="P2",
+    type=click.Choice(["P0", "P1", "P2", "P3"]),
+    help="Priority level",
+)
+@click.option(
+    "--component",
+    default="canvas-api",
+    type=click.Choice(
+        [
+            "canvas-api",
+            "course-builder",
+            "gamification",
+            "validation",
+            "cli",
+            "documentation",
+        ]
+    ),
+    help="Primary component",
+)
 @click.option("--description", help="Detailed description of the issue")
 @click.option("--requirements", help="Comma-separated list of requirements")
-@click.option("--acceptance-criteria", help="Comma-separated list of acceptance criteria")
+@click.option(
+    "--acceptance-criteria", help="Comma-separated list of acceptance criteria"
+)
 @click.option("--educational-impact", help="Educational impact description")
 @click.option("--estimated-effort", default="2-4 hours", help="Effort estimation")
-@click.option("--related-resources", help="Comma-separated list of related resources/links")
-@click.option("--auto-sync", is_flag=True, help="Automatically sync to GitHub after creation")
-def main(create, list_issues, sync, status, setup, title, issue_type, priority, component, 
-         description, requirements, acceptance_criteria, educational_impact, 
-         estimated_effort, related_resources, auto_sync):
+@click.option(
+    "--related-resources", help="Comma-separated list of related resources/links"
+)
+@click.option(
+    "--auto-sync", is_flag=True, help="Automatically sync to GitHub after creation"
+)
+def main(
+    create,
+    list_issues,
+    sync,
+    status,
+    setup,
+    title,
+    issue_type,
+    priority,
+    component,
+    description,
+    requirements,
+    acceptance_criteria,
+    educational_impact,
+    estimated_effort,
+    related_resources,
+    auto_sync,
+):
     """Faculty-friendly local issue management system."""
 
     console.print(
@@ -687,14 +817,24 @@ def main(create, list_issues, sync, status, setup, title, issue_type, priority, 
     )
 
     manager = LocalIssueManager()
-    
+
     # Handle programmatic issue creation first
     if title:
         # Parse comma-separated lists
-        req_list = [r.strip() for r in requirements.split(',')] if requirements else None
-        criteria_list = [c.strip() for c in acceptance_criteria.split(',')] if acceptance_criteria else None
-        resources_list = [r.strip() for r in related_resources.split(',')] if related_resources else None
-        
+        req_list = (
+            [r.strip() for r in requirements.split(",")] if requirements else None
+        )
+        criteria_list = (
+            [c.strip() for c in acceptance_criteria.split(",")]
+            if acceptance_criteria
+            else None
+        )
+        resources_list = (
+            [r.strip() for r in related_resources.split(",")]
+            if related_resources
+            else None
+        )
+
         issue_file = manager.create_issue_programmatically(
             title=title,
             issue_type=issue_type,
@@ -706,10 +846,10 @@ def main(create, list_issues, sync, status, setup, title, issue_type, priority, 
             educational_impact=educational_impact or "",
             estimated_effort=estimated_effort,
             related_resources=resources_list,
-            auto_sync=auto_sync
+            auto_sync=auto_sync,
         )
         return
-    
+
     if setup:
         manager.create_issue_templates()
         return
