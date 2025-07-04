@@ -1,0 +1,1045 @@
+# MATH 231 Linear Algebra Skill Tree
+# Comprehensive atomic skill breakdown with prerequisites
+# Based on course description: Theory and practice of vector geometry in R2 and R3, 
+# systems of linear equations, matrix algebra, determinants, vector spaces, 
+# bases and dimension, linear transformations, eigenvalues and eigenvectors, 
+# rank and nullity and applications.
+
+math231_skill_tree:
+  course_info:
+    code: "MATH 231"
+    title: "Linear Algebra"
+    credits: 5
+    prerequisites: ["MATH 142"]
+    description: "Theory and practice of vector geometry in R2 and R3, systems of linear equations, matrix algebra, determinants, vector spaces, bases and dimension, linear transformations, eigenvalues and eigenvectors, rank and nullity and applications."
+
+  # Root prerequisite skills from earlier courses
+  foundational_skills:
+    # From MTHD 104 - Intermediate Algebra
+    basic_algebra:
+      skill_id: "basic_algebra"
+      name: "Basic Algebraic Operations"
+      description: "Fundamental algebraic manipulation skills"
+      level: "foundational"
+      xp_value: 10
+      prerequisites: []
+      sub_skills:
+        - skill_id: "linear_equations_1var"
+          name: "Linear Equations in One Variable"
+          description: "Solve ax + b = c for x"
+          level: "foundational"
+          xp_value: 5
+          prerequisites: []
+          assessment:
+            type: "quiz"
+            questions: 5
+            mastery_threshold: 0.8
+            
+        - skill_id: "linear_systems_2x2"
+          name: "Linear Systems (2x2)"
+          description: "Solve simple 2x2 systems using substitution/elimination"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["linear_equations_1var"]
+          assessment:
+            type: "quiz"
+            questions: 3
+            mastery_threshold: 0.8
+            
+        - skill_id: "exponential_equations"
+          name: "Exponential Equations"
+          description: "Solve basic exponential equations"
+          level: "foundational"
+          xp_value: 5
+          prerequisites: ["linear_equations_1var"]
+          
+        - skill_id: "logarithmic_equations"
+          name: "Logarithmic Equations"
+          description: "Solve basic logarithmic equations"
+          level: "foundational"
+          xp_value: 5
+          prerequisites: ["exponential_equations"]
+
+    # From MATH 114 - Algebra Concepts
+    intermediate_algebra:
+      skill_id: "intermediate_algebra"
+      name: "Intermediate Algebraic Concepts"
+      description: "Advanced algebraic manipulation and function concepts"
+      level: "foundational"
+      xp_value: 15
+      prerequisites: ["basic_algebra"]
+      sub_skills:
+        - skill_id: "quadratic_equations"
+          name: "Quadratic Equations and Functions"
+          description: "Solve quadratic equations, understand parabolas"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["linear_equations_1var"]
+          
+        - skill_id: "rational_functions"
+          name: "Rational Functions"
+          description: "Understand rational functions and their properties"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["quadratic_equations"]
+          
+        - skill_id: "radical_equations"
+          name: "Radical Equations and Functions"
+          description: "Solve equations involving radicals"
+          level: "foundational"
+          xp_value: 8
+          prerequisites: ["quadratic_equations"]
+          
+        - skill_id: "polynomial_algebra"
+          name: "Polynomial Function Algebra"
+          description: "Operations with polynomial functions"
+          level: "foundational"
+          xp_value: 12
+          prerequisites: ["quadratic_equations"]
+
+    # From MATH 141 - Precalculus I
+    precalculus_1:
+      skill_id: "precalculus_1"
+      name: "Precalculus I Concepts"
+      description: "Function modeling and analysis"
+      level: "foundational"
+      xp_value: 20
+      prerequisites: ["intermediate_algebra"]
+      sub_skills:
+        - skill_id: "function_modeling"
+          name: "Function Modeling"
+          description: "Model real-world situations with functions"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["polynomial_algebra"]
+          
+        - skill_id: "rates_of_change"
+          name: "Rates of Change"
+          description: "Understand average and instantaneous rates of change"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["function_modeling"]
+          
+        - skill_id: "function_structure"
+          name: "Function Structure Analysis"
+          description: "Analyze structure of polynomial, rational, logarithmic, exponential functions"
+          level: "foundational"
+          xp_value: 15
+          prerequisites: ["rational_functions", "logarithmic_equations"]
+          
+        - skill_id: "graphing_tools"
+          name: "Graphing Tools Usage"
+          description: "Use graphing calculators and software effectively"
+          level: "foundational"
+          xp_value: 8
+          prerequisites: ["function_structure"]
+
+    # From MATH 142 - Precalculus II
+    precalculus_2:
+      skill_id: "precalculus_2"
+      name: "Precalculus II Concepts"
+      description: "Trigonometry, complex numbers, and coordinate systems"
+      level: "foundational"
+      xp_value: 25
+      prerequisites: ["precalculus_1"]
+      sub_skills:
+        - skill_id: "trigonometric_functions"
+          name: "Trigonometric Functions"
+          description: "Understand sine, cosine, tangent and their properties"
+          level: "foundational"
+          xp_value: 15
+          prerequisites: ["function_structure"]
+          
+        - skill_id: "inverse_trig_functions"
+          name: "Inverse Trigonometric Functions"
+          description: "Understand and use inverse trig functions"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["trigonometric_functions"]
+          
+        - skill_id: "trigonometric_identities"
+          name: "Trigonometric Identities"
+          description: "Use fundamental trigonometric identities"
+          level: "foundational"
+          xp_value: 12
+          prerequisites: ["trigonometric_functions"]
+          
+        - skill_id: "complex_numbers"
+          name: "Complex Numbers"
+          description: "Operations with complex numbers"
+          level: "foundational"
+          xp_value: 15
+          prerequisites: ["quadratic_equations"]
+          
+        - skill_id: "sequences_series"
+          name: "Sequences and Series"
+          description: "Understand arithmetic and geometric sequences"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["function_modeling"]
+          
+        - skill_id: "conic_sections"
+          name: "Conic Sections"
+          description: "Understand circles, ellipses, parabolas, hyperbolas"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["quadratic_equations"]
+          
+        - skill_id: "mathematical_induction"
+          name: "Mathematical Induction"
+          description: "Understand and apply mathematical induction"
+          level: "foundational"
+          xp_value: 12
+          prerequisites: ["sequences_series"]
+          
+        - skill_id: "polar_coordinates"
+          name: "Polar Coordinates"
+          description: "Convert between rectangular and polar coordinates"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["trigonometric_functions"]
+          
+        - skill_id: "parametric_equations"
+          name: "Parametric Equations"
+          description: "Understand parametric representation of curves"
+          level: "foundational"
+          xp_value: 10
+          prerequisites: ["trigonometric_functions"]
+          
+        - skill_id: "intro_vectors"
+          name: "Introduction to Vectors"
+          description: "Basic vector concepts and operations in 2D"
+          level: "foundational"
+          xp_value: 15
+          prerequisites: ["polar_coordinates", "parametric_equations"]
+
+  # Core MATH 231 Linear Algebra Skills
+  linear_algebra_core:
+    # Vector Geometry in R2 and R3
+    vector_geometry:
+      skill_id: "vector_geometry"
+      name: "Vector Geometry in R² and R³"
+      description: "Geometric representation and operations with vectors"
+      level: "core"
+      xp_value: 50
+      prerequisites: ["intro_vectors", "trigonometric_functions"]
+      sub_skills:
+        - skill_id: "vector_representation"
+          name: "Vector Representation"
+          description: "Represent vectors as directed line segments and coordinate tuples"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["intro_vectors"]
+          assessment:
+            type: "quiz"
+            questions: 8
+            mastery_threshold: 0.8
+            
+        - skill_id: "vector_addition_subtraction"
+          name: "Vector Addition and Subtraction"
+          description: "Add and subtract vectors geometrically and algebraically"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["vector_representation"]
+          assessment:
+            type: "quiz"
+            questions: 10
+            mastery_threshold: 0.8
+            
+        - skill_id: "scalar_multiplication"
+          name: "Scalar Multiplication"
+          description: "Multiply vectors by scalars"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["vector_addition_subtraction"]
+          
+        - skill_id: "vector_magnitude"
+          name: "Vector Magnitude (Length)"
+          description: "Calculate the magnitude/length of vectors"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["scalar_multiplication"]
+          
+        - skill_id: "unit_vectors"
+          name: "Unit Vectors"
+          description: "Find unit vectors and understand standard basis vectors"
+          level: "core"
+          xp_value: 12
+          prerequisites: ["vector_magnitude"]
+          
+        - skill_id: "dot_product"
+          name: "Dot Product"
+          description: "Calculate dot products and understand their geometric meaning"
+          level: "core"
+          xp_value: 20
+          prerequisites: ["vector_magnitude", "trigonometric_functions"]
+          assessment:
+            type: "assignment"
+            problems: 15
+            mastery_threshold: 0.8
+            
+        - skill_id: "cross_product"
+          name: "Cross Product"
+          description: "Calculate cross products in R³ and understand their properties"
+          level: "core"
+          xp_value: 20
+          prerequisites: ["dot_product"]
+          assessment:
+            type: "assignment"
+            problems: 12
+            mastery_threshold: 0.8
+            
+        - skill_id: "vector_projections"
+          name: "Vector Projections"
+          description: "Project one vector onto another"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["dot_product"]
+          
+        - skill_id: "lines_planes_3d"
+          name: "Lines and Planes in 3D"
+          description: "Represent and work with lines and planes using vectors"
+          level: "core"
+          xp_value: 25
+          prerequisites: ["cross_product", "vector_projections"]
+
+    # Systems of Linear Equations
+    linear_systems:
+      skill_id: "linear_systems"
+      name: "Systems of Linear Equations"
+      description: "Solving systems of linear equations using various methods"
+      level: "core"
+      xp_value: 60
+      prerequisites: ["linear_systems_2x2", "vector_geometry"]
+      sub_skills:
+        - skill_id: "system_representation"
+          name: "System Representation"
+          description: "Represent systems as augmented matrices and in vector form"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["linear_systems_2x2", "vector_representation"]
+          
+        - skill_id: "gaussian_elimination"
+          name: "Gaussian Elimination"
+          description: "Solve systems using Gaussian elimination"
+          level: "core"
+          xp_value: 25
+          prerequisites: ["system_representation"]
+          assessment:
+            type: "assignment"
+            problems: 20
+            mastery_threshold: 0.8
+            
+        - skill_id: "gauss_jordan_elimination"
+          name: "Gauss-Jordan Elimination"
+          description: "Reduce matrices to reduced row echelon form"
+          level: "core"
+          xp_value: 20
+          prerequisites: ["gaussian_elimination"]
+          assessment:
+            type: "quiz"
+            questions: 10
+            mastery_threshold: 0.8
+            
+        - skill_id: "parametric_solutions"
+          name: "Parametric Solutions"
+          description: "Express infinite solution sets in parametric form"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["gauss_jordan_elimination"]
+          
+        - skill_id: "homogeneous_systems"
+          name: "Homogeneous Systems"
+          description: "Solve homogeneous linear systems"
+          level: "core"
+          xp_value: 12
+          prerequisites: ["parametric_solutions"]
+          
+        - skill_id: "system_consistency"
+          name: "System Consistency"
+          description: "Determine when systems have unique, infinite, or no solutions"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["parametric_solutions"]
+          
+        - skill_id: "geometric_interpretation_systems"
+          name: "Geometric Interpretation of Systems"
+          description: "Visualize systems as intersections of planes/lines"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["lines_planes_3d", "system_consistency"]
+
+    # Matrix Algebra
+    matrix_algebra:
+      skill_id: "matrix_algebra"
+      name: "Matrix Algebra"
+      description: "Matrix operations and properties"
+      level: "core"
+      xp_value: 70
+      prerequisites: ["linear_systems"]
+      sub_skills:
+        - skill_id: "matrix_notation"
+          name: "Matrix Notation and Terminology"
+          description: "Understand matrix notation, dimensions, entries"
+          level: "core"
+          xp_value: 8
+          prerequisites: ["system_representation"]
+          
+        - skill_id: "matrix_equality"
+          name: "Matrix Equality"
+          description: "Determine when two matrices are equal"
+          level: "core"
+          xp_value: 5
+          prerequisites: ["matrix_notation"]
+          
+        - skill_id: "matrix_addition_subtraction"
+          name: "Matrix Addition and Subtraction"
+          description: "Add and subtract matrices"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["matrix_equality"]
+          
+        - skill_id: "scalar_matrix_multiplication"
+          name: "Scalar-Matrix Multiplication"
+          description: "Multiply matrices by scalars"
+          level: "core"
+          xp_value: 8
+          prerequisites: ["matrix_addition_subtraction"]
+          
+        - skill_id: "matrix_multiplication"
+          name: "Matrix Multiplication"
+          description: "Multiply matrices together"
+          level: "core"
+          xp_value: 25
+          prerequisites: ["scalar_matrix_multiplication", "dot_product"]
+          assessment:
+            type: "assignment"
+            problems: 25
+            mastery_threshold: 0.8
+            
+        - skill_id: "matrix_properties"
+          name: "Matrix Properties"
+          description: "Understand properties of matrix operations (associative, distributive, etc.)"
+          level: "core"
+          xp_value: 12
+          prerequisites: ["matrix_multiplication"]
+          
+        - skill_id: "matrix_transpose"
+          name: "Matrix Transpose"
+          description: "Find transposes and understand their properties"
+          level: "core"
+          xp_value: 10
+          prerequisites: ["matrix_properties"]
+          
+        - skill_id: "special_matrices"
+          name: "Special Matrices"
+          description: "Identify and work with identity, zero, diagonal, symmetric matrices"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["matrix_transpose"]
+          
+        - skill_id: "matrix_inverse"
+          name: "Matrix Inverse"
+          description: "Find matrix inverses and understand when they exist"
+          level: "core"
+          xp_value: 30
+          prerequisites: ["special_matrices", "gauss_jordan_elimination"]
+          assessment:
+            type: "assignment"
+            problems: 15
+            mastery_threshold: 0.8
+            
+        - skill_id: "elementary_matrices"
+          name: "Elementary Matrices"
+          description: "Understand elementary row operations as matrix multiplication"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["matrix_inverse"]
+          
+        - skill_id: "matrix_equations"
+          name: "Matrix Equations"
+          description: "Solve matrix equations of the form AX = B"
+          level: "core"
+          xp_value: 20
+          prerequisites: ["matrix_inverse"]
+
+    # Determinants
+    determinants:
+      skill_id: "determinants"
+      name: "Determinants"
+      description: "Calculate and understand properties of determinants"
+      level: "core"
+      xp_value: 45
+      prerequisites: ["matrix_algebra"]
+      sub_skills:
+        - skill_id: "determinant_2x2"
+          name: "2×2 Determinants"
+          description: "Calculate determinants of 2×2 matrices"
+          level: "core"
+          xp_value: 8
+          prerequisites: ["matrix_multiplication"]
+          assessment:
+            type: "quiz"
+            questions: 10
+            mastery_threshold: 0.8
+            
+        - skill_id: "determinant_3x3"
+          name: "3×3 Determinants"
+          description: "Calculate determinants of 3×3 matrices using cofactor expansion"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["determinant_2x2"]
+          assessment:
+            type: "assignment"
+            problems: 12
+            mastery_threshold: 0.8
+            
+        - skill_id: "cofactor_expansion"
+          name: "Cofactor Expansion"
+          description: "Use cofactor expansion to calculate determinants of any size"
+          level: "core"
+          xp_value: 20
+          prerequisites: ["determinant_3x3"]
+          
+        - skill_id: "determinant_properties"
+          name: "Determinant Properties"
+          description: "Use properties of determinants to simplify calculations"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["cofactor_expansion"]
+          
+        - skill_id: "determinant_geometric_meaning"
+          name: "Geometric Meaning of Determinants"
+          description: "Understand determinants as area/volume scaling factors"
+          level: "core"
+          xp_value: 12
+          prerequisites: ["determinant_properties", "cross_product"]
+          
+        - skill_id: "cramers_rule"
+          name: "Cramer's Rule"
+          description: "Solve linear systems using Cramer's rule"
+          level: "core"
+          xp_value: 15
+          prerequisites: ["determinant_properties", "matrix_inverse"]
+          
+        - skill_id: "inverse_determinant_formula"
+          name: "Inverse Formula Using Determinants"
+          description: "Find matrix inverses using the adjugate matrix"
+          level: "core"
+          xp_value: 18
+          prerequisites: ["cramers_rule"]
+
+    # Vector Spaces
+    vector_spaces:
+      skill_id: "vector_spaces"
+      name: "Vector Spaces"
+      description: "Abstract vector spaces and their properties"
+      level: "advanced"
+      xp_value: 80
+      prerequisites: ["determinants", "parametric_solutions"]
+      sub_skills:
+        - skill_id: "vector_space_definition"
+          name: "Vector Space Definition"
+          description: "Understand the axioms that define a vector space"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["vector_addition_subtraction", "scalar_multiplication"]
+          
+        - skill_id: "vector_space_examples"
+          name: "Vector Space Examples"
+          description: "Identify common vector spaces (Rⁿ, polynomials, matrices, functions)"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["vector_space_definition"]
+          assessment:
+            type: "quiz"
+            questions: 8
+            mastery_threshold: 0.8
+            
+        - skill_id: "subspaces"
+          name: "Subspaces"
+          description: "Identify and verify subspaces"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["vector_space_examples"]
+          assessment:
+            type: "assignment"
+            problems: 15
+            mastery_threshold: 0.8
+            
+        - skill_id: "span"
+          name: "Span of Vectors"
+          description: "Find and understand the span of a set of vectors"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["subspaces"]
+          
+        - skill_id: "linear_independence"
+          name: "Linear Independence"
+          description: "Determine if vectors are linearly independent"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["span", "homogeneous_systems"]
+          assessment:
+            type: "assignment"
+            problems: 20
+            mastery_threshold: 0.8
+            
+        - skill_id: "linear_dependence"
+          name: "Linear Dependence"
+          description: "Understand linear dependence and find dependence relations"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["linear_independence"]
+
+    # Bases and Dimension
+    bases_dimension:
+      skill_id: "bases_dimension"
+      name: "Bases and Dimension"
+      description: "Understand bases and dimension of vector spaces"
+      level: "advanced"
+      xp_value: 60
+      prerequisites: ["vector_spaces"]
+      sub_skills:
+        - skill_id: "basis_definition"
+          name: "Basis Definition"
+          description: "Understand what constitutes a basis for a vector space"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["linear_independence", "span"]
+          
+        - skill_id: "standard_basis"
+          name: "Standard Basis"
+          description: "Work with standard bases for Rⁿ and other spaces"
+          level: "advanced"
+          xp_value: 10
+          prerequisites: ["basis_definition", "unit_vectors"]
+          
+        - skill_id: "finding_bases"
+          name: "Finding Bases"
+          description: "Find bases for vector spaces and subspaces"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["standard_basis"]
+          assessment:
+            type: "assignment"
+            problems: 15
+            mastery_threshold: 0.8
+            
+        - skill_id: "dimension"
+          name: "Dimension"
+          description: "Calculate the dimension of vector spaces and subspaces"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["finding_bases"]
+          
+        - skill_id: "coordinate_vectors"
+          name: "Coordinate Vectors"
+          description: "Express vectors in terms of a given basis"
+          level: "advanced"
+          xp_value: 18
+          prerequisites: ["dimension"]
+          
+        - skill_id: "change_of_basis"
+          name: "Change of Basis"
+          description: "Convert between different bases"
+          level: "advanced"
+          xp_value: 22
+          prerequisites: ["coordinate_vectors"]
+
+    # Linear Transformations
+    linear_transformations:
+      skill_id: "linear_transformations"
+      name: "Linear Transformations"
+      description: "Functions that preserve vector space operations"
+      level: "advanced"
+      xp_value: 75
+      prerequisites: ["bases_dimension"]
+      sub_skills:
+        - skill_id: "linear_transformation_definition"
+          name: "Linear Transformation Definition"
+          description: "Understand the definition and properties of linear transformations"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["vector_space_definition"]
+          
+        - skill_id: "matrix_linear_transformation"
+          name: "Matrix Representation of Linear Transformations"
+          description: "Represent linear transformations as matrices"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["linear_transformation_definition", "matrix_multiplication"]
+          
+        - skill_id: "geometric_transformations"
+          name: "Geometric Linear Transformations"
+          description: "Understand rotations, reflections, scaling as linear transformations"
+          level: "advanced"
+          xp_value: 18
+          prerequisites: ["matrix_linear_transformation"]
+          assessment:
+            type: "assignment"
+            problems: 12
+            mastery_threshold: 0.8
+            
+        - skill_id: "kernel_nullspace"
+          name: "Kernel (Null Space)"
+          description: "Find and understand the kernel of a linear transformation"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["matrix_linear_transformation", "homogeneous_systems"]
+          
+        - skill_id: "range_column_space"
+          name: "Range (Column Space)"
+          description: "Find and understand the range of a linear transformation"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["kernel_nullspace"]
+          
+        - skill_id: "rank_nullity_theorem"
+          name: "Rank-Nullity Theorem"
+          description: "Apply the rank-nullity theorem"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["range_column_space", "dimension"]
+          assessment:
+            type: "assignment"
+            problems: 10
+            mastery_threshold: 0.8
+            
+        - skill_id: "one_to_one_onto"
+          name: "One-to-One and Onto Transformations"
+          description: "Determine if transformations are injective or surjective"
+          level: "advanced"
+          xp_value: 18
+          prerequisites: ["rank_nullity_theorem"]
+          
+        - skill_id: "invertible_transformations"
+          name: "Invertible Linear Transformations"
+          description: "Understand when linear transformations are invertible"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["one_to_one_onto", "matrix_inverse"]
+
+    # Eigenvalues and Eigenvectors
+    eigenvalues_eigenvectors:
+      skill_id: "eigenvalues_eigenvectors"
+      name: "Eigenvalues and Eigenvectors"
+      description: "Special vectors and scalars for linear transformations"
+      level: "advanced"
+      xp_value: 70
+      prerequisites: ["linear_transformations"]
+      sub_skills:
+        - skill_id: "eigenvalue_definition"
+          name: "Eigenvalue and Eigenvector Definition"
+          description: "Understand the definition of eigenvalues and eigenvectors"
+          level: "advanced"
+          xp_value: 12
+          prerequisites: ["matrix_linear_transformation"]
+          
+        - skill_id: "characteristic_equation"
+          name: "Characteristic Equation"
+          description: "Find eigenvalues using the characteristic equation"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["eigenvalue_definition", "determinant_properties"]
+          assessment:
+            type: "assignment"
+            problems: 15
+            mastery_threshold: 0.8
+            
+        - skill_id: "finding_eigenvectors"
+          name: "Finding Eigenvectors"
+          description: "Find eigenvectors for given eigenvalues"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["characteristic_equation", "kernel_nullspace"]
+          
+        - skill_id: "eigenspaces"
+          name: "Eigenspaces"
+          description: "Find and understand eigenspaces"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["finding_eigenvectors"]
+          
+        - skill_id: "geometric_algebraic_multiplicity"
+          name: "Geometric and Algebraic Multiplicity"
+          description: "Understand the multiplicities of eigenvalues"
+          level: "advanced"
+          xp_value: 18
+          prerequisites: ["eigenspaces"]
+          
+        - skill_id: "diagonalization"
+          name: "Diagonalization"
+          description: "Diagonalize matrices when possible"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["geometric_algebraic_multiplicity"]
+          assessment:
+            type: "assignment"
+            problems: 12
+            mastery_threshold: 0.8
+            
+        - skill_id: "eigenvalue_applications"
+          name: "Eigenvalue Applications"
+          description: "Apply eigenvalues to real-world problems"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["diagonalization"]
+
+    # Orthogonality and Inner Products
+    orthogonality:
+      skill_id: "orthogonality"
+      name: "Orthogonality and Inner Products"
+      description: "Orthogonal vectors, projections, and orthonormal bases"
+      level: "advanced"
+      xp_value: 55
+      prerequisites: ["vector_projections", "bases_dimension"]
+      sub_skills:
+        - skill_id: "orthogonal_vectors"
+          name: "Orthogonal Vectors"
+          description: "Understand when vectors are orthogonal"
+          level: "advanced"
+          xp_value: 8
+          prerequisites: ["dot_product"]
+          
+        - skill_id: "orthogonal_sets"
+          name: "Orthogonal Sets"
+          description: "Work with sets of mutually orthogonal vectors"
+          level: "advanced"
+          xp_value: 12
+          prerequisites: ["orthogonal_vectors", "linear_independence"]
+          
+        - skill_id: "orthonormal_sets"
+          name: "Orthonormal Sets"
+          description: "Work with orthonormal sets and bases"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["orthogonal_sets", "unit_vectors"]
+          
+        - skill_id: "orthogonal_projection"
+          name: "Orthogonal Projection"
+          description: "Project vectors onto subspaces"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["orthonormal_sets", "vector_projections"]
+          assessment:
+            type: "assignment"
+            problems: 12
+            mastery_threshold: 0.8
+            
+        - skill_id: "gram_schmidt"
+          name: "Gram-Schmidt Process"
+          description: "Convert bases to orthonormal bases"
+          level: "advanced"
+          xp_value: 25
+          prerequisites: ["orthogonal_projection"]
+          assessment:
+            type: "assignment"
+            problems: 8
+            mastery_threshold: 0.8
+            
+        - skill_id: "orthogonal_complement"
+          name: "Orthogonal Complement"
+          description: "Find orthogonal complements of subspaces"
+          level: "advanced"
+          xp_value: 15
+          prerequisites: ["gram_schmidt"]
+          
+        - skill_id: "least_squares"
+          name: "Least Squares Solutions"
+          description: "Find best approximate solutions to inconsistent systems"
+          level: "advanced"
+          xp_value: 20
+          prerequisites: ["orthogonal_complement"]
+
+  # Applications and Advanced Topics
+  applications_advanced:
+    # Real-World Applications
+    applications:
+      skill_id: "applications"
+      name: "Linear Algebra Applications"
+      description: "Real-world applications of linear algebra concepts"
+      level: "expert"
+      xp_value: 100
+      prerequisites: ["eigenvalues_eigenvectors", "orthogonality"]
+      sub_skills:
+        - skill_id: "computer_graphics"
+          name: "Computer Graphics Applications"
+          description: "Use linear algebra in 2D/3D graphics transformations"
+          level: "expert"
+          xp_value: 20
+          prerequisites: ["geometric_transformations", "eigenvalues_eigenvectors"]
+          
+        - skill_id: "data_science_applications"
+          name: "Data Science Applications"
+          description: "Apply linear algebra to data analysis and machine learning"
+          level: "expert"
+          xp_value: 25
+          prerequisites: ["least_squares", "diagonalization"]
+          
+        - skill_id: "engineering_applications"
+          name: "Engineering Applications"
+          description: "Use linear algebra in engineering problems"
+          level: "expert"
+          xp_value: 20
+          prerequisites: ["eigenvalue_applications"]
+          
+        - skill_id: "economic_models"
+          name: "Economic and Business Models"
+          description: "Apply linear algebra to economic and business problems"
+          level: "expert"
+          xp_value: 15
+          prerequisites: ["linear_systems", "matrix_equations"]
+          
+        - skill_id: "cryptography"
+          name: "Cryptography Applications"
+          description: "Use linear algebra in cryptographic systems"
+          level: "expert"
+          xp_value: 20
+          prerequisites: ["matrix_inverse", "modular_arithmetic"]
+          
+        - skill_id: "network_analysis"
+          name: "Network Analysis"
+          description: "Apply linear algebra to graph theory and networks"
+          level: "expert"
+          xp_value: 15
+          prerequisites: ["eigenvalues_eigenvectors"]
+
+    # Advanced Topics (Optional Enrichment)
+    advanced_topics:
+      skill_id: "advanced_topics"
+      name: "Advanced Linear Algebra Topics"
+      description: "Topics that extend beyond MATH 231"
+      level: "expert"
+      xp_value: 80
+      prerequisites: ["applications"]
+      sub_skills:
+        - skill_id: "jordan_canonical_form"
+          name: "Jordan Canonical Form"
+          description: "Understand Jordan canonical form for non-diagonalizable matrices"
+          level: "expert"
+          xp_value: 25
+          prerequisites: ["diagonalization"]
+          
+        - skill_id: "singular_value_decomposition"
+          name: "Singular Value Decomposition (SVD)"
+          description: "Understand and apply SVD"
+          level: "expert"
+          xp_value: 30
+          prerequisites: ["orthonormal_sets", "diagonalization"]
+          
+        - skill_id: "matrix_factorizations"
+          name: "Matrix Factorizations"
+          description: "LU, QR, and other matrix factorizations"
+          level: "expert"
+          xp_value: 25
+          prerequisites: ["gram_schmidt", "gaussian_elimination"]
+          
+        - skill_id: "numerical_methods"
+          name: "Numerical Linear Algebra"
+          description: "Numerical methods for large-scale linear algebra"
+          level: "expert"
+          xp_value: 20
+          prerequisites: ["matrix_factorizations"]
+
+  # Skill Tree Metadata
+  metadata:
+    total_skills: 98
+    total_xp_available: 1285
+    estimated_completion_time: "15 weeks"
+    difficulty_progression: "foundational → core → advanced → expert"
+    
+    # Assessment structure
+    assessment_distribution:
+      quizzes: 15
+      assignments: 18
+      projects: 8
+      final_exam: 1
+      
+    # Badge opportunities
+    badge_milestones:
+      - skill_group: "foundational_skills"
+        badge: "Mathematical Foundation"
+        description: "Master prerequisite mathematical skills"
+        icon: "🧮"
+        
+      - skill_group: "vector_geometry"
+        badge: "Vector Virtuoso"
+        description: "Master vector operations and geometry"
+        icon: "📐"
+        
+      - skill_group: "linear_systems"
+        badge: "System Solver"
+        description: "Expert at solving linear systems"
+        icon: "⚖️"
+        
+      - skill_group: "matrix_algebra"
+        badge: "Matrix Master"
+        description: "Proficient in matrix operations"
+        icon: "🔢"
+        
+      - skill_group: "determinants"
+        badge: "Determinant Detective"
+        description: "Expert at calculating and using determinants"
+        icon: "🔍"
+        
+      - skill_group: "vector_spaces"
+        badge: "Space Explorer"
+        description: "Understand abstract vector spaces"
+        icon: "🚀"
+        
+      - skill_group: "bases_dimension"
+        badge: "Basis Builder"
+        description: "Expert at finding bases and dimensions"
+        icon: "🏗️"
+        
+      - skill_group: "linear_transformations"
+        badge: "Transformation Specialist"
+        description: "Master linear transformations"
+        icon: "🔄"
+        
+      - skill_group: "eigenvalues_eigenvectors"
+        badge: "Eigen Expert"
+        description: "Proficient with eigenvalues and eigenvectors"
+        icon: "🎯"
+        
+      - skill_group: "orthogonality"
+        badge: "Orthogonal Oracle"
+        description: "Master orthogonality concepts"
+        icon: "⊥"
+        
+      - skill_group: "applications"
+        badge: "Application Ace"
+        description: "Apply linear algebra to real problems"
+        icon: "🌟"
+        
+      - skill_group: "advanced_topics"
+        badge: "Advanced Achiever"
+        description: "Explore beyond standard curriculum"
+        icon: "🎓"
+        
+    # Course progression tracks
+    progression_tracks:
+      standard_track:
+        name: "Standard MATH 231 Track"
+        description: "Core curriculum completion"
+        required_skills: ["vector_geometry", "linear_systems", "matrix_algebra", "determinants", "vector_spaces", "bases_dimension", "linear_transformations", "eigenvalues_eigenvectors"]
+        estimated_time: "12 weeks"
+        
+      accelerated_track:
+        name: "Accelerated Track"
+        description: "Fast-paced with enrichment"
+        required_skills: ["vector_geometry", "linear_systems", "matrix_algebra", "determinants", "vector_spaces", "bases_dimension", "linear_transformations", "eigenvalues_eigenvectors", "orthogonality", "applications"]
+        estimated_time: "10 weeks"
+        
+      applied_track:
+        name: "Applied Mathematics Track"
+        description: "Focus on applications"
+        required_skills: ["vector_geometry", "linear_systems", "matrix_algebra", "determinants", "linear_transformations", "eigenvalues_eigenvectors", "orthogonality", "applications"]
+        estimated_time: "14 weeks"
+        
+      research_track:
+        name: "Research Preparation Track"
+        description: "Preparation for advanced mathematics"
+        required_skills: ["vector_geometry", "linear_systems", "matrix_algebra", "determinants", "vector_spaces", "bases_dimension", "linear_transformations", "eigenvalues_eigenvectors", "orthogonality", "applications", "advanced_topics"]
+        estimated_time: "16 weeks"
