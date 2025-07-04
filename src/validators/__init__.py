@@ -529,8 +529,8 @@ def validate_course_deployment(config_path: Path, canvas_client=None) -> Dict[st
 
 
 __all__ = [
-    'ConfigValidator',
-    'CanvasValidator', 
-    'ValidationError',
-    'validate_course_deployment'
+    "ConfigValidator",
+    "CanvasValidator",
+    "ValidationError",
+    "validate_course_deployment",
 ]

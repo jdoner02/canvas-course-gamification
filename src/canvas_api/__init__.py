@@ -281,10 +281,10 @@ def get_client() -> CanvasAPIClient:
 
 
 __all__ = [
-    'CanvasAPIClient',
-    'CourseManager',
-    'CanvasAPIError',
-    'RateLimitError',
-    'get_client',
-    'retry_on_rate_limit'
+    "CanvasAPIClient",
+    "CourseManager",
+    "CanvasAPIError",
+    "RateLimitError",
+    "get_client",
+    "retry_on_rate_limit",
 ]

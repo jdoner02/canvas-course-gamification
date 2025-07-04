@@ -16,7 +16,7 @@ from .validators import ConfigValidator, CanvasValidator
 
 __all__ = [
     "CanvasAPIClient",
-    "CourseBuilder", 
+    "CourseBuilder",
     "SkillTree",
     "SkillNode",
     "Badge",

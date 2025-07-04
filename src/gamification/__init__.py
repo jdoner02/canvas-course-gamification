@@ -260,7 +260,9 @@ class SkillTree:
         """Get all nodes available to a student (unlocked or currently unlocked)."""
         return self.get_unlocked_nodes(student_progress)
 
-    def calculate_completion_percentage(self, student_progress: Dict[str, Any]) -> float:
+    def calculate_completion_percentage(
+        self, student_progress: Dict[str, Any]
+    ) -> float:
         """Calculate the completion percentage for a student."""
         if not self.nodes:
             return 0.0
