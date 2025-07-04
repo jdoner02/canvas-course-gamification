@@ -6,7 +6,8 @@
       "description": "Can identify vectors, understand notation, and distinguish vectors from scalars.",
       "level": "Recognition",
       "module": 1,
-      "badge": "vector_warrior"
+      "badge": "vector_warrior",
+      "title": "Vector Recognition and Notation"
     },
     {
       "id": "vector_operations",
@@ -14,7 +15,8 @@
       "description": "Can perform vector addition, subtraction, and scalar multiplication accurately.",
       "level": "Application",
       "module": 1,
-      "badge": "vector_warrior"
+      "badge": "vector_warrior",
+      "title": "Vector Operations Mastery"
     },
     {
       "id": "dot_product_computation",
@@ -22,7 +24,8 @@
       "description": "Can calculate dot products and use them to find angles and test orthogonality.",
       "level": "Application",
       "module": 1,
-      "badge": "geometry_master"
+      "badge": "geometry_master",
+      "title": "Dot Product Computation"
     },
     {
       "id": "vector_geometry_intuition",
@@ -30,7 +33,8 @@
       "description": "Understands geometric interpretation of vector operations and can visualize vector relationships.",
       "level": "Intuition",
       "module": 1,
-      "badge": "geometry_master"
+      "badge": "geometry_master",
+      "title": "Geometric Vector Intuition"
     },
     {
       "id": "linear_combination_recognition",
@@ -38,7 +42,8 @@
       "description": "Can identify and construct linear combinations of vectors.",
       "level": "Recognition",
       "module": 2,
-      "badge": "combination_explorer"
+      "badge": "combination_explorer",
+      "title": "Linear Combination Recognition"
     },
     {
       "id": "span_computation",
@@ -46,7 +51,8 @@
       "description": "Can determine if a vector lies in the span of a set of vectors.",
       "level": "Application",
       "module": 2,
-      "badge": "span_navigator"
+      "badge": "span_navigator",
+      "title": "Span Computation and Analysis"
     },
     {
       "id": "span_geometric_understanding",
@@ -54,7 +60,8 @@
       "description": "Understands span as lines, planes, or higher-dimensional subspaces.",
       "level": "Intuition",
       "module": 2,
-      "badge": "span_navigator"
+      "badge": "span_navigator",
+      "title": "Geometric Understanding of Span"
     },
     {
       "id": "linear_system_setup",
@@ -62,7 +69,8 @@
       "description": "Can translate real-world problems into systems of linear equations.",
       "level": "Application",
       "module": 3,
-      "badge": "equation_solver"
+      "badge": "equation_solver",
+      "title": "Linear System Formulation"
     },
     {
       "id": "gaussian_elimination",
@@ -70,7 +78,8 @@
       "description": "Can perform row operations to solve linear systems using elimination.",
       "level": "Application",
       "module": 3,
-      "badge": "elimination_expert"
+      "badge": "elimination_expert",
+      "title": "Gaussian Elimination Mastery"
     },
     {
       "id": "solution_interpretation",
@@ -78,7 +87,8 @@
       "description": "Can interpret solutions as unique, infinite, or no solution and understand geometric meaning.",
       "level": "Intuition",
       "module": 3,
-      "badge": "elimination_expert"
+      "badge": "elimination_expert",
+      "title": "Solution Set Interpretation"
     },
     {
       "id": "matrix_operations",
@@ -86,7 +96,8 @@
       "description": "Can perform matrix addition, scalar multiplication, and matrix multiplication.",
       "level": "Application",
       "module": 4,
-      "badge": "matrix_operator"
+      "badge": "matrix_operator",
+      "title": "Matrix Operations Proficiency"
     },
     {
       "id": "matrix_properties",
@@ -94,7 +105,8 @@
       "description": "Understands properties of matrix operations including non-commutativity.",
       "level": "Intuition",
       "module": 4,
-      "badge": "algebra_adept"
+      "badge": "algebra_adept",
+      "title": "Matrix Properties Understanding"
     },
     {
       "id": "linear_independence_test",
@@ -102,7 +114,8 @@
       "description": "Can determine if a set of vectors is linearly independent or dependent.",
       "level": "Application",
       "module": 5,
-      "badge": "independence_detective"
+      "badge": "independence_detective",
+      "title": "Linear Independence Testing"
     },
     {
       "id": "basis_identification",
@@ -110,7 +123,8 @@
       "description": "Can identify and construct bases for vector spaces and subspaces.",
       "level": "Application",
       "module": 5,
-      "badge": "basis_builder"
+      "badge": "basis_builder",
+      "title": "Basis Identification and Construction"
     },
     {
       "id": "dimension_understanding",
@@ -118,7 +132,8 @@
       "description": "Understands dimension as the size of a basis and can work with coordinate representations.",
       "level": "Intuition",
       "module": 5,
-      "badge": "dimension_master"
+      "badge": "dimension_master",
+      "title": "Dimension and Coordinate Systems"
     },
     {
       "id": "matrix_inverse_computation",
@@ -126,15 +141,17 @@
       "description": "Can compute matrix inverses using row reduction techniques.",
       "level": "Application",
       "module": 6,
-      "badge": "inverse_calculator"
+      "badge": "inverse_calculator",
+      "title": "Matrix Inverse Computation"
     },
     {
       "id": "determinant_calculation",
       "name": "Determinant Calculation",
-      "description": "Can compute determinants of 2×2 and 3×3 matrices using various methods.",
+      "description": "Can compute determinants of 2\u00d72 and 3\u00d73 matrices using various methods.",
       "level": "Application",
       "module": 6,
-      "badge": "determinant_wizard"
+      "badge": "determinant_wizard",
+      "title": "Determinant Calculation"
     },
     {
       "id": "invertibility_connection",
@@ -142,7 +159,8 @@
       "description": "Understands the relationship between determinants, invertibility, and linear independence.",
       "level": "Intuition",
       "module": 6,
-      "badge": "determinant_wizard"
+      "badge": "determinant_wizard",
+      "title": "Invertibility-Determinant Connection"
     },
     {
       "id": "vector_space_properties",
@@ -150,7 +168,8 @@
       "description": "Understands vector space axioms and can verify if a set is a vector space.",
       "level": "Intuition",
       "module": 7,
-      "badge": "space_explorer"
+      "badge": "space_explorer",
+      "title": "Vector Space Properties"
     },
     {
       "id": "subspace_identification",
@@ -158,7 +177,8 @@
       "description": "Can identify subspaces and understand null space and column space.",
       "level": "Application",
       "module": 7,
-      "badge": "subspace_navigator"
+      "badge": "subspace_navigator",
+      "title": "Subspace Identification"
     },
     {
       "id": "linear_transformation_recognition",
@@ -166,7 +186,8 @@
       "description": "Can recognize linear transformations and verify linearity properties.",
       "level": "Recognition",
       "module": 8,
-      "badge": "transformation_mage"
+      "badge": "transformation_mage",
+      "title": "Linear Transformation Recognition"
     },
     {
       "id": "transformation_matrix_construction",
@@ -174,7 +195,8 @@
       "description": "Can construct matrix representations of linear transformations.",
       "level": "Application",
       "module": 8,
-      "badge": "transformation_mage"
+      "badge": "transformation_mage",
+      "title": "Transformation Matrix Construction"
     },
     {
       "id": "rank_nullity_theorem",
@@ -182,7 +204,8 @@
       "description": "Can apply the rank-nullity theorem to analyze linear transformations.",
       "level": "Synthesis",
       "module": 8,
-      "badge": "rank_nullity_scholar"
+      "badge": "rank_nullity_scholar",
+      "title": "Rank-Nullity Theorem Application"
     },
     {
       "id": "eigenvalue_calculation",
@@ -190,7 +213,8 @@
       "description": "Can find eigenvalues by solving characteristic equations.",
       "level": "Application",
       "module": 9,
-      "badge": "eigenvalue_hunter"
+      "badge": "eigenvalue_hunter",
+      "title": "Eigenvalue Calculation"
     },
     {
       "id": "eigenvector_determination",
@@ -198,7 +222,8 @@
       "description": "Can find eigenvectors and eigenspaces for given eigenvalues.",
       "level": "Application",
       "module": 9,
-      "badge": "eigenvector_master"
+      "badge": "eigenvector_master",
+      "title": "Eigenvector Determination"
     },
     {
       "id": "diagonalization_process",
@@ -206,7 +231,8 @@
       "description": "Can determine if a matrix is diagonalizable and perform diagonalization.",
       "level": "Synthesis",
       "module": 9,
-      "badge": "diagonalization_expert"
+      "badge": "diagonalization_expert",
+      "title": "Matrix Diagonalization"
     },
     {
       "id": "orthogonality_testing",
@@ -214,7 +240,8 @@
       "description": "Can test for orthogonality and find orthogonal complements.",
       "level": "Application",
       "module": 10,
-      "badge": "orthogonal_champion"
+      "badge": "orthogonal_champion",
+      "title": "Orthogonality Testing"
     },
     {
       "id": "projection_computation",
@@ -222,7 +249,8 @@
       "description": "Can compute orthogonal projections onto vectors and subspaces.",
       "level": "Application",
       "module": 10,
-      "badge": "projection_expert"
+      "badge": "projection_expert",
+      "title": "Projection Computation"
     },
     {
       "id": "real_world_application",
@@ -230,7 +258,8 @@
       "description": "Can apply linear algebra concepts to solve problems in various fields.",
       "level": "Synthesis",
       "module": 11,
-      "badge": "application_master"
+      "badge": "application_master",
+      "title": "Real-World Application Integration"
     },
     {
       "id": "linear_algebra_mastery",
@@ -238,7 +267,8 @@
       "description": "Can integrate multiple concepts to solve complex problems and explain solutions to others.",
       "level": "Mastery",
       "module": 11,
-      "badge": "linear_algebra_champion"
+      "badge": "linear_algebra_champion",
+      "title": "Linear Algebra Synthesis and Mastery"
     }
   ]
 }

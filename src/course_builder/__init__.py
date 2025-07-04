@@ -327,6 +327,7 @@ class CourseBuilder:
                 f"Operation {operation_name} failed after {duration:.2f}s: {e}"
             )
             raise
+
     def load_course_config(self, config_path: Union[str, Path]) -> Dict[str, Any]:
         """
         Load and validate course configuration from a directory containing JSON files.

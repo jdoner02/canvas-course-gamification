@@ -114,6 +114,40 @@ This framework transforms traditional Canvas courses into engaging, game-like le
 </details>
 
 <details>
+<summary><strong>🎨 Interactive Preview System</strong></summary>
+
+### HTML Preview Generator
+- **Self-Contained Demos**: Generate complete HTML previews without Canvas API access
+- **Stakeholder Reviews**: Beautiful presentations for course approval and funding
+- **Design Validation**: Visual mockups of skill trees, badges, and progression
+- **Student Onboarding**: Interactive tours showing gamification features
+
+### Preview Features
+- **Skill Tree Visualization**: Interactive D3.js-powered skill progression maps
+- **Badge Gallery**: Professional achievement showcase with hover descriptions  
+- **Progress Scenarios**: Simulated student journeys from beginner to mastery
+- **Responsive Design**: Mobile-friendly previews for accessibility review
+
+### Use Cases
+- **📋 Course Approval**: Present to curriculum committees and administrators
+- **🎯 Faculty Training**: Demonstrate gamification concepts to instructors  
+- **👥 Student Orientation**: Show learners what to expect in gamified courses
+- **💼 Institutional Demos**: Sales presentations for LMS procurement
+
+### Generation Options
+```bash
+# Generate basic preview
+python preview_simple.py data/math231 output/preview.html
+
+# Full-featured preview with scenarios
+python -m src.preview_generator data/course output/demo.html
+
+# Preview with browser auto-open
+python -m src.cli preview ./course-data ./output/preview.html --open-browser
+```
+</details>
+
+<details>
 <summary><strong>📊 Course Management Suite</strong></summary>
 
 ### Content Management
@@ -396,6 +430,11 @@ src/
 │   ├── templates.py          # Reusable course templates
 │   ├── validators.py         # Content quality assurance
 │   └── deployer.py           # Canvas deployment orchestration
+├── 🎨 preview_generator.py   # Interactive HTML preview system
+│   ├── Stakeholder demos     # Self-contained course previews
+│   ├── Design validation     # Visual gamification mockups
+│   ├── Template rendering    # Jinja2-based HTML generation
+│   └── Progress simulation   # Sample student journey scenarios
 ├── ✅ validators/             # Input validation and testing
 │   ├── schema_validator.py   # JSON schema compliance
 │   ├── content_validator.py  # Educational content quality

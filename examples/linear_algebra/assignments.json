@@ -169,6 +169,7 @@
     },
     {
       "id": "hw-span",
+      "name": "Spanning Territory Explorer",
       "title": "Spanning Territory Explorer",
       "description": "Explore the concept of span through hands-on problems. Determine which vectors can be reached through linear combinations and visualize the geometric meaning.",
       "points_possible": 100,
@@ -194,6 +195,7 @@
     },
     {
       "id": "hw-systems",
+      "name": "System Solver Challenge",
       "title": "System Solver Challenge",
       "description": "Become a master of linear systems by solving real-world problems using Gaussian elimination. Unlock the 'Elimination Expert' badge!",
       "points_possible": 120,
@@ -219,6 +221,7 @@
     },
     {
       "id": "hw-matrix-algebra",
+      "name": "Matrix Manipulation Mastery",
       "title": "Matrix Manipulation Mastery",
       "description": "Master the art of matrix operations and discover their connection to linear transformations. Earn your 'Matrix Operator' badge!",
       "points_possible": 110,
@@ -244,6 +247,7 @@
     },
     {
       "id": "hw-independence",
+      "name": "Independence Detective Mission",
       "title": "Independence Detective Mission",
       "description": "Develop your detective skills to identify linear independence and construct bases. Multiple badges await the successful detective!",
       "points_possible": 130,
@@ -269,6 +273,7 @@
     },
     {
       "id": "hw-determinants",
+      "name": "Determinant Wizard Training",
       "title": "Determinant Wizard Training",
       "description": "Master the mystical arts of determinants and matrix inverses. Become a certified 'Determinant Wizard'!",
       "points_possible": 140,
@@ -294,6 +299,7 @@
     },
     {
       "id": "hw-vector-spaces",
+      "name": "Vector Space Explorer Expedition",
       "title": "Vector Space Explorer Expedition",
       "description": "Embark on an expedition through abstract vector spaces and discover the hidden structures of mathematics.",
       "points_possible": 120,
@@ -319,6 +325,7 @@
     },
     {
       "id": "hw-transformations",
+      "name": "Transformation Mage Academy",
       "title": "Transformation Mage Academy",
       "description": "Learn the magical arts of linear transformations and their matrix representations. Master the rank-nullity theorem!",
       "points_possible": 150,
@@ -344,6 +351,7 @@
     },
     {
       "id": "hw-eigen",
+      "name": "Eigenvalue Enlightenment Quest",
       "title": "Eigenvalue Enlightenment Quest",
       "description": "Achieve enlightenment through the study of eigenvalues and eigenvectors. Master diagonalization to become an expert!",
       "points_possible": 160,
@@ -369,6 +377,7 @@
     },
     {
       "id": "hw-orthogonality",
+      "name": "Orthogonal Champion Training",
       "title": "Orthogonal Champion Training",
       "description": "Perfect your skills in orthogonality and projections. Become the ultimate 'Orthogonal Champion'!",
       "points_possible": 140,
@@ -394,6 +403,7 @@
     },
     {
       "id": "final-project",
+      "name": "Linear Algebra Master's Capstone",
       "title": "Linear Algebra Master's Capstone",
       "description": "Demonstrate your mastery by completing a comprehensive project that applies linear algebra to a real-world problem of your choice. Earn the ultimate 'Linear Algebra Champion' badge!",
       "points_possible": 200,

@@ -1,0 +1,79 @@
+[
+  {
+    "title": "[CRITICAL BUG] ValidationResult object not subscriptable in deploy.py",
+    "body": "## \ud83d\udc1b Bug Description\nDeployment fails due to improper handling of ValidationResult object in the deploy.py script.\n\n## \ud83d\udd04 Steps to Reproduce\n1. Run `python deploy.py --config examples/linear_algebra --validate-only`\n2. Validation passes but result processing fails\n3. Error: `'ValidationResult' object is not subscriptable`\n\n## \u2705 Expected Behavior\nValidation should complete and display results properly, allowing deployment to proceed.\n\n## \u274c Actual Behavior\nScript crashes with validation result handling error despite successful validation.\n\n## \ud83c\udfaf Impact Assessment\n- [x] **Critical** - Blocks deployment/core functionality\n\n## \ud83c\udff7\ufe0f Component Areas\n- [x] Canvas API Integration\n- [x] Validation System\n\n## \ud83d\udd2c Technical Details\nError occurs in validation result processing around line ~325 in deploy.py.\nThe ValidationResult object structure has changed but the handling code expects a dictionary.\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] ValidationResult object properly handled\n- [ ] Deployment validation completes successfully\n- [ ] Error handling improved for validation failures\n- [ ] Unit tests added for validation result processing\n\n## \ud83c\udf93 Educational Impact\n**High** - Prevents course deployment to Canvas, blocking student access to gamified content.\n\n## \u23f1\ufe0f Estimated Effort\n**2-4 hours** - Code review and validation object refactoring",
+    "labels": [
+      "bug",
+      "critical",
+      "deployment",
+      "validation"
+    ],
+    "priority": "P0"
+  },
+  {
+    "title": "[HIGH BUG] CanvasAPIClient missing get_course method",
+    "body": "## \ud83d\udc1b Bug Description\nCourseBuilder expects `get_course` method on CanvasAPIClient but method doesn't exist.\n\n## \ud83d\udd04 Steps to Reproduce\n1. Initialize CourseBuilder with CanvasAPIClient\n2. Attempt course deployment\n3. Error: `'CanvasAPIClient' object has no attribute 'get_course'`\n\n## \u2705 Expected Behavior\nCanvasAPIClient should provide get_course method for course information retrieval.\n\n## \u274c Actual Behavior\nAttributeError prevents course initialization and deployment.\n\n## \ud83c\udfaf Impact Assessment\n- [x] **High** - Affects user experience significantly\n\n## \ud83c\udff7\ufe0f Component Areas\n- [x] Canvas API Integration\n- [x] Course Builder\n\n## \ud83d\udd2c Technical Details\nCourseBuilder.deploy_course() calls `self.canvas_client.get_course()` but method is missing.\nAvailable methods: get_course_info, get_course_modules, get_course_assignments.\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] Add get_course method to CanvasAPIClient\n- [ ] Method returns proper course object\n- [ ] Update CourseBuilder to use correct API methods\n- [ ] Add integration tests for course retrieval\n\n## \ud83c\udf93 Educational Impact\n**High** - Prevents Canvas integration, core functionality for course management.\n\n## \u23f1\ufe0f Estimated Effort\n**3-5 hours** - API method implementation and integration testing",
+    "labels": [
+      "bug",
+      "high",
+      "canvas-api",
+      "integration"
+    ],
+    "priority": "P0"
+  },
+  {
+    "title": "[MEDIUM BUG] Table accessibility validation regex too strict",
+    "body": "## \ud83d\udc1b Bug Description\nAccessibility validator marks properly formatted tables as having missing headers due to overly strict regex pattern.\n\n## \ud83d\udd04 Steps to Reproduce\n1. Run validation on pages with properly formatted tables\n2. Tables have `<thead>`, `<th>` elements, and proper structure\n3. Validator still flags as \"Data tables without proper headers\"\n\n## \u2705 Expected Behavior\nTables with proper semantic markup should pass accessibility validation.\n\n## \u274c Actual Behavior\nValidator regex `r\"<table(?![^>]*<th)[^>]*>.*?</table>\"` doesn't detect nested `<th>` elements.\n\n## \ud83c\udfaf Impact Assessment\n- [x] **Medium** - Minor impact on functionality\n\n## \ud83c\udff7\ufe0f Component Areas\n- [x] Validation System\n- [x] Accessibility/UDL\n\n## \ud83d\udd2c Technical Details\nRegex pattern in src/validators/__init__.py line ~327 needs improvement to handle:\n- Nested table structures\n- `<thead>/<tbody>` semantic markup\n- Complex table layouts\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] Update regex pattern to properly detect headers\n- [ ] Test with various table structures\n- [ ] Maintain WCAG 2.1 AA compliance\n- [ ] Add unit tests for table validation\n\n## \ud83c\udf93 Educational Impact\n**Medium** - Accessibility compliance important for inclusive education.\n\n## \u23f1\ufe0f Estimated Effort\n**2-3 hours** - Regex improvement and testing",
+    "labels": [
+      "bug",
+      "medium",
+      "accessibility",
+      "validation"
+    ],
+    "priority": "P1"
+  },
+  {
+    "title": "[FEATURE] Complete end-to-end deployment automation",
+    "body": "## \ud83d\ude80 Feature Description\nImplement comprehensive deployment automation that handles the complete Canvas course setup process.\n\n## \ud83c\udfaf User Story\nAs an **instructor**, I want to **deploy a complete gamified course to Canvas with one command** so that **I can focus on teaching instead of technical setup**.\n\n## \ud83d\udccb Requirements\n### Functional Requirements\n- [ ] One-command deployment (`deploy.py --config examples/linear_algebra`)\n- [ ] Automatic error recovery and rollback\n- [ ] Progress tracking and detailed logging\n- [ ] Canvas permissions validation\n- [ ] Content verification post-deployment\n\n### Non-Functional Requirements\n- [ ] Deployment completes in <5 minutes for typical course\n- [ ] 99.9% success rate for valid configurations\n- [ ] Comprehensive error messages for failures\n- [ ] Idempotent operations (safe to re-run)\n\n## \ud83c\udfd7\ufe0f Technical Design\n1. **Pre-deployment validation**\n   - Canvas API connectivity\n   - Course configuration integrity\n   - Permission checks\n2. **Deployment phases**\n   - Course structure creation\n   - Content upload and linking\n   - Gamification setup\n   - Accessibility verification\n3. **Post-deployment verification**\n   - Link validation\n   - Content accessibility\n   - Student view testing\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] Instructor can deploy course with single command\n- [ ] Deployment includes all 12 modules, 11 assignments, 30 outcomes\n- [ ] Gamification elements (XP, badges) properly configured\n- [ ] Skill tree progression working\n- [ ] All accessibility standards met (WCAG 2.1 AA)\n- [ ] Comprehensive error handling and user feedback\n\n## \ud83c\udf93 Educational Impact\n**Critical** - Enables faculty to deploy engaging, accessible courses efficiently.\n\n## \u23f1\ufe0f Estimated Effort\n**1-2 weeks** - Complex integration with multiple systems",
+    "labels": [
+      "feature",
+      "high",
+      "deployment",
+      "automation"
+    ],
+    "priority": "P1"
+  },
+  {
+    "title": "[FEATURE] GitHub Projects integration for issue tracking",
+    "body": "## \ud83d\ude80 Feature Description\nImplement automated GitHub Projects integration for professional project management and issue tracking.\n\n## \ud83c\udfaf User Story\nAs a **development team member**, I want **automated project board management** so that **we can track progress and maintain professional workflows**.\n\n## \ud83d\udccb Requirements\n### Functional Requirements\n- [ ] Automated project board creation\n- [ ] Issue categorization by component and priority\n- [ ] Sprint planning and milestone tracking\n- [ ] Progress metrics and reporting\n- [ ] Integration with GitHub CLI\n\n### Educational Requirements\n- [ ] Faculty-friendly issue templates\n- [ ] Student contribution guidelines\n- [ ] Educational technology best practices documentation\n\n## \ud83c\udfd7\ufe0f Technical Implementation\n1. **Project Board Automation**\n   - Auto-create columns (Backlog, In Progress, Review, Done)\n   - Issue auto-assignment based on labels\n   - Sprint milestone management\n2. **CLI Integration**\n   - Create issues from markdown templates\n   - Bulk operations for project setup\n   - Status reporting and metrics\n3. **Workflow Automation**\n   - PR linking to issues\n   - Automated testing on issue updates\n   - Release notes generation\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] Project board automatically maintained\n- [ ] Issues properly categorized and prioritized\n- [ ] CLI commands for common operations\n- [ ] Sprint metrics and reporting\n- [ ] Educational team workflow documentation\n\n## \ud83c\udf93 Educational Impact\n**High** - Enables professional development practices for educational technology projects.\n\n## \u23f1\ufe0f Estimated Effort\n**1 week** - GitHub API integration and automation setup",
+    "labels": [
+      "feature",
+      "high",
+      "project-management",
+      "automation"
+    ],
+    "priority": "P1"
+  },
+  {
+    "title": "[ENHANCEMENT] Complete CLI command structure implementation",
+    "body": "## \ud83d\udd27 Enhancement Description\nExpand CLI tool to provide comprehensive course management capabilities.\n\n## \ud83c\udfaf Current State\nCLI has basic wrapper functionality but lacks full command structure for course operations.\n\n## \ud83c\udfaf Desired State\nComplete CLI with validation, deployment, testing, and management commands.\n\n## \ud83d\udccb Requirements\n### Core Commands\n- [ ] `validate` - Course configuration validation\n- [ ] `deploy` - Canvas deployment with options\n- [ ] `test` - Integration and accessibility testing\n- [ ] `scaffold` - New course creation from templates\n- [ ] `status` - Project and deployment status\n- [ ] `update` - Course content updates\n\n### Advanced Commands\n- [ ] `analytics` - Course engagement metrics\n- [ ] `export` - Course content export\n- [ ] `preview` - Local course preview\n- [ ] `migrate` - Cross-platform course migration\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] All commands have comprehensive help text\n- [ ] Progress indicators for long operations\n- [ ] Colored output for better UX\n- [ ] Configuration file support\n- [ ] Error handling with actionable messages\n\n## \ud83c\udf93 Educational Impact\n**Medium** - Improves faculty experience with course management tools.\n\n## \u23f1\ufe0f Estimated Effort\n**3-5 days** - CLI framework expansion and testing",
+    "labels": [
+      "enhancement",
+      "medium",
+      "cli",
+      "ux"
+    ],
+    "priority": "P2"
+  },
+  {
+    "title": "[DOCUMENTATION] Faculty onboarding and workflow guide",
+    "body": "## \ud83d\udcda Documentation Need\nCreate comprehensive onboarding guide for faculty using the Canvas Course Gamification Framework.\n\n## \ud83c\udfaf Target Audience\n- **Primary**: Faculty with limited technical experience\n- **Secondary**: IT support staff\n- **Tertiary**: Student assistants\n\n## \ud83d\udccb Content Requirements\n### Getting Started Guide\n- [ ] System requirements and installation\n- [ ] Canvas API setup and permissions\n- [ ] First course deployment walkthrough\n- [ ] Troubleshooting common issues\n\n### Course Design Guide\n- [ ] Gamification best practices\n- [ ] Accessibility guidelines (WCAG 2.1 AA)\n- [ ] UDL implementation strategies\n- [ ] Assessment design for mastery learning\n\n### Technical Reference\n- [ ] Configuration file documentation\n- [ ] CLI command reference\n- [ ] API integration examples\n- [ ] Customization guidelines\n\n## \ud83d\udccb Acceptance Criteria\n- [ ] Faculty can complete first deployment in <30 minutes\n- [ ] Documentation passes accessibility review\n- [ ] Examples work with current codebase\n- [ ] Video tutorials for key workflows\n\n## \ud83c\udf93 Educational Impact\n**High** - Reduces faculty onboarding time and improves adoption.\n\n## \u23f1\ufe0f Estimated Effort\n**1 week** - Comprehensive documentation creation",
+    "labels": [
+      "documentation",
+      "high",
+      "onboarding",
+      "faculty"
+    ],
+    "priority": "P1"
+  }
+]

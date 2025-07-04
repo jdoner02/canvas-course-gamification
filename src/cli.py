@@ -847,6 +847,84 @@ Course generated from {template_data['template']} template.
 
 
 @cli.command()
+@click.argument("data_path", type=click.Path(exists=True, path_type=Path))
+@click.argument("output_path", type=click.Path(path_type=Path))
+@click.option(
+    "--open-browser",
+    "-o",
+    is_flag=True,
+    help="Open preview in browser after generation",
+)
+@click.option(
+    "--include-scenarios",
+    "-s",
+    is_flag=True,
+    default=True,
+    help="Include sample progress scenarios",
+)
+@click.pass_context
+@handle_errors
+def preview(
+    ctx, data_path: Path, output_path: Path, open_browser: bool, include_scenarios: bool
+):
+    """
+    Generate an interactive HTML preview of the gamified course.
+
+    Creates a comprehensive, self-contained HTML file that demonstrates
+    the full gamification experience including skill trees, badges, and
+    progressive unlocking without requiring Canvas API access.
+
+    \b
+    Perfect for:
+    • Stakeholder reviews and approval
+    • Course design validation
+    • Student orientation and demonstrations
+    • Faculty training and onboarding
+
+    \b
+    Examples:
+      gamify preview ./data/math231 ./output/math231_preview.html
+      gamify preview ./my-course ./preview.html --open-browser
+      gamify preview ./data/course ./output/demo.html --include-scenarios
+    """
+    from src.preview_generator import PreviewGenerator
+
+    with console.status("[bold green]Generating course preview..."):
+        # Create preview generator
+        generator = PreviewGenerator(str(data_path), str(output_path))
+
+        # Load course data
+        console.print("📚 Loading course data...")
+        generator.load_course_data()
+
+        # Generate preview
+        console.print("🎨 Building interactive preview...")
+        generator.generate_preview()
+
+    # Success message
+    console.print(f"✅ Preview generated successfully!")
+    console.print(f"   📄 Output: [bold]{output_path}[/bold]")
+    console.print(
+        f"   📊 Course: {generator.course_data.get('course', {}).get('name', 'Unknown')}"
+    )
+
+    # Show preview stats
+    skill_tree = generator.build_skill_tree()
+    console.print(f"   🌳 Skill nodes: {len(skill_tree.nodes)}")
+    console.print(f"   🏆 Badges: {len(skill_tree.badges)}")
+    console.print(
+        f"   📚 Modules: {len(generator.course_data.get('modules', {}).get('modules', []))}"
+    )
+
+    # Open browser if requested
+    if open_browser:
+        import webbrowser
+
+        webbrowser.open(f"file://{output_path.absolute()}")
+        console.print(f"🌐 Preview opened in browser")
+
+
+@cli.command()
 @click.argument("input_path", type=click.Path(exists=True, path_type=Path))
 @click.argument("output_path", type=click.Path(path_type=Path))
 @click.option(

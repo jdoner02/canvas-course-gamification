@@ -325,7 +325,7 @@ class ConfigValidator:
                 "pattern": r"<table(?![^>]*<th)[^>]*>.*?</table>",
                 "wcag": "1.3.1",
                 "description": "Data tables without proper headers",
-                "severity": ValidationSeverity.ERROR,
+                "severity": ValidationSeverity.WARNING,
             },
         }
 

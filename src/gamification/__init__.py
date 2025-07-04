@@ -201,13 +201,13 @@ class Badge:
     description: str
     criteria: str
     xp_value: int
-    category: BadgeCategory = BadgeCategory.ACADEMIC
-    rarity: str = "common"  # common, uncommon, rare, epic, legendary
-    image_url: Optional[str] = None
     unlock_requirements: List[str] = field(default_factory=list)
     prerequisite_badges: List[str] = field(default_factory=list)
     learning_objectives: List[LearningObjective] = field(default_factory=list)
     accessibility: AccessibilityFeatures = field(default_factory=AccessibilityFeatures)
+    category: BadgeCategory = BadgeCategory.ACADEMIC
+    rarity: str = "common"  # common, uncommon, rare, epic, legendary
+    image_url: Optional[str] = None
     created_date: Optional[str] = None
     expiry_date: Optional[str] = None
     issuer: str = "Canvas Course System"
@@ -375,12 +375,14 @@ class SkillNode:
                 prereq_progress = student_progress.get("skills", {}).get(prereq, {})
             else:
                 prereq_progress = student_progress.get(prereq, {})
-                
+
             if not prereq_progress.get("completed", False):
                 return False
 
             # Verify mastery level for prerequisites
-            mastery_score = prereq_progress.get("mastery_score", 1.0)  # Default to full mastery if not specified
+            mastery_score = prereq_progress.get(
+                "mastery_score", 1.0
+            )  # Default to full mastery if not specified
             if mastery_score < self.mastery_threshold:
                 return False
 
@@ -1406,19 +1408,21 @@ class SkillTree:
     def get_available_nodes(self, student_progress: Dict[str, Any]) -> List[SkillNode]:
         """
         Get all nodes that are currently available (unlocked) to the student.
-        
+
         This method returns only nodes that the student can currently access and work on.
-        
+
         Args:
             student_progress: Dictionary containing student's current progress
-            
+
         Returns:
             List of SkillNode objects that are currently unlocked for the student
         """
         # Simply return unlocked nodes - this is what tests expect
         return self.get_unlocked_nodes(student_progress)
 
-    def calculate_completion_percentage(self, student_progress: Dict[str, Any]) -> float:
+    def calculate_completion_percentage(
+        self, student_progress: Dict[str, Any]
+    ) -> float:
         """
         Calculate the overall completion percentage for the skill tree.
 
@@ -1451,6 +1455,7 @@ class SkillTree:
 
         return completed_nodes / total_nodes if total_nodes > 0 else 0.0
 
+
 # Factory functions for easy setup
 def create_default_skill_tree(name: str, description: str) -> SkillTree:
     """Create a skill tree with sensible defaults."""
@@ -1459,17 +1464,18 @@ def create_default_skill_tree(name: str, description: str) -> SkillTree:
 
 class XPSystem:
     """Placeholder XP system for future implementation."""
-    
+
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
 
 
 class GamificationEngine:
     """Placeholder gamification engine for future implementation."""
-    
+
     def __init__(self, skill_tree: SkillTree, xp_system: Optional[XPSystem] = None):
         self.skill_tree = skill_tree
         self.xp_system = xp_system or XPSystem()
+
 
 # Export all public classes and functions
 __all__ = [

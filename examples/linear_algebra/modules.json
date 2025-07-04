@@ -10,6 +10,7 @@
   },
   "modules": [
     {
+      "id": "module-0",
       "name": "Module 0: Prerequisite Foundations & Course Overview",
       "description": "Prerequisites from algebra and precalculus, course introduction, and skill tree navigation.",
       "overview": "This foundational module establishes the mathematical prerequisites needed for success in linear algebra while introducing the gamified learning environment and skill progression system.",
@@ -116,6 +117,7 @@
       ]
     },
     {
+      "id": "module-1",
       "name": "Module 1: Vectors and Vector Operations",
       "description": "Master vector definitions, operations, dot products, and geometric interpretations in ℝ² and ℝ³.",
       "overview": "This module introduces the fundamental building blocks of linear algebra - vectors. Students will learn to visualize, manipulate, and apply vectors through interactive demonstrations and real-world applications.",
@@ -259,6 +261,7 @@
       ]
     },
     {
+      "id": "module-2",
       "name": "Module 2: Linear Combinations and Span",
       "overview": "Linear combinations, span of vectors, and introduction to subspaces.",
       "unlock_requirements": ["module_1_complete"],
@@ -280,6 +283,7 @@
       ]
     },
     {
+      "id": "module-3",
       "name": "Module 3: Systems of Linear Equations",
       "overview": "Formulating and solving linear systems using Gaussian elimination and matrix methods.",
       "unlock_requirements": ["module_2_complete"],
@@ -302,6 +306,7 @@
       ]
     },
     {
+      "id": "module-4",
       "name": "Module 4: Matrix Algebra and Operations",
       "overview": "Matrix definition, operations, properties, and relationship to linear transformations.",
       "unlock_requirements": ["module_3_complete"],
@@ -323,6 +328,7 @@
       ]
     },
     {
+      "id": "module-5",
       "name": "Module 5: Linear Independence and Basis",
       "overview": "Linear independence, basis, dimension, and coordinate systems.",
       "unlock_requirements": ["module_4_complete"],
@@ -344,6 +350,7 @@
       ]
     },
     {
+      "id": "module-6",
       "name": "Module 6: Matrix Inverses and Determinants",
       "overview": "Matrix invertibility, inverse computation, determinants, and their properties.",
       "unlock_requirements": ["module_5_complete"],
@@ -365,6 +372,7 @@
       ]
     },
     {
+      "id": "module-7",
       "name": "Module 7: Vector Spaces and Subspaces",
       "overview": "Formal vector space definition, subspaces, null space, and column space.",
       "unlock_requirements": ["module_6_complete"],
@@ -386,6 +394,7 @@
       ]
     },
     {
+      "id": "module-8",
       "name": "Module 8: Linear Transformations",
       "overview": "Linear transformations, matrix representations, kernel, range, and rank-nullity theorem.",
       "unlock_requirements": ["module_7_complete"],
@@ -408,6 +417,7 @@
       ]
     },
     {
+      "id": "module-9",
       "name": "Module 9: Eigenvalues and Eigenvectors",
       "overview": "Eigenvalues, eigenvectors, characteristic polynomial, and diagonalization.",
       "unlock_requirements": ["module_8_complete"],
@@ -429,6 +439,7 @@
       ]
     },
     {
+      "id": "module-10",
       "name": "Module 10: Orthogonality and Projections",
       "overview": "Orthogonal vectors, projections, orthogonal complement, and Gram-Schmidt process.",
       "unlock_requirements": ["module_9_complete"],
@@ -450,6 +461,7 @@
       ]
     },
     {
+      "id": "module-11",
       "name": "Module 11: Applications and Advanced Topics",
       "overview": "Real-world applications, SVD introduction, and connections to other fields.",
       "unlock_requirements": ["module_10_complete"],

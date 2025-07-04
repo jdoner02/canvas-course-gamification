@@ -363,9 +363,11 @@ class CourseDataLoader:
                 elif isinstance(item, str):
                     item_id = item
                 else:
-                    result.add_error(f"Module '{module.get('name', '')}' has invalid item format: {type(item)}")
+                    result.add_error(
+                        f"Module '{module.get('name', '')}' has invalid item format: {type(item)}"
+                    )
                     continue
-                    
+
                 if item_id:
                     if (
                         item_id not in assignment_ids
