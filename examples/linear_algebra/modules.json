@@ -1,0 +1,260 @@
+{
+  "modules": [
+    {
+      "name": "Module 0: Prerequisite Foundations & Course Overview",
+      "overview": "Prerequisites from algebra and precalculus, course introduction, and skill tree navigation.",
+      "unlock_requirements": [],
+      "mastery_criteria": {
+        "completion_requirement": "view_all",
+        "min_score": null
+      },
+      "gamification": {
+        "theme": "Beginning Your Mathematical Quest",
+        "badges": ["foundation_explorer"],
+        "xp_value": 50
+      },
+      "items": [
+        { "type": "Page", "id": "syllabus" },
+        { "type": "Page", "id": "skill-tree-overview" },
+        { "type": "Page", "id": "prerequisite-review" },
+        { "type": "Quiz", "id": "prerequisite-assessment" },
+        { "type": "Page", "id": "gamification-guide" }
+      ]
+    },
+    {
+      "name": "Module 1: Vectors and Vector Operations",
+      "overview": "Vector definition, operations, dot product, and geometric interpretations in ℝ² and ℝ³.",
+      "unlock_requirements": ["module_0_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Vector Mastery - The Building Blocks",
+        "badges": ["vector_warrior", "geometry_master"],
+        "xp_value": 100
+      },
+      "items": [
+        { "type": "Page", "id": "vectors-definition" },
+        { "type": "Page", "id": "vector-operations" },
+        { "type": "Page", "id": "dot-product-geometry" },
+        { "type": "Assignment", "id": "hw-vectors" },
+        { "type": "Quiz", "id": "vectors-mastery-check" },
+        { "type": "Page", "id": "vectors-applications" }
+      ]
+    },
+    {
+      "name": "Module 2: Linear Combinations and Span",
+      "overview": "Linear combinations, span of vectors, and introduction to subspaces.",
+      "unlock_requirements": ["module_1_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Spanning New Territories",
+        "badges": ["combination_explorer", "span_navigator"],
+        "xp_value": 100
+      },
+      "items": [
+        { "type": "Page", "id": "linear-combinations" },
+        { "type": "Page", "id": "span-concept" },
+        { "type": "Page", "id": "subspace-introduction" },
+        { "type": "Assignment", "id": "hw-span" },
+        { "type": "Quiz", "id": "span-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 3: Systems of Linear Equations",
+      "overview": "Formulating and solving linear systems using Gaussian elimination and matrix methods.",
+      "unlock_requirements": ["module_2_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score", 
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "System Solver - Unlocking the Matrix",
+        "badges": ["equation_solver", "elimination_expert"],
+        "xp_value": 150
+      },
+      "items": [
+        { "type": "Page", "id": "linear-systems-intro" },
+        { "type": "Page", "id": "gaussian-elimination" },
+        { "type": "Page", "id": "augmented-matrices" },
+        { "type": "Assignment", "id": "hw-systems" },
+        { "type": "Quiz", "id": "systems-mastery-check" },
+        { "type": "Page", "id": "solution-interpretation" }
+      ]
+    },
+    {
+      "name": "Module 4: Matrix Algebra and Operations",
+      "overview": "Matrix definition, operations, properties, and relationship to linear transformations.",
+      "unlock_requirements": ["module_3_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Matrix Manipulation Mastery",
+        "badges": ["matrix_operator", "algebra_adept"],
+        "xp_value": 120
+      },
+      "items": [
+        { "type": "Page", "id": "matrix-definition" },
+        { "type": "Page", "id": "matrix-operations" },
+        { "type": "Page", "id": "matrix-properties" },
+        { "type": "Assignment", "id": "hw-matrix-algebra" },
+        { "type": "Quiz", "id": "matrix-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 5: Linear Independence and Basis",
+      "overview": "Linear independence, basis, dimension, and coordinate systems.",
+      "unlock_requirements": ["module_4_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Independence and Foundation Building",
+        "badges": ["independence_detective", "basis_builder", "dimension_master"],
+        "xp_value": 130
+      },
+      "items": [
+        { "type": "Page", "id": "linear-independence" },
+        { "type": "Page", "id": "basis-definition" },
+        { "type": "Page", "id": "dimension-coordinates" },
+        { "type": "Assignment", "id": "hw-independence" },
+        { "type": "Quiz", "id": "independence-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 6: Matrix Inverses and Determinants",
+      "overview": "Matrix invertibility, inverse computation, determinants, and their properties.",
+      "unlock_requirements": ["module_5_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Inverse Operations and Determinant Powers",
+        "badges": ["inverse_calculator", "determinant_wizard"],
+        "xp_value": 140
+      },
+      "items": [
+        { "type": "Page", "id": "matrix-inverse" },
+        { "type": "Page", "id": "determinants" },
+        { "type": "Page", "id": "inverse-determinant-connection" },
+        { "type": "Assignment", "id": "hw-determinants" },
+        { "type": "Quiz", "id": "inverse-determinant-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 7: Vector Spaces and Subspaces",
+      "overview": "Formal vector space definition, subspaces, null space, and column space.",
+      "unlock_requirements": ["module_6_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Exploring Vector Space Realms",
+        "badges": ["space_explorer", "subspace_navigator"],
+        "xp_value": 120
+      },
+      "items": [
+        { "type": "Page", "id": "vector-spaces" },
+        { "type": "Page", "id": "subspaces-formal" },
+        { "type": "Page", "id": "null-column-spaces" },
+        { "type": "Assignment", "id": "hw-vector-spaces" },
+        { "type": "Quiz", "id": "vector-space-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 8: Linear Transformations",
+      "overview": "Linear transformations, matrix representations, kernel, range, and rank-nullity theorem.",
+      "unlock_requirements": ["module_7_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Transformation Magic",
+        "badges": ["transformation_mage", "rank_nullity_scholar"],
+        "xp_value": 150
+      },
+      "items": [
+        { "type": "Page", "id": "linear-transformations" },
+        { "type": "Page", "id": "transformation-matrices" },
+        { "type": "Page", "id": "kernel-range" },
+        { "type": "Page", "id": "rank-nullity-theorem" },
+        { "type": "Assignment", "id": "hw-transformations" },
+        { "type": "Quiz", "id": "transformation-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 9: Eigenvalues and Eigenvectors",
+      "overview": "Eigenvalues, eigenvectors, characteristic polynomial, and diagonalization.",
+      "unlock_requirements": ["module_8_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Eigenvalue Enlightenment",
+        "badges": ["eigenvalue_hunter", "eigenvector_master", "diagonalization_expert"],
+        "xp_value": 160
+      },
+      "items": [
+        { "type": "Page", "id": "eigenvalues-definition" },
+        { "type": "Page", "id": "finding-eigenvalues" },
+        { "type": "Page", "id": "diagonalization" },
+        { "type": "Assignment", "id": "hw-eigen" },
+        { "type": "Quiz", "id": "eigen-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 10: Orthogonality and Projections",
+      "overview": "Orthogonal vectors, projections, orthogonal complement, and Gram-Schmidt process.",
+      "unlock_requirements": ["module_9_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Orthogonal Mastery and Perfect Projections",
+        "badges": ["orthogonal_champion", "projection_expert"],
+        "xp_value": 140
+      },
+      "items": [
+        { "type": "Page", "id": "orthogonality" },
+        { "type": "Page", "id": "projections" },
+        { "type": "Page", "id": "orthogonal-complement" },
+        { "type": "Assignment", "id": "hw-orthogonality" },
+        { "type": "Quiz", "id": "orthogonality-mastery-check" }
+      ]
+    },
+    {
+      "name": "Module 11: Applications and Advanced Topics",
+      "overview": "Real-world applications, SVD introduction, and connections to other fields.",
+      "unlock_requirements": ["module_10_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "view_all",
+        "min_score": null
+      },
+      "gamification": {
+        "theme": "Master's Journey - Real World Applications",
+        "badges": ["application_master", "linear_algebra_champion"],
+        "xp_value": 200
+      },
+      "items": [
+        { "type": "Page", "id": "applications-overview" },
+        { "type": "Page", "id": "data-science-connections" },
+        { "type": "Page", "id": "engineering-applications" },
+        { "type": "Page", "id": "svd-introduction" },
+        { "type": "Assignment", "id": "final-project" },
+        { "type": "Quiz", "id": "comprehensive-review" }
+      ]
+    }
+  ]
+}

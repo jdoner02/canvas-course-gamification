@@ -1,0 +1,24 @@
+# Canvas Course Gamification Framework Requirements
+
+# Core dependencies
+requests>=2.31.0
+canvasapi>=3.0.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+
+# Optional dependencies for enhanced features
+rich>=13.0.0           # Enhanced console output
+typer>=0.9.0          # CLI framework
+pydantic>=2.0.0       # Data validation
+click>=8.1.0          # CLI utilities
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.7.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Documentation
+sphinx>=7.1.0
+sphinx-rtd-theme>=1.3.0

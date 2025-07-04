@@ -1,0 +1,244 @@
+{
+  "outcomes": [
+    {
+      "id": "vector_recognition",
+      "name": "Vector Recognition and Notation",
+      "description": "Can identify vectors, understand notation, and distinguish vectors from scalars.",
+      "level": "Recognition",
+      "module": 1,
+      "badge": "vector_warrior"
+    },
+    {
+      "id": "vector_operations",
+      "name": "Vector Operations Mastery",
+      "description": "Can perform vector addition, subtraction, and scalar multiplication accurately.",
+      "level": "Application",
+      "module": 1,
+      "badge": "vector_warrior"
+    },
+    {
+      "id": "dot_product_computation",
+      "name": "Dot Product Computation",
+      "description": "Can calculate dot products and use them to find angles and test orthogonality.",
+      "level": "Application",
+      "module": 1,
+      "badge": "geometry_master"
+    },
+    {
+      "id": "vector_geometry_intuition",
+      "name": "Geometric Vector Intuition",
+      "description": "Understands geometric interpretation of vector operations and can visualize vector relationships.",
+      "level": "Intuition",
+      "module": 1,
+      "badge": "geometry_master"
+    },
+    {
+      "id": "linear_combination_recognition",
+      "name": "Linear Combination Recognition",
+      "description": "Can identify and construct linear combinations of vectors.",
+      "level": "Recognition",
+      "module": 2,
+      "badge": "combination_explorer"
+    },
+    {
+      "id": "span_computation",
+      "name": "Span Computation and Analysis",
+      "description": "Can determine if a vector lies in the span of a set of vectors.",
+      "level": "Application",
+      "module": 2,
+      "badge": "span_navigator"
+    },
+    {
+      "id": "span_geometric_understanding",
+      "name": "Geometric Understanding of Span",
+      "description": "Understands span as lines, planes, or higher-dimensional subspaces.",
+      "level": "Intuition",
+      "module": 2,
+      "badge": "span_navigator"
+    },
+    {
+      "id": "linear_system_setup",
+      "name": "Linear System Formulation",
+      "description": "Can translate real-world problems into systems of linear equations.",
+      "level": "Application",
+      "module": 3,
+      "badge": "equation_solver"
+    },
+    {
+      "id": "gaussian_elimination",
+      "name": "Gaussian Elimination Mastery",
+      "description": "Can perform row operations to solve linear systems using elimination.",
+      "level": "Application",
+      "module": 3,
+      "badge": "elimination_expert"
+    },
+    {
+      "id": "solution_interpretation",
+      "name": "Solution Set Interpretation",
+      "description": "Can interpret solutions as unique, infinite, or no solution and understand geometric meaning.",
+      "level": "Intuition",
+      "module": 3,
+      "badge": "elimination_expert"
+    },
+    {
+      "id": "matrix_operations",
+      "name": "Matrix Operations Proficiency",
+      "description": "Can perform matrix addition, scalar multiplication, and matrix multiplication.",
+      "level": "Application",
+      "module": 4,
+      "badge": "matrix_operator"
+    },
+    {
+      "id": "matrix_properties",
+      "name": "Matrix Properties Understanding",
+      "description": "Understands properties of matrix operations including non-commutativity.",
+      "level": "Intuition",
+      "module": 4,
+      "badge": "algebra_adept"
+    },
+    {
+      "id": "linear_independence_test",
+      "name": "Linear Independence Testing",
+      "description": "Can determine if a set of vectors is linearly independent or dependent.",
+      "level": "Application",
+      "module": 5,
+      "badge": "independence_detective"
+    },
+    {
+      "id": "basis_identification",
+      "name": "Basis Identification and Construction",
+      "description": "Can identify and construct bases for vector spaces and subspaces.",
+      "level": "Application",
+      "module": 5,
+      "badge": "basis_builder"
+    },
+    {
+      "id": "dimension_understanding",
+      "name": "Dimension and Coordinate Systems",
+      "description": "Understands dimension as the size of a basis and can work with coordinate representations.",
+      "level": "Intuition",
+      "module": 5,
+      "badge": "dimension_master"
+    },
+    {
+      "id": "matrix_inverse_computation",
+      "name": "Matrix Inverse Computation",
+      "description": "Can compute matrix inverses using row reduction techniques.",
+      "level": "Application",
+      "module": 6,
+      "badge": "inverse_calculator"
+    },
+    {
+      "id": "determinant_calculation",
+      "name": "Determinant Calculation",
+      "description": "Can compute determinants of 2×2 and 3×3 matrices using various methods.",
+      "level": "Application",
+      "module": 6,
+      "badge": "determinant_wizard"
+    },
+    {
+      "id": "invertibility_connection",
+      "name": "Invertibility-Determinant Connection",
+      "description": "Understands the relationship between determinants, invertibility, and linear independence.",
+      "level": "Intuition",
+      "module": 6,
+      "badge": "determinant_wizard"
+    },
+    {
+      "id": "vector_space_properties",
+      "name": "Vector Space Properties",
+      "description": "Understands vector space axioms and can verify if a set is a vector space.",
+      "level": "Intuition",
+      "module": 7,
+      "badge": "space_explorer"
+    },
+    {
+      "id": "subspace_identification",
+      "name": "Subspace Identification",
+      "description": "Can identify subspaces and understand null space and column space.",
+      "level": "Application",
+      "module": 7,
+      "badge": "subspace_navigator"
+    },
+    {
+      "id": "linear_transformation_recognition",
+      "name": "Linear Transformation Recognition",
+      "description": "Can recognize linear transformations and verify linearity properties.",
+      "level": "Recognition",
+      "module": 8,
+      "badge": "transformation_mage"
+    },
+    {
+      "id": "transformation_matrix_construction",
+      "name": "Transformation Matrix Construction",
+      "description": "Can construct matrix representations of linear transformations.",
+      "level": "Application",
+      "module": 8,
+      "badge": "transformation_mage"
+    },
+    {
+      "id": "rank_nullity_theorem",
+      "name": "Rank-Nullity Theorem Application",
+      "description": "Can apply the rank-nullity theorem to analyze linear transformations.",
+      "level": "Synthesis",
+      "module": 8,
+      "badge": "rank_nullity_scholar"
+    },
+    {
+      "id": "eigenvalue_calculation",
+      "name": "Eigenvalue Calculation",
+      "description": "Can find eigenvalues by solving characteristic equations.",
+      "level": "Application",
+      "module": 9,
+      "badge": "eigenvalue_hunter"
+    },
+    {
+      "id": "eigenvector_determination",
+      "name": "Eigenvector Determination",
+      "description": "Can find eigenvectors and eigenspaces for given eigenvalues.",
+      "level": "Application",
+      "module": 9,
+      "badge": "eigenvector_master"
+    },
+    {
+      "id": "diagonalization_process",
+      "name": "Matrix Diagonalization",
+      "description": "Can determine if a matrix is diagonalizable and perform diagonalization.",
+      "level": "Synthesis",
+      "module": 9,
+      "badge": "diagonalization_expert"
+    },
+    {
+      "id": "orthogonality_testing",
+      "name": "Orthogonality Testing",
+      "description": "Can test for orthogonality and find orthogonal complements.",
+      "level": "Application",
+      "module": 10,
+      "badge": "orthogonal_champion"
+    },
+    {
+      "id": "projection_computation",
+      "name": "Projection Computation",
+      "description": "Can compute orthogonal projections onto vectors and subspaces.",
+      "level": "Application",
+      "module": 10,
+      "badge": "projection_expert"
+    },
+    {
+      "id": "real_world_application",
+      "name": "Real-World Application Integration",
+      "description": "Can apply linear algebra concepts to solve problems in various fields.",
+      "level": "Synthesis",
+      "module": 11,
+      "badge": "application_master"
+    },
+    {
+      "id": "linear_algebra_mastery",
+      "name": "Linear Algebra Synthesis and Mastery",
+      "description": "Can integrate multiple concepts to solve complex problems and explain solutions to others.",
+      "level": "Mastery",
+      "module": 11,
+      "badge": "linear_algebra_champion"
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+# Gamification Configuration
+# Settings for XP, badges, skill trees, and progression mechanics
+
+gamification:
+  enabled: true
+  version: "1.0"
+
+# Experience Points (XP) System
+xp_system:
+  enabled: true
+  
+  # Base XP values for different activities
+  base_rewards:
+    assignment_completion: 25
+    quiz_completion: 15
+    discussion_post: 10
+    discussion_reply: 5
+    module_completion: 50
+    badge_earned: 100
+    perfect_score: 25
+    
+  # Bonus multipliers
+  bonuses:
+    early_submission:
+      enabled: true
+      days_early: 1
+      multiplier: 1.2
+      
+    perfect_score:
+      enabled: true
+      multiplier: 1.5
+      
+    streak_bonus:
+      enabled: true
+      consecutive_days: 3
+      multiplier: 1.1
+      max_streak: 10
+      max_multiplier: 2.0
+      
+  # XP decay (optional)
+  decay:
+    enabled: false
+    rate: 0.95  # 5% decay per week
+    minimum_retention: 0.5
+    
+# Badge System
+badges:
+  enabled: true
+  
+  # Badge validation
+  validation:
+    auto_award: true
+    manual_review: false
+    criteria_check_frequency: "daily"
+    
+  # Badge categories and themes
+  categories:
+    mastery:
+      name: "Skill Mastery"
+      description: "Badges for mastering specific skills"
+      icon: "🏆"
+      color: "#FFD700"
+      
+    engagement:
+      name: "Active Learning"
+      description: "Badges for consistent engagement"
+      icon: "⚡"
+      color: "#4CAF50"
+      
+    achievement:
+      name: "Special Achievements"
+      description: "Badges for exceptional performance"
+      icon: "🌟"
+      color: "#2196F3"
+      
+    collaboration:
+      name: "Team Player"
+      description: "Badges for collaboration and helping others"
+      icon: "🤝"
+      color: "#FF9800"
+      
+    innovation:
+      name: "Creative Thinking"
+      description: "Badges for creative and innovative work"
+      icon: "💡"
+      color: "#9C27B0"
+
+# Skill Tree System
+skill_tree:
+  enabled: true
+  
+  # Visual configuration
+  visual:
+    theme: "modern"
+    layout: "hierarchical"  # hierarchical, network, linear
+    animations: true
+    progress_indicators: true
+    
+  # Progression mechanics
+  progression:
+    unlock_mechanism: "prerequisite_based"  # xp_based, prerequisite_based, hybrid
+    mastery_threshold: 0.8
+    allow_parallel_paths: true
+    enable_skill_branches: true
+    
+  # Skill levels definition
+  levels:
+    novice:
+      name: "Novice"
+      description: "Beginning understanding"
+      xp_requirement: 0
+      color: "#f8f9fa"
+      icon: "🌱"
+      
+    developing:
+      name: "Developing"
+      description: "Growing competence"
+      xp_requirement: 100
+      color: "#e9ecef"
+      icon: "🌿"
+      
+    proficient:
+      name: "Proficient"
+      description: "Solid understanding and application"
+      xp_requirement: 300
+      color: "#dee2e6"
+      icon: "🌳"
+      
+    advanced:
+      name: "Advanced"
+      description: "Deep understanding and synthesis"
+      xp_requirement: 600
+      color: "#ced4da"
+      icon: "🌲"
+      
+    expert:
+      name: "Expert"
+      description: "Mastery and ability to teach others"
+      xp_requirement: 1000
+      color: "#adb5bd"
+      icon: "🎓"
+
+# Mastery-Based Learning
+mastery:
+  enabled: true
+  
+  # Mastery thresholds
+  thresholds:
+    quiz_mastery: 0.8
+    assignment_mastery: 0.8
+    module_mastery: 0.85
+    overall_mastery: 0.8
+    
+  # Retake policies
+  retakes:
+    unlimited_attempts: true
+    cooldown_period: 24  # hours
+    score_retention: "highest"  # highest, latest, average
+    
+  # Prerequisite enforcement
+  prerequisites:
+    strict_enforcement: true
+    bypass_for_instructors: true
+    grace_period: 0  # days
+    
+# Progress Tracking
+progress:
+  enabled: true
+  
+  # Tracking granularity
+  tracking:
+    assignment_level: true
+    module_level: true
+    skill_level: true
+    overall_course: true
+    
+  # Progress visualization
+  visualization:
+    skill_tree_overlay: true
+    progress_bars: true
+    completion_percentages: true
+    xp_displays: true
+    badge_showcases: true
+    
+  # Analytics
+  analytics:
+    detailed_logs: true
+    learning_paths: true
+    time_tracking: true
+    engagement_metrics: true
+
+# Adaptive Learning
+adaptive:
+  enabled: true
+  
+  # Content recommendations
+  recommendations:
+    based_on_performance: true
+    based_on_learning_style: false
+    based_on_peer_comparison: false
+    
+  # Difficulty adjustment
+  difficulty:
+    dynamic_adjustment: true
+    performance_threshold: 0.6
+    adjustment_factor: 0.1
+    
+# Social Features
+social:
+  enabled: false
+  
+  # Leaderboards
+  leaderboards:
+    enabled: false
+    anonymous_option: true
+    categories: ["xp", "badges", "modules_completed"]
+    
+  # Peer collaboration
+  collaboration:
+    study_groups: false
+    peer_reviews: false
+    team_challenges: false
+
+# Notification System
+notifications:
+  enabled: true
+  
+  # Notification types
+  types:
+    badge_earned: true
+    level_up: true
+    module_unlocked: true
+    achievement_milestone: true
+    reminder_notifications: true
+    
+  # Notification channels
+  channels:
+    canvas_inbox: true
+    email: false
+    browser_notifications: false
+
+# Integration Settings
+integrations:
+  # Canvas-specific settings
+  canvas:
+    use_native_gradebook: true
+    custom_grade_calculations: true
+    outcome_alignment: true
+    rubric_integration: true
+    
+  # External tools
+  external:
+    learning_analytics: false
+    third_party_content: false
+    assessment_tools: false
+
+# Customization Options
+customization:
+  # Theming
+  theme:
+    primary_color: "#1976d2"
+    secondary_color: "#424242"
+    accent_color: "#ff9800"
+    background_color: "#f5f5f5"
+    
+  # Branding
+  branding:
+    course_logo: null
+    institution_branding: true
+    custom_css: null
+    
+  # Language and localization
+  localization:
+    language: "en"
+    date_format: "MM/DD/YYYY"
+    time_format: "12h"
+
+# Performance Settings
+performance:
+  # Caching
+  caching:
+    enabled: true
+    cache_duration: 3600  # seconds
+    cache_size_limit: 100  # MB
+    
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    burst_allowance: 10
+    
+# Security Settings
+security:
+  # Data protection
+  data_protection:
+    encrypt_student_data: true
+    anonymize_analytics: true
+    data_retention_days: 365
+    
+  # Access control
+  access_control:
+    instructor_override: true
+    admin_access: true
+    student_self_service: true

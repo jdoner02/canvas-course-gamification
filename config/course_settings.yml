@@ -1,0 +1,214 @@
+# Canvas Course Gamification Framework Configuration
+# Template configuration for deploying gamified courses
+
+course:
+  name: "Gamified Course Template"
+  course_code: "TEMPLATE001"
+  term: "Academic Year 2024-25"
+  credits: 3
+  
+  # Course Philosophy
+  approach: "mastery-based"
+  gamification: true
+  skill_tree_enabled: true
+  
+  # Course Description
+  description: |
+    A template for creating engaging, mastery-based courses with gamification
+    elements including skill trees, XP systems, and achievement badges.
+  
+  # Learning Philosophy
+  learning_model:
+    type: "mastery_based"
+    retake_policy: "unlimited"
+    mastery_threshold: 0.8
+    prerequisite_enforcement: true
+    
+  # Gamification Settings
+  gamification_settings:
+    enabled: true
+    xp_system: true
+    badge_system: true
+    leaderboards: false
+    achievement_tracking: true
+    mastery_paths: true
+    
+  # Course Structure
+  structure:
+    modules: 10
+    skill_levels: 5  # Recognition, Application, Intuition, Synthesis, Mastery
+    total_assignments: 25
+    total_quizzes: 10
+    total_outcomes: 50
+    
+  # Grading
+  grading:
+    scheme: "mastery_based"
+    grade_calculation:
+      module_mastery: 70
+      final_project: 20
+      participation: 10
+
+# Canvas API Configuration
+canvas:
+  api_version: "v1"
+  rate_limit:
+    requests_per_second: 10
+    retry_attempts: 3
+    backoff_factor: 2
+  
+  # Course Creation Options
+  course_options:
+    is_public: false
+    is_public_to_auth_users: false
+    public_syllabus: true
+    public_syllabus_to_auth: true
+    public_description: true
+    allow_wiki_comments: false
+    allow_student_forum_attachments: false
+    default_wiki_editing_roles: "teachers"
+    
+# Skill Tree Configuration
+skill_tree:
+  name: "Course Progression Tree"
+  description: "Visual representation of learning progression"
+  
+  # Skill Levels
+  levels:
+    recognition:
+      name: "Recognition"
+      description: "I know what this is"
+      xp_threshold: 0
+      color: "#e8f5e8"
+      
+    application:
+      name: "Application" 
+      description: "I can use this"
+      xp_threshold: 100
+      color: "#d4f1d4"
+      
+    intuition:
+      name: "Intuition"
+      description: "I understand why"
+      xp_threshold: 300
+      color: "#b8e9b8"
+      
+    synthesis:
+      name: "Synthesis"
+      description: "I can connect and innovate"
+      xp_threshold: 600
+      color: "#9ce09c"
+      
+    mastery:
+      name: "Mastery"
+      description: "I can teach this"
+      xp_threshold: 1000
+      color: "#7dd87d"
+
+# XP System Configuration
+xp_system:
+  enabled: true
+  
+  # XP Rewards
+  rewards:
+    quiz_completion: 10
+    assignment_submission: 15
+    assignment_mastery: 25
+    discussion_post: 5
+    discussion_reply: 3
+    badge_earned: 50
+    module_completion: 100
+    perfect_quiz: 25
+    early_submission: 5
+    
+  # XP Multipliers
+  multipliers:
+    streak_bonus: 1.1  # 10% bonus for consecutive days
+    early_bird: 1.2    # 20% bonus for early submissions
+    perfectionist: 1.5 # 50% bonus for perfect scores
+    
+# Badge System Configuration
+badges:
+  enabled: true
+  
+  # Badge Categories
+  categories:
+    - name: "Learning Milestones"
+      description: "Achievement in core learning objectives"
+      color: "#4CAF50"
+      
+    - name: "Skill Mastery"
+      description: "Mastery of specific skill areas"
+      color: "#2196F3"
+      
+    - name: "Engagement"
+      description: "Active participation and engagement"
+      color: "#FF9800"
+      
+    - name: "Excellence"
+      description: "Outstanding performance and achievement"
+      color: "#9C27B0"
+
+# Module Configuration
+modules:
+  # Module progression settings
+  progression:
+    sequential: true
+    prerequisite_enforcement: true
+    mastery_required: true
+    
+  # Module unlock requirements
+  unlock_requirements:
+    xp_threshold: true
+    prerequisite_completion: true
+    quiz_mastery: true
+    assignment_completion: true
+
+# Assignment Configuration  
+assignments:
+  # Default assignment settings
+  defaults:
+    points_possible: 100
+    xp_value: 25
+    mastery_threshold: 0.8
+    unlimited_attempts: true
+    
+  # Assignment types
+  types:
+    - name: "Skill Check"
+      description: "Quick assessment of specific skills"
+      xp_value: 15
+      
+    - name: "Application Task"
+      description: "Apply concepts to solve problems"
+      xp_value: 25
+      
+    - name: "Project Component"
+      description: "Part of larger project work"
+      xp_value: 50
+      
+    - name: "Mastery Assessment"
+      description: "Comprehensive skill demonstration"
+      xp_value: 100
+
+# Deployment Configuration
+deployment:
+  # Validation settings
+  validation:
+    run_pre_deployment_checks: true
+    validate_json_schemas: true
+    check_prerequisites: true
+    verify_api_connection: true
+    
+  # Deployment options
+  options:
+    create_missing_content: true
+    update_existing_content: true
+    preserve_student_data: true
+    backup_before_deployment: true
+    
+  # Logging
+  logging:
+    level: "INFO"
+    file: "deployment.log"
+    console_output: true

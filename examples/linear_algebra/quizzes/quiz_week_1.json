@@ -1,0 +1,207 @@
+{
+  "id": "quiz-week1",
+  "title": "Week 1 Question Bank – Gaussian Elimination & Linear Systems",
+  "description": "20‑item bank covering all Week 1 learning objectives; use for graded quizzes, practice mode, or badge‑grinding.",
+  "settings": { "shuffle_answers": true, "time_limit": 40, "allowed_attempts": 0 },
+  "questions": [
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Which operation <em>does NOT</em> preserve the solution set of a linear system?",
+      "answers": [
+        {"text": "Multiply a row by 0", "weight": 100},
+        {"text": "Add a multiple of one row to another", "weight": 0},
+        {"text": "Swap two rows", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Row operation  <code>R₂ ← R₂ − 3R₁</code> is classified as:",
+      "answers": [
+        {"text": "Row replacement", "weight": 100},
+        {"text": "Row scaling", "weight": 0},
+        {"text": "Row swap", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "After reduction you encounter the row <code>[0 0 0 | 5]</code>.  Conclusion?",
+      "answers": [
+        {"text": "The system is inconsistent – no solution exists.", "weight": 100},
+        {"text": "There is a unique solution.", "weight": 0},
+        {"text": "There are infinitely many solutions.", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "In the RREF below, how many pivot positions are present?<br><br><code>[1 0 2 | 3]<br>[0 1 −1 | 4]<br>[0 0 0 | 0]</code>",
+      "answers": [
+        {"text": "2", "weight": 100},
+        {"text": "3", "weight": 0},
+        {"text": "1", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Which column(s) in the matrix of Q4 correspond to free variables?",
+      "answers": [
+        {"text": "Column 3 only", "weight": 100},
+        {"text": "Columns 1 and 2", "weight": 0},
+        {"text": "No columns are free", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "A 3×4 augmented matrix in RREF has pivot rows in every row but not in every column.  The system has:",
+      "answers": [
+        {"text": "Infinitely many solutions", "weight": 100},
+        {"text": "A unique solution", "weight": 0},
+        {"text": "No solution", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Given RREF<br><code>[1 0 4 | −2]<br>[0 1 −3 | 5]</code><br>write the general solution.",
+      "answers": [
+        {"text": "x = −2 − 4t,  y = 5 + 3t,  z = t", "weight": 100},
+        {"text": "x = −2 + 4t,  y = 5 − 3t,  z = t", "weight": 0},
+        {"text": "x = 4t,  y = 3t,  z = −2", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "A 5 × 7 matrix reduces to REF with 3 pivots.  What is its rank?",
+      "answers": [
+        {"text": "3", "weight": 100},
+        {"text": "4", "weight": 0},
+        {"text": "2", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "For a homogeneous system with 4 equations and 6 unknowns, the dimension of its solution set is at least:",
+      "answers": [
+        {"text": "2", "weight": 100},
+        {"text": "0", "weight": 0},
+        {"text": "6", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "If a 4 × 4 coefficient matrix has full rank, the system A x = b:",
+      "answers": [
+        {"text": "Has a unique solution for every b", "weight": 100},
+        {"text": "Is always inconsistent", "weight": 0},
+        {"text": "Has infinitely many solutions", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Which augmented matrix correctly represents the system  x + 2y = 5,  −y + 3z = 4?",
+      "answers": [
+        {"text": "[[1 2 0 | 5],[0 −1 3 | 4]]", "weight": 100},
+        {"text": "[[1 2 5],[0 −1 3 4]]", "weight": 0},
+        {"text": "[[1 0 2 5],[−1 0 3 4]]", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Which single row operation transforms <code>[1 3 | 7]</code> and <code>[2 5 | 12]</code> into <code>[1 3 | 7]</code> and <code>[0 −1 | −2]</code>?",
+      "answers": [
+        {"text": "R₂ ← R₂ − 2R₁", "weight": 100},
+        {"text": "R₂ ← R₂ + 2R₁", "weight": 0},
+        {"text": "R₁ ↔ R₂", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "A café blends two coffees costing $8/lb and $12/lb to make 20 lb of a $10/lb blend.  The system is:",
+      "answers": [
+        {"text": "x + y = 20;  8x + 12y = 200", "weight": 100},
+        {"text": "x + y = 10;  8x − 12y = 20", "weight": 0},
+        {"text": "8x + 12y = 20;  x − y = 200", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Using your answer to Q13, how many pounds of the $12/lb coffee are needed?",
+      "answers": [
+        {"text": "10 lb", "weight": 100},
+        {"text": "5 lb", "weight": 0},
+        {"text": "15 lb", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "In the matrix<br><code>[0 1 −2 | 3]</code><br>which variable is the pivot variable?",
+      "answers": [
+        {"text": "y (second variable)", "weight": 100},
+        {"text": "x (first variable)", "weight": 0},
+        {"text": "z (third variable)", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "During back‑substitution of an upper‑triangular system, which variable do you solve for first?",
+      "answers": [
+        {"text": "The variable in the last (bottom) pivot row", "weight": 100},
+        {"text": "Any free variable you like", "weight": 0},
+        {"text": "The variable with the largest coefficient", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Consider  3x + 6y = 12  and  −x − 2y = −4.  Classify the solution set.",
+      "answers": [
+        {"text": "Infinite solutions (same line)", "weight": 100},
+        {"text": "Unique solution", "weight": 0},
+        {"text": "No solution", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "True or False: Multiplying an entire row by −3 changes the solution set of the system.",
+      "answers": [
+        {"text": "False – it produces an equivalent equation.", "weight": 100},
+        {"text": "True – scaling alters the solutions.", "weight": 0}
+      ],
+      "points_possible": 1
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Given the RREF<br><code>[1 0 | 4]<br>[0 0 | 0]</code><br>which variable is free?",
+      "answers": [
+        {"text": "y", "weight": 100},
+        {"text": "x", "weight": 0},
+        {"text": "Neither; both are pivot variables", "weight": 0}
+      ],
+      "points_possible": 2
+    },
+    {
+      "type": "multiple_choice_question",
+      "question_text": "Write the solution set of the system in Q19 in vector form.",
+      "answers": [
+        {"text": "(x,y) = (4, t),   t∈ℝ", "weight": 100},
+        {"text": "(x,y) = (t, 4),   t∈ℝ", "weight": 0},
+        {"text": "(x,y) = (4, 0) + t(0,1,1)", "weight": 0}
+      ],
+      "points_possible": 2
+    }
+  ]
+}

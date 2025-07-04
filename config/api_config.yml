@@ -1,0 +1,237 @@
+# Canvas API Configuration
+# Settings for Canvas LMS API integration
+
+api:
+  version: "v1"
+  base_url: "${CANVAS_API_URL}"
+  timeout: 30
+  
+  # Authentication
+  authentication:
+    method: "bearer_token"
+    token: "${CANVAS_API_TOKEN}"
+    
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_second: 10
+    burst_allowance: 20
+    retry_attempts: 3
+    backoff_factor: 2
+    max_backoff: 60
+    
+  # Request configuration
+  requests:
+    default_timeout: 30
+    connection_timeout: 10
+    read_timeout: 30
+    max_redirects: 5
+    
+  # Error handling
+  error_handling:
+    retry_on_rate_limit: true
+    retry_on_server_error: true
+    max_retries: 3
+    exponential_backoff: true
+    
+# Course Configuration
+course:
+  # Default course settings
+  defaults:
+    is_public: false
+    is_public_to_auth_users: false
+    public_syllabus: true
+    public_syllabus_to_auth: true
+    public_description: true
+    allow_wiki_comments: false
+    allow_student_forum_attachments: false
+    default_wiki_editing_roles: "teachers"
+    open_enrollment: false
+    self_enrollment: false
+    restrict_enrollments_to_course_dates: true
+    
+  # Course creation options
+  creation:
+    auto_publish: false
+    copy_from_template: false
+    import_content: false
+    
+# Module Configuration
+modules:
+  # Default module settings
+  defaults:
+    require_sequential_progress: true
+    publish_final_grade: false
+    prerequisite_module_ids: []
+    
+  # Module item settings
+  items:
+    auto_mark_done: true
+    require_completion: true
+    
+# Assignment Configuration
+assignments:
+  # Default assignment settings
+  defaults:
+    submission_types: ["online_text_entry"]
+    points_possible: 100
+    grading_type: "points"
+    due_at: null
+    unlock_at: null
+    lock_at: null
+    published: false
+    peer_reviews: false
+    automatic_peer_reviews: false
+    peer_review_count: 0
+    peer_reviews_assign_at: null
+    anonymous_peer_reviews: false
+    group_category_id: null
+    grade_group_students_individually: false
+    turnitin_enabled: false
+    vericite_enabled: false
+    allowed_attempts: -1  # unlimited
+    
+  # Assignment submission settings
+  submissions:
+    anonymize_students: false
+    hide_in_gradebook: false
+    post_to_sis: true
+    integration_data: {}
+    
+# Quiz Configuration
+quizzes:
+  # Default quiz settings
+  defaults:
+    quiz_type: "assignment"
+    time_limit: null
+    shuffle_answers: false
+    hide_results: null
+    show_correct_answers: true
+    show_correct_answers_last_attempt: false
+    show_correct_answers_at: null
+    hide_correct_answers_at: null
+    allowed_attempts: 1
+    scoring_policy: "keep_highest"
+    one_question_at_a_time: false
+    cant_go_back: false
+    access_code: null
+    ip_filter: null
+    due_at: null
+    lock_at: null
+    unlock_at: null
+    published: false
+    one_time_results: false
+    only_visible_to_overrides: false
+    
+# Page Configuration  
+pages:
+  # Default page settings
+  defaults:
+    published: true
+    front_page: false
+    editing_roles: "teachers"
+    notify_of_update: false
+    
+# Discussion Configuration
+discussions:
+  # Default discussion settings
+  defaults:
+    discussion_type: "side_comment"
+    published: true
+    delayed_post_at: null
+    lock_at: null
+    podcast_enabled: false
+    podcast_has_student_posts: false
+    require_initial_post: false
+    assignment: null
+    is_announcement: false
+    pinned: false
+    position_after: null
+    group_category_id: null
+    only_graders_can_rate: false
+    sort_by_rating: false
+    
+# Outcome Configuration
+outcomes:
+  # Default outcome settings
+  defaults:
+    mastery_points: 3
+    points_possible: 5
+    calculation_method: "decaying_average"
+    calculation_int: 65
+    
+# Gradebook Configuration
+gradebook:
+  # Gradebook settings
+  settings:
+    hide_final_grades: false
+    hide_totals: false
+    post_policies:
+      post_manually: false
+    
+# API Endpoint Configuration
+endpoints:
+  # Core endpoints
+  courses: "courses"
+  modules: "courses/{course_id}/modules"
+  assignments: "courses/{course_id}/assignments"
+  quizzes: "courses/{course_id}/quizzes"
+  pages: "courses/{course_id}/pages"
+  discussions: "courses/{course_id}/discussion_topics"
+  outcomes: "courses/{course_id}/outcome_groups"
+  users: "courses/{course_id}/users"
+  enrollments: "courses/{course_id}/enrollments"
+  grades: "courses/{course_id}/students/submissions"
+  
+  # Analytics endpoints
+  analytics: "courses/{course_id}/analytics"
+  activity: "courses/{course_id}/activity_stream"
+  
+# Logging Configuration
+logging:
+  # Log levels
+  level: "INFO"
+  
+  # Log formatting
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Log outputs
+  outputs:
+    console: true
+    file: true
+    file_path: "canvas_api.log"
+    
+  # Request logging
+  requests:
+    log_requests: true
+    log_responses: false
+    log_headers: false
+    log_body: false
+    
+# Development Configuration
+development:
+  # Debug settings
+  debug: false
+  verbose_logging: false
+  
+  # Testing
+  test_mode: false
+  dry_run: false
+  
+  # Mock responses
+  mock_api: false
+  mock_data_path: "tests/mock_data"
+  
+# Production Configuration  
+production:
+  # Performance settings
+  connection_pooling: true
+  persistent_connections: true
+  
+  # Monitoring
+  metrics_enabled: false
+  health_checks: true
+  
+  # Security
+  verify_ssl: true
+  user_agent: "Canvas-Course-Gamification/1.0"
