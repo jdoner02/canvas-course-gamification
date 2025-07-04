@@ -9,6 +9,7 @@ from unittest.mock import Mock
 
 # Add src to Python path for testing
 import sys
+
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
@@ -23,7 +24,7 @@ def sample_env_vars():
     return {
         "CANVAS_API_URL": "https://test.instructure.com",
         "CANVAS_API_TOKEN": "test_token_123",
-        "CANVAS_COURSE_ID": "12345"
+        "CANVAS_COURSE_ID": "12345",
     }
 
 
@@ -58,7 +59,7 @@ def sample_skill_node():
         level=SkillLevel.APPLICATION,
         xp_required=100,
         prerequisites=["basic_node"],
-        mastery_threshold=0.8
+        mastery_threshold=0.8,
     )
 
 
@@ -71,7 +72,7 @@ def sample_badge():
         description="A test achievement badge",
         criteria="Complete a test",
         xp_value=50,
-        category="testing"
+        category="testing",
     )
 
 
@@ -79,38 +80,38 @@ def sample_badge():
 def sample_skill_tree():
     """Provide a sample skill tree for testing."""
     tree = SkillTree("Test Tree", "A test skill tree")
-    
+
     # Add some nodes
     basic_node = SkillNode(
         id="basic_node",
         name="Basic Concepts",
         description="Foundation concepts",
         level=SkillLevel.RECOGNITION,
-        xp_required=0
+        xp_required=0,
     )
-    
+
     intermediate_node = SkillNode(
-        id="intermediate_node", 
+        id="intermediate_node",
         name="Intermediate Concepts",
         description="Building on basics",
         level=SkillLevel.APPLICATION,
         xp_required=100,
-        prerequisites=["basic_node"]
+        prerequisites=["basic_node"],
     )
-    
+
     tree.add_node(basic_node)
     tree.add_node(intermediate_node)
-    
+
     # Add a badge
     badge = Badge(
         id="completion_badge",
-        name="Completion Badge", 
+        name="Completion Badge",
         description="Completed the tree",
         criteria="Complete all nodes",
-        xp_value=100
+        xp_value=100,
     )
     tree.add_badge(badge)
-    
+
     return tree
 
 
@@ -125,17 +126,10 @@ def sample_course_config():
                     "name": "Introduction",
                     "description": "Course introduction",
                     "position": 1,
-                    "gamification": {
-                        "skill_level": "recognition",
-                        "xp_required": 0
-                    },
+                    "gamification": {"skill_level": "recognition", "xp_required": 0},
                     "items": [
-                        {
-                            "type": "Page",
-                            "id": "welcome_page",
-                            "title": "Welcome"
-                        }
-                    ]
+                        {"type": "Page", "id": "welcome_page", "title": "Welcome"}
+                    ],
                 }
             ]
         },
@@ -146,7 +140,7 @@ def sample_course_config():
                     "name": "First Assignment",
                     "description": "Introduction assignment",
                     "points_possible": 100,
-                    "xp_value": 25
+                    "xp_value": 25,
                 }
             ]
         },
@@ -157,10 +151,10 @@ def sample_course_config():
                     "name": "First Steps",
                     "description": "Complete your first assignment",
                     "criteria": "Submit assignment_1",
-                    "xp_value": 50
+                    "xp_value": 50,
                 }
             ]
-        }
+        },
     }
 
 
@@ -175,14 +169,12 @@ def sample_student_progress():
             "assignment_1": {
                 "completed": True,
                 "score": 85,
-                "submitted_at": "2024-07-01T10:00:00Z"
+                "submitted_at": "2024-07-01T10:00:00Z",
             }
         },
         "badges_earned": ["first_steps"],
-        "quiz_scores": {
-            "quiz_1": 0.9
-        },
-        "streak_days": 5
+        "quiz_scores": {"quiz_1": 0.9},
+        "streak_days": 5,
     }
 
 
@@ -191,10 +183,11 @@ def temp_config_dir(tmp_path):
     """Create a temporary directory with sample configuration files."""
     config_dir = tmp_path / "config"
     config_dir.mkdir()
-    
+
     # Create sample JSON files
     modules_file = config_dir / "modules.json"
-    modules_file.write_text('''
+    modules_file.write_text(
+        """
     {
         "modules": [
             {
@@ -205,10 +198,12 @@ def temp_config_dir(tmp_path):
             }
         ]
     }
-    ''')
-    
+    """
+    )
+
     assignments_file = config_dir / "assignments.json"
-    assignments_file.write_text('''
+    assignments_file.write_text(
+        """
     {
         "assignments": [
             {
@@ -219,8 +214,9 @@ def temp_config_dir(tmp_path):
             }
         ]
     }
-    ''')
-    
+    """
+    )
+
     return config_dir
 
 
@@ -230,9 +226,7 @@ def pytest_configure(config):
     config.addinivalue_line(
         "markers", "integration: mark test as integration test requiring Canvas API"
     )
-    config.addinivalue_line(
-        "markers", "slow: mark test as slow running"
-    )
+    config.addinivalue_line("markers", "slow: mark test as slow running")
     config.addinivalue_line(
         "markers", "canvas_required: mark test as requiring Canvas instance access"
     )
@@ -244,7 +238,7 @@ def pytest_collection_modifyitems(config, items):
         # Mark integration tests
         if "integration" in str(item.fspath):
             item.add_marker(pytest.mark.integration)
-        
+
         # Mark tests that use real Canvas client
         if "canvas_client" in item.fixturenames:
             item.add_marker(pytest.mark.canvas_required)
