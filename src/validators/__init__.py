@@ -526,3 +526,11 @@ def validate_course_deployment(config_path: Path, canvas_client=None) -> Dict[st
     results["ready_for_deployment"] = len(results["overall_errors"]) == 0
 
     return results
+
+
+__all__ = [
+    'ConfigValidator',
+    'CanvasValidator', 
+    'ValidationError',
+    'validate_course_deployment'
+]
