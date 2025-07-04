@@ -208,7 +208,9 @@ def demo_3blue1brown_approach():
         for session in range(3):
             concept_id = "vector_essence"
             interaction_data = {"time_spent": 300, "interactions": 5}
-            result = visual_system.explore_concept(student_id, concept_id, interaction_data)
+            result = visual_system.explore_concept(
+                student_id, concept_id, interaction_data
+            )
             understanding = result.get("understanding_level", 2)
             print(f"      Session {session + 1}: Exploring '{concept_id}'")
             print(f"         Understanding Level: {understanding}")

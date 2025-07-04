@@ -38,11 +38,15 @@ class MicroModule:
     prerequisites: List[str] = field(default_factory=list)
     estimated_time: int = 300  # seconds
     difficulty: DifficultyLevel = DifficultyLevel.MEDIUM
-    content_types: List[str] = field(default_factory=list)  # video, practice, explanation
+    content_types: List[str] = field(
+        default_factory=list
+    )  # video, practice, explanation
     assessment_questions: List[Dict[str, Any]] = field(default_factory=list)
     hint_progression: List[str] = field(default_factory=list)
     mastery_threshold: float = 0.95
-    spaced_repetition_intervals: List[int] = field(default_factory=lambda: [1, 3, 7, 14, 30])
+    spaced_repetition_intervals: List[int] = field(
+        default_factory=lambda: [1, 3, 7, 14, 30]
+    )
 
 
 @dataclass
@@ -97,7 +101,7 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Define a vector",
                 "Distinguish between scalars and vectors",
-                "Represent vectors graphically"
+                "Represent vectors graphically",
             ],
             estimated_time=180,
             difficulty=DifficultyLevel.EASY,
@@ -108,19 +112,19 @@ class KhanAcademyLinearAlgebra:
                     "question": "Which of the following is a vector quantity?",
                     "options": ["Speed", "Velocity", "Temperature", "Mass"],
                     "correct": 1,
-                    "explanation": "Velocity has both magnitude and direction, making it a vector."
+                    "explanation": "Velocity has both magnitude and direction, making it a vector.",
                 },
                 {
                     "type": "drag_drop",
                     "question": "Drag the arrow to represent the vector (3, 4)",
-                    "interactive": True
-                }
+                    "interactive": True,
+                },
             ],
             hint_progression=[
                 "Think about quantities that have both size and direction",
                 "Consider the difference between speed and velocity",
-                "Velocity includes both how fast and which direction"
-            ]
+                "Velocity includes both how fast and which direction",
+            ],
         )
 
         modules["vec_notation"] = MicroModule(
@@ -130,7 +134,7 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Use component notation for vectors",
                 "Convert between geometric and algebraic representations",
-                "Apply proper vector notation"
+                "Apply proper vector notation",
             ],
             prerequisites=["vec_intro"],
             estimated_time=240,
@@ -139,9 +143,9 @@ class KhanAcademyLinearAlgebra:
                     "type": "fill_blank",
                     "question": "The vector from origin to point (5, -2) is written as ____",
                     "correct": ["⟨5, -2⟩", "<5, -2>", "(5, -2)"],
-                    "explanation": "Vector component notation shows the x and y components."
+                    "explanation": "Vector component notation shows the x and y components.",
                 }
-            ]
+            ],
         )
 
         # Level 2: Vector Operations
@@ -152,7 +156,7 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Add vectors graphically",
                 "Add vectors using components",
-                "Apply commutative property of vector addition"
+                "Apply commutative property of vector addition",
             ],
             prerequisites=["vec_notation"],
             estimated_time=300,
@@ -161,9 +165,12 @@ class KhanAcademyLinearAlgebra:
                     "type": "computation",
                     "question": "Find ⟨3, 2⟩ + ⟨1, 4⟩",
                     "correct": [4, 6],
-                    "steps": ["Add x-components: 3 + 1 = 4", "Add y-components: 2 + 4 = 6"]
+                    "steps": [
+                        "Add x-components: 3 + 1 = 4",
+                        "Add y-components: 2 + 4 = 6",
+                    ],
                 }
-            ]
+            ],
         )
 
         modules["scalar_mult"] = MicroModule(
@@ -173,10 +180,10 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Multiply vectors by positive scalars",
                 "Understand effect of negative scalars",
-                "Apply scalar multiplication to vector addition"
+                "Apply scalar multiplication to vector addition",
             ],
             prerequisites=["vec_addition"],
-            estimated_time=270
+            estimated_time=270,
         )
 
         # Level 3: Advanced Vector Concepts
@@ -187,11 +194,11 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Calculate dot product using components",
                 "Understand geometric interpretation",
-                "Apply dot product to find angles"
+                "Apply dot product to find angles",
             ],
             prerequisites=["scalar_mult"],
             estimated_time=360,
-            difficulty=DifficultyLevel.MEDIUM
+            difficulty=DifficultyLevel.MEDIUM,
         )
 
         # Level 4: Linear Systems Foundation
@@ -202,10 +209,10 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Solve single linear equations",
                 "Graph linear equations",
-                "Understand slope and intercepts"
+                "Understand slope and intercepts",
             ],
             estimated_time=240,
-            difficulty=DifficultyLevel.EASY
+            difficulty=DifficultyLevel.EASY,
         )
 
         modules["systems_2x2"] = MicroModule(
@@ -215,11 +222,11 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Solve by substitution",
                 "Solve by elimination",
-                "Interpret solutions graphically"
+                "Interpret solutions graphically",
             ],
             prerequisites=["linear_eq_intro"],
             estimated_time=420,
-            difficulty=DifficultyLevel.MEDIUM
+            difficulty=DifficultyLevel.MEDIUM,
         )
 
         # Level 5: Matrix Fundamentals
@@ -230,10 +237,10 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Define matrix terminology",
                 "Identify matrix dimensions",
-                "Access matrix entries"
+                "Access matrix entries",
             ],
             prerequisites=["systems_2x2"],
-            estimated_time=300
+            estimated_time=300,
         )
 
         modules["matrix_ops"] = MicroModule(
@@ -243,23 +250,24 @@ class KhanAcademyLinearAlgebra:
             learning_objectives=[
                 "Add and subtract matrices",
                 "Multiply matrices",
-                "Understand matrix multiplication is not commutative"
+                "Understand matrix multiplication is not commutative",
             ],
             prerequisites=["matrix_intro"],
             estimated_time=480,
-            difficulty=DifficultyLevel.MEDIUM
+            difficulty=DifficultyLevel.MEDIUM,
         )
 
         return modules
 
-    def enroll_student(self, student_id: str, learning_preferences: Dict[str, Any] = None):
+    def enroll_student(
+        self, student_id: str, learning_preferences: Dict[str, Any] = None
+    ):
         """Enroll a new student in the program"""
         if learning_preferences is None:
             learning_preferences = {}
 
         self.student_progress[student_id] = StudentProgress(
-            student_id=student_id,
-            learning_preferences=learning_preferences
+            student_id=student_id, learning_preferences=learning_preferences
         )
 
         # Run initial diagnostic
@@ -271,7 +279,7 @@ class KhanAcademyLinearAlgebra:
         diagnostic_results = {
             "basic_algebra": 0.85,
             "coordinate_geometry": 0.75,
-            "graphing": 0.90
+            "graphing": 0.90,
         }
 
         # Set initial module access based on diagnostic
@@ -290,17 +298,19 @@ class KhanAcademyLinearAlgebra:
 
         # Find available modules (prerequisites met, not mastered)
         available_modules = []
-        
+
         for module_id, module in self.modules.items():
             # Check if prerequisites are met
             prerequisites_met = all(
                 progress.module_progress.get(prereq) == MasteryLevel.MASTERED
                 for prereq in module.prerequisites
             )
-            
+
             # Check if not already mastered
-            current_level = progress.module_progress.get(module_id, MasteryLevel.NOT_STARTED)
-            
+            current_level = progress.module_progress.get(
+                module_id, MasteryLevel.NOT_STARTED
+            )
+
             if prerequisites_met and current_level != MasteryLevel.MASTERED:
                 available_modules.append(module_id)
 
@@ -311,19 +321,23 @@ class KhanAcademyLinearAlgebra:
         # Prioritize based on learning path and difficulty
         return self._prioritize_modules(available_modules, progress)
 
-    def _prioritize_modules(self, available_modules: List[str], progress: StudentProgress) -> str:
+    def _prioritize_modules(
+        self, available_modules: List[str], progress: StudentProgress
+    ) -> str:
         """Prioritize which module to recommend next"""
         # Simple prioritization - could be much more sophisticated
-        
+
         # Prefer modules with no attempts (new content)
         new_modules = [
-            mid for mid in available_modules 
-            if progress.module_progress.get(mid, MasteryLevel.NOT_STARTED) == MasteryLevel.NOT_STARTED
+            mid
+            for mid in available_modules
+            if progress.module_progress.get(mid, MasteryLevel.NOT_STARTED)
+            == MasteryLevel.NOT_STARTED
         ]
-        
+
         if new_modules:
             return new_modules[0]
-        
+
         # Otherwise, modules that need more practice
         return available_modules[0]
 
@@ -331,7 +345,7 @@ class KhanAcademyLinearAlgebra:
         """Student attempts a module - returns results and feedback"""
         module = self.modules.get(module_id)
         progress = self.student_progress.get(student_id)
-        
+
         if not module or not progress:
             return {"error": "Invalid module or student"}
 
@@ -341,10 +355,14 @@ class KhanAcademyLinearAlgebra:
         )
 
         # Simulate student performance (in real system, would collect answers)
-        simulated_result = self._simulate_student_performance(student_id, module_id, assessment)
+        simulated_result = self._simulate_student_performance(
+            student_id, module_id, assessment
+        )
 
         # Process results
-        result = self._process_assessment_result(student_id, module_id, simulated_result)
+        result = self._process_assessment_result(
+            student_id, module_id, simulated_result
+        )
 
         # Update progress
         self._update_progress(student_id, module_id, result)
@@ -360,56 +378,66 @@ class KhanAcademyLinearAlgebra:
             "result": result,
             "points_earned": points_earned,
             "new_badges": new_badges,
-            "next_recommendation": self.get_next_recommendation(student_id)
+            "next_recommendation": self.get_next_recommendation(student_id),
         }
 
-    def _simulate_student_performance(self, student_id: str, module_id: str, assessment: Dict[str, Any]) -> AssessmentResult:
+    def _simulate_student_performance(
+        self, student_id: str, module_id: str, assessment: Dict[str, Any]
+    ) -> AssessmentResult:
         """Simulate student performance for demonstration"""
         # This would be replaced with actual student responses
         base_ability = 0.7 + random.uniform(-0.2, 0.2)
-        
+
         # Adjust for module difficulty
         module = self.modules[module_id]
         difficulty_adjustment = {
             DifficultyLevel.EASY: 0.1,
             DifficultyLevel.MEDIUM: 0.0,
             DifficultyLevel.HARD: -0.1,
-            DifficultyLevel.CHALLENGE: -0.2
+            DifficultyLevel.CHALLENGE: -0.2,
         }
-        
+
         adjusted_ability = base_ability + difficulty_adjustment[module.difficulty]
         score = max(0.0, min(1.0, adjusted_ability + random.uniform(-0.1, 0.1)))
-        
+
         return AssessmentResult(
             module_id=module_id,
             student_id=student_id,
             score=score,
-            time_taken=int(module.estimated_time * (1.5 - score * 0.5)),  # Faster if better
+            time_taken=int(
+                module.estimated_time * (1.5 - score * 0.5)
+            ),  # Faster if better
             hints_used=max(0, int((1 - score) * 3)),  # More hints if struggling
-            mistakes_made=[]  # Would track specific error patterns
+            mistakes_made=[],  # Would track specific error patterns
         )
 
-    def _process_assessment_result(self, student_id: str, module_id: str, result: AssessmentResult) -> Dict[str, Any]:
+    def _process_assessment_result(
+        self, student_id: str, module_id: str, result: AssessmentResult
+    ) -> Dict[str, Any]:
         """Process assessment result and determine next steps"""
         module = self.modules[module_id]
-        
+
         passed_mastery = result.score >= module.mastery_threshold
-        
+
         feedback = {
             "score": result.score,
             "passed_mastery": passed_mastery,
             "time_taken": result.time_taken,
             "hints_used": result.hints_used,
             "feedback_message": self._generate_feedback_message(result, passed_mastery),
-            "next_action": "advance" if passed_mastery else "retry"
+            "next_action": "advance" if passed_mastery else "retry",
         }
-        
+
         if not passed_mastery:
-            feedback["remediation_suggestions"] = self._get_remediation_suggestions(module_id, result)
-        
+            feedback["remediation_suggestions"] = self._get_remediation_suggestions(
+                module_id, result
+            )
+
         return feedback
 
-    def _generate_feedback_message(self, result: AssessmentResult, passed_mastery: bool) -> str:
+    def _generate_feedback_message(
+        self, result: AssessmentResult, passed_mastery: bool
+    ) -> str:
         """Generate encouraging feedback message"""
         if passed_mastery:
             if result.score >= 0.98:
@@ -420,37 +448,43 @@ class KhanAcademyLinearAlgebra:
                 return "✅ Great job! You've demonstrated mastery of this topic."
         else:
             if result.score >= 0.8:
-                return "💪 You're very close! Just a bit more practice and you'll have it."
+                return (
+                    "💪 You're very close! Just a bit more practice and you'll have it."
+                )
             elif result.score >= 0.6:
                 return "📚 Good effort! Let's review a few key concepts and try again."
             else:
                 return "🤔 Let's break this down step by step. You've got this!"
 
-    def _get_remediation_suggestions(self, module_id: str, result: AssessmentResult) -> List[str]:
+    def _get_remediation_suggestions(
+        self, module_id: str, result: AssessmentResult
+    ) -> List[str]:
         """Suggest specific remediation based on performance"""
         suggestions = []
-        
+
         if result.hints_used > 2:
             suggestions.append("Review the concept explanation video")
-        
+
         if result.score < 0.6:
             suggestions.append("Try the prerequisite modules again")
             suggestions.append("Use the step-by-step practice tool")
-        
+
         suggestions.append("Ask for help in the discussion forums")
-        
+
         return suggestions
 
     def _update_progress(self, student_id: str, module_id: str, result: Dict[str, Any]):
         """Update student progress based on assessment result"""
         progress = self.student_progress[student_id]
-        
+
         if result["passed_mastery"]:
             progress.module_progress[module_id] = MasteryLevel.MASTERED
             # Schedule for spaced repetition
             self.spaced_repetition.schedule_review(student_id, module_id)
         else:
-            current_level = progress.module_progress.get(module_id, MasteryLevel.NOT_STARTED)
+            current_level = progress.module_progress.get(
+                module_id, MasteryLevel.NOT_STARTED
+            )
             if current_level == MasteryLevel.NOT_STARTED:
                 progress.module_progress[module_id] = MasteryLevel.ATTEMPTED
             else:
@@ -459,13 +493,15 @@ class KhanAcademyLinearAlgebra:
         # Record attempt
         if module_id not in progress.attempt_history:
             progress.attempt_history[module_id] = []
-        
-        progress.attempt_history[module_id].append({
-            "timestamp": datetime.now().isoformat(),
-            "score": result["score"],
-            "time_taken": result["time_taken"]
-        })
-        
+
+        progress.attempt_history[module_id].append(
+            {
+                "timestamp": datetime.now().isoformat(),
+                "score": result["score"],
+                "time_taken": result["time_taken"],
+            }
+        )
+
         progress.last_activity = datetime.now()
 
     def get_student_dashboard(self, student_id: str) -> Dict[str, Any]:
@@ -476,18 +512,23 @@ class KhanAcademyLinearAlgebra:
 
         # Calculate statistics
         total_modules = len(self.modules)
-        mastered_modules = sum(1 for level in progress.module_progress.values() 
-                             if level == MasteryLevel.MASTERED)
-        
+        mastered_modules = sum(
+            1
+            for level in progress.module_progress.values()
+            if level == MasteryLevel.MASTERED
+        )
+
         # Get learning path progress
         learning_path = self._generate_learning_path_visualization(student_id)
-        
+
         # Recent activity
         recent_activity = self._get_recent_activity(student_id)
-        
+
         return {
             "student_id": student_id,
-            "overall_progress": mastered_modules / total_modules if total_modules > 0 else 0,
+            "overall_progress": (
+                mastered_modules / total_modules if total_modules > 0 else 0
+            ),
             "mastered_modules": mastered_modules,
             "total_modules": total_modules,
             "energy_points": progress.energy_points,
@@ -495,50 +536,51 @@ class KhanAcademyLinearAlgebra:
             "badges": progress.badges_earned,
             "learning_path": learning_path,
             "recent_activity": recent_activity,
-            "next_recommendation": self.get_next_recommendation(student_id)
+            "next_recommendation": self.get_next_recommendation(student_id),
         }
 
     def _generate_learning_path_visualization(self, student_id: str) -> Dict[str, Any]:
         """Generate visual learning path showing progress"""
         progress = self.student_progress[student_id]
-        path_data = {
-            "levels": [],
-            "current_position": None
-        }
-        
+        path_data = {"levels": [], "current_position": None}
+
         # Organize modules by conceptual levels
         levels = [
             {"name": "Vector Fundamentals", "modules": ["vec_intro", "vec_notation"]},
             {"name": "Vector Operations", "modules": ["vec_addition", "scalar_mult"]},
             {"name": "Advanced Vectors", "modules": ["dot_product"]},
             {"name": "Linear Systems", "modules": ["linear_eq_intro", "systems_2x2"]},
-            {"name": "Matrix Basics", "modules": ["matrix_intro", "matrix_ops"]}
+            {"name": "Matrix Basics", "modules": ["matrix_intro", "matrix_ops"]},
         ]
-        
+
         for level in levels:
-            level_data = {
-                "name": level["name"],
-                "modules": [],
-                "completion_rate": 0
-            }
-            
+            level_data = {"name": level["name"], "modules": [], "completion_rate": 0}
+
             completed = 0
             for module_id in level["modules"]:
                 if module_id in self.modules:
-                    module_status = progress.module_progress.get(module_id, MasteryLevel.NOT_STARTED)
-                    level_data["modules"].append({
-                        "id": module_id,
-                        "title": self.modules[module_id].title,
-                        "status": module_status.value,
-                        "available": self._is_module_available(student_id, module_id)
-                    })
-                    
+                    module_status = progress.module_progress.get(
+                        module_id, MasteryLevel.NOT_STARTED
+                    )
+                    level_data["modules"].append(
+                        {
+                            "id": module_id,
+                            "title": self.modules[module_id].title,
+                            "status": module_status.value,
+                            "available": self._is_module_available(
+                                student_id, module_id
+                            ),
+                        }
+                    )
+
                     if module_status == MasteryLevel.MASTERED:
                         completed += 1
-            
-            level_data["completion_rate"] = completed / len(level["modules"]) if level["modules"] else 0
+
+            level_data["completion_rate"] = (
+                completed / len(level["modules"]) if level["modules"] else 0
+            )
             path_data["levels"].append(level_data)
-        
+
         return path_data
 
     def _is_module_available(self, student_id: str, module_id: str) -> bool:
@@ -546,9 +588,9 @@ class KhanAcademyLinearAlgebra:
         module = self.modules.get(module_id)
         if not module:
             return False
-            
+
         progress = self.student_progress[student_id]
-        
+
         # Check prerequisites
         return all(
             progress.module_progress.get(prereq) == MasteryLevel.MASTERED
@@ -559,18 +601,20 @@ class KhanAcademyLinearAlgebra:
         """Get recent learning activity for dashboard"""
         progress = self.student_progress[student_id]
         activities = []
-        
+
         for module_id, attempts in progress.attempt_history.items():
             if attempts:
                 latest_attempt = attempts[-1]
-                activities.append({
-                    "module_id": module_id,
-                    "module_title": self.modules[module_id].title,
-                    "timestamp": latest_attempt["timestamp"],
-                    "score": latest_attempt["score"],
-                    "activity_type": "practice"
-                })
-        
+                activities.append(
+                    {
+                        "module_id": module_id,
+                        "module_title": self.modules[module_id].title,
+                        "timestamp": latest_attempt["timestamp"],
+                        "score": latest_attempt["score"],
+                        "activity_type": "practice",
+                    }
+                )
+
         # Sort by timestamp, most recent first
         activities.sort(key=lambda x: x["timestamp"], reverse=True)
         return activities[:10]  # Return last 10 activities
@@ -578,8 +622,10 @@ class KhanAcademyLinearAlgebra:
 
 class AdaptiveAssessmentEngine:
     """Generates adaptive assessments based on student performance"""
-    
-    def generate_assessment(self, module: MicroModule, current_level: MasteryLevel) -> Dict[str, Any]:
+
+    def generate_assessment(
+        self, module: MicroModule, current_level: MasteryLevel
+    ) -> Dict[str, Any]:
         """Generate assessment adapted to student's current level"""
         # Adjust difficulty based on current mastery level
         if current_level == MasteryLevel.NOT_STARTED:
@@ -588,76 +634,86 @@ class AdaptiveAssessmentEngine:
             difficulty_multiplier = 1.0  # Standard difficulty
         else:  # PRACTICED
             difficulty_multiplier = 1.1  # Slightly harder
-        
+
         # Select questions (simplified - would use item response theory)
         questions = module.assessment_questions.copy()
-        
+
         return {
             "module_id": module.module_id,
             "questions": questions,
             "difficulty_multiplier": difficulty_multiplier,
-            "hints_available": module.hint_progression
+            "hints_available": module.hint_progression,
         }
 
 
 class SpacedRepetitionSystem:
     """Manages spaced repetition for knowledge retention"""
-    
+
     def __init__(self):
         self.review_schedule: Dict[str, Dict[str, datetime]] = {}
-    
+
     def schedule_review(self, student_id: str, module_id: str):
         """Schedule future review sessions"""
         if student_id not in self.review_schedule:
             self.review_schedule[student_id] = {}
-        
+
         # Schedule next review in 1 day, then 3, 7, 14, 30 days
         next_review = datetime.now() + timedelta(days=1)
         self.review_schedule[student_id][module_id] = next_review
-    
-    def get_review_candidate(self, student_id: str, progress: StudentProgress) -> Optional[str]:
+
+    def get_review_candidate(
+        self, student_id: str, progress: StudentProgress
+    ) -> Optional[str]:
         """Get module that needs review"""
         if student_id not in self.review_schedule:
             return None
-        
+
         now = datetime.now()
         for module_id, review_time in self.review_schedule[student_id].items():
             if now >= review_time:
                 return module_id
-        
+
         return None
 
 
 class GamificationEngine:
     """Handles points, badges, and other gamification elements"""
-    
+
     def calculate_points(self, assessment_result: Dict[str, Any]) -> int:
         """Calculate energy points earned"""
         base_points = 100
         score_multiplier = assessment_result["score"]
         speed_bonus = max(0, 50 - assessment_result.get("time_taken", 300) // 10)
         hint_penalty = assessment_result.get("hints_used", 0) * 5
-        
+
         points = int(base_points * score_multiplier + speed_bonus - hint_penalty)
         return max(10, points)  # Minimum 10 points
-    
-    def check_badge_eligibility(self, student_id: str, progress: StudentProgress) -> List[str]:
+
+    def check_badge_eligibility(
+        self, student_id: str, progress: StudentProgress
+    ) -> List[str]:
         """Check for new badge achievements"""
         new_badges = []
-        
-        mastered_count = sum(1 for level in progress.module_progress.values() 
-                           if level == MasteryLevel.MASTERED)
-        
+
+        mastered_count = sum(
+            1
+            for level in progress.module_progress.values()
+            if level == MasteryLevel.MASTERED
+        )
+
         # Achievement badges
         if mastered_count >= 5 and "vector_master" not in progress.badges_earned:
             new_badges.append("vector_master")
-        
-        if progress.energy_points >= 1000 and "energy_collector" not in progress.badges_earned:
+
+        if (
+            progress.energy_points >= 1000
+            and "energy_collector" not in progress.badges_earned
+        ):
             new_badges.append("energy_collector")
-        
+
         if progress.streak_days >= 7 and "week_warrior" not in progress.badges_earned:
             new_badges.append("week_warrior")
-        
+
         return new_badges
 
 
@@ -665,43 +721,46 @@ class GamificationEngine:
 if __name__ == "__main__":
     print("📚 Khan Academy Linear Algebra - Microlearning System")
     print("=" * 60)
-    
+
     # Initialize system
     khan_academy = KhanAcademyLinearAlgebra()
-    
+
     # Enroll test students
     test_students = ["student_001", "student_002", "student_003"]
-    
+
     for student_id in test_students:
-        khan_academy.enroll_student(student_id, {
-            "learning_style": "visual",
-            "pace_preference": "self_paced"
-        })
+        khan_academy.enroll_student(
+            student_id, {"learning_style": "visual", "pace_preference": "self_paced"}
+        )
         print(f"✅ Enrolled {student_id}")
-    
+
     # Simulate learning sessions
     print(f"\n🎯 Simulating Learning Sessions:")
-    
+
     student_id = "student_001"
     for session in range(5):
         recommendation = khan_academy.get_next_recommendation(student_id)
         if recommendation:
             print(f"\n   Session {session + 1}: Attempting '{recommendation}'")
             result = khan_academy.attempt_module(student_id, recommendation)
-            print(f"   Score: {result['result']['score']:.2f}, Points: {result['points_earned']}")
-            if result['new_badges']:
+            print(
+                f"   Score: {result['result']['score']:.2f}, Points: {result['points_earned']}"
+            )
+            if result["new_badges"]:
                 print(f"   🏆 New badges: {result['new_badges']}")
         else:
             print(f"\n   Session {session + 1}: No recommendations available")
             break
-    
+
     # Show final dashboard
     print(f"\n📊 Student Dashboard for {student_id}:")
     dashboard = khan_academy.get_student_dashboard(student_id)
     print(f"   Overall Progress: {dashboard['overall_progress']:.1%}")
-    print(f"   Modules Mastered: {dashboard['mastered_modules']}/{dashboard['total_modules']}")
+    print(
+        f"   Modules Mastered: {dashboard['mastered_modules']}/{dashboard['total_modules']}"
+    )
     print(f"   Energy Points: {dashboard['energy_points']}")
     print(f"   Badges: {dashboard['badges']}")
-    
-    if dashboard['next_recommendation']:
+
+    if dashboard["next_recommendation"]:
         print(f"   Next Recommendation: {dashboard['next_recommendation']}")
