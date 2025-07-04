@@ -1,0 +1,72 @@
+{
+  "quizzes": [
+    {
+      "id": "test-quiz-1",
+      "title": "Test Quiz 1",
+      "description": "A test quiz for unit testing",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 60,
+        "badges": ["quiz_master"],
+        "completion_message": "Quiz mastery achieved!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "What is 2 + 2?",
+          "answers": [
+            {
+              "text": "4",
+              "weight": 100,
+              "feedback": "Correct!"
+            },
+            {
+              "text": "3",
+              "weight": 0,
+              "feedback": "Incorrect."
+            },
+            {
+              "text": "5",
+              "weight": 0,
+              "feedback": "Incorrect."
+            }
+          ],
+          "points_possible": 2,
+          "feedback": "Basic arithmetic"
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "What is the capital of France?",
+          "answers": [
+            {
+              "text": "Paris",
+              "weight": 100,
+              "feedback": "Correct!"
+            },
+            {
+              "text": "London",
+              "weight": 0,
+              "feedback": "That's the capital of England."
+            },
+            {
+              "text": "Berlin",
+              "weight": 0,
+              "feedback": "That's the capital of Germany."
+            }
+          ],
+          "points_possible": 1,
+          "feedback": "Geography knowledge"
+        }
+      ],
+      "outcomes": ["test_outcome_1", "test_outcome_3"]
+    }
+  ]
+}

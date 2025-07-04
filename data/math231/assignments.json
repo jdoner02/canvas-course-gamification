@@ -1,0 +1,282 @@
+{
+  "assignments": [
+    {
+      "id": "hw-vectors",
+      "title": "Vector Operations Mastery Quest",
+      "description": "Master the fundamental vector operations through interactive problems and real-world applications. This assignment will earn you the 'Vector Warrior' badge upon successful completion.",
+      "points_possible": 100,
+      "due_at": "2025-02-15T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 100,
+        "badges": ["vector_warrior"],
+        "mastery_paths": {
+          "90+": "advanced_vector_applications",
+          "75-89": "standard_progression",
+          "60-74": "vector_review_path",
+          "<60": "foundational_review"
+        }
+      },
+      "outcomes": ["vector_recognition", "vector_operations", "dot_product_computation"],
+      "problem_types": [
+        "Vector addition and subtraction",
+        "Scalar multiplication",
+        "Dot product calculations",
+        "Geometric interpretations",
+        "Real-world applications (physics forces, computer graphics)"
+      ]
+    },
+    {
+      "id": "hw-span",
+      "title": "Spanning Territory Explorer",
+      "description": "Explore the concept of span through hands-on problems. Determine which vectors can be reached through linear combinations and visualize the geometric meaning.",
+      "points_possible": 100,
+      "due_at": "2025-02-22T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 100,
+        "badges": ["combination_explorer", "span_navigator"],
+        "mastery_paths": {
+          "90+": "advanced_span_topics",
+          "75-89": "standard_progression",
+          "60-74": "span_review_exercises",
+          "<60": "linear_combination_fundamentals"
+        }
+      },
+      "outcomes": ["linear_combination_recognition", "span_computation", "span_geometric_understanding"],
+      "problem_types": [
+        "Constructing linear combinations",
+        "Testing membership in span",
+        "Geometric interpretation in R2 and R3",
+        "Subspace identification"
+      ]
+    },
+    {
+      "id": "hw-systems",
+      "title": "System Solver Challenge",
+      "description": "Become a master of linear systems by solving real-world problems using Gaussian elimination. Unlock the 'Elimination Expert' badge!",
+      "points_possible": 120,
+      "due_at": "2025-03-01T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 150,
+        "badges": ["equation_solver", "elimination_expert"],
+        "mastery_paths": {
+          "90+": "advanced_system_applications",
+          "75-89": "standard_progression",
+          "60-74": "elimination_practice",
+          "<60": "basic_equation_solving"
+        }
+      },
+      "outcomes": ["linear_system_setup", "gaussian_elimination", "solution_interpretation"],
+      "problem_types": [
+        "Setting up systems from word problems",
+        "Gaussian elimination practice",
+        "Interpreting solution types",
+        "Applications (traffic flow, economics, engineering)"
+      ]
+    },
+    {
+      "id": "hw-matrix-algebra",
+      "title": "Matrix Manipulation Mastery",
+      "description": "Master the art of matrix operations and discover their connection to linear transformations. Earn your 'Matrix Operator' badge!",
+      "points_possible": 110,
+      "due_at": "2025-03-08T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 120,
+        "badges": ["matrix_operator", "algebra_adept"],
+        "mastery_paths": {
+          "90+": "matrix_theory_extensions",
+          "75-89": "standard_progression",
+          "60-74": "operation_practice",
+          "<60": "basic_matrix_concepts"
+        }
+      },
+      "outcomes": ["matrix_operations", "matrix_properties"],
+      "problem_types": [
+        "Matrix arithmetic operations",
+        "Matrix multiplication algorithms",
+        "Properties verification",
+        "Computer graphics applications"
+      ]
+    },
+    {
+      "id": "hw-independence",
+      "title": "Independence Detective Mission",
+      "description": "Develop your detective skills to identify linear independence and construct bases. Multiple badges await the successful detective!",
+      "points_possible": 130,
+      "due_at": "2025-03-15T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 130,
+        "badges": ["independence_detective", "basis_builder", "dimension_master"],
+        "mastery_paths": {
+          "90+": "advanced_basis_theory",
+          "75-89": "standard_progression", 
+          "60-74": "independence_review",
+          "<60": "basic_vector_relationships"
+        }
+      },
+      "outcomes": ["linear_independence_test", "basis_identification", "dimension_understanding"],
+      "problem_types": [
+        "Testing linear independence",
+        "Finding bases for subspaces",
+        "Dimension calculations",
+        "Coordinate system problems"
+      ]
+    },
+    {
+      "id": "hw-determinants",
+      "title": "Determinant Wizard Training",
+      "description": "Master the mystical arts of determinants and matrix inverses. Become a certified 'Determinant Wizard'!",
+      "points_possible": 140,
+      "due_at": "2025-03-22T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 140,
+        "badges": ["inverse_calculator", "determinant_wizard"],
+        "mastery_paths": {
+          "90+": "advanced_determinant_applications",
+          "75-89": "standard_progression",
+          "60-74": "computation_practice",
+          "<60": "basic_inverse_concepts"
+        }
+      },
+      "outcomes": ["matrix_inverse_computation", "determinant_calculation", "invertibility_connection"],
+      "problem_types": [
+        "Computing matrix inverses",
+        "Determinant calculations (2x2, 3x3)",
+        "Invertibility testing",
+        "Cramer's Rule applications"
+      ]
+    },
+    {
+      "id": "hw-vector-spaces",
+      "title": "Vector Space Explorer Expedition",
+      "description": "Embark on an expedition through abstract vector spaces and discover the hidden structures of mathematics.",
+      "points_possible": 120,
+      "due_at": "2025-03-29T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 120,
+        "badges": ["space_explorer", "subspace_navigator"],
+        "mastery_paths": {
+          "90+": "abstract_algebra_preview",
+          "75-89": "standard_progression",
+          "60-74": "vector_space_review",
+          "<60": "concrete_examples_focus"
+        }
+      },
+      "outcomes": ["vector_space_properties", "subspace_identification"],
+      "problem_types": [
+        "Vector space verification",
+        "Subspace testing",
+        "Null space and column space",
+        "Abstract examples (polynomials, functions)"
+      ]
+    },
+    {
+      "id": "hw-transformations",
+      "title": "Transformation Mage Academy",
+      "description": "Learn the magical arts of linear transformations and their matrix representations. Master the rank-nullity theorem!",
+      "points_possible": 150,
+      "due_at": "2025-04-05T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 150,
+        "badges": ["transformation_mage", "rank_nullity_scholar"],
+        "mastery_paths": {
+          "90+": "advanced_transformation_theory",
+          "75-89": "standard_progression",
+          "60-74": "transformation_practice",
+          "<60": "basic_function_concepts"
+        }
+      },
+      "outcomes": ["linear_transformation_recognition", "transformation_matrix_construction", "rank_nullity_theorem"],
+      "problem_types": [
+        "Verifying linearity",
+        "Constructing transformation matrices",
+        "Finding kernels and ranges",
+        "Applying rank-nullity theorem"
+      ]
+    },
+    {
+      "id": "hw-eigen",
+      "title": "Eigenvalue Enlightenment Quest",
+      "description": "Achieve enlightenment through the study of eigenvalues and eigenvectors. Master diagonalization to become an expert!",
+      "points_possible": 160,
+      "due_at": "2025-04-12T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 160,
+        "badges": ["eigenvalue_hunter", "eigenvector_master", "diagonalization_expert"],
+        "mastery_paths": {
+          "90+": "spectral_theory_introduction",
+          "75-89": "standard_progression",
+          "60-74": "eigenvalue_computation_practice",
+          "<60": "characteristic_polynomial_review"
+        }
+      },
+      "outcomes": ["eigenvalue_calculation", "eigenvector_determination", "diagonalization_process"],
+      "problem_types": [
+        "Finding eigenvalues via characteristic polynomial",
+        "Computing eigenvectors and eigenspaces",
+        "Diagonalization procedures",
+        "Applications to differential equations"
+      ]
+    },
+    {
+      "id": "hw-orthogonality",
+      "title": "Orthogonal Champion Training",
+      "description": "Perfect your skills in orthogonality and projections. Become the ultimate 'Orthogonal Champion'!",
+      "points_possible": 140,
+      "due_at": "2025-04-19T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 140,
+        "badges": ["orthogonal_champion", "projection_expert"],
+        "mastery_paths": {
+          "90+": "gram_schmidt_applications",
+          "75-89": "standard_progression",
+          "60-74": "orthogonality_practice",
+          "<60": "dot_product_review"
+        }
+      },
+      "outcomes": ["orthogonality_testing", "projection_computation"],
+      "problem_types": [
+        "Testing orthogonality",
+        "Computing orthogonal projections",
+        "Finding orthogonal complements",
+        "Least squares applications"
+      ]
+    },
+    {
+      "id": "final-project",
+      "title": "Linear Algebra Master's Capstone",
+      "description": "Demonstrate your mastery by completing a comprehensive project that applies linear algebra to a real-world problem of your choice. Earn the ultimate 'Linear Algebra Champion' badge!",
+      "points_possible": 200,
+      "due_at": "2025-04-26T23:59:00Z",
+      "mastery_threshold": 80,
+      "gamification": {
+        "xp_value": 200,
+        "badges": ["application_master", "linear_algebra_champion"],
+        "project_options": [
+          "Computer Graphics Animation System",
+          "Data Science Principal Component Analysis",
+          "Engineering Structural Analysis",
+          "Economic Optimization Model",
+          "Cryptography Implementation"
+        ]
+      },
+      "outcomes": ["real_world_application", "linear_algebra_mastery"],
+      "requirements": [
+        "Choose a real-world application domain",
+        "Demonstrate use of at least 5 major linear algebra concepts",
+        "Include computational implementation or detailed calculations",
+        "Present findings in professional format",
+        "Reflect on learning journey and concept connections"
+      ]
+    }
+  ]
+}

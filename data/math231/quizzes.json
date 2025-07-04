@@ -1,0 +1,3185 @@
+{
+  "quizzes": [
+    {
+      "id": "prerequisite-assessment",
+      "title": "Prerequisite Knowledge Assessment",
+      "description": "Diagnostic quiz to confirm readiness for Linear Algebra.",
+      "settings": {
+        "time_limit": 20,
+        "shuffle_answers": true,
+        "allowed_attempts": 2,
+        "is_diagnostic": true
+      },
+      "mastery_criteria": {
+        "passing_score": 60,
+        "unlock_requirement": false
+      },
+      "gamification": {
+        "xp_value": 25,
+        "badges": [
+          "foundation_explorer"
+        ],
+        "completion_message": "Foundation assessed \u2013 welcome to your linear\u2011algebra journey!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Solve for x: 3x \u2212 7 = 2x + 5.",
+          "answers": [
+            {
+              "text": "x = 12",
+              "weight": 100,
+              "feedback": "Correct! 3x \u2212 2x = 5 + 7 \u21d2 x = 12."
+            },
+            {
+              "text": "x = \u221212",
+              "weight": 0,
+              "feedback": "Sign error \u2013 remember to add 7 to both sides, not subtract."
+            },
+            {
+              "text": "x = 2",
+              "weight": 0,
+              "feedback": "You subtracted 2x but forgot to move the constant correctly."
+            },
+            {
+              "text": "x = \u22122",
+              "weight": 0,
+              "feedback": "Mixed up both the sign and constant relocation."
+            }
+          ],
+          "points_possible": 2,
+          "feedback": "Linear\u2011equation fluency is essential for row\u2011operation work later."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "What is the slope of the line through (2,\u202f3) and (5,\u202f9)?",
+          "answers": [
+            {
+              "text": "m = 2",
+              "weight": 100,
+              "feedback": "\u0394y/\u0394x = (9\u22123)/(5\u22122) = 6/3 = 2."
+            },
+            {
+              "text": "m = \u22122",
+              "weight": 0,
+              "feedback": "You reversed rise/run \u2013 check the sign of \u0394y."
+            },
+            {
+              "text": "m = \u00bd",
+              "weight": 0,
+              "feedback": "Upside\u2011down: you divided 3 by 6 instead of 6 by 3."
+            },
+            {
+              "text": "m = 6",
+              "weight": 0,
+              "feedback": "Forgot to divide by the change in x."
+            }
+          ],
+          "points_possible": 2,
+          "feedback": "Slope intuition foreshadows vector direction and linear growth."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Given f(x) = 2x + 1, find f(3).",
+          "answers": [
+            {
+              "text": "7",
+              "weight": 100,
+              "feedback": "2\u00b73\u202f+\u202f1\u202f=\u202f7 \u2714\ufe0e"
+            },
+            {
+              "text": "6",
+              "weight": 0,
+              "feedback": "Forgot to add the constant 1."
+            },
+            {
+              "text": "9",
+              "weight": 0,
+              "feedback": "Multiplied and then added incorrectly."
+            },
+            {
+              "text": "5",
+              "weight": 0,
+              "feedback": "Plugged in 2 instead of 3 \u2013 watch the input!"
+            }
+          ],
+          "points_possible": 2,
+          "feedback": "Function evaluation parallels evaluating linear transformations later."
+        }
+      ],
+      "outcomes": [
+        "prerequisite_algebra",
+        "prerequisite_functions",
+        "prerequisite_geometry"
+      ]
+    },
+    {
+      "id": "vectors-mastery-check",
+      "title": "Vectors and Operations Mastery Check",
+      "description": "Assess mastery of vector definitions, operations, and geometric interpretations.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 50,
+        "badges": [
+          "vector_warrior"
+        ],
+        "completion_message": "Vector mastery achieved \u2013 arrows unlocked!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Geometrically, u\u202f+\u202fv is represented by:",
+          "answers": [
+            {
+              "text": "The diagonal of the parallelogram defined by u and v (tip\u2011to\u2011tail).",
+              "weight": 100,
+              "feedback": "Exactly \u2013 the parallelogram law of addition."
+            },
+            {
+              "text": "A vector perpendicular to both u and v.",
+              "weight": 0,
+              "feedback": "That describes the 3\u2011D cross\u2011product direction, not addition."
+            },
+            {
+              "text": "Halfway between u and v.",
+              "weight": 0,
+              "feedback": "That\u2019s (u\u202f+\u202fv)/2, the midpoint vector."
+            },
+            {
+              "text": "A reflection of u across v.",
+              "weight": 0,
+              "feedback": "Reflection requires projection concepts, not simple addition."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Visualizing addition builds later intuition for span and linear combos."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which statement about the dot product in \u211d\u00b2 is TRUE?",
+          "answers": [
+            {
+              "text": "If u\u00b7v\u202f=\u202f0, then u and v are orthogonal.",
+              "weight": 100,
+              "feedback": "Orthogonality \u21d4 0 dot product in Euclidean spaces."
+            },
+            {
+              "text": "u\u00b7v is always positive.",
+              "weight": 0,
+              "feedback": "Only if the angle is <\u202f90\u00b0."
+            },
+            {
+              "text": "u\u00b7v equals the area of the parallelogram spanned by u and v.",
+              "weight": 0,
+              "feedback": "Area comes from the magnitude of the cross product (in \u211d\u00b3)."
+            },
+            {
+              "text": "u\u00b7v equals |u|\u202f+\u202f|v|.",
+              "weight": 0,
+              "feedback": "Dot product involves multiplication, not simple addition."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Remember u\u00b7v\u202f=\u202f|u||v|cos\u202f\u03b8 \u2013 linking algebra to angles."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Scalar multiplication by \u22121 of vector w results in:",
+          "answers": [
+            {
+              "text": "A vector with the same magnitude pointing opposite to w.",
+              "weight": 100,
+              "feedback": "Correct \u2013 it\u2019s a 180\u00b0 rotation through the origin."
+            },
+            {
+              "text": "A vector twice as long.",
+              "weight": 0,
+              "feedback": "Only a factor |\u22121|\u202f=\u202f1, not 2."
+            },
+            {
+              "text": "The zero vector.",
+              "weight": 0,
+              "feedback": "That\u2019s scaling by 0, not \u22121."
+            },
+            {
+              "text": "A vector orthogonal to w.",
+              "weight": 0,
+              "feedback": "Orthogonality involves dot products, not sign flips."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Sign matters \u2013 we revisit this in reflections and eigen\u2011analysis."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If u\u202f=\u202f(3,\u202f4) and v\u202f=\u202f(1,\u202f2), what is u\u00b7v?",
+          "answers": [
+            {
+              "text": "11",
+              "weight": 100,
+              "feedback": "3\u00b71\u202f+\u202f4\u00b72\u202f=\u202f3\u202f+\u202f8\u202f=\u202f11 \u2714\ufe0e"
+            },
+            {
+              "text": "7",
+              "weight": 0,
+              "feedback": "Added without multiplying components first."
+            },
+            {
+              "text": "(3,\u202f8)",
+              "weight": 0,
+              "feedback": "That\u2019s component\u2011wise product, not the dot product scalar."
+            },
+            {
+              "text": "\u221a13",
+              "weight": 0,
+              "feedback": "That\u2019s |u| \u2013 dot product gives a scalar, not a magnitude here."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Solid computational fluency is mandatory for projections later."
+        }
+      ],
+      "outcomes": [
+        "vector_operations",
+        "dot_product_concept",
+        "geometric_interpretation"
+      ]
+    },
+    {
+      "id": "span-mastery-check",
+      "title": "Linear Combinations and Span Mastery Check",
+      "description": "Test understanding of linear combinations, span, and subspace basics.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 50,
+        "badges": [
+          "span_navigator"
+        ],
+        "completion_message": "Span mastery unlocked \u2013 combination nation conquered!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which expression is a linear combination of vectors u and v?",
+          "answers": [
+            {
+              "text": "3u\u202f+\u202f2v",
+              "weight": 100,
+              "feedback": "Correct \u2013 scalars times vectors, then added."
+            },
+            {
+              "text": "u\u202f\u00b7\u202fv",
+              "weight": 0,
+              "feedback": "Dot product produces a scalar, not a vector."
+            },
+            {
+              "text": "||u||\u202f+\u202f||v||",
+              "weight": 0,
+              "feedback": "Adds magnitudes, not the vectors themselves."
+            },
+            {
+              "text": "u\u202f\u00d7\u202fv",
+              "weight": 0,
+              "feedback": "Cross product (in \u211d\u00b3) isn\u2019t a linear combination."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Linear combos drive the idea of span and basis."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The span of {(1,\u202f0), (0,\u202f1)} in \u211d\u00b2 is:",
+          "answers": [
+            {
+              "text": "All of \u211d\u00b2",
+              "weight": 100,
+              "feedback": "They are the standard basis \u2013 you can reach any (x,y)."
+            },
+            {
+              "text": "Only the x\u2011axis",
+              "weight": 0,
+              "feedback": "You ignored (0,\u202f1)."
+            },
+            {
+              "text": "Only the origin",
+              "weight": 0,
+              "feedback": "Two non\u2011zero independent vectors span more than {0}."
+            },
+            {
+              "text": "The line y\u202f=\u202fx",
+              "weight": 0,
+              "feedback": "That\u2019s spanned by (1,\u202f1) alone."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Key: Check if the vectors are independent and in 2\u2011D."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If v\u2081\u202f=\u202f(2,\u202f1) and v\u2082\u202f=\u202f(4,\u202f2), Span{v\u2081,\u202fv\u2082} is:",
+          "answers": [
+            {
+              "text": "A line through the origin",
+              "weight": 100,
+              "feedback": "v\u2082\u202f=\u202f2v\u2081 \u21d2 dependent, so dimension\u202f=\u202f1."
+            },
+            {
+              "text": "All of \u211d\u00b2",
+              "weight": 0,
+              "feedback": "Need two independent vectors for the plane."
+            },
+            {
+              "text": "Only the origin",
+              "weight": 0,
+              "feedback": "Non\u2011zero vectors span at least a line."
+            },
+            {
+              "text": "A plane through the origin",
+              "weight": 0,
+              "feedback": "In \u211d\u00b2 a 'plane' is the whole space; see first option."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Dependency collapses the span to lower dimension."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which subset is a subspace of \u211d\u00b3?",
+          "answers": [
+            {
+              "text": "{(a,b,0)\u00a0|\u00a0a,b\u202f\u2208\u202f\u211d}",
+              "weight": 100,
+              "feedback": "Closed under addition & scalar mult \u2013 the xy\u2011plane."
+            },
+            {
+              "text": "{(a,b,c)\u00a0|\u00a0a\u00a0+\u00a0b\u00a0+\u00a0c\u202f=\u202f1}",
+              "weight": 0,
+              "feedback": "Fails the zero\u2011vector test (0\u00a0+\u00a00\u00a0+\u00a00\u202f\u2260\u202f1)."
+            },
+            {
+              "text": "{(a,b,c)\u00a0|\u00a0all\u00a0components\u00a0>\u202f0}",
+              "weight": 0,
+              "feedback": "Not closed under negative scalars."
+            },
+            {
+              "text": "{(a,b,c)\u00a0|\u00a0ab\u00a0=\u202f0}",
+              "weight": 0,
+              "feedback": "Mixing multiplicative condition breaks closure."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Always test 0\u2011vector, closure under +, and closure under scalar mult."
+        }
+      ],
+      "outcomes": [
+        "linear_combinations",
+        "span_concept",
+        "subspace_identification"
+      ]
+    },
+    {
+      "id": "systems-mastery-check",
+      "title": "Linear Systems Mastery Check",
+      "description": "Checks mastery of row operations, pivots, and solution\u2011set reasoning.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 75,
+        "badges": [
+          "equation_solver",
+          "elimination_expert"
+        ],
+        "completion_message": "System solver mastery unlocked \u2013 pivot power engaged!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which row operation is NOT allowed (it changes the solution set)?",
+          "answers": [
+            {
+              "text": "Multiply a row by 0",
+              "weight": 100,
+              "feedback": "Correct \u2013 it destroys all information in that equation."
+            },
+            {
+              "text": "Swap two rows",
+              "weight": 0,
+              "feedback": "Permissible \u2013 equations can change order."
+            },
+            {
+              "text": "Add a multiple of one row to another",
+              "weight": 0,
+              "feedback": "Classic replacement \u2013 safe."
+            },
+            {
+              "text": "Multiply a row by \u22122",
+              "weight": 0,
+              "feedback": "Scaling by non\u2011zero keeps equivalence."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Row operations must preserve the solution set."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "After reduction you obtain [0\u00a00\u00a00\u00a0|\u00a07].  Conclusion?",
+          "answers": [
+            {
+              "text": "The system is inconsistent \u2013 no solution.",
+              "weight": 100,
+              "feedback": "Contradiction row: 0\u202f=\u202f7 impossible."
+            },
+            {
+              "text": "Unique solution exists.",
+              "weight": 0,
+              "feedback": "Contradiction vetoes uniqueness."
+            },
+            {
+              "text": "Infinitely many solutions exist.",
+              "weight": 0,
+              "feedback": "Need free variables without contradiction."
+            },
+            {
+              "text": "Exactly two solutions exist.",
+              "weight": 0,
+              "feedback": "No such scenario with linear systems."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Watch for impossible rows \u2013 they trump everything else."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In RREF, free variables correspond to:",
+          "answers": [
+            {
+              "text": "Columns without a leading 1 (pivot).",
+              "weight": 100,
+              "feedback": "Non\u2011pivot columns \u2192 free variables."
+            },
+            {
+              "text": "Pivot columns.",
+              "weight": 0,
+              "feedback": "Pivot columns are basic variables."
+            },
+            {
+              "text": "Augmented column entries.",
+              "weight": 0,
+              "feedback": "Augmented column isn\u2019t a variable."
+            },
+            {
+              "text": "Rows with zeros only.",
+              "weight": 0,
+              "feedback": "Zero rows signal redundancy, not free vars."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Free variables drive parameterization of infinite solution sets."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If a 4\u00d74 coefficient matrix has rank\u202f=\u202f4, then Ax\u202f=\u202fb:",
+          "answers": [
+            {
+              "text": "Has a unique solution for every b.",
+              "weight": 100,
+              "feedback": "Full rank \u21d2 invertible \u21d2 bijective."
+            },
+            {
+              "text": "Has no solution.",
+              "weight": 0,
+              "feedback": "Contradicts full rank/invertibility."
+            },
+            {
+              "text": "Has infinitely many solutions.",
+              "weight": 0,
+              "feedback": "Free vars only occur if rank\u202f<\u202fn."
+            },
+            {
+              "text": "Has at most one solution if b\u202f=\u202f0.",
+              "weight": 0,
+              "feedback": "For b\u202f=\u202f0 the unique solution is x\u202f=\u202f0."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Invertibility ties rank, determinant, and unique solutions together."
+        }
+      ],
+      "outcomes": [
+        "solve_linear_systems",
+        "row_reduction",
+        "interpret_augmented_matrix"
+      ]
+    },
+    {
+      "id": "matrix-mastery-check",
+      "title": "Matrix Algebra Mastery Check",
+      "description": "Targets matrix operations, identities, and basic properties.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 60,
+        "badges": [
+          "matrix_operator"
+        ],
+        "completion_message": "Matrix mastery achieved \u2013 algebraic superpowers activated!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For conformable matrices A (m\u00d7n) and B (n\u00d7p), the (i,j) entry of AB is:",
+          "answers": [
+            {
+              "text": "The dot product of row\u202fi of A with column\u202fj of B.",
+              "weight": 100,
+              "feedback": "Definition of matrix multiplication."
+            },
+            {
+              "text": "The product of diagonal entries a\u1d62\u1d62 and b\u2c7c\u2c7c.",
+              "weight": 0,
+              "feedback": "Diagonal entries matter only in special cases."
+            },
+            {
+              "text": "The sum of all entries in row\u202fi of A and column\u202fj of B.",
+              "weight": 0,
+              "feedback": "Need products, not raw sums."
+            },
+            {
+              "text": "Always zero if i\u202f\u2260\u202fj.",
+              "weight": 0,
+              "feedback": "Only true for orthogonal row/column pairs in special matrices."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Row\u2218column perspective is vital for proofs and code."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A is 3\u00d72 and B is 2\u00d74, the dimensions of AB are:",
+          "answers": [
+            {
+              "text": "3\u00d74",
+              "weight": 100,
+              "feedback": "Outer dimensions: rows of A by columns of B."
+            },
+            {
+              "text": "2\u00d72",
+              "weight": 0,
+              "feedback": "Check multiplication rules \u2013 inner dims only ensure compatibility."
+            },
+            {
+              "text": "3\u00d72",
+              "weight": 0,
+              "feedback": "That\u2019s just the size of A."
+            },
+            {
+              "text": "4\u00d73",
+              "weight": 0,
+              "feedback": "Result dimensions are not flipped."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Dimension bookkeeping prevents illegal products."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which statement is generally FALSE for matrix multiplication?",
+          "answers": [
+            {
+              "text": "Commutative: AB\u202f=\u202fBA.",
+              "weight": 100,
+              "feedback": "Order usually matters \u2013 beware!"
+            },
+            {
+              "text": "Associative: (AB)C\u202f=\u202fA(BC).",
+              "weight": 0,
+              "feedback": "Associativity holds for matrices."
+            },
+            {
+              "text": "Distributive: A(B\u202f+\u202fC)\u202f=\u202fAB\u202f+\u202fAC.",
+              "weight": 0,
+              "feedback": "Distributivity is valid."
+            },
+            {
+              "text": "Scalar\u2011compatible: k(AB)\u202f=\u202f(kA)B.",
+              "weight": 0,
+              "feedback": "True for any scalar k."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Remember: AB may equal BA only in special cases (diagonals, etc.)."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The 2\u00d72 identity matrix is:",
+          "answers": [
+            {
+              "text": "[[1,\u202f0], [0,\u202f1]]",
+              "weight": 100,
+              "feedback": "Leaves vectors unchanged \u2013 that\u2019s the identity."
+            },
+            {
+              "text": "[[1,\u202f1], [1,\u202f1]]",
+              "weight": 0,
+              "feedback": "All\u2011ones matrix changes every vector."
+            },
+            {
+              "text": "[[0,\u202f1], [1,\u202f0]]",
+              "weight": 0,
+              "feedback": "Permutation (reflection) matrix \u2013 not identity."
+            },
+            {
+              "text": "[[\u22121,\u202f0], [0,\u202f\u22121]]",
+              "weight": 0,
+              "feedback": "That\u2019s \u2212I \u2013 scales by \u22121, not identity."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "I acts as multiplicative neutral element: AI\u202f=\u202fIA\u202f=\u202fA."
+        }
+      ],
+      "outcomes": [
+        "matrix_multiplication",
+        "matrix_properties",
+        "identity_matrix"
+      ]
+    },
+    {
+      "id": "independence-mastery-check",
+      "title": "Linear Independence and Basis Mastery Check",
+      "description": "Drills fundamental independence relationships and basis concepts.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 65,
+        "badges": [
+          "independence_detective",
+          "basis_builder"
+        ],
+        "completion_message": "Independence mastery achieved \u2013 you can build any basis!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "k vectors in \u211d\u207f can be linearly independent only if:",
+          "answers": [
+            {
+              "text": "k\u202f\u2264\u202fn",
+              "weight": 100,
+              "feedback": "Max one pivot per column \u2013 can\u2019t exceed dimension."
+            },
+            {
+              "text": "k\u202f\u2265\u202fn",
+              "weight": 0,
+              "feedback": "k\u202f>\u202fn guarantees dependence."
+            },
+            {
+              "text": "k\u202f=\u202fn\u00b2",
+              "weight": 0,
+              "feedback": "Way too many vectors."
+            },
+            {
+              "text": "k\u202f=\u202f1",
+              "weight": 0,
+              "feedback": "One vector can be independent but doesn\u2019t generalize rule."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Dimensionality bounds independence."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "A 5\u00d77 matrix with rank\u202f=\u202f3 has nullity:",
+          "answers": [
+            {
+              "text": "4",
+              "weight": 100,
+              "feedback": "Nullity\u202f=\u202f7\u202f\u2212\u202f3\u202f=\u202f4 by rank\u2011nullity."
+            },
+            {
+              "text": "3",
+              "weight": 0,
+              "feedback": "That\u2019s the rank, not nullity."
+            },
+            {
+              "text": "2",
+              "weight": 0,
+              "feedback": "Re\u2011evaluate rank\u2011nullity: columns\u202f=\u202f7."
+            },
+            {
+              "text": "5",
+              "weight": 0,
+              "feedback": "Nullity can\u2019t exceed #columns."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Kernel dimension complements column rank."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which set forms a basis of \u211d\u00b3?",
+          "answers": [
+            {
+              "text": "{(1,0,0),(0,1,0),(0,0,1)}",
+              "weight": 100,
+              "feedback": "Independent and spanning \u2013 the gold standard."
+            },
+            {
+              "text": "{(1,0,0),(0,1,0)}",
+              "weight": 0,
+              "feedback": "Only spans a plane \u2013 need 3 independent vectors."
+            },
+            {
+              "text": "{(1,0,0),(1,0,0),(0,1,0)}",
+              "weight": 0,
+              "feedback": "Duplicate \u2192 dependence."
+            },
+            {
+              "text": "{(1,1,1),(1,1,1),(1,1,1)}",
+              "weight": 0,
+              "feedback": "All identical \u2013 rank\u202f=\u202f1."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "A basis must satisfy both criteria simultaneously."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Choose the correct description of a basis:",
+          "answers": [
+            {
+              "text": "An independent spanning set.",
+              "weight": 100,
+              "feedback": "By definition \u2013 guarantees unique coordinates."
+            },
+            {
+              "text": "Any maximal independent set whether it spans or not.",
+              "weight": 0,
+              "feedback": "Maximal independence in V *does* imply span, but careful wording matters."
+            },
+            {
+              "text": "Any minimal spanning set, independent or not.",
+              "weight": 0,
+              "feedback": "Minimal spanning implies independence; else redundant."
+            },
+            {
+              "text": "A set of vectors all with unit length.",
+              "weight": 0,
+              "feedback": "Length isn\u2019t required; orthonormality is extra structure."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Independence + span = basis \u21d2 coordinate system."
+        }
+      ],
+      "outcomes": [
+        "linear_independence",
+        "span_and_basis_definition",
+        "rank_nullity_theorem"
+      ]
+    },
+    {
+      "id": "inverse-determinant-mastery-check",
+      "title": "Matrix Inverses and Determinants Mastery Check",
+      "description": "Assesses invertibility criteria, determinant properties, and computation skills.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 70,
+        "badges": [
+          "inverse_calculator",
+          "determinant_wizard"
+        ],
+        "completion_message": "Inverse & determinant mastery unlocked \u2013 singularity no more!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which condition guarantees a square matrix A is invertible?",
+          "answers": [
+            {
+              "text": "det(A)\u202f\u2260\u202f0",
+              "weight": 100,
+              "feedback": "Non\u2011zero determinant \u21d4 full rank \u21d4 invertible."
+            },
+            {
+              "text": "trace(A)\u202f=\u202f0",
+              "weight": 0,
+              "feedback": "Trace alone says nothing about invertibility."
+            },
+            {
+              "text": "A has at least one zero entry.",
+              "weight": 0,
+              "feedback": "Zero entries are allowed; look at determinant."
+            },
+            {
+              "text": "A is symmetric.",
+              "weight": 0,
+              "feedback": "Symmetry does not imply invertibility (could have zero eigenvalue)."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Know equivalences: pivots, rank, det, eigenvalues."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A is 2\u00d72 with det(A)=5, what is det(3A)?",
+          "answers": [
+            {
+              "text": "45",
+              "weight": 100,
+              "feedback": "Scale factor\u00b3? No \u2013 for 2\u00d72 det(kA)=k\u00b2det(A) \u21d2 3\u00b2\u00b75\u202f=\u202f45."
+            },
+            {
+              "text": "15",
+              "weight": 0,
+              "feedback": "Missed square of scale factor."
+            },
+            {
+              "text": "5",
+              "weight": 0,
+              "feedback": "Ignored scaling effect."
+            },
+            {
+              "text": "9",
+              "weight": 0,
+              "feedback": "Computed k\u00b2 only, forgot det(A)."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "General rule: det(kA)=k\u207f det(A) for n\u00d7n matrices."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A is invertible, then:",
+          "answers": [
+            {
+              "text": "A\u207b\u00b9A\u202f=\u202fI",
+              "weight": 100,
+              "feedback": "Definition of the inverse."
+            },
+            {
+              "text": "AA\u202f=\u202fI",
+              "weight": 0,
+              "feedback": "That statement needs A\u202f=\u202fA\u207b\u00b9."
+            },
+            {
+              "text": "A+I\u202f=\u202f0",
+              "weight": 0,
+              "feedback": "No such requirement."
+            },
+            {
+              "text": "det(A)=0",
+              "weight": 0,
+              "feedback": "Inverse exists only when det\u202f\u2260\u202f0."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Left and right inverses coincide for square full\u2011rank matrices."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For an upper\u2011triangular 4\u00d74 matrix, det(A) equals:",
+          "answers": [
+            {
+              "text": "The product of its diagonal entries.",
+              "weight": 100,
+              "feedback": "Triangular det rule: multiply diagonals."
+            },
+            {
+              "text": "Zero.",
+              "weight": 0,
+              "feedback": "Only if one diagonal entry is zero."
+            },
+            {
+              "text": "The sum of its diagonal entries.",
+              "weight": 0,
+              "feedback": "That\u2019s the trace, not determinant."
+            },
+            {
+              "text": "The product of off\u2011diagonal entries.",
+              "weight": 0,
+              "feedback": "Off\u2011diagonals don\u2019t enter determinant for triangular matrices."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Triangular forms simplify determinant and eigenvalue work."
+        }
+      ],
+      "outcomes": [
+        "matrix_inverse",
+        "determinant_computation",
+        "invertibility_criterion"
+      ]
+    },
+    {
+      "id": "vector-space-mastery-check",
+      "title": "Vector Spaces and Subspaces Mastery Check",
+      "description": "Tests formal vector\u2011space axioms and subspace identification.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 60,
+        "badges": [
+          "space_explorer"
+        ],
+        "completion_message": "Vector\u2011space mastery achieved \u2013 axioms at your command!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which statement is NOT a vector\u2011space axiom?",
+          "answers": [
+            {
+              "text": "All vectors must have the same length.",
+              "weight": 100,
+              "feedback": "Correct \u2013 length uniformity isn\u2019t required."
+            },
+            {
+              "text": "Addition is commutative (u+v\u202f=\u202fv+u).",
+              "weight": 0,
+              "feedback": "That *is* an axiom."
+            },
+            {
+              "text": "There exists a zero (additive identity) vector.",
+              "weight": 0,
+              "feedback": "Essential axiom."
+            },
+            {
+              "text": "Every vector has an additive inverse.",
+              "weight": 0,
+              "feedback": "Also required."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Vector\u2011space axioms are purely algebraic; magnitude isn\u2019t stipulated."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which set is a subspace of \u211d\u00b3?",
+          "answers": [
+            {
+              "text": "{(x,y,z)\u00a0|\u00a02x+3y\u2212z\u202f=\u202f0}",
+              "weight": 100,
+              "feedback": "Plane through origin \u2013 passes all three subspace tests."
+            },
+            {
+              "text": "{(x,y,z)\u00a0|\u00a0x\u00b2+y\u00b2+z\u00b2\u202f=\u202f1}",
+              "weight": 0,
+              "feedback": "Unit sphere \u2013 fails closure tests."
+            },
+            {
+              "text": "{(x,y,z)\u00a0|\u00a0x>0}",
+              "weight": 0,
+              "feedback": "Not closed under negative scalars."
+            },
+            {
+              "text": "{(x,y,z)\u00a0|\u00a0x+y+z\u202f=\u202f1}",
+              "weight": 0,
+              "feedback": "Fails zero\u2011vector test."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Linear conditions that equal zero often signal subspaces."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The null space of matrix A is:",
+          "answers": [
+            {
+              "text": "All vectors x with Ax\u202f=\u202f0.",
+              "weight": 100,
+              "feedback": "Kernel of the linear transformation."
+            },
+            {
+              "text": "All non\u2011zero vectors in the column space.",
+              "weight": 0,
+              "feedback": "Column space is range, not kernel."
+            },
+            {
+              "text": "All row vectors of A.",
+              "weight": 0,
+              "feedback": "Those form the row space, not null space."
+            },
+            {
+              "text": "All vectors orthogonal to column space.",
+              "weight": 0,
+              "feedback": "That\u2019s left\u2011null space of A\u1d40."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Null space is pivotal for understanding solutions to Ax\u202f=\u202fb."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For subset W\u00a0\u2282\u00a0V to be a subspace, which condition is NOT necessary?",
+          "answers": [
+            {
+              "text": "W must be finite.",
+              "weight": 100,
+              "feedback": "Subspaces can be infinite (e.g., lines)."
+            },
+            {
+              "text": "0\u202f\u2208\u202fW.",
+              "weight": 0,
+              "feedback": "Zero vector is mandatory."
+            },
+            {
+              "text": "Closed under addition.",
+              "weight": 0,
+              "feedback": "Essential condition."
+            },
+            {
+              "text": "Closed under scalar multiplication.",
+              "weight": 0,
+              "feedback": "Essential condition."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Size isn\u2019t part of the definition \u2013 properties are."
+        }
+      ],
+      "outcomes": [
+        "vector_space_axioms",
+        "subspace_tests",
+        "null_space_definition"
+      ]
+    },
+    {
+      "id": "transformation-mastery-check",
+      "title": "Linear Transformations Mastery Check",
+      "description": "Covers properties, standard matrices, kernel, range, and rank\u2011nullity insight.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 75,
+        "badges": [
+          "transformation_mage",
+          "rank_nullity_scholar"
+        ],
+        "completion_message": "Transformation mastery achieved \u2013 linear maps obey your command!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "A transformation T:\u211d\u00b2\u2192\u211d\u00b2 rotating vectors 90\u00b0 CCW has standard matrix:",
+          "answers": [
+            {
+              "text": "[[0,\u202f\u22121], [1,\u202f0]]",
+              "weight": 100,
+              "feedback": "Maps (1,0)\u2192(0,1) and (0,1)\u2192(\u22121,0)."
+            },
+            {
+              "text": "[[1,\u202f0], [0,\u202f1]]",
+              "weight": 0,
+              "feedback": "Identity \u2013 no rotation."
+            },
+            {
+              "text": "[[0,\u202f1], [\u22121,\u202f0]]",
+              "weight": 0,
+              "feedback": "Clockwise rotation."
+            },
+            {
+              "text": "[[\u22121,\u202f0], [0,\u202f\u22121]]",
+              "weight": 0,
+              "feedback": "180\u00b0 rotation (negation)."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Standard basis images give the columns of the matrix."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which property is NOT guaranteed by every linear transformation T?",
+          "answers": [
+            {
+              "text": "Distance preservation.",
+              "weight": 100,
+              "feedback": "Only orthogonal linear maps preserve length."
+            },
+            {
+              "text": "Additivity: T(u+v)=T(u)+T(v).",
+              "weight": 0,
+              "feedback": "Additivity is part of definition."
+            },
+            {
+              "text": "Homogeneity: T(cu)=c\u202fT(u).",
+              "weight": 0,
+              "feedback": "Homogeneity is part of definition."
+            },
+            {
+              "text": "Maps the zero vector to zero.",
+              "weight": 0,
+              "feedback": "Follows from linearity."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Not all linear maps are isometries \u2013 they can stretch or skew."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Kernel(T) is a subspace of:",
+          "answers": [
+            {
+              "text": "The domain of T.",
+              "weight": 100,
+              "feedback": "Kernel lives where the inputs live."
+            },
+            {
+              "text": "The codomain of T.",
+              "weight": 0,
+              "feedback": "That\u2019s the range/image."
+            },
+            {
+              "text": "Neither \u2013 it\u2019s generally not a vector space.",
+              "weight": 0,
+              "feedback": "Kernel is always a subspace."
+            },
+            {
+              "text": "Both domain and codomain.",
+              "weight": 0,
+              "feedback": "Only inputs satisfy Ax\u202f=\u202f0."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Kernel describes which inputs collapse to zero."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Rank\u2011nullity theorem states:",
+          "answers": [
+            {
+              "text": "dim\u202fKer(T)\u202f+\u202fdim\u202fIm(T)\u202f=\u202fdim\u202fDomain",
+              "weight": 100,
+              "feedback": "Classic relation connecting kernel & image."
+            },
+            {
+              "text": "rank(A)=trace(A)",
+              "weight": 0,
+              "feedback": "Trace is unrelated to rank in general."
+            },
+            {
+              "text": "det(A)=0 implies rank(A)=0",
+              "weight": 0,
+              "feedback": "det\u202f=\u202f0 \u21d2 rank\u202f<\u202fn, not necessarily 0."
+            },
+            {
+              "text": "Ker(T)=Im(T)",
+              "weight": 0,
+              "feedback": "Only for rare self\u2011dual maps."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Rank\u2011nullity is the dimension bookkeeping law."
+        }
+      ],
+      "outcomes": [
+        "linear_map_matrix",
+        "kernel_range",
+        "rank_nullity_theorem"
+      ]
+    },
+    {
+      "id": "eigen-mastery-check",
+      "title": "Eigenvalues and Diagonalization Mastery Check",
+      "description": "Focuses on characteristic polynomials, eigenspaces, and diagonalization tests.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 80,
+        "badges": [
+          "eigen_hunter",
+          "diagonalizer"
+        ],
+        "completion_message": "Eigen mastery achieved \u2013 you find invariant directions effortlessly!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Eigenvalues of a 2\u00d72 triangular matrix are:",
+          "answers": [
+            {
+              "text": "Its diagonal entries.",
+              "weight": 100,
+              "feedback": "Triangular matrices have eigenvalues on the diagonal."
+            },
+            {
+              "text": "Solutions to det(A)\u202f=\u202f0.",
+              "weight": 0,
+              "feedback": "det(A) gives invertibility, not eigenvalues directly."
+            },
+            {
+              "text": "Zeros of trace(A).",
+              "weight": 0,
+              "feedback": "Trace equals sum of eigenvalues, not their individual values."
+            },
+            {
+              "text": "Always \u00b11.",
+              "weight": 0,
+              "feedback": "Eigenvalues depend on matrix entries."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Upper/lower triangular \u2192 easy eigen\u2011reading."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Matrix A is diagonalizable iff:",
+          "answers": [
+            {
+              "text": "It has n linearly independent eigenvectors (in \u211d\u207f).",
+              "weight": 100,
+              "feedback": "That gives P with full rank \u21d2 PDP\u207b\u00b9."
+            },
+            {
+              "text": "All eigenvalues are distinct.",
+              "weight": 0,
+              "feedback": "Distinct eigenvalues *implies* diagonalizable, but not necessary."
+            },
+            {
+              "text": "It is symmetric.",
+              "weight": 0,
+              "feedback": "Symmetry guarantees orthogonal diagonalization, but non\u2011symmetric matrices can also diagonalize."
+            },
+            {
+              "text": "det(A)=1.",
+              "weight": 0,
+              "feedback": "Determinant alone says nothing about diagonalizability."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Geometric multiplicity must sum to n."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For A with eigenvalue \u03bb, eigenspace is:",
+          "answers": [
+            {
+              "text": "Null space of (A\u2212\u03bbI).",
+              "weight": 100,
+              "feedback": "Solve (A\u2212\u03bbI)v=0 for eigenvectors."
+            },
+            {
+              "text": "Column space of (A\u2212\u03bbI).",
+              "weight": 0,
+              "feedback": "That\u2019s the range, not null space."
+            },
+            {
+              "text": "Row space of A.",
+              "weight": 0,
+              "feedback": "Row space relates to solutions of A\u1d40y=0."
+            },
+            {
+              "text": "All non\u2011zero vectors in \u211d\u207f.",
+              "weight": 0,
+              "feedback": "Eigenvectors satisfy a specific equation."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Kernel viewpoint links eigenvectors to familiar null\u2011space solving."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A has characteristic polynomial (\u03bb\u20112)\u00b2(\u03bb+1), algebraic multiplicity of \u03bb=2 is:",
+          "answers": [
+            {
+              "text": "2",
+              "weight": 100,
+              "feedback": "Exponent of (\u03bb\u20112) in the char\u2011poly."
+            },
+            {
+              "text": "1",
+              "weight": 0,
+              "feedback": "That\u2019s multiplicity for distinct root."
+            },
+            {
+              "text": "0",
+              "weight": 0,
+              "feedback": "\u03bb=2 is clearly a root."
+            },
+            {
+              "text": "Depends on geometric multiplicity.",
+              "weight": 0,
+              "feedback": "Geometric multiplicity \u2264 algebraic multiplicity, not equal by default."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Know the difference between algebraic and geometric multiplicities."
+        }
+      ],
+      "outcomes": [
+        "characteristic_polynomial",
+        "eigenspace_concept",
+        "diagonalization_test"
+      ]
+    },
+    {
+      "id": "orthogonality-mastery-check",
+      "title": "Orthogonality and Gram\u2013Schmidt Mastery Check",
+      "description": "Explores inner products, orthogonal projections, and QR factorization ideas.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 70,
+        "badges": [
+          "orthogonality_ace",
+          "qr_fac_master"
+        ],
+        "completion_message": "Orthogonality mastery achieved \u2013 right angles all around!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Vectors u and v in \u211d\u00b3 are orthogonal when:",
+          "answers": [
+            {
+              "text": "u\u00b7v\u202f=\u202f0.",
+              "weight": 100,
+              "feedback": "Zero dot product \u21d2 90\u00b0 angle."
+            },
+            {
+              "text": "|u|\u202f=\u202f|v|.",
+              "weight": 0,
+              "feedback": "Equal length doesn\u2019t force 90\u00b0."
+            },
+            {
+              "text": "They lie in the same line.",
+              "weight": 0,
+              "feedback": "That means parallel, not perpendicular."
+            },
+            {
+              "text": "u\u00d7v\u202f=\u202f0.",
+              "weight": 0,
+              "feedback": "Cross product zero \u21d2 they\u2019re parallel."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Dot product is orthogonality detector."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The projection of b onto a unit vector u is:",
+          "answers": [
+            {
+              "text": "(b\u00b7u)u",
+              "weight": 100,
+              "feedback": "Scalar component times direction."
+            },
+            {
+              "text": "u\u00d7b",
+              "weight": 0,
+              "feedback": "Cross product gives orthogonal vector, not projection."
+            },
+            {
+              "text": "|b|u",
+              "weight": 0,
+              "feedback": "Missing cosine factor."
+            },
+            {
+              "text": "b\u202f\u2212\u202f(b\u00b7u)u",
+              "weight": 0,
+              "feedback": "That\u2019s the rejection (orthogonal component)."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Projection formula underpins least\u2011squares and QR."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Gram\u2013Schmidt applied to independent set {v\u2081,v\u2082} produces:",
+          "answers": [
+            {
+              "text": "An orthonormal set {q\u2081,q\u2082} spanning the same space.",
+              "weight": 100,
+              "feedback": "Goal: orthogonalize and normalize."
+            },
+            {
+              "text": "A dependent set because of rounding errors.",
+              "weight": 0,
+              "feedback": "Conceptually remains independent; numerics are separate issue."
+            },
+            {
+              "text": "QR factorization with Q upper\u2011triangular.",
+              "weight": 0,
+              "feedback": "Q becomes orthogonal, R upper\u2011triangular."
+            },
+            {
+              "text": "A diagonal matrix of eigenvalues.",
+              "weight": 0,
+              "feedback": "That\u2019s eigen\u2011decomposition, not Gram\u2013Schmidt."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Orthogonal bases simplify many computations."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Matrix Q in QR factorization is:",
+          "answers": [
+            {
+              "text": "Orthogonal (Q\u1d40Q\u202f=\u202fI).",
+              "weight": 100,
+              "feedback": "Columns are orthonormal."
+            },
+            {
+              "text": "Upper\u2011triangular.",
+              "weight": 0,
+              "feedback": "That\u2019s the R factor."
+            },
+            {
+              "text": "Diagonal with singular values.",
+              "weight": 0,
+              "feedback": "Diagonal \u03a3 appears in SVD, not QR."
+            },
+            {
+              "text": "Always symmetric.",
+              "weight": 0,
+              "feedback": "Orthogonal \u2260 symmetric necessarily."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Orthogonality ensures numerically stable solves."
+        }
+      ],
+      "outcomes": [
+        "inner_product",
+        "projection_formula",
+        "qr_factorization"
+      ]
+    },
+    {
+      "id": "comprehensive-review",
+      "title": "Comprehensive Linear Algebra Review",
+      "description": "Final comprehensive assessment covering all major linear algebra concepts.",
+      "settings": {
+        "time_limit": 60,
+        "shuffle_answers": true,
+        "allowed_attempts": 2
+      },
+      "mastery_criteria": {
+        "passing_score": 80,
+        "unlock_requirement": false
+      },
+      "gamification": {
+        "xp_value": 100,
+        "badges": [
+          "linear_algebra_champion",
+          "synthesis_master"
+        ],
+        "completion_message": "Congratulations! You have mastered Linear Algebra! \ud83c\udf93"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which statement best describes the relationship between eigenvalues and matrix invertibility?",
+          "answers": [
+            {
+              "text": "A matrix is invertible if and only if all eigenvalues are nonzero",
+              "weight": 100,
+              "feedback": "Perfect! Zero eigenvalues indicate the matrix maps some nonzero vector to zero."
+            },
+            {
+              "text": "A matrix is invertible if and only if all eigenvalues are positive",
+              "weight": 0,
+              "feedback": "Negative eigenvalues don't prevent invertibility."
+            },
+            {
+              "text": "Eigenvalues don't affect invertibility",
+              "weight": 0,
+              "feedback": "Eigenvalues are directly related to invertibility."
+            },
+            {
+              "text": "A matrix is invertible if it has real eigenvalues",
+              "weight": 0,
+              "feedback": "Complex eigenvalues don't prevent invertibility."
+            }
+          ],
+          "points_possible": 5,
+          "feedback": "This connects eigenvalue theory with fundamental matrix properties."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In a least squares problem Ax \u2248 b, the normal equation is:",
+          "answers": [
+            {
+              "text": "A\u1d40Ax = A\u1d40b",
+              "weight": 100,
+              "feedback": "Correct! This minimizes ||Ax - b||\u00b2."
+            },
+            {
+              "text": "Ax = b",
+              "weight": 0,
+              "feedback": "This would be exact solution, not least squares."
+            },
+            {
+              "text": "AA\u1d40x = b",
+              "weight": 0,
+              "feedback": "Wrong transpose placement."
+            },
+            {
+              "text": "A\u1d40Ax = b",
+              "weight": 0,
+              "feedback": "Missing the A\u1d40 on the right side."
+            }
+          ],
+          "points_possible": 5,
+          "feedback": "Normal equations arise from projecting onto column space."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The rank-nullity theorem states that for an m\u00d7n matrix A:",
+          "answers": [
+            {
+              "text": "rank(A) + nullity(A) = n",
+              "weight": 100,
+              "feedback": "Perfect! Total dimension budget of domain."
+            },
+            {
+              "text": "rank(A) + nullity(A) = m",
+              "weight": 0,
+              "feedback": "That would relate to codomain dimension."
+            },
+            {
+              "text": "rank(A) \u00d7 nullity(A) = n",
+              "weight": 0,
+              "feedback": "It's addition, not multiplication."
+            },
+            {
+              "text": "rank(A) - nullity(A) = n",
+              "weight": 0,
+              "feedback": "It's addition, not subtraction."
+            }
+          ],
+          "points_possible": 5,
+          "feedback": "This fundamental theorem balances kernel and range dimensions."
+        }
+      ],
+      "outcomes": [
+        "synthesis_thinking",
+        "comprehensive_understanding",
+        "application_integration"
+      ]
+    },
+    {
+      "id": "row-ops-challenge",
+      "title": "Elementary Row Operations Challenge",
+      "description": "Stress\u2011test your mastery of Gaussian\u2011elimination subtleties.",
+      "settings": {
+        "time_limit": 20,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 40,
+        "badges": [
+          "pivot_paladin"
+        ],
+        "completion_message": "Row\u2011ops mastery unlocked \u2013 pivots obey your commands!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which sequence of row operations most efficiently puts\nA = [[1,2],[3,4]] into an upper\u2011triangular form?",
+          "answers": [
+            {
+              "text": "R\u2082 \u2190 R\u2082 \u2212 3R\u2081",
+              "weight": 100,
+              "feedback": "One replacement eliminates the lower\u2011left entry."
+            },
+            {
+              "text": "Swap R\u2081 and R\u2082, then scale R\u2081",
+              "weight": 0,
+              "feedback": "Swapping is unnecessary; scaling wastes a step."
+            },
+            {
+              "text": "Scale R\u2082 by 0",
+              "weight": 0,
+              "feedback": "Scaling by 0 destroys information."
+            },
+            {
+              "text": "Add R\u2081 to R\u2082 twice",
+              "weight": 0,
+              "feedback": "Twice adds redundant work; once with \u22123 factor suffices."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Look for the quickest path to zeros below pivots."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "During elimination you encounter a zero pivot. The FIRST remedy is usually:",
+          "answers": [
+            {
+              "text": "Swap with a lower row that has a non\u2011zero entry in that column",
+              "weight": 100,
+              "feedback": "Pivoting reorders equations without changing the system."
+            },
+            {
+              "text": "Scale the row by 0.1",
+              "weight": 0,
+              "feedback": "Scaling 0 by any factor leaves 0."
+            },
+            {
+              "text": "Declare the matrix singular and stop",
+              "weight": 0,
+              "feedback": "A zero pivot may be fixable by swapping; don't quit yet."
+            },
+            {
+              "text": "Add the row to itself",
+              "weight": 0,
+              "feedback": "That achieves nothing."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Partial pivoting cures zero or tiny pivots to maintain numerical stability."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which row operation can change the determinant of a matrix by a factor other than \u00b11?",
+          "answers": [
+            {
+              "text": "Multiplying a row by k \u2260 \u00b11",
+              "weight": 100,
+              "feedback": "Determinant scales by k."
+            },
+            {
+              "text": "Adding a multiple of one row to another",
+              "weight": 0,
+              "feedback": "This leaves det unchanged."
+            },
+            {
+              "text": "Swapping two rows",
+              "weight": 0,
+              "feedback": "Only flips the sign (factor \u22121)."
+            },
+            {
+              "text": "Reordering columns",
+              "weight": 0,
+              "feedback": "Column swaps behave like row swaps for det (\u00b11 factor)."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Keep track of det scaling when computing determinants via elimination."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In an m\u00d7n matrix (m>n), at most how many non\u2011zero rows remain after full row\u2011reduction?",
+          "answers": [
+            {
+              "text": "n, the number of columns",
+              "weight": 100,
+              "feedback": "Rank \u2264 min(m,n)."
+            },
+            {
+              "text": "m, the original number of rows",
+              "weight": 0,
+              "feedback": "Some rows become zero if m>n."
+            },
+            {
+              "text": "m\u2212n",
+              "weight": 0,
+              "feedback": "That\u2019s the lower bound on zero rows, not non\u2011zero rows."
+            },
+            {
+              "text": "Any number up to m+n",
+              "weight": 0,
+              "feedback": "Reduction cannot create more non\u2011zero rows."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Think rank: you cannot have more pivot rows than columns."
+        }
+      ],
+      "outcomes": [
+        "advanced_row_ops",
+        "determinant_tracking",
+        "pivot_strategy"
+      ]
+    },
+    {
+      "id": "lu-factorization-mastery-check",
+      "title": "LU Factorization Mastery Check",
+      "description": "Assess fluency decomposing matrices into Lower and Upper triangular factors.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 50,
+        "badges": [
+          "lu_legionnaire"
+        ],
+        "completion_message": "LU mastery achieved \u2013 split and conquer!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "LU factorization without row swaps exists for a square matrix if and only if:",
+          "answers": [
+            {
+              "text": "All its leading principal minors are non\u2011zero",
+              "weight": 100,
+              "feedback": "This guarantees non\u2011zero pivots during elimination."
+            },
+            {
+              "text": "det(A) = 0",
+              "weight": 0,
+              "feedback": "Zero determinant forbids invertibility and LU without pivoting."
+            },
+            {
+              "text": "A is symmetric",
+              "weight": 0,
+              "feedback": "Symmetry does not ensure the necessary pivot pattern."
+            },
+            {
+              "text": "A has equal row and column sums",
+              "weight": 0,
+              "feedback": "Irrelevant to LU existence."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Pivot growth depends on non\u2011zero leading sub\u2011determinants."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In the equation PA = LU, the matrix P represents:",
+          "answers": [
+            {
+              "text": "A permutation matrix tracking row swaps",
+              "weight": 100,
+              "feedback": "Pivoting uses P to record swaps."
+            },
+            {
+              "text": "The projection onto the column space of A",
+              "weight": 0,
+              "feedback": "Projection matrices are not generally permutations."
+            },
+            {
+              "text": "An orthogonal matrix from QR factorization",
+              "weight": 0,
+              "feedback": "That's a different factorization."
+            },
+            {
+              "text": "A diagonal scaling matrix",
+              "weight": 0,
+              "feedback": "Scaling uses D, not P."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Partial\u2011pivot LU equals P\u20111LU factoring when swaps occur."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which advantage does LU give over Gaussian elimination for multiple right\u2011hand sides b?",
+          "answers": [
+            {
+              "text": "L and U can be reused to solve Ax=b for many b with only triangular solves",
+              "weight": 100,
+              "feedback": "Factor once, solve cheaply many times."
+            },
+            {
+              "text": "It avoids any arithmetic beyond addition",
+              "weight": 0,
+              "feedback": "Triangular solves still need division."
+            },
+            {
+              "text": "It always avoids round\u2011off error",
+              "weight": 0,
+              "feedback": "Numerical error is merely reduced, not eliminated."
+            },
+            {
+              "text": "It makes A automatically orthogonal",
+              "weight": 0,
+              "feedback": "LU does not impose orthogonality."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Triangular systems are O(n\u00b2) each; factoring is O(n\u00b3) once."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For A = [[4,2],[6,3]] after one elimination step (R\u2082 \u2190 R\u2082 \u2212 1.5R\u2081) the multiplier 1.5 goes where in L?",
+          "answers": [
+            {
+              "text": "L(2,1) entry",
+              "weight": 100,
+              "feedback": "Lower\u2011left stores scaling used to eliminate."
+            },
+            {
+              "text": "U(2,1) entry",
+              "weight": 0,
+              "feedback": "U keeps zeros below diagonal after elimination."
+            },
+            {
+              "text": "L(1,2) entry",
+              "weight": 0,
+              "feedback": "Super\u2011diagonal belongs to U, not L."
+            },
+            {
+              "text": "Diagonal of L",
+              "weight": 0,
+              "feedback": "L's diagonal is 1 by convention."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Storing multipliers replicates elimination history."
+        }
+      ],
+      "outcomes": [
+        "lu_existence",
+        "permutation_matrix",
+        "triangular_solves"
+      ]
+    },
+    {
+      "id": "determinant-advanced-check",
+      "title": "Advanced Determinant Properties Check",
+      "description": "Probe deeper facts and common pitfalls about determinants.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 45,
+        "badges": [
+          "det_diviner"
+        ],
+        "completion_message": "Determinant lore mastered \u2013 volumes bend to your will!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A and B are n\u00d7n matrices, det(AB) equals:",
+          "answers": [
+            {
+              "text": "det(A)\u00b7det(B)",
+              "weight": 100,
+              "feedback": "Multiplicative property."
+            },
+            {
+              "text": "det(A) + det(B)",
+              "weight": 0,
+              "feedback": "Addition is false for determinants."
+            },
+            {
+              "text": "det(A) \u2212 det(B)",
+              "weight": 0,
+              "feedback": "No subtraction rule exists."
+            },
+            {
+              "text": "det(A)\u00b7det(B)\u207b\u00b9",
+              "weight": 0,
+              "feedback": "That would imply det(AB) = 1."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Det behaves like a homomorphism from GL(n) to ."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "det(A\u1d40) is always:",
+          "answers": [
+            {
+              "text": "Equal to det(A)",
+              "weight": 100,
+              "feedback": "Determinant is unchanged by transpose."
+            },
+            {
+              "text": "The negative of det(A)",
+              "weight": 0,
+              "feedback": "Transpose does not flip sign."
+            },
+            {
+              "text": "Zero if A is antisymmetric",
+              "weight": 0,
+              "feedback": "Only odd\u2011dimension skew matrices have zero det."
+            },
+            {
+              "text": "Undefined",
+              "weight": 0,
+              "feedback": "Transpose is always defined."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Because det is an alternating multilinear form independent of orientation reversal."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If one column of a matrix is a linear combination of others, then det(A) is:",
+          "answers": [
+            {
+              "text": "0",
+              "weight": 100,
+              "feedback": "Column dependence \u21d2 volume collapses."
+            },
+            {
+              "text": "1",
+              "weight": 0,
+              "feedback": "Only identity has det\u202f=\u202f1."
+            },
+            {
+              "text": "Non\u2011zero but unknown sign",
+              "weight": 0,
+              "feedback": "Dependence forces zero exactly."
+            },
+            {
+              "text": "Equal to the product of pivot entries",
+              "weight": 0,
+              "feedback": "Product of pivots is zero because one pivot vanishes."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Dependence kills orientation volume."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For any n\u00d7n matrix A and scalar k, which statement is TRUE?",
+          "answers": [
+            {
+              "text": "det(A + kI) \u2260 det(A) + k det(I) in general",
+              "weight": 100,
+              "feedback": "Determinant is NOT additive."
+            },
+            {
+              "text": "det(A + kI) = det(A) + k\u207f",
+              "weight": 0,
+              "feedback": "No simple additive relation holds."
+            },
+            {
+              "text": "det(A + kI) = det(A)\u00b7k\u207f",
+              "weight": 0,
+              "feedback": "Multiplying by kI, not adding, factors out k\u207f."
+            },
+            {
+              "text": "det(A + kI) always equals det(A)",
+              "weight": 0,
+              "feedback": "Adding kI usually changes det."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Addition destroys multiplicative structure; beware simplifying incorrectly."
+        }
+      ],
+      "outcomes": [
+        "det_multiplicative",
+        "det_transpose",
+        "det_dependence",
+        "det_nonadditive"
+      ]
+    },
+    {
+      "id": "least-squares-mastery-check",
+      "title": "Least\u2011Squares Problem Mastery Check",
+      "description": "Focuses on normal equations, projection, and over\u2011determined systems.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 60,
+        "badges": [
+          "least_squares_sage"
+        ],
+        "completion_message": "Least\u2011squares mastery \u2013 best\u2011fit lines are yours to command!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The normal equations for minimizing ||Ax \u2212 b||\u2082 are:",
+          "answers": [
+            {
+              "text": "A\u1d40A x = A\u1d40 b",
+              "weight": 100,
+              "feedback": "Stationary point of squared error."
+            },
+            {
+              "text": "Ax = b",
+              "weight": 0,
+              "feedback": "That requires exact fit."
+            },
+            {
+              "text": "AA\u1d40 x = b",
+              "weight": 0,
+              "feedback": "Dimensions mismatch."
+            },
+            {
+              "text": "A x = A b",
+              "weight": 0,
+              "feedback": "Nonsense equation."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Derive by setting gradient to zero."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Geometrically, the least\u2011squares solution projects b onto:",
+          "answers": [
+            {
+              "text": "The column space of A",
+              "weight": 100,
+              "feedback": "Closest vector in the image of A."
+            },
+            {
+              "text": "The null space of A",
+              "weight": 0,
+              "feedback": "Null space is orthogonal complement of rows, not target."
+            },
+            {
+              "text": "Row space of A",
+              "weight": 0,
+              "feedback": "Row space lives in domain coordinates."
+            },
+            {
+              "text": "Kernel of A\u1d40",
+              "weight": 0,
+              "feedback": "Kernel corresponds to left\u2011null, not projection target."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Error vector is orthogonal to column space."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If A has full column rank, the matrix A\u1d40A is:",
+          "answers": [
+            {
+              "text": "Symmetric positive\u2011definite",
+              "weight": 100,
+              "feedback": "Full rank \u21d2 x\u1d40A\u1d40Ax = ||Ax||\u00b2 > 0 for x \u2260 0."
+            },
+            {
+              "text": "Singular",
+              "weight": 0,
+              "feedback": "Full column rank precludes singularity."
+            },
+            {
+              "text": "Skew\u2011symmetric",
+              "weight": 0,
+              "feedback": "A\u1d40A is symmetric, not skew."
+            },
+            {
+              "text": "Orthogonal",
+              "weight": 0,
+              "feedback": "Orthogonal implies (A\u1d40A)=I which rarely holds."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "SPD nature allows Cholesky or CG solvers."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which method avoids forming A\u1d40A explicitly and is numerically superior?",
+          "answers": [
+            {
+              "text": "QR factorization of A",
+              "weight": 100,
+              "feedback": "Directly solves Rx = Q\u1d40b with better conditioning."
+            },
+            {
+              "text": "Cramer\u2019s Rule",
+              "weight": 0,
+              "feedback": "Impractical for large matrices; uses det."
+            },
+            {
+              "text": "Invert A then multiply by b",
+              "weight": 0,
+              "feedback": "A may not be square or invertible."
+            },
+            {
+              "text": "Power iteration",
+              "weight": 0,
+              "feedback": "Used for largest eigenvalue, not least squares."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Building normal equations squares condition number; QR circumvents."
+        }
+      ],
+      "outcomes": [
+        "normal_equations",
+        "projection_geometry",
+        "spd_property",
+        "qr_vs_normal"
+      ]
+    },
+    {
+      "id": "qr-factorization-mastery-check",
+      "title": "QR Factorization Mastery Check",
+      "description": "Covers Gram\u2013Schmidt, orthogonal matrices, and triangular solve usage.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 55,
+        "badges": [
+          "qr_quartermaster"
+        ],
+        "completion_message": "QR mastery \u2013 orthogonality is your ally!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In the reduced QR factorization A = QR with A m\u00d7n (m\u2265n), the matrix R is:",
+          "answers": [
+            {
+              "text": "n\u00d7n upper\u2011triangular",
+              "weight": 100,
+              "feedback": "Reduced form trims zero rows."
+            },
+            {
+              "text": "m\u00d7m diagonal",
+              "weight": 0,
+              "feedback": "R is triangular, not necessarily diagonal."
+            },
+            {
+              "text": "n\u00d7m lower\u2011triangular",
+              "weight": 0,
+              "feedback": "Shape reversed."
+            },
+            {
+              "text": "Orthogonal",
+              "weight": 0,
+              "feedback": "Q, not R, is orthogonal."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Reduced QR keeps essential information in compact form."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which algorithm produces a more numerically stable QR than classical Gram\u2013Schmidt?",
+          "answers": [
+            {
+              "text": "Modified Gram\u2013Schmidt",
+              "weight": 100,
+              "feedback": "Re\u2011orthogonalizes to reduce error accumulation."
+            },
+            {
+              "text": "Power method",
+              "weight": 0,
+              "feedback": "Eigenvalue algorithm, not orthogonalization."
+            },
+            {
+              "text": "C\u2011G algorithm",
+              "weight": 0,
+              "feedback": "Conjugate gradient solves SPD systems."
+            },
+            {
+              "text": "LU with partial pivoting",
+              "weight": 0,
+              "feedback": "LU is not orthogonal."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Householder QR is even more stable, but MGS beats classical GS."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If Q is m\u00d7n with orthonormal columns, then Q\u1d40Q equals:",
+          "answers": [
+            {
+              "text": "I\u2099",
+              "weight": 100,
+              "feedback": "Columns are orthonormal \u21d2 inner\u2011products form identity."
+            },
+            {
+              "text": "I\u2098",
+              "weight": 0,
+              "feedback": "Q Q\u1d40 = I\u2098 only if Q is square (m=n)."
+            },
+            {
+              "text": "Zero matrix",
+              "weight": 0,
+              "feedback": "Orthogonality does not imply zero matrix."
+            },
+            {
+              "text": "A diagonal with column norms",
+              "weight": 0,
+              "feedback": "Norms are 1; gives identity."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Rectangular Q acts as an isometry on its column space."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Householder reflections are preferred over Gram\u2013Schmidt because they:",
+          "answers": [
+            {
+              "text": "Use orthogonal transformations that perfectly preserve norms",
+              "weight": 100,
+              "feedback": "Eliminates rounding\u2011induced loss of orthogonality."
+            },
+            {
+              "text": "Require no floating\u2011point arithmetic",
+              "weight": 0,
+              "feedback": "Still rely on FP math."
+            },
+            {
+              "text": "Produce lower\u2011triangular R",
+              "weight": 0,
+              "feedback": "Output R is upper\u2011triangular."
+            },
+            {
+              "text": "Avoid vector normalization",
+              "weight": 0,
+              "feedback": "Householder still needs norm calculations."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Reflection matrices are perfectly orthogonal up to machine precision."
+        }
+      ],
+      "outcomes": [
+        "qr_shapes",
+        "mgs_vs_gs",
+        "orthogonal_properties",
+        "householder_advantages"
+      ]
+    },
+    {
+      "id": "svd-mastery-check",
+      "title": "Singular Value Decomposition Mastery Check",
+      "description": "Targets U\u03a3V\u1d40 structure, interpretation, and applications.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 70,
+        "badges": [
+          "svd_summoner"
+        ],
+        "completion_message": "SVD mastery \u2013 you now decompose anything!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The non\u2011zero singular values of A equal the square roots of non\u2011zero eigenvalues of:",
+          "answers": [
+            {
+              "text": "A\u1d40A",
+              "weight": 100,
+              "feedback": "Symmetric positive\u2011semidefinite produces real eigenvalues."
+            },
+            {
+              "text": "A",
+              "weight": 0,
+              "feedback": "Eigenvalues of A can be complex and signed."
+            },
+            {
+              "text": "AA\u1d40 \u2212 I",
+              "weight": 0,
+              "feedback": "Irrelevant subtractive shift."
+            },
+            {
+              "text": "A + A\u1d40",
+              "weight": 0,
+              "feedback": "This is the symmetric part, not used in SVD calculation."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "SVD links to principal component directions."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "In A = U \u03a3 V\u1d40, the columns of V are:",
+          "answers": [
+            {
+              "text": "Right singular vectors",
+              "weight": 100,
+              "feedback": "They diagonalize A\u1d40A."
+            },
+            {
+              "text": "Left singular vectors",
+              "weight": 0,
+              "feedback": "Left singular vectors are columns of U."
+            },
+            {
+              "text": "Eigenvectors of A with eigenvalue 1",
+              "weight": 0,
+              "feedback": "Only true in special cases (orthogonal A)."
+            },
+            {
+              "text": "Null vectors of A",
+              "weight": 0,
+              "feedback": "Null vectors correspond to zero singular values."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Right vs. left depends on which side of \u03a3 they multiply."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Low\u2011rank approximation via SVD keeps:",
+          "answers": [
+            {
+              "text": "The k largest singular values and corresponding singular vectors",
+              "weight": 100,
+              "feedback": "Eckart\u2013Young theorem gives best rank\u2011k approximation."
+            },
+            {
+              "text": "The k smallest singular values",
+              "weight": 0,
+              "feedback": "Small values contribute least to norm."
+            },
+            {
+              "text": "Random singular values",
+              "weight": 0,
+              "feedback": "Random retention rarely optimal."
+            },
+            {
+              "text": "All singular values but discards vectors",
+              "weight": 0,
+              "feedback": "Need vectors for reconstruction."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Applications include image compression and PCA."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Condition number \u03ba\u2082(A) equals:",
+          "answers": [
+            {
+              "text": "\u03c3_max / \u03c3_min",
+              "weight": 100,
+              "feedback": "Largest over smallest singular value (non\u2011zero)."
+            },
+            {
+              "text": "det(A)",
+              "weight": 0,
+              "feedback": "Det relates to product, not ratio, of \u03c3_i."
+            },
+            {
+              "text": "trace(A)",
+              "weight": 0,
+              "feedback": "Trace sums diagonal entries, unrelated to \u03ba."
+            },
+            {
+              "text": "\u03c3_max \u00b7 \u03c3_min",
+              "weight": 0,
+              "feedback": "Product is 1/|det(A)| for square A, not \u03ba."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "\u03ba measures sensitivity of solutions to Ax = b."
+        }
+      ],
+      "outcomes": [
+        "svd_eigen_relation",
+        "singular_vectors_roles",
+        "low_rank_approx",
+        "condition_number"
+      ]
+    },
+    {
+      "id": "orthogonal-diagonalization-check",
+      "title": "Orthogonal Diagonalization Check",
+      "description": "Tests symmetric matrices, eigenbasis existence, and quadratic forms.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 50,
+        "badges": [
+          "ortho_diag_oracle"
+        ],
+        "completion_message": "Orthogonal diagonalization mastered \u2013 quadratic forms simplified!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "A real symmetric matrix A is always:",
+          "answers": [
+            {
+              "text": "Orthogonally diagonalizable",
+              "weight": 100,
+              "feedback": "Spectral theorem."
+            },
+            {
+              "text": "Skew\u2011symmetric",
+              "weight": 0,
+              "feedback": "Skew means A\u1d40 = \u2212A, opposite property."
+            },
+            {
+              "text": "Defective (not diagonalizable)",
+              "weight": 0,
+              "feedback": "Symmetric matrices never defective over \u211d."
+            },
+            {
+              "text": "Upper\u2011triangular with zeros below diagonal",
+              "weight": 0,
+              "feedback": "Symmetry relates upper to lower."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Eigenvectors can be chosen orthonormal."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Eigenvalues of a symmetric matrix are always:",
+          "answers": [
+            {
+              "text": "Real",
+              "weight": 100,
+              "feedback": "A\u1d40=A \u21d2 characteristic polynomial has real roots."
+            },
+            {
+              "text": "Purely imaginary",
+              "weight": 0,
+              "feedback": "Imaginary arise in skew\u2011symmetric case."
+            },
+            {
+              "text": "Negative",
+              "weight": 0,
+              "feedback": "Sign depends on definiteness."
+            },
+            {
+              "text": "Zero",
+              "weight": 0,
+              "feedback": "Only if matrix is singular."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Positive\u2011definite \u2194 all eigenvalues positive."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Quadratic form x\u1d40Ax can be written as \u03a3 \u03bb\u1d62 y\u1d62\u00b2 after change of variables y = Q\u1d40x when:",
+          "answers": [
+            {
+              "text": "Q is orthogonal and diagonalizes A",
+              "weight": 100,
+              "feedback": "Completing the square in eigenbasis."
+            },
+            {
+              "text": "Q contains pivot columns of A",
+              "weight": 0,
+              "feedback": "Pivot columns need not be orthonormal."
+            },
+            {
+              "text": "A is any rectangular matrix",
+              "weight": 0,
+              "feedback": "Quadratic form requires square A."
+            },
+            {
+              "text": "Q is triangular",
+              "weight": 0,
+              "feedback": "Triangular Q not guaranteed orthogonality."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Diagonalization simplifies optimization of quadratic forms."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Positive\u2011definite symmetric A satisfies which equivalent test?",
+          "answers": [
+            {
+              "text": "All leading principal minors are positive",
+              "weight": 100,
+              "feedback": "Sylvester\u2019s criterion."
+            },
+            {
+              "text": "det(A) < 0",
+              "weight": 0,
+              "feedback": "Det must be positive for PD."
+            },
+            {
+              "text": "trace(A) < 0",
+              "weight": 0,
+              "feedback": "Trace not decisive alone."
+            },
+            {
+              "text": "A\u00b2 has negative eigenvalues",
+              "weight": 0,
+              "feedback": "Squares make eigenvalues non\u2011negative."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Several equivalent PD tests exist: eigenvalues >0, x\u1d40Ax>0, Sylvester."
+        }
+      ],
+      "outcomes": [
+        "spectral_theorem",
+        "eigenvalue_reality",
+        "quadratic_form_diag",
+        "pd_tests"
+      ]
+    },
+    {
+      "id": "complex-eigen-mastery-check",
+      "title": "Complex Eigenvalues & 2\u00d72 Rotation\u2011Scaling Check",
+      "description": "Handles cases when eigenvalues are complex and relates them to real Jordan blocks.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 55,
+        "badges": [
+          "complex_eigen_cartographer"
+        ],
+        "completion_message": "Complex eigen mastery unlocked \u2013 rotations decoded!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The real matrix [[0, -1],[1, 0]] has eigenvalues:",
+          "answers": [
+            {
+              "text": "\u00b1 i",
+              "weight": 100,
+              "feedback": "Rotation by 90\u00b0 has purely imaginary eigenvalues."
+            },
+            {
+              "text": "\u00b11",
+              "weight": 0,
+              "feedback": "Those correspond to reflections."
+            },
+            {
+              "text": "0 and 1",
+              "weight": 0,
+              "feedback": "Trace = 0 but det = 1."
+            },
+            {
+              "text": "\u00b1\u221a2",
+              "weight": 0,
+              "feedback": "No such eigenvalues for pure rotation."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Characteristic equation \u03bb\u00b2+1=0."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "A 2\u00d72 matrix with eigenvalues a \u00b1 ib (b\u22600) is similar over \u211d to:",
+          "answers": [
+            {
+              "text": "[[a, -b],[b, a]]",
+              "weight": 100,
+              "feedback": "Real Jordan block representing rotation\u2011scaling."
+            },
+            {
+              "text": "Diagonal matrix with a and b",
+              "weight": 0,
+              "feedback": "Complex eigenvalues cannot appear on real diagonal."
+            },
+            {
+              "text": "Upper triangular with a\u2019s on diagonal and 1 above",
+              "weight": 0,
+              "feedback": "That would be defective, not complex pair."
+            },
+            {
+              "text": "Identity matrix",
+              "weight": 0,
+              "feedback": "Identity eigenvalues are 1."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Block encodes magnitude \u221a(a\u00b2+b\u00b2) and angle arctan(b/a)."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "For the matrix [[\u03bb, -\u03bc],[\u03bc, \u03bb]] with \u03bc \u2260 0, its determinant equals:",
+          "answers": [
+            {
+              "text": "\u03bb\u00b2 + \u03bc\u00b2",
+              "weight": 100,
+              "feedback": "Compute: \u03bb\u00b2 + \u03bc\u00b2."
+            },
+            {
+              "text": "\u03bb\u00b2 - \u03bc\u00b2",
+              "weight": 0,
+              "feedback": "Sign error for cross terms."
+            },
+            {
+              "text": "2\u03bb\u03bc",
+              "weight": 0,
+              "feedback": "That is 2\u00d7 off\u2011diag product."
+            },
+            {
+              "text": "\u03bc\u00b2 - \u03bb\u00b2",
+              "weight": 0,
+              "feedback": "Also wrong sign."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Rotation\u2011scaling matrices have positive determinant."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Such a matrix represents (for \u03bc\u22600):",
+          "answers": [
+            {
+              "text": "A rotation combined with uniform scaling",
+              "weight": 100,
+              "feedback": "Angle via atan2(\u03bc,\u03bb), scale via \u221a(\u03bb\u00b2+\u03bc\u00b2)."
+            },
+            {
+              "text": "A shear",
+              "weight": 0,
+              "feedback": "Shear has det = 1 and eigenvalue 1."
+            },
+            {
+              "text": "Pure reflection",
+              "weight": 0,
+              "feedback": "Reflection has eigenvalues \u00b11."
+            },
+            {
+              "text": "Projection onto a line",
+              "weight": 0,
+              "feedback": "Projection has idempotent property."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Complex eigenvalues encode rotation in real plane."
+        }
+      ],
+      "outcomes": [
+        "complex_eigenvalues",
+        "real_block_form",
+        "rotation_scaling_det",
+        "geom_interpretation"
+      ]
+    },
+    {
+      "id": "change-of-basis-check",
+      "title": "Change\u2011of\u2011Basis & Coordinates Check",
+      "description": "Handles transition matrices and coordinate vector conversion.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 45,
+        "badges": [
+          "basis_shifter"
+        ],
+        "completion_message": "Change\u2011of\u2011basis mastery \u2013 coordinates translate at your whim!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Columns of the change\u2011of\u2011basis matrix from B to C consist of:",
+          "answers": [
+            {
+              "text": "Coordinate vectors of B\u2019s basis expressed in C",
+              "weight": 100,
+              "feedback": "Convert each B\u2011vector into C\u2011coordinates."
+            },
+            {
+              "text": "Coordinate vectors of C expressed in B",
+              "weight": 0,
+              "feedback": "Order matters."
+            },
+            {
+              "text": "Any orthonormal set",
+              "weight": 0,
+              "feedback": "Matrices need not be orthonormal; they encode coordinates."
+            },
+            {
+              "text": "Eigenvectors of A",
+              "weight": 0,
+              "feedback": "Unrelated unless B chosen as eigenbasis."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Make sure you know \u2018from\u2019 and \u2018to\u2019 conventions."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "If P changes coordinates from basis B to standard and [x]_B is known, then x equals:",
+          "answers": [
+            {
+              "text": "P [x]_B",
+              "weight": 100,
+              "feedback": "Multiply by matrix mapping B\u2011coords to standard."
+            },
+            {
+              "text": "P\u207b\u00b9 [x]_B",
+              "weight": 0,
+              "feedback": "Inverse goes the opposite direction."
+            },
+            {
+              "text": "[x]_B P",
+              "weight": 0,
+              "feedback": "Vectors multiply on right only if row\u2011vector convention."
+            },
+            {
+              "text": "P\u1d40 [x]_B",
+              "weight": 0,
+              "feedback": "Transpose appears in orthogonal changes, not general."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Left\u2011multiply column coordinate vector."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Similarity A' = P\u207b\u00b9 A P represents:",
+          "answers": [
+            {
+              "text": "Matrix of the same linear map in a new basis",
+              "weight": 100,
+              "feedback": "Coordinates change, map unchanged."
+            },
+            {
+              "text": "A different linear transformation altogether",
+              "weight": 0,
+              "feedback": "Underlying map is identical."
+            },
+            {
+              "text": "Row equivalence",
+              "weight": 0,
+              "feedback": "Similarity is stronger than row equivalence."
+            },
+            {
+              "text": "Permutation of rows only",
+              "weight": 0,
+              "feedback": "Column transformation also present."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Similarity preserves eigenvalues and determinant."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Determinant satisfies det(A') = det(A) under similarity because:",
+          "answers": [
+            {
+              "text": "det(P\u207b\u00b9)det(A)det(P) = det(A)",
+              "weight": 100,
+              "feedback": "det(P\u207b\u00b9)=1/det(P) gives cancellation."
+            },
+            {
+              "text": "det(P) always equals 1",
+              "weight": 0,
+              "feedback": "Permutation matrices have \u00b11, but P is arbitrary invertible."
+            },
+            {
+              "text": "Similarity adds zero rows",
+              "weight": 0,
+              "feedback": "No row ops occur."
+            },
+            {
+              "text": "trace also preserved",
+              "weight": 0,
+              "feedback": "Trace is preserved too but not the reason for det."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Determinant is basis\u2011independent."
+        }
+      ],
+      "outcomes": [
+        "change_of_basis_matrix",
+        "coordinate_conversion",
+        "similarity_transforms",
+        "det_invariant"
+      ]
+    },
+    {
+      "id": "block-matrix-mastery-check",
+      "title": "Block Matrix Operations Mastery Check",
+      "description": "Examines partitioned matrices, Schur complements, and block inverses.",
+      "settings": {
+        "time_limit": 30,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 60,
+        "badges": [
+          "block_baron"
+        ],
+        "completion_message": "Block\u2011matrix mastery \u2013 partitioned calculations simplified!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which condition allows the block inverse formula\n[[A, B],[C, D]]\u207b\u00b9 to use the Schur complement S = D \u2212 C A\u207b\u00b9 B?",
+          "answers": [
+            {
+              "text": "A is invertible",
+              "weight": 100,
+              "feedback": "Need A\u207b\u00b9 to define S."
+            },
+            {
+              "text": "B is zero",
+              "weight": 0,
+              "feedback": "Then formula simplifies but not required."
+            },
+            {
+              "text": "C equals B\u1d40",
+              "weight": 0,
+              "feedback": "Symmetry not mandatory for Schur."
+            },
+            {
+              "text": "det(D)=0",
+              "weight": 0,
+              "feedback": "Would break S invertibility later."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Dual version exists if D invertible instead."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Block diagonal matrices\u2019 determinants equal:",
+          "answers": [
+            {
+              "text": "Product of determinants of each diagonal block",
+              "weight": 100,
+              "feedback": "Blocks act like independent sub\u2011matrices."
+            },
+            {
+              "text": "Sum of determinants of blocks",
+              "weight": 0,
+              "feedback": "Addition incorrect."
+            },
+            {
+              "text": "Zero if any off\u2011diagonal block non\u2011zero",
+              "weight": 0,
+              "feedback": "Off\u2011diagonals are zero in block diagonal."
+            },
+            {
+              "text": "Trace of whole matrix",
+              "weight": 0,
+              "feedback": "Trace unrelated."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Determinant factorizes over block diagonal structure."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Multiplying two conformable block matrices requires:",
+          "answers": [
+            {
+              "text": "Matching inner block dimensions pairwise",
+              "weight": 100,
+              "feedback": "Sub\u2011blocks multiply like scalars with sum."
+            },
+            {
+              "text": "All blocks to be square",
+              "weight": 0,
+              "feedback": "Rectangular blocks allowed if dimensions fit."
+            },
+            {
+              "text": "Blocks to be diagonal",
+              "weight": 0,
+              "feedback": "Only needed for simplification, not requirement."
+            },
+            {
+              "text": "Blocks to commute",
+              "weight": 0,
+              "feedback": "Non\u2011commutative blocks still multiply."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Picture each block as a \u2018super\u2011entry\u2019 with its own shape."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "The Schur complement S of block D in M = [[A,B],[C,D]] is positive\u2011definite if:",
+          "answers": [
+            {
+              "text": "M is positive\u2011definite and A is invertible",
+              "weight": 100,
+              "feedback": "PD carries to its Schur complement."
+            },
+            {
+              "text": "D is singular",
+              "weight": 0,
+              "feedback": "Singularity obstructs PD in S."
+            },
+            {
+              "text": "Only A is PD",
+              "weight": 0,
+              "feedback": "Need entire M PD."
+            },
+            {
+              "text": "B and C are zero",
+              "weight": 0,
+              "feedback": "Then S=D, condition different."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Useful in statistics (covariance conditioning)."
+        }
+      ],
+      "outcomes": [
+        "schur_complement",
+        "block_det",
+        "block_mult_dims",
+        "schur_pd"
+      ]
+    },
+    {
+      "id": "conditioning-check",
+      "title": "Numerical Conditioning & Stability Check",
+      "description": "Explores condition numbers, floating\u2011point pitfalls, and solver choices.",
+      "settings": {
+        "time_limit": 25,
+        "shuffle_answers": true,
+        "allowed_attempts": 3
+      },
+      "mastery_criteria": {
+        "passing_score": 75,
+        "unlock_requirement": true
+      },
+      "gamification": {
+        "xp_value": 50,
+        "badges": [
+          "condition_keeper"
+        ],
+        "completion_message": "Conditioning mastered \u2013 computations stay stable!"
+      },
+      "questions": [
+        {
+          "type": "multiple_choice_question",
+          "question_text": "High condition number indicates:",
+          "answers": [
+            {
+              "text": "Small relative changes in data cause large relative changes in solution",
+              "weight": 100,
+              "feedback": "Ill\u2011conditioning amplifies error."
+            },
+            {
+              "text": "Matrix is always singular",
+              "weight": 0,
+              "feedback": "Singular \u2192 \u03ba = \u221e, but high finite \u03ba means nearly singular."
+            },
+            {
+              "text": "Matrix multiplication is commutative",
+              "weight": 0,
+              "feedback": "No relation."
+            },
+            {
+              "text": "LU without pivoting is safe",
+              "weight": 0,
+              "feedback": "Ill\u2011conditioning demands pivoting/stable methods."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Well\u2011conditioned: \u03ba near 1; ill\u2011conditioned: \u03ba \u226b 1."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Which factorization typically gives the MOST stable solution to Ax=b?",
+          "answers": [
+            {
+              "text": "QR via Householder reflections",
+              "weight": 100,
+              "feedback": "Orthogonality preserves norms, minimizing growth."
+            },
+            {
+              "text": "LU without pivoting",
+              "weight": 0,
+              "feedback": "Unstable for certain matrices."
+            },
+            {
+              "text": "Cramer's Rule",
+              "weight": 0,
+              "feedback": "Catastrophically unstable for large n."
+            },
+            {
+              "text": "Explicit inverse multiplication",
+              "weight": 0,
+              "feedback": "Poor accuracy; avoid forming A\u207b\u00b9."
+            }
+          ],
+          "points_possible": 3,
+          "feedback": "Orthogonal methods minimise error amplification."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Rounding error in Gaussian elimination is mitigated by:",
+          "answers": [
+            {
+              "text": "Partial (or complete) pivoting",
+              "weight": 100,
+              "feedback": "Swapping rows keeps pivots large."
+            },
+            {
+              "text": "Using single\u2011precision floats",
+              "weight": 0,
+              "feedback": "Lower precision worsens error."
+            },
+            {
+              "text": "Avoiding row swaps entirely",
+              "weight": 0,
+              "feedback": "Makes matters worse."
+            },
+            {
+              "text": "Determinant scaling",
+              "weight": 0,
+              "feedback": "Det knowledge does not fix round\u2011off."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "Pivoting chooses largest available pivot element."
+        },
+        {
+          "type": "multiple_choice_question",
+          "question_text": "Machine epsilon \u03b5 roughly measures:",
+          "answers": [
+            {
+              "text": "Smallest positive number where 1 + \u03b5 \u2260 1 in floating\u2011point arithmetic",
+              "weight": 100,
+              "feedback": "Unit round\u2011off definition."
+            },
+            {
+              "text": "Smallest non\u2011zero representable number",
+              "weight": 0,
+              "feedback": "That is min sub\u2011normal, not \u03b5."
+            },
+            {
+              "text": "Largest representable number",
+              "weight": 0,
+              "feedback": "That is overflow limit."
+            },
+            {
+              "text": "Additive inverse of overflow",
+              "weight": 0,
+              "feedback": "N/A."
+            }
+          ],
+          "points_possible": 4,
+          "feedback": "\u03b5 \u2248 2\u207b\u2075\u00b3 \u2248 1.11e\u201116 in double precision."
+        }
+      ],
+      "outcomes": [
+        "condition_number_def",
+        "stable_solvers",
+        "pivoting_strategy",
+        "machine_epsilon"
+      ]
+    }
+  ]
+}

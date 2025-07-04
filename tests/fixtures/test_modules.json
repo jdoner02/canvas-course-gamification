@@ -1,0 +1,52 @@
+{
+  "modules": [
+    {
+      "name": "Test Module 1",
+      "overview": "First test module for unit testing",
+      "unlock_requirements": [],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 75
+      },
+      "gamification": {
+        "theme": "Testing Fundamentals",
+        "badges": ["module_test_1"],
+        "xp_value": 50
+      },
+      "items": [
+        {
+          "id": "test-assignment-1",
+          "title": "Test Assignment 1"
+        },
+        {
+          "id": "test-page-1",
+          "title": "Test Page 1"
+        }
+      ]
+    },
+    {
+      "name": "Test Module 2", 
+      "overview": "Second test module",
+      "unlock_requirements": ["module_1_complete"],
+      "mastery_criteria": {
+        "completion_requirement": "min_score",
+        "min_score": 80
+      },
+      "gamification": {
+        "theme": "Advanced Testing",
+        "badges": ["module_test_2"],
+        "xp_value": 75
+      },
+      "items": [
+        {
+          "id": "test-assignment-2",
+          "title": "Test Assignment 2"
+        },
+        {
+          "id": "test-quiz-1",
+          "title": "Test Quiz 1"
+        }
+      ]
+    }
+  ]
+}

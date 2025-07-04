@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "title": "Test Page 1",
+      "body": "<h1>Test Page 1</h1><p>This is a test page for unit testing.</p>",
+      "front_page": false
+    },
+    {
+      "title": "Course Welcome",
+      "body": "<h1>Welcome to Test Course</h1><p>This course is designed for testing purposes.</p>",
+      "front_page": true
+    }
+  ]
+}

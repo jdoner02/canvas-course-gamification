@@ -1,0 +1,39 @@
+{
+  "assignments": [
+    {
+      "id": "test-assignment-1",
+      "title": "Test Assignment 1", 
+      "description": "A test assignment for unit testing",
+      "points_possible": 100,
+      "due_at": "2025-12-31T23:59:00Z",
+      "mastery_threshold": 75,
+      "gamification": {
+        "xp_value": 100,
+        "badges": ["test_badge"],
+        "mastery_paths": {
+          "express": ["bonus-content-1"],
+          "standard": ["practice-1"],
+          "support": ["tutorial-1", "practice-1"]
+        }
+      },
+      "outcomes": ["test_outcome_1", "test_outcome_2"],
+      "problem_types": [
+        "Basic calculations",
+        "Application problems"
+      ]
+    },
+    {
+      "id": "test-assignment-2",
+      "title": "Test Assignment 2",
+      "description": "Another test assignment",
+      "points_possible": 50,
+      "due_at": "2026-01-15T23:59:00Z",
+      "mastery_threshold": 80,
+      "gamification": {
+        "xp_value": 75,
+        "badges": ["test_badge_2"]
+      },
+      "outcomes": ["test_outcome_2", "test_outcome_3"]
+    }
+  ]
+}

@@ -6,6 +6,8 @@ import pytest
 import os
 from pathlib import Path
 from unittest.mock import Mock
+import tempfile
+import json
 
 # Add src to Python path for testing
 import sys
@@ -220,16 +222,117 @@ def temp_config_dir(tmp_path):
     return config_dir
 
 
-# Pytest configuration
+@pytest.fixture
+def temp_dir():
+    """Create a temporary directory for tests"""
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        yield Path(tmp_dir)
+
+
+@pytest.fixture
+def sample_course_data():
+    """Sample course data for testing"""
+    return {
+        "assignments.json": {
+            "assignments": [
+                {
+                    "id": "sample-assignment",
+                    "title": "Sample Assignment",
+                    "description": "A sample assignment for testing",
+                    "points_possible": 100,
+                    "due_at": "2025-12-31T23:59:00Z",
+                    "gamification": {"xp_value": 100, "badges": ["sample_badge"]},
+                    "outcomes": ["sample_outcome"],
+                }
+            ]
+        },
+        "modules.json": {
+            "modules": [
+                {
+                    "name": "Sample Module",
+                    "overview": "A sample module for testing",
+                    "unlock_requirements": [],
+                    "mastery_criteria": {
+                        "completion_requirement": "min_score",
+                        "min_score": 75,
+                    },
+                    "items": [{"id": "sample-assignment"}],
+                }
+            ]
+        },
+        "quizzes.json": {
+            "quizzes": [
+                {
+                    "id": "sample-quiz",
+                    "title": "Sample Quiz",
+                    "description": "A sample quiz for testing",
+                    "settings": {"allowed_attempts": 3},
+                    "questions": [
+                        {
+                            "type": "multiple_choice_question",
+                            "question_text": "Sample question?",
+                            "answers": [
+                                {"text": "Correct", "weight": 100},
+                                {"text": "Wrong", "weight": 0},
+                            ],
+                            "points_possible": 1,
+                        }
+                    ],
+                }
+            ]
+        },
+        "pages.json": {
+            "pages": [
+                {
+                    "title": "Sample Page",
+                    "body": "<h1>Sample Page</h1><p>Sample content</p>",
+                }
+            ]
+        },
+        "outcomes.json": {
+            "outcomes": [
+                {
+                    "id": "sample_outcome",
+                    "name": "Sample Outcome",
+                    "description": "A sample learning outcome",
+                    "level": "Application",
+                }
+            ]
+        },
+        "prerequisites.json": {"prerequisites": []},
+        "assignment_id_map.json": {"sample-assignment": 12345},
+    }
+
+
+@pytest.fixture
+def sample_data_dir(temp_dir, sample_course_data):
+    """Create a temporary directory with sample course data"""
+    for filename, data in sample_course_data.items():
+        with open(temp_dir / filename, "w") as f:
+            json.dump(data, f)
+    return temp_dir
+
+
+@pytest.fixture
+def canvas_config():
+    """Test Canvas configuration"""
+    from src.course_builder.json_course_builder import CanvasConfig
+
+    return CanvasConfig(
+        base_url="https://test.instructure.com",
+        token="test_token",
+        account_id=1,
+        term_id=1,
+    )
+
+
+# Custom markers for different test types
 def pytest_configure(config):
-    """Configure pytest with custom markers."""
-    config.addinivalue_line(
-        "markers", "integration: mark test as integration test requiring Canvas API"
-    )
+    """Configure custom pytest markers"""
+    config.addinivalue_line("markers", "unit: mark test as a unit test")
+    config.addinivalue_line("markers", "integration: mark test as an integration test")
     config.addinivalue_line("markers", "slow: mark test as slow running")
-    config.addinivalue_line(
-        "markers", "canvas_required: mark test as requiring Canvas instance access"
-    )
+    config.addinivalue_line("markers", "api: mark test as requiring API access")
 
 
 def pytest_collection_modifyitems(config, items):

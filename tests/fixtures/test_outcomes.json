@@ -1,0 +1,28 @@
+{
+  "outcomes": [
+    {
+      "id": "test_outcome_1",
+      "name": "Test Outcome 1",
+      "description": "Students will be able to perform basic testing operations",
+      "level": "Application",
+      "module": 1,
+      "badge": "test_badge"
+    },
+    {
+      "id": "test_outcome_2", 
+      "name": "Test Outcome 2",
+      "description": "Students will understand testing concepts",
+      "level": "Recognition",
+      "module": 1,
+      "badge": "test_badge"
+    },
+    {
+      "id": "test_outcome_3",
+      "name": "Test Outcome 3", 
+      "description": "Students will apply advanced testing techniques",
+      "level": "Intuition",
+      "module": 2,
+      "badge": "test_badge_2"
+    }
+  ]
+}
