@@ -267,6 +267,8 @@ def get_course(course_id: Optional[str] = None):
 
 
 # Module-level client instance for simple usage
+from .course_manager import CourseManager
+
 _default_client = None
 
 
@@ -276,3 +278,13 @@ def get_client() -> CanvasAPIClient:
     if _default_client is None:
         _default_client = CanvasAPIClient()
     return _default_client
+
+
+__all__ = [
+    'CanvasAPIClient',
+    'CourseManager',
+    'CanvasAPIError',
+    'RateLimitError',
+    'get_client',
+    'retry_on_rate_limit'
+]

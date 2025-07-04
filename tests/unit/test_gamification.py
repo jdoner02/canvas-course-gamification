@@ -370,7 +370,8 @@ class TestGamificationIntegration:
         # Test badge availability
         badges = tree.badges
         assert len(badges) == 1
-        assert badges[0].id == "completion_badge"
+        badge_list = list(badges.values())
+        assert badge_list[0].id == "completion_badge"
     
     def test_xp_and_level_progression(self):
         """Test XP accumulation and level progression."""
