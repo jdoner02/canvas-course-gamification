@@ -26,14 +26,15 @@ class IssueCreator:
 
     def __init__(self):
         self.issues = []
-        
+
     def create_critical_bugs(self):
         """Create issues for critical bugs blocking deployment."""
-        
+
         # Bug 1: Validation Result Handling
-        self.issues.append({
-            "title": "[CRITICAL BUG] ValidationResult object not subscriptable in deploy.py",
-            "body": """## 🐛 Bug Description
+        self.issues.append(
+            {
+                "title": "[CRITICAL BUG] ValidationResult object not subscriptable in deploy.py",
+                "body": """## 🐛 Bug Description
 Deployment fails due to improper handling of ValidationResult object in the deploy.py script.
 
 ## 🔄 Steps to Reproduce
@@ -69,14 +70,16 @@ The ValidationResult object structure has changed but the handling code expects 
 
 ## ⏱️ Estimated Effort
 **2-4 hours** - Code review and validation object refactoring""",
-            "labels": ["bug", "critical", "deployment", "validation"],
-            "priority": "P0"
-        })
+                "labels": ["bug", "critical", "deployment", "validation"],
+                "priority": "P0",
+            }
+        )
 
         # Bug 2: Missing API Method
-        self.issues.append({
-            "title": "[HIGH BUG] CanvasAPIClient missing get_course method",
-            "body": """## 🐛 Bug Description
+        self.issues.append(
+            {
+                "title": "[HIGH BUG] CanvasAPIClient missing get_course method",
+                "body": """## 🐛 Bug Description
 CourseBuilder expects `get_course` method on CanvasAPIClient but method doesn't exist.
 
 ## 🔄 Steps to Reproduce
@@ -112,14 +115,16 @@ Available methods: get_course_info, get_course_modules, get_course_assignments.
 
 ## ⏱️ Estimated Effort
 **3-5 hours** - API method implementation and integration testing""",
-            "labels": ["bug", "high", "canvas-api", "integration"],
-            "priority": "P0"
-        })
+                "labels": ["bug", "high", "canvas-api", "integration"],
+                "priority": "P0",
+            }
+        )
 
         # Bug 3: Table Validation Issue
-        self.issues.append({
-            "title": "[MEDIUM BUG] Table accessibility validation regex too strict",
-            "body": """## 🐛 Bug Description
+        self.issues.append(
+            {
+                "title": "[MEDIUM BUG] Table accessibility validation regex too strict",
+                "body": """## 🐛 Bug Description
 Accessibility validator marks properly formatted tables as having missing headers due to overly strict regex pattern.
 
 ## 🔄 Steps to Reproduce
@@ -157,17 +162,19 @@ Regex pattern in src/validators/__init__.py line ~327 needs improvement to handl
 
 ## ⏱️ Estimated Effort
 **2-3 hours** - Regex improvement and testing""",
-            "labels": ["bug", "medium", "accessibility", "validation"],
-            "priority": "P1"
-        })
+                "labels": ["bug", "medium", "accessibility", "validation"],
+                "priority": "P1",
+            }
+        )
 
     def create_priority_features(self):
         """Create issues for high-priority features."""
-        
+
         # Feature 1: Deployment Automation
-        self.issues.append({
-            "title": "[FEATURE] Complete end-to-end deployment automation",
-            "body": """## 🚀 Feature Description
+        self.issues.append(
+            {
+                "title": "[FEATURE] Complete end-to-end deployment automation",
+                "body": """## 🚀 Feature Description
 Implement comprehensive deployment automation that handles the complete Canvas course setup process.
 
 ## 🎯 User Story
@@ -215,14 +222,16 @@ As an **instructor**, I want to **deploy a complete gamified course to Canvas wi
 
 ## ⏱️ Estimated Effort
 **1-2 weeks** - Complex integration with multiple systems""",
-            "labels": ["feature", "high", "deployment", "automation"],
-            "priority": "P1"
-        })
+                "labels": ["feature", "high", "deployment", "automation"],
+                "priority": "P1",
+            }
+        )
 
         # Feature 2: GitHub Project Integration
-        self.issues.append({
-            "title": "[FEATURE] GitHub Projects integration for issue tracking",
-            "body": """## 🚀 Feature Description
+        self.issues.append(
+            {
+                "title": "[FEATURE] GitHub Projects integration for issue tracking",
+                "body": """## 🚀 Feature Description
 Implement automated GitHub Projects integration for professional project management and issue tracking.
 
 ## 🎯 User Story
@@ -267,17 +276,19 @@ As a **development team member**, I want **automated project board management** 
 
 ## ⏱️ Estimated Effort
 **1 week** - GitHub API integration and automation setup""",
-            "labels": ["feature", "high", "project-management", "automation"],
-            "priority": "P1"
-        })
+                "labels": ["feature", "high", "project-management", "automation"],
+                "priority": "P1",
+            }
+        )
 
     def create_enhancement_tasks(self):
         """Create issues for system enhancements."""
-        
+
         # Enhancement 1: CLI Improvement
-        self.issues.append({
-            "title": "[ENHANCEMENT] Complete CLI command structure implementation",
-            "body": """## 🔧 Enhancement Description
+        self.issues.append(
+            {
+                "title": "[ENHANCEMENT] Complete CLI command structure implementation",
+                "body": """## 🔧 Enhancement Description
 Expand CLI tool to provide comprehensive course management capabilities.
 
 ## 🎯 Current State
@@ -313,16 +324,18 @@ Complete CLI with validation, deployment, testing, and management commands.
 
 ## ⏱️ Estimated Effort
 **3-5 days** - CLI framework expansion and testing""",
-            "labels": ["enhancement", "medium", "cli", "ux"],
-            "priority": "P2"
-        })
+                "labels": ["enhancement", "medium", "cli", "ux"],
+                "priority": "P2",
+            }
+        )
 
     def create_documentation_tasks(self):
         """Create issues for documentation needs."""
-        
-        self.issues.append({
-            "title": "[DOCUMENTATION] Faculty onboarding and workflow guide",
-            "body": """## 📚 Documentation Need
+
+        self.issues.append(
+            {
+                "title": "[DOCUMENTATION] Faculty onboarding and workflow guide",
+                "body": """## 📚 Documentation Need
 Create comprehensive onboarding guide for faculty using the Canvas Course Gamification Framework.
 
 ## 🎯 Target Audience
@@ -360,9 +373,10 @@ Create comprehensive onboarding guide for faculty using the Canvas Course Gamifi
 
 ## ⏱️ Estimated Effort
 **1 week** - Comprehensive documentation creation""",
-            "labels": ["documentation", "high", "onboarding", "faculty"],
-            "priority": "P1"
-        })
+                "labels": ["documentation", "high", "onboarding", "faculty"],
+                "priority": "P1",
+            }
+        )
 
     def generate_all_issues(self):
         """Generate all identified issues."""
@@ -375,27 +389,28 @@ Create comprehensive onboarding guide for faculty using the Canvas Course Gamifi
     def save_issues_locally(self):
         """Save issues to local files for review and GitHub CLI automation."""
         issues = self.generate_all_issues()
-        
+
         # Create issues directory
         issues_dir = Path("scripts/project-management/issues")
         issues_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # Save each issue as a separate file
         for i, issue in enumerate(issues, 1):
             filename = f"{i:02d}_{issue['title'].lower().replace(' ', '_').replace('[', '').replace(']', '').replace(':', '')}.md"
-            
-            with open(issues_dir / filename, 'w') as f:
+
+            with open(issues_dir / filename, "w") as f:
                 f.write(f"# {issue['title']}\n\n")
                 f.write(f"**Priority:** {issue['priority']}\n")
                 f.write(f"**Labels:** {', '.join(issue['labels'])}\n\n")
-                f.write(issue['body'])
-        
+                f.write(issue["body"])
+
         # Create summary file
-        with open(issues_dir / "00_issues_summary.json", 'w') as f:
+        with open(issues_dir / "00_issues_summary.json", "w") as f:
             json.dump(issues, f, indent=2)
-        
+
         print(f"✅ Created {len(issues)} issue files in {issues_dir}")
         return issues_dir
+
 
 if __name__ == "__main__":
     creator = IssueCreator()
