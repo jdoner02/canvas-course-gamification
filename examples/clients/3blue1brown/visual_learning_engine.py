@@ -21,10 +21,10 @@ class VisualizationType(Enum):
 
 
 class ConceptualLevel(Enum):
-    INTUITIVE = "intuitive"           # Visual understanding
-    COMPUTATIONAL = "computational"   # Can calculate
-    CONCEPTUAL = "conceptual"        # Deep understanding
-    CREATIVE = "creative"            # Can teach others
+    INTUITIVE = 1      # Visual understanding
+    COMPUTATIONAL = 2  # Can calculate
+    CONCEPTUAL = 3     # Deep understanding
+    CREATIVE = 4       # Can teach others
 
 
 @dataclass
