@@ -1,214 +1,743 @@
 # Canvas Course Gamification Framework Configuration
-# Template configuration for deploying gamified courses
+# Comprehensive template for deploying evidence-based gamified courses
+# Version: 2.0 | Last Updated: 2025
+# Documentation: https://github.com/yourusername/canvas-course-gamification/wiki
+
+# =============================================================================
+# COURSE METADATA & INSTITUTIONAL SETTINGS
+# =============================================================================
 
 course:
+  # Basic Course Information
   name: "Gamified Course Template"
   course_code: "TEMPLATE001"
   term: "Academic Year 2024-25"
   credits: 3
+  section: "001"
   
-  # Course Philosophy
-  approach: "mastery-based"
-  gamification: true
-  skill_tree_enabled: true
-  
-  # Course Description
+  # Institutional Integration
+  institution:
+    name: "Your Institution"
+    department: "Academic Department"
+    sis_course_id: null  # Student Information System integration
+    blueprint_course: false  # Set true for template courses
+    
+  # Course Philosophy & Approach
+  pedagogy:
+    approach: "mastery_based"  # Options: traditional, mastery_based, competency_based
+    learning_theory: "constructivist"  # Options: behaviorist, cognitivist, constructivist, connectivist
+    assessment_philosophy: "formative_focused"  # Options: summative_focused, formative_focused, balanced
+    
+  # Gamification Integration
+  gamification:
+    enabled: true
+    evidence_based: true  # Uses research-backed mechanics only
+    academic_integrity: "maintained"  # Ensures grades reflect learning, not game performance
+    opt_out_available: false  # Allow students to opt out of gamification
+    
+  # Accessibility & Inclusion (WCAG 2.1 AA Compliance)
+  accessibility:
+    wcag_compliance: "AA"
+    screen_reader_optimized: true
+    keyboard_navigation: true
+    high_contrast_mode: true
+    text_scaling_support: true
+    alternative_formats: ["audio", "large_print", "digital"]
+    
+  # Universal Design for Learning (UDL) Integration
+  udl:
+    multiple_means_of_representation: true
+    multiple_means_of_engagement: true  
+    multiple_means_of_action_expression: true
+    culturally_responsive: true
+    multilingual_support: false
+    
+  # Course Description (Rich Text with Learning Outcomes)
   description: |
-    A template for creating engaging, mastery-based courses with gamification
-    elements including skill trees, XP systems, and achievement badges.
-  
-  # Learning Philosophy
+    <h3>🎯 Course Overview</h3>
+    <p>This template demonstrates evidence-based gamification that enhances learning 
+    without compromising academic rigor. Students progress through a carefully designed 
+    skill tree, earning experience points (XP) and badges that reflect genuine mastery 
+    of learning objectives.</p>
+    
+    <h3>🎮 Gamification Elements</h3>
+    <ul>
+      <li><strong>Skill Tree Progression:</strong> Visual learning paths with clear prerequisites</li>
+      <li><strong>Experience Points:</strong> Quantified progress tied to learning outcomes</li>
+      <li><strong>Achievement Badges:</strong> Recognition for diverse types of excellence</li>
+      <li><strong>Mastery-Based Advancement:</strong> Progress only after demonstrating competency</li>
+    </ul>
+    
+    <h3>📚 Learning Philosophy</h3>
+    <p>This course implements <em>mastery-based learning</em> where students advance based on 
+    demonstrated competency rather than seat time. The gamification elements support 
+    intrinsic motivation and provide clear feedback on progress toward mastery.</p>
+    
+  # Detailed Learning Model Configuration
   learning_model:
     type: "mastery_based"
-    retake_policy: "unlimited"
-    mastery_threshold: 0.8
-    prerequisite_enforcement: true
     
-  # Gamification Settings
+    # Mastery Requirements
+    mastery_threshold: 0.85  # 85% for mastery (research-recommended threshold)
+    retake_policy: "unlimited_with_cooldown"
+    cooldown_period_hours: 24
+    mastery_decay: false  # Whether mastery can be lost over time
+    
+    # Prerequisite Enforcement
+    prerequisite_enforcement: "strict"  # Options: strict, flexible, advisory
+    override_permissions: ["instructor", "admin"]
+    grace_period_days: 0
+    
+    # Competency-Based Grading
+    competency_grading:
+      enabled: true
+      scale: ["not_yet", "developing", "proficient", "advanced", "exemplary"]
+      minimum_for_advancement: "proficient"
+      
+  # Comprehensive Gamification Settings
   gamification_settings:
-    enabled: true
-    xp_system: true
-    badge_system: true
-    leaderboards: false
-    achievement_tracking: true
-    mastery_paths: true
-    
-  # Course Structure
+    # Core Systems
+    xp_system: 
+      enabled: true
+      transparent_calculation: true  # Students see exactly how XP is calculated
+      academic_correlation: 0.95  # XP strongly correlates with actual learning
+      
+    badge_system:
+      enabled: true
+      evidence_required: true  # All badges require evidence of learning
+      peer_validation: false  # Optional peer review for certain badges
+      instructor_approval: false  # Optional instructor approval for advanced badges
+      
+    skill_tree:
+      enabled: true
+      visualization_type: "interactive_d3"  # Options: static, interactive_d3, force_directed
+      real_time_updates: true
+      mobile_optimized: true
+      
+    leaderboards:
+      enabled: false  # Disabled by default to avoid competition stress
+      anonymous_option: true
+      categories: ["learning_growth", "badge_diversity", "peer_help"]
+      
+    achievement_tracking:
+      detailed_analytics: true
+      progress_visualization: true
+      intervention_triggers: true  # Alert instructors to struggling students
+      
+    mastery_paths:
+      enabled: true
+      adaptive_content: true
+      remediation_loops: true
+      enrichment_opportunities: true
+      
+  # Course Structure Planning
   structure:
-    modules: 10
-    skill_levels: 5  # Recognition, Application, Intuition, Synthesis, Mastery
+    total_modules: 10
+    skill_levels: 5  # Recognition → Application → Intuition → Synthesis → Mastery
     total_assignments: 25
-    total_quizzes: 10
+    formative_assessments: 40  # Low-stakes practice opportunities
+    summative_assessments: 10  # High-stakes mastery demonstrations
+    total_quizzes: 15
     total_outcomes: 50
+    micro_learning_chunks: 100  # 5-10 minute learning segments
     
-  # Grading
+  # Evidence-Based Grading Configuration
   grading:
     scheme: "mastery_based"
+    
+    # Grade Calculation Weights
     grade_calculation:
-      module_mastery: 70
-      final_project: 20
-      participation: 10
+      competency_demonstration: 70  # Primary weight on demonstrating learning
+      growth_and_improvement: 15    # Credit for learning progress
+      engagement_and_effort: 10     # Participation and attempt credit
+      peer_contribution: 5          # Helping others learn
+      
+    # Mastery Scale Mapping to Traditional Grades
+    mastery_to_grade_mapping:
+      exemplary: "A+"      # 97-100%
+      advanced: "A"        # 93-96%
+      proficient: "B"      # 85-92%
+      developing: "C"      # 75-84%
+      not_yet: "I"        # Incomplete - continue working
+      
+    # Late Work and Revision Policy
+    late_work:
+      accepted: true
+      penalty: "none"  # Mastery-based: when you learn matters more than when
+      deadline_flexibility: "instructor_discretion"
+      
+    revision_policy:
+      unlimited_revisions: true
+      improvement_recognition: true
+      latest_evidence_priority: true
 
-# Canvas API Configuration
+# =============================================================================
+# CANVAS LMS INTEGRATION SETTINGS
+# =============================================================================
+
 canvas:
+  # API Configuration
   api_version: "v1"
+  
+  # Rate Limiting & Performance
   rate_limit:
     requests_per_second: 10
     retry_attempts: 3
     backoff_factor: 2
-  
+    timeout_seconds: 30
+    
+  # Batch Operations for Efficiency
+  batch_operations:
+    enabled: true
+    batch_size: 50
+    parallel_uploads: 3
+    
   # Course Creation Options
   course_options:
+    # Visibility Settings
     is_public: false
     is_public_to_auth_users: false
     public_syllabus: true
     public_syllabus_to_auth: true
     public_description: true
-    allow_wiki_comments: false
-    allow_student_forum_attachments: false
-    default_wiki_editing_roles: "teachers"
     
-# Skill Tree Configuration
+    # Collaboration Settings
+    allow_wiki_comments: false
+    allow_student_forum_attachments: true
+    default_wiki_editing_roles: "teachers"
+    allow_student_organized_groups: true
+    
+    # Navigation & Interface
+    hide_final_grades: false
+    hide_distribution_graphs: false
+    hide_sections_tabs: false
+    default_view: "modules"  # Options: assignments, modules, wiki, syllabus
+    
+    # Time Zone & Formatting
+    time_zone: "America/Los_Angeles"
+    locale: "en"
+    
+    # Integration Settings
+    sis_course_id: null
+    integration_id: null
+    blueprint: false
+    blueprint_restrictions: {}
+
+# =============================================================================
+# COMPREHENSIVE SKILL TREE CONFIGURATION
+# =============================================================================
+
 skill_tree:
-  name: "Course Progression Tree"
-  description: "Visual representation of learning progression"
+  # Metadata
+  name: "Mastery Progression Tree"
+  description: "Research-based learning progression with clear pathways to expertise"
+  version: "2.0"
   
-  # Skill Levels
+  # Visual Design & UX
+  visualization:
+    theme: "academic_professional"  # Options: academic_professional, gaming, minimal, custom
+    layout_algorithm: "hierarchical"  # Options: hierarchical, force_directed, circular, custom
+    responsive_design: true
+    mobile_first: true
+    
+    # Accessibility Features
+    screen_reader_support: true
+    keyboard_navigation: true
+    high_contrast_mode: true
+    font_scaling: true
+    
+    # Interactive Elements
+    animations:
+      enabled: true
+      duration_ms: 300
+      easing: "ease-in-out"
+      reduced_motion_support: true  # Respects user preferences
+      
+    progress_indicators:
+      real_time_updates: true
+      completion_percentages: true
+      mastery_indicators: true
+      next_step_highlighting: true
+  
+  # Pedagogically-Grounded Skill Levels (Bloom's Taxonomy Alignment)
   levels:
     recognition:
       name: "Recognition"
-      description: "I know what this is"
+      description: "I can identify and recall key concepts and terminology"
+      bloom_level: ["remember", "understand"]
       xp_threshold: 0
       color: "#e8f5e8"
+      icon: "🌱"
+      assessment_types: ["multiple_choice", "matching", "labeling", "definition"]
       
     application:
       name: "Application" 
-      description: "I can use this"
+      description: "I can use concepts and procedures in familiar contexts"
+      bloom_level: ["apply"]
       xp_threshold: 100
       color: "#d4f1d4"
+      icon: "🌿"
+      assessment_types: ["problem_solving", "calculations", "guided_practice"]
       
-    intuition:
-      name: "Intuition"
-      description: "I understand why"
+    analysis:
+      name: "Analysis"
+      description: "I can break down concepts and understand relationships"
+      bloom_level: ["analyze"]
       xp_threshold: 300
       color: "#b8e9b8"
+      icon: "🔍"
+      assessment_types: ["compare_contrast", "troubleshooting", "pattern_recognition"]
       
     synthesis:
       name: "Synthesis"
-      description: "I can connect and innovate"
+      description: "I can combine ideas creatively and make connections"
+      bloom_level: ["evaluate", "create"]
       xp_threshold: 600
       color: "#9ce09c"
+      icon: "🧩"
+      assessment_types: ["projects", "case_studies", "original_work"]
       
     mastery:
       name: "Mastery"
-      description: "I can teach this"
+      description: "I can teach others and extend knowledge in novel ways"
+      bloom_level: ["create", "expert"]
       xp_threshold: 1000
       color: "#7dd87d"
+      icon: "🎓"
+      assessment_types: ["peer_teaching", "research", "curriculum_development"]
 
-# XP System Configuration
+# =============================================================================
+# EVIDENCE-BASED XP SYSTEM CONFIGURATION
+# =============================================================================
+
 xp_system:
   enabled: true
   
-  # XP Rewards
+  # Research-Based Design Principles
+  design_principles:
+    academic_alignment: true      # XP reflects actual learning, not just engagement
+    transparent_calculation: true # Students understand how XP is earned
+    intrinsic_motivation: true   # XP supports rather than replaces internal motivation
+    growth_mindset: true         # XP rewards improvement and effort
+    
+  # Base XP Rewards (Calibrated to Learning Depth)
   rewards:
-    quiz_completion: 10
-    assignment_submission: 15
-    assignment_mastery: 25
-    discussion_post: 5
-    discussion_reply: 3
-    badge_earned: 50
-    module_completion: 100
-    perfect_quiz: 25
-    early_submission: 5
+    # Formative Learning Activities
+    reading_completion: 5
+    video_completion: 8
+    practice_problem: 10
+    discussion_post: 12
+    discussion_reply: 6
     
-  # XP Multipliers
+    # Summative Assessments
+    quiz_completion: 15
+    quiz_mastery: 25  # 85%+ score
+    assignment_submission: 20
+    assignment_mastery: 35  # 85%+ score
+    
+    # Milestone Achievements
+    module_completion: 50
+    badge_earned: 100
+    skill_level_advancement: 150
+    
+    # Learning Behaviors
+    self_assessment: 10
+    reflection_journal: 15
+    peer_feedback_given: 12
+    peer_feedback_received: 8
+    help_seeking: 5  # Asking for help when needed
+    
+    # Excellence Indicators
+    perfect_score: 25
+    creative_solution: 30
+    peer_teaching: 40
+    original_research: 100
+    
+  # Meaningful Multipliers (Research-Backed)
   multipliers:
-    streak_bonus: 1.1  # 10% bonus for consecutive days
-    early_bird: 1.2    # 20% bonus for early submissions
-    perfectionist: 1.5 # 50% bonus for perfect scores
-    
-# Badge System Configuration
+    # Growth Mindset Reinforcement
+    improvement_bonus:
+      enabled: true
+      calculation: "percentage_improvement * 0.1"
+      max_bonus: 2.0
+      
+    # Persistence and Effort
+    retry_bonus:
+      enabled: true
+      multiplier: 1.1  # 10% bonus for learning from mistakes
+      max_retries: 5
+      
+    # Consistency and Habit Formation
+    streak_bonus:
+      enabled: true
+      daily_engagement: 1.05  # 5% per consecutive day
+      max_streak_days: 21    # Research-backed habit formation period
+      max_multiplier: 2.0
+      
+    # Early Engagement (Procrastination Prevention)
+    early_submission:
+      enabled: true
+      days_early: 2
+      multiplier: 1.15  # 15% bonus
+      
+    # Collaborative Learning
+    peer_help_bonus:
+      enabled: true
+      help_events_threshold: 3
+      multiplier: 1.2
+      
+  # XP Visualization & Communication
+  display:
+    real_time_updates: true
+    detailed_breakdown: true  # Show exactly how XP was earned
+    progress_to_next_level: true
+    historical_tracking: true
+    comparison_to_self_only: true  # No peer comparisons to reduce competition stress
+
+# =============================================================================
+# COMPREHENSIVE BADGE SYSTEM
+# =============================================================================
+
 badges:
   enabled: true
   
-  # Badge Categories
-  categories:
-    - name: "Learning Milestones"
-      description: "Achievement in core learning objectives"
-      color: "#4CAF50"
-      
-    - name: "Skill Mastery"
-      description: "Mastery of specific skill areas"
-      color: "#2196F3"
-      
-    - name: "Engagement"
-      description: "Active participation and engagement"
-      color: "#FF9800"
-      
-    - name: "Excellence"
-      description: "Outstanding performance and achievement"
-      color: "#9C27B0"
-
-# Module Configuration
-modules:
-  # Module progression settings
-  progression:
-    sequential: true
-    prerequisite_enforcement: true
-    mastery_required: true
+  # Badge Philosophy & Standards
+  philosophy:
+    evidence_based: true      # All badges require demonstrated learning
+    meaningful_criteria: true # Criteria are educationally significant
+    diverse_recognition: true # Multiple types of achievement recognized
+    inclusive_design: true   # All students can earn badges through different pathways
     
-  # Module unlock requirements
-  unlock_requirements:
-    xp_threshold: true
-    prerequisite_completion: true
-    quiz_mastery: true
-    assignment_completion: true
+  # Quality Assurance
+  validation:
+    auto_award: true
+    evidence_verification: true
+    criteria_transparency: true
+    appeal_process: true
+    
+  # Badge Categories (Comprehensive Recognition)
+  categories:
+    # Academic Achievement
+    mastery:
+      name: "Skill Mastery"
+      description: "Deep understanding and application of specific concepts"
+      icon: "🏆"
+      color: "#FFD700"
+      criteria_type: "performance_based"
+      
+    # Learning Behaviors
+    engagement:
+      name: "Active Learning"
+      description: "Consistent engagement and participation in learning activities"
+      icon: "⚡"
+      color: "#4CAF50"
+      criteria_type: "behavior_based"
+      
+    # Special Accomplishments
+    achievement:
+      name: "Special Achievements"
+      description: "Outstanding performance and unique accomplishments"
+      icon: "🌟"
+      color: "#2196F3"
+      criteria_type: "milestone_based"
+      
+    # Social Learning
+    collaboration:
+      name: "Team Player"
+      description: "Effective collaboration and peer support"
+      icon: "🤝"
+      color: "#FF9800"
+      criteria_type: "social_based"
+      
+    # Creativity and Innovation
+    innovation:
+      name: "Creative Thinking"
+      description: "Original ideas and innovative approaches to problems"
+      icon: "💡"
+      color: "#9C27B0"
+      criteria_type: "creativity_based"
+      
+    # Character and Growth
+    character:
+      name: "Character Development"
+      description: "Growth mindset, persistence, and academic integrity"
+      icon: "💪"
+      color: "#795548"
+      criteria_type: "character_based"
+      
+    # Leadership and Mentoring
+    leadership:
+      name: "Learning Leader"
+      description: "Helping others learn and grow"
+      icon: "👑"
+      color: "#E91E63"
+      criteria_type: "leadership_based"
 
-# Assignment Configuration  
+# =============================================================================
+# MODULE PROGRESSION & PREREQUISITES
+# =============================================================================
+
+modules:
+  # Progression Philosophy
+  progression:
+    type: "mastery_based"  # Options: sequential, mastery_based, flexible, adaptive
+    enforcement_level: "strict"  # Options: strict, flexible, advisory
+    override_permissions: ["instructor", "admin"]
+    
+  # Unlock Requirements (Evidence-Based)
+  unlock_requirements:
+    prerequisite_completion: true
+    mastery_demonstration: true
+    xp_threshold: true
+    time_gates: false  # Focus on mastery, not time spent
+    
+  # Mastery Criteria
+  mastery_criteria:
+    assignment_completion: 1.0  # 100% completion required
+    assignment_mastery_rate: 0.85  # 85% of assignments at mastery level
+    quiz_mastery_rate: 0.85
+    participation_requirement: 0.8  # 80% participation in discussions/activities
+    
+  # Flexible Pathways
+  pathways:
+    multiple_routes: true  # Different ways to achieve same learning outcomes
+    choice_points: true    # Students can choose between equivalent options
+    enrichment_tracks: true  # Advanced options for accelerated learners
+    remediation_loops: true  # Additional support for struggling learners
+
+# =============================================================================
+# ASSIGNMENT & ASSESSMENT CONFIGURATION
+# =============================================================================
+
 assignments:
-  # Default assignment settings
+  # Default Settings (Research-Based)
   defaults:
     points_possible: 100
     xp_value: 25
-    mastery_threshold: 0.8
+    mastery_threshold: 0.85  # 85% for mastery
     unlimited_attempts: true
+    immediate_feedback: true
     
-  # Assignment types
+  # Assignment Types (Pedagogically Diverse)
   types:
-    - name: "Skill Check"
-      description: "Quick assessment of specific skills"
+    # Formative Assessments
+    skill_check:
+      name: "Skill Check"
+      description: "Quick formative assessment of specific skills"
       xp_value: 15
+      mastery_threshold: 0.8
+      attempts_allowed: "unlimited"
       
-    - name: "Application Task"
-      description: "Apply concepts to solve problems"
-      xp_value: 25
+    practice_set:
+      name: "Practice Set"
+      description: "Guided practice with immediate feedback"
+      xp_value: 20
+      mastery_threshold: 0.85
+      attempts_allowed: "unlimited"
       
-    - name: "Project Component"
-      description: "Part of larger project work"
-      xp_value: 50
+    # Application Tasks
+    application_task:
+      name: "Application Task"
+      description: "Apply concepts to solve realistic problems"
+      xp_value: 35
+      mastery_threshold: 0.85
+      attempts_allowed: 3
       
-    - name: "Mastery Assessment"
-      description: "Comprehensive skill demonstration"
+    # Project Components
+    project_milestone:
+      name: "Project Milestone"
+      description: "Significant component of larger project work"
+      xp_value: 75
+      mastery_threshold: 0.85
+      attempts_allowed: 2
+      
+    # Mastery Demonstrations
+    mastery_assessment:
+      name: "Mastery Assessment"
+      description: "Comprehensive demonstration of skill mastery"
       xp_value: 100
+      mastery_threshold: 0.85
+      attempts_allowed: "unlimited_with_cooldown"
+      
+    # Creative Expressions
+    creative_project:
+      name: "Creative Project"
+      description: "Original creative expression of learning"
+      xp_value: 100
+      mastery_threshold: "rubric_based"
+      attempts_allowed: 2
+      
+  # Feedback System
+  feedback:
+    immediate_feedback: true
+    rubric_based: true
+    peer_feedback: true
+    instructor_feedback: true
+    self_reflection: true
 
-# Deployment Configuration
+# =============================================================================
+# DEPLOYMENT & TECHNICAL CONFIGURATION
+# =============================================================================
+
 deployment:
-  # Validation settings
+  # Pre-Deployment Validation
   validation:
-    run_pre_deployment_checks: true
+    run_comprehensive_checks: true
     validate_json_schemas: true
-    check_prerequisites: true
-    verify_api_connection: true
+    check_prerequisite_logic: true
+    verify_api_connectivity: true
+    test_gamification_mechanics: true
+    accessibility_audit: true
     
-  # Deployment options
-  options:
+  # Deployment Strategy
+  strategy:
+    incremental_deployment: true
+    rollback_capability: true
+    backup_before_changes: true
+    student_data_preservation: true
+    
+  # Content Management
+  content:
     create_missing_content: true
     update_existing_content: true
-    preserve_student_data: true
-    backup_before_deployment: true
+    preserve_customizations: true
+    version_control_integration: true
     
-  # Logging
-  logging:
-    level: "INFO"
-    file: "deployment.log"
-    console_output: true
+  # Quality Assurance
+  quality_assurance:
+    post_deployment_testing: true
+    student_experience_validation: true
+    instructor_workflow_testing: true
+    mobile_compatibility_check: true
+    
+  # Monitoring & Logging
+  monitoring:
+    detailed_deployment_logs: true
+    performance_monitoring: true
+    error_tracking: true
+    usage_analytics: true
+    
+  # Rollback & Recovery
+  rollback:
+    automatic_rollback_triggers: ["critical_error", "data_loss", "accessibility_failure"]
+    manual_rollback_capability: true
+    point_in_time_recovery: true
+    
+# =============================================================================
+# ANALYTICS & CONTINUOUS IMPROVEMENT
+# =============================================================================
+
+analytics:
+  # Learning Analytics
+  learning_data:
+    detailed_tracking: true
+    privacy_compliant: true
+    anonymization_options: true
+    
+  # Performance Metrics
+  metrics:
+    engagement_tracking: true
+    learning_progression: true
+    mastery_achievement: true
+    time_to_competency: true
+    
+  # Intervention Support
+  interventions:
+    at_risk_identification: true
+    automated_alerts: true
+    support_recommendations: true
+    
+  # Continuous Improvement
+  improvement:
+    a_b_testing: true
+    feedback_collection: true
+    iterative_refinement: true
+    research_contribution: true
+
+# =============================================================================
+# ACCESSIBILITY & INCLUSION STANDARDS
+# =============================================================================
+
+accessibility:
+  # WCAG 2.1 AA Compliance
+  wcag_compliance: "AA"
+  
+  # Technical Accessibility
+  technical:
+    screen_reader_optimization: true
+    keyboard_navigation: true
+    focus_management: true
+    semantic_html: true
+    alt_text_automation: true
+    
+  # Visual Accessibility
+  visual:
+    high_contrast_mode: true
+    font_scaling_support: true
+    color_blind_friendly: true
+    reduced_motion_options: true
+    
+  # Cognitive Accessibility
+  cognitive:
+    clear_navigation: true
+    consistent_layout: true
+    progress_indicators: true
+    error_prevention: true
+    simple_language_options: true
+    
+  # Universal Design for Learning
+  udl:
+    multiple_representations: true
+    multiple_engagement_options: true
+    multiple_expression_methods: true
+
+# =============================================================================
+# SECURITY & PRIVACY CONFIGURATION
+# =============================================================================
+
+security:
+  # Data Protection
+  data_protection:
+    student_data_encryption: true
+    secure_api_communication: true
+    privacy_by_design: true
+    gdpr_compliance: true
+    ferpa_compliance: true
+    
+  # Access Control
+  access_control:
+    role_based_permissions: true
+    principle_of_least_privilege: true
+    audit_logging: true
+    
+  # Security Monitoring
+  monitoring:
+    intrusion_detection: true
+    vulnerability_scanning: true
+    security_incident_response: true
+
+# =============================================================================
+# DOCUMENTATION & SUPPORT
+# =============================================================================
+
+documentation:
+  # User Documentation
+  user_docs:
+    instructor_guide: true
+    student_orientation: true
+    technical_reference: true
+    troubleshooting_guide: true
+    
+  # Technical Documentation
+  technical_docs:
+    api_documentation: true
+    configuration_reference: true
+    deployment_guide: true
+    customization_manual: true
+    
+  # Support Resources
+  support:
+    community_forum: true
+    office_hours: true
+    training_workshops: true
+    consultation_services: true
