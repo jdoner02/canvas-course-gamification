@@ -1,0 +1,70 @@
+
+MATH 231 Linear Algebra Skill Tree Analytics Report
+==================================================
+
+## Overview
+- Total Skills: 116
+- Total Prerequisites: 148
+- Critical Path Length: 24
+
+## Skill Distribution by Level
+- Foundational: 27 skills (305 total XP)
+- Core: 38 skills (730 total XP)
+- Advanced: 39 skills (971 total XP)
+- Expert: 12 skills (395 total XP)
+
+## Root Skills (No Prerequisites)
+- basic_algebra: Basic Algebraic Operations
+- linear_equations_1var: Linear Equations in One Variable
+
+## Leaf Skills (No Dependents)
+- radical_equations: Radical Equations and Functions
+- rates_of_change: Rates of Change
+- graphing_tools: Graphing Tools Usage
+- precalculus_2: Precalculus II Concepts
+- inverse_trig_functions: Inverse Trigonometric Functions
+- trigonometric_identities: Trigonometric Identities
+- complex_numbers: Complex Numbers
+- conic_sections: Conic Sections
+- mathematical_induction: Mathematical Induction
+- geometric_interpretation_systems: Geometric Interpretation of Systems
+- elementary_matrices: Elementary Matrices
+- determinant_geometric_meaning: Geometric Meaning of Determinants
+- inverse_determinant_formula: Inverse Formula Using Determinants
+- linear_dependence: Linear Dependence
+- change_of_basis: Change of Basis
+- invertible_transformations: Invertible Linear Transformations
+- computer_graphics: Computer Graphics Applications
+- data_science_applications: Data Science Applications
+- engineering_applications: Engineering Applications
+- economic_models: Economic and Business Models
+- cryptography: Cryptography Applications
+- network_analysis: Network Analysis
+- advanced_topics: Advanced Linear Algebra Topics
+- jordan_canonical_form: Jordan Canonical Form
+- singular_value_decomposition: Singular Value Decomposition (SVD)
+- numerical_methods: Numerical Linear Algebra
+
+## Most Complex Skills (Most Prerequisites)
+- function_structure: Function Structure Analysis (2 prerequisites)
+- intro_vectors: Introduction to Vectors (2 prerequisites)
+- vector_geometry: Vector Geometry in R² and R³ (2 prerequisites)
+- dot_product: Dot Product (2 prerequisites)
+- lines_planes_3d: Lines and Planes in 3D (2 prerequisites)
+- linear_systems: Systems of Linear Equations (2 prerequisites)
+- system_representation: System Representation (2 prerequisites)
+- geometric_interpretation_systems: Geometric Interpretation of Systems (2 prerequisites)
+- matrix_multiplication: Matrix Multiplication (2 prerequisites)
+- matrix_inverse: Matrix Inverse (2 prerequisites)
+
+## Most Important Skills (Most Dependents)
+- trigonometric_functions: Trigonometric Functions (6 dependents)
+- quadratic_equations: Quadratic Equations and Functions (5 dependents)
+- matrix_inverse: Matrix Inverse (5 dependents)
+- linear_equations_1var: Linear Equations in One Variable (4 dependents)
+- dot_product: Dot Product (4 dependents)
+- diagonalization: Diagonalization (4 dependents)
+- vector_projections: Vector Projections (3 dependents)
+- parametric_solutions: Parametric Solutions (3 dependents)
+- matrix_multiplication: Matrix Multiplication (3 dependents)
+- determinant_properties: Determinant Properties (3 dependents)

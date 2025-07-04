@@ -192,6 +192,13 @@ math231_skill_tree:
           xp_value: 12
           prerequisites: ["sequences_series"]
           
+        - skill_id: "modular_arithmetic"
+          name: "Modular Arithmetic"
+          description: "Basic operations with modular arithmetic"
+          level: "foundational"
+          xp_value: 8
+          prerequisites: ["linear_equations_1var"]
+          
         - skill_id: "polar_coordinates"
           name: "Polar Coordinates"
           description: "Convert between rectangular and polar coordinates"
