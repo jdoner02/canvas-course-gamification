@@ -15,8 +15,9 @@ sys.path.insert(0, str(project_root))
 # Import and run the CLI
 if __name__ == "__main__":
     # Set up environment
-    os.environ['PYTHONPATH'] = str(project_root)
-    
+    os.environ["PYTHONPATH"] = str(project_root)
+
     # Import and run CLI
     from src.cli import cli
+
     cli()
