@@ -357,7 +357,15 @@ class CourseDataLoader:
         modules = self.data.get("modules", {}).get("modules", [])
         for module in modules:
             for item in module.get("items", []):
-                item_id = item.get("id")
+                # Handle both dictionary and string formats
+                if isinstance(item, dict):
+                    item_id = item.get("id")
+                elif isinstance(item, str):
+                    item_id = item
+                else:
+                    result.add_error(f"Module '{module.get('name', '')}' has invalid item format: {type(item)}")
+                    continue
+                    
                 if item_id:
                     if (
                         item_id not in assignment_ids

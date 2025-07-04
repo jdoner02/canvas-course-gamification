@@ -1,46 +1,261 @@
 {
+  "metadata": {
+    "version": "2.0",
+    "created": "2025-07-04",
+    "accessibility_compliance": "WCAG 2.1 AA",
+    "udl_integration": true,
+    "gamification_enabled": true,
+    "research_based": true,
+    "description": "Enterprise Linear Algebra course with comprehensive accessibility, UDL, and gamification features"
+  },
   "modules": [
     {
       "name": "Module 0: Prerequisite Foundations & Course Overview",
-      "overview": "Prerequisites from algebra and precalculus, course introduction, and skill tree navigation.",
+      "description": "Prerequisites from algebra and precalculus, course introduction, and skill tree navigation.",
+      "overview": "This foundational module establishes the mathematical prerequisites needed for success in linear algebra while introducing the gamified learning environment and skill progression system.",
       "unlock_requirements": [],
       "mastery_criteria": {
         "completion_requirement": "view_all",
-        "min_score": null
+        "min_score": null,
+        "adaptive_threshold": true
+      },
+      "accessibility": {
+        "alt_text_required": true,
+        "closed_captions": true,
+        "screen_reader_compatible": true,
+        "keyboard_navigation": true,
+        "high_contrast_available": true,
+        "text_to_speech_enabled": true
+      },
+      "udl_principles": {
+        "multiple_means_of_representation": [
+          "Visual skill tree diagrams",
+          "Audio explanations",
+          "Interactive demonstrations",
+          "Text-based descriptions",
+          "Video content with captions"
+        ],
+        "multiple_means_of_engagement": [
+          "Gamification elements",
+          "Personal progress tracking",
+          "Choice in exploration order",
+          "Relevant real-world connections",
+          "Social learning opportunities"
+        ],
+        "multiple_means_of_action_expression": [
+          "Various assessment formats",
+          "Written and visual responses",
+          "Interactive problem solving",
+          "Peer collaboration options",
+          "Self-paced progression"
+        ]
       },
       "gamification": {
         "theme": "Beginning Your Mathematical Quest",
-        "badges": ["foundation_explorer"],
-        "xp_value": 50
+        "narrative": "Welcome, young mathematician! You're about to embark on a journey through the elegant world of linear algebra. Master each skill to unlock new mathematical powers!",
+        "badges": ["foundation_explorer", "quest_beginner"],
+        "xp_value": 50,
+        "achievements": [
+          {
+            "name": "Prerequisites Mastered",
+            "description": "Demonstrated readiness for linear algebra",
+            "criteria": "Complete prerequisite assessment with 80%+"
+          }
+        ]
       },
+      "learning_objectives": [
+        "Review essential algebraic and geometric prerequisites",
+        "Understand the course structure and skill progression system",
+        "Navigate the gamified learning environment effectively",
+        "Develop growth mindset for mathematical learning"
+      ],
+      "estimated_time": "2-3 hours",
+      "difficulty_level": "Foundation",
       "items": [
-        { "type": "Page", "id": "syllabus" },
-        { "type": "Page", "id": "skill-tree-overview" },
-        { "type": "Page", "id": "prerequisite-review" },
-        { "type": "Quiz", "id": "prerequisite-assessment" },
-        { "type": "Page", "id": "gamification-guide" }
+        { 
+          "type": "Page", 
+          "id": "syllabus",
+          "accessibility": {
+            "alt_text": "Course syllabus with clear structure and expectations",
+            "reading_level": "Grade 12"
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "skill-tree-overview",
+          "accessibility": {
+            "alt_text": "Interactive skill tree showing course progression",
+            "alternative_format": "Linear progression list available"
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "prerequisite-review",
+          "accessibility": {
+            "alt_text": "Mathematical prerequisites with examples",
+            "math_accessibility": "MathJax with screen reader support"
+          }
+        },
+        { 
+          "type": "Quiz", 
+          "id": "prerequisite-assessment",
+          "accessibility": {
+            "extended_time_available": true,
+            "alternative_formats": true,
+            "screen_reader_compatible": true
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "gamification-guide",
+          "accessibility": {
+            "alt_text": "Guide to badges, XP, and progression system",
+            "simplified_version_available": true
+          }
+        }
       ]
     },
     {
       "name": "Module 1: Vectors and Vector Operations",
-      "overview": "Vector definition, operations, dot product, and geometric interpretations in ℝ² and ℝ³.",
+      "description": "Master vector definitions, operations, dot products, and geometric interpretations in ℝ² and ℝ³.",
+      "overview": "This module introduces the fundamental building blocks of linear algebra - vectors. Students will learn to visualize, manipulate, and apply vectors through interactive demonstrations and real-world applications.",
       "unlock_requirements": ["module_0_complete"],
       "mastery_criteria": {
         "completion_requirement": "min_score",
-        "min_score": 75
+        "min_score": 75,
+        "adaptive_threshold": true,
+        "mastery_indicators": [
+          "Vector arithmetic fluency",
+          "Geometric interpretation accuracy",
+          "Application problem solving"
+        ]
+      },
+      "accessibility": {
+        "alt_text_required": true,
+        "closed_captions": true,
+        "screen_reader_compatible": true,
+        "keyboard_navigation": true,
+        "high_contrast_available": true,
+        "text_to_speech_enabled": true,
+        "math_accessibility": "MathJax with screen reader support"
+      },
+      "udl_principles": {
+        "multiple_means_of_representation": [
+          "Interactive vector visualizations",
+          "Step-by-step algebraic procedures",
+          "Geometric animations",
+          "Real-world example videos",
+          "Abstract mathematical notation",
+          "Concrete numerical examples"
+        ],
+        "multiple_means_of_engagement": [
+          "Physics applications (forces, velocities)",
+          "Computer graphics connections",
+          "Progressive difficulty levels",
+          "Peer collaboration opportunities",
+          "Choice in problem contexts"
+        ],
+        "multiple_means_of_action_expression": [
+          "Written problem solutions",
+          "Interactive vector manipulation",
+          "Verbal explanations (audio recordings)",
+          "Visual diagrams and sketches",
+          "Collaborative group work"
+        ]
       },
       "gamification": {
         "theme": "Vector Mastery - The Building Blocks",
-        "badges": ["vector_warrior", "geometry_master"],
-        "xp_value": 100
+        "narrative": "Vectors are the foundation of all mathematical adventures ahead. Master these magical mathematical arrows to unlock the secrets of multidimensional space!",
+        "badges": ["vector_warrior", "geometry_master", "dot_product_champion"],
+        "xp_value": 100,
+        "achievements": [
+          {
+            "name": "Vector Arithmetic Expert",
+            "description": "Flawlessly performed vector operations",
+            "criteria": "Complete all vector operation problems with 90%+ accuracy"
+          },
+          {
+            "name": "Geometric Visualizer",
+            "description": "Demonstrated deep geometric understanding",
+            "criteria": "Correctly interpret geometric meanings in all scenarios"
+          }
+        ],
+        "skill_unlocks": [
+          "Advanced vector applications",
+          "3D visualization tools",
+          "Physics simulation access"
+        ]
       },
+      "learning_objectives": [
+        "Define vectors algebraically and geometrically",
+        "Perform vector addition, subtraction, and scalar multiplication",
+        "Calculate and interpret dot products",
+        "Apply vectors to solve real-world problems",
+        "Visualize vectors in 2D and 3D coordinate systems"
+      ],
+      "estimated_time": "4-6 hours",
+      "difficulty_level": "Beginner",
+      "prerequisite_skills": [
+        "Coordinate geometry",
+        "Basic trigonometry",
+        "Algebraic manipulation"
+      ],
       "items": [
-        { "type": "Page", "id": "vectors-definition" },
-        { "type": "Page", "id": "vector-operations" },
-        { "type": "Page", "id": "dot-product-geometry" },
-        { "type": "Assignment", "id": "hw-vectors" },
-        { "type": "Quiz", "id": "vectors-mastery-check" },
-        { "type": "Page", "id": "vectors-applications" }
+        { 
+          "type": "Page", 
+          "id": "vectors-definition",
+          "title": "What Are Vectors? - Building Mathematical Arrows",
+          "accessibility": {
+            "alt_text": "Introduction to vector concepts with visual examples",
+            "reading_level": "Grade 12",
+            "math_accessibility": "MathJax enabled"
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "vector-operations",
+          "title": "Vector Arithmetic - Adding Mathematical Forces",
+          "accessibility": {
+            "alt_text": "Step-by-step vector operation procedures",
+            "interactive_elements": "Accessible vector manipulation tools"
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "dot-product-geometry",
+          "title": "The Dot Product - Measuring Vector Relationships",
+          "accessibility": {
+            "alt_text": "Geometric interpretation of dot product",
+            "alternative_format": "Audio explanation available"
+          }
+        },
+        { 
+          "type": "Assignment", 
+          "id": "hw-vectors",
+          "accessibility": {
+            "extended_time_available": true,
+            "alternative_formats": true,
+            "assistive_technology_compatible": true
+          }
+        },
+        { 
+          "type": "Quiz", 
+          "id": "vectors-mastery-check",
+          "accessibility": {
+            "screen_reader_compatible": true,
+            "keyboard_navigation": true,
+            "extended_time_option": true
+          }
+        },
+        { 
+          "type": "Page", 
+          "id": "vectors-applications",
+          "title": "Vectors in Action - Real-World Applications",
+          "accessibility": {
+            "alt_text": "Real-world vector applications in physics and engineering",
+            "multiple_examples": "Various context options available"
+          }
+        }
       ]
     },
     {

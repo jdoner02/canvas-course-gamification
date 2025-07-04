@@ -1,30 +1,171 @@
 {
+  "metadata": {
+    "version": "2.0",
+    "created": "2025-07-04",
+    "accessibility_compliance": "WCAG 2.1 AA",
+    "udl_integration": true,
+    "research_based": true,
+    "adaptive_learning": true,
+    "description": "Enterprise Linear Algebra assignments with comprehensive accessibility, UDL, and personalized learning features"
+  },
   "assignments": [
     {
       "id": "hw-vectors",
+      "name": "Vector Operations Mastery Quest",
       "title": "Vector Operations Mastery Quest",
       "description": "Master the fundamental vector operations through interactive problems and real-world applications. This assignment will earn you the 'Vector Warrior' badge upon successful completion.",
       "points_possible": 100,
       "due_at": "2025-02-15T23:59:00Z",
+      "submission_types": ["online_text_entry", "online_upload", "online_url"],
+      "grading_type": "points",
       "mastery_threshold": 75,
-      "gamification": {
-        "xp_value": 100,
-        "badges": ["vector_warrior"],
-        "mastery_paths": {
-          "90+": "advanced_vector_applications",
-          "75-89": "standard_progression",
-          "60-74": "vector_review_path",
-          "<60": "foundational_review"
+      "accessibility": {
+        "alt_text_required": true,
+        "extended_time_available": true,
+        "screen_reader_compatible": true,
+        "keyboard_navigation": true,
+        "math_accessibility": "MathJax with screen reader support",
+        "alternative_formats": [
+          "Large print version",
+          "Audio instructions available",
+          "Video explanations with captions",
+          "Simplified language version"
+        ],
+        "assistive_technology": {
+          "screen_reader_tested": true,
+          "voice_recognition_compatible": true,
+          "switch_navigation_supported": true
         }
       },
-      "outcomes": ["vector_recognition", "vector_operations", "dot_product_computation"],
-      "problem_types": [
-        "Vector addition and subtraction",
-        "Scalar multiplication",
-        "Dot product calculations",
-        "Geometric interpretations",
-        "Real-world applications (physics forces, computer graphics)"
-      ]
+      "udl_principles": {
+        "multiple_means_of_representation": [
+          "Visual vector diagrams",
+          "Algebraic notation",
+          "Geometric animations",
+          "Real-world context examples",
+          "Step-by-step procedures",
+          "Interactive manipulatives"
+        ],
+        "multiple_means_of_engagement": [
+          "Choice in problem contexts (physics, graphics, economics)",
+          "Graduated difficulty levels",
+          "Real-world relevance connections",
+          "Collaborative problem-solving options",
+          "Personal progress tracking"
+        ],
+        "multiple_means_of_action_expression": [
+          "Written mathematical solutions",
+          "Interactive vector manipulations",
+          "Verbal explanations (audio submissions)",
+          "Visual diagrams and sketches",
+          "Video problem-solving demonstrations"
+        ]
+      },
+      "gamification": {
+        "xp_value": 100,
+        "badges": ["vector_warrior", "precision_calculator", "geometric_visualizer"],
+        "achievements": [
+          {
+            "name": "Flawless Vector Operations",
+            "description": "Completed all computational problems without error",
+            "criteria": "100% accuracy on computational problems"
+          },
+          {
+            "name": "Real-World Connector",
+            "description": "Successfully applied vectors to practical scenarios",
+            "criteria": "Demonstrated understanding in application problems"
+          },
+          {
+            "name": "Teaching Assistant",
+            "description": "Helped classmates understand vector concepts",
+            "criteria": "Provided helpful peer explanations"
+          }
+        ],
+        "mastery_paths": {
+          "90+": {
+            "path": "advanced_vector_applications",
+            "description": "Unlock advanced physics simulations and 3D graphics projects"
+          },
+          "75-89": {
+            "path": "standard_progression",
+            "description": "Continue to next module with full access"
+          },
+          "60-74": {
+            "path": "vector_review_path",
+            "description": "Additional practice with targeted feedback"
+          },
+          "<60": {
+            "path": "foundational_review",
+            "description": "Comprehensive review with prerequisite reinforcement"
+          }
+        }
+      },
+      "learning_objectives": [
+        "Perform vector addition and subtraction accurately",
+        "Calculate scalar multiples of vectors",
+        "Compute dot products and interpret geometric meaning",
+        "Apply vector operations to solve real-world problems",
+        "Visualize vector operations in coordinate systems"
+      ],
+      "outcomes": ["vector_recognition", "vector_operations", "dot_product_computation", "geometric_interpretation"],
+      "estimated_time": "3-4 hours",
+      "prerequisite_skills": [
+        "Coordinate geometry",
+        "Basic algebraic operations",
+        "Geometric visualization"
+      ],
+      "problem_categories": [
+        {
+          "category": "Computational Mastery",
+          "description": "Practice vector arithmetic operations",
+          "types": [
+            "Vector addition and subtraction",
+            "Scalar multiplication",
+            "Dot product calculations"
+          ],
+          "accessibility": {
+            "calculator_permitted": true,
+            "formula_sheet_provided": true
+          }
+        },
+        {
+          "category": "Geometric Understanding",
+          "description": "Interpret vector operations geometrically",
+          "types": [
+            "Geometric interpretations",
+            "Vector visualization",
+            "Coordinate system applications"
+          ],
+          "accessibility": {
+            "interactive_tools_available": true,
+            "alternative_text_descriptions": true
+          }
+        },
+        {
+          "category": "Real-World Applications",
+          "description": "Apply vectors to practical scenarios",
+          "types": [
+            "Physics forces and velocities",
+            "Computer graphics transformations",
+            "Engineering displacement problems"
+          ],
+          "accessibility": {
+            "context_variety": "Multiple scenario options available",
+            "simplified_language": "Plain language explanations provided"
+          }
+        }
+      ],
+      "adaptive_features": {
+        "difficulty_scaling": true,
+        "hint_system": "Progressive hints available",
+        "personalized_feedback": "Based on error patterns",
+        "retry_opportunities": "Unlimited with decreasing point values"
+      },
+      "collaboration": {
+        "peer_review_enabled": true,
+        "group_problem_solving": "Optional collaborative sections",
+        "discussion_integration": "Connect to course discussion forums"
+      }
     },
     {
       "id": "hw-span",

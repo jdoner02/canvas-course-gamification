@@ -205,6 +205,7 @@ class TestMATH231Integration:
                     "Intuition",
                     "Synthesis",
                     "Mastery",
+                    "Meta-Badge",  # For badge-related meta outcomes
                 ]
                 assert outcome["level"] in valid_levels
 
