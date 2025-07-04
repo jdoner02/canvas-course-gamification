@@ -215,7 +215,7 @@ python -m src.cli preview ./course-data ./output/preview.html --open-browser
 
 1. **Clone and Navigate**
    ```bash
-   git clone https://github.com/yourusername/canvas-course-gamification.git
+   git clone https://github.com/jdoner02/canvas-course-gamification.git
    cd canvas-course-gamification
    ```
 
@@ -264,7 +264,7 @@ For contributors or those wanting to modify the framework:
 1. **Fork the repository** on GitHub
 2. **Clone your fork**:
    ```bash
-   git clone https://github.com/YOURUSERNAME/canvas-course-gamification.git
+   git clone https://github.com/jdoner02/canvas-course-gamification.git
    cd canvas-course-gamification
    ```
 3. **Install in development mode**:
@@ -686,9 +686,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/canvas-course-gamification/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/canvas-course-gamification/discussions)
-- **Documentation**: [Project Wiki](https://github.com/yourusername/canvas-course-gamification/wiki)
+- **Issues**: [GitHub Issues](https://github.com/jdoner02/canvas-course-gamification/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/jdoner02/canvas-course-gamification/discussions)
+- **Documentation**: [Project Wiki](https://github.com/jdoner02/canvas-course-gamification/wiki)
 
 ---
 

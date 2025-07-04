@@ -63,11 +63,11 @@ class GitHubIntegration:
         console.print(f"🔄 Creating project board: {name}")
         
         try:
-            # Create project
+            # Create project (newer GitHub CLI format)
             result = subprocess.run([
                 'gh', 'project', 'create',
                 '--title', name,
-                '--body', 'Canvas Course Gamification Framework - Professional project tracking'
+                '--owner', '@me'
             ], capture_output=True, text=True, check=True)
             
             project_url = result.stdout.strip()
@@ -172,16 +172,52 @@ class GitHubIntegration:
                 labels_str = line.split(':')[1].strip()
                 labels = [l.strip() for l in labels_str.split(',')]
         
-        # Add priority label
-        labels.append(f"priority/{priority}")
+        # Add priority label if not already present
+        priority_label = f"priority/{priority}"
+        if priority_label not in labels:
+            labels.append(priority_label)
+        
+        # Map common labels to our standardized ones
+        standardized_labels = []
+        for label in labels:
+            if label in ['bug', 'critical', 'high', 'medium', 'low']:
+                if label == 'bug':
+                    standardized_labels.append('type/bug')
+                elif label in ['critical', 'high']:
+                    standardized_labels.append('priority/P0')
+                elif label == 'medium':
+                    standardized_labels.append('priority/P1')
+                elif label == 'low':
+                    standardized_labels.append('priority/P2')
+            elif label in ['feature', 'enhancement']:
+                standardized_labels.append('type/feature')
+            elif label in ['documentation', 'docs']:
+                standardized_labels.append('type/documentation')
+            elif label in ['deployment', 'validation', 'canvas-api', 'cli']:
+                standardized_labels.append(f'component/{label}')
+            else:
+                # Keep the label as-is if it's already in our format
+                standardized_labels.append(label)
         
         try:
+            # First create the issue without labels
             cmd = ['gh', 'issue', 'create', '--title', title, '--body-file', str(issue_file)]
-            if labels:
-                cmd.extend(['--label', ','.join(labels)])
             
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             issue_url = result.stdout.strip()
+            
+            # Extract issue number from URL for labeling
+            issue_number = issue_url.split('/')[-1]
+            
+            # Add labels separately if any exist
+            if standardized_labels:
+                for label in standardized_labels:
+                    try:
+                        subprocess.run(['gh', 'issue', 'edit', issue_number, '--add-label', label], 
+                                     capture_output=True, text=True, check=True)
+                    except subprocess.CalledProcessError:
+                        # Skip if label doesn't exist
+                        console.print(f"   ⚠️  Label '{label}' not found, skipping")
             
             console.print(f"✅ Created issue: {title}")
             console.print(f"   🔗 {issue_url}")
