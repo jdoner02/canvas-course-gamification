@@ -1,0 +1,75 @@
+{
+  "title": "Introduction to Programming",
+  "description": "Learn programming fundamentals with gamification",
+  "course_code": "CS101",
+  "modules": [
+    {
+      "name": "Python Basics",
+      "description": "Introduction to Python programming",
+      "assignments": [
+        {
+          "name": "Hello World",
+          "description": "Your first Python program",
+          "points": 10,
+          "skill_level": "beginner",
+          "type": "assignment"
+        },
+        {
+          "name": "Variables and Data Types",
+          "description": "Working with different data types",
+          "points": 15,
+          "skill_level": "beginner",
+          "type": "assignment"
+        }
+      ]
+    },
+    {
+      "name": "Control Structures",
+      "description": "Loops and conditionals",
+      "assignments": [
+        {
+          "name": "If-Else Statements",
+          "description": "Making decisions in code",
+          "points": 20,
+          "skill_level": "intermediate",
+          "type": "assignment"
+        },
+        {
+          "name": "For Loops",
+          "description": "Repeating actions",
+          "points": 25,
+          "skill_level": "intermediate",
+          "type": "assignment"
+        }
+      ]
+    }
+  ],
+  "skill_tree": {
+    "levels": ["beginner", "intermediate", "advanced"],
+    "prerequisites": {
+      "intermediate": ["beginner"],
+      "advanced": ["intermediate"]
+    }
+  },
+  "gamification": {
+    "badges": [
+      {
+        "name": "First Steps",
+        "description": "Complete your first assignment",
+        "criteria": "complete_assignment",
+        "threshold": 1
+      },
+      {
+        "name": "Python Novice",
+        "description": "Complete all beginner assignments",
+        "criteria": "complete_skill_level",
+        "threshold": "beginner"
+      }
+    ],
+    "xp_multipliers": {
+      "early_submission": 1.1,
+      "perfect_score": 1.2,
+      "help_others": 1.05
+    }
+  }
+}

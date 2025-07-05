@@ -1,145 +1,65 @@
+#!/usr/bin/env python3
 """
-Canvas Course Gamification Framework
-
-A comprehensive Python framework for creating and deploying gamified courses to Canvas LMS
-with automated skill trees, XP systems, and mastery-based learning progressions.
+Setup script for Canvas Course Gamification Framework.
 """
 
-from setuptools import setup, find_packages
+import os
+import sys
+import subprocess
 from pathlib import Path
 
-# Read README for long description
-this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
-# Read requirements
-requirements = (
-    (this_directory / "requirements.txt").read_text(encoding="utf-8").splitlines()
-)
-requirements = [
-    req.strip() for req in requirements if req.strip() and not req.startswith("#")
-]
+def check_python_version():
+    """Check if Python version is 3.8 or higher."""
+    if sys.version_info < (3, 8):
+        print("❌ Python 3.8 or higher is required.")
+        print(f"Current version: {sys.version}")
+        sys.exit(1)
+    print(f"✅ Python {sys.version.split()[0]} detected")
 
-setup(
-    name="canvas-course-gamification",
-    version="1.0.0",
-    description="Framework for creating gamified Canvas LMS courses with skill trees and XP systems",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    # Author information
-    author="Canvas Course Gamification Contributors",
-    author_email="your-email@example.com",
-    # Project URLs
-    url="https://github.com/yourusername/canvas-course-gamification",
-    project_urls={
-        "Bug Reports": "https://github.com/yourusername/canvas-course-gamification/issues",
-        "Source": "https://github.com/yourusername/canvas-course-gamification",
-        "Documentation": "https://github.com/yourusername/canvas-course-gamification/wiki",
-        "Changelog": "https://github.com/yourusername/canvas-course-gamification/blob/main/CHANGELOG.md",
-    },
-    # Package configuration
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
-    # Include non-Python files
-    include_package_data=True,
-    package_data={
-        "": [
-            "*.yml",
-            "*.yaml",
-            "*.json",
-            "*.md",
-            "*.txt",
-            "config/*",
-            "examples/*",
-            "templates/*",
-        ],
-    },
-    # Dependencies
-    install_requires=requirements,
-    # Extra dependencies for different use cases
-    extras_require={
-        "dev": [
-            "pytest>=7.4.0",
-            "pytest-cov>=4.1.0",
-            "black>=23.7.0",
-            "flake8>=6.0.0",
-            "mypy>=1.5.0",
-            "pre-commit>=3.0.0",
-        ],
-        "docs": [
-            "sphinx>=7.1.0",
-            "sphinx-rtd-theme>=1.3.0",
-            "myst-parser>=2.0.0",
-        ],
-        "analytics": [
-            "pandas>=2.0.0",
-            "matplotlib>=3.7.0",
-            "seaborn>=0.12.0",
-        ],
-        "all": [
-            "pytest>=7.4.0",
-            "pytest-cov>=4.1.0",
-            "black>=23.7.0",
-            "flake8>=6.0.0",
-            "mypy>=1.5.0",
-            "sphinx>=7.1.0",
-            "sphinx-rtd-theme>=1.3.0",
-            "pandas>=2.0.0",
-            "matplotlib>=3.7.0",
-            "seaborn>=0.12.0",
-        ],
-    },
-    # Python version requirement
-    python_requires=">=3.8",
-    # PyPI classification
-    classifiers=[
-        # Development Status
-        "Development Status :: 5 - Production/Stable",
-        # Intended Audience
-        "Intended Audience :: Education",
-        "Intended Audience :: Developers",
-        # Topic
-        "Topic :: Education",
-        "Topic :: Education :: Computer Aided Instruction (CAI)",
-        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        # License
-        "License :: OSI Approved :: MIT License",
-        # Programming Language
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.12",
-        # Operating System
-        "Operating System :: OS Independent",
-        # Framework
-        "Framework :: Flask",
-        "Framework :: Django",
-    ],
-    # Keywords for discovery
-    keywords=[
-        "canvas",
-        "lms",
-        "gamification",
-        "education",
-        "elearning",
-        "skill-tree",
-        "xp-system",
-        "badges",
-        "mastery-learning",
-        "instructional-design",
-        "course-builder",
-        "educational-technology",
-    ],
-    # Entry points for command-line tools
-    entry_points={
-        "console_scripts": [
-            "canvas-gamify=src.deploy:main",
-            "canvas-validate=src.validators:main",
-        ],
-    },
-    # Project maturity
-    zip_safe=False,
-)
+
+def install_dependencies():
+    """Install project dependencies."""
+    print("📦 Installing dependencies...")
+    try:
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"]
+        )
+        print("✅ Dependencies installed successfully")
+    except subprocess.CalledProcessError:
+        print("❌ Failed to install dependencies")
+        sys.exit(1)
+
+
+def setup_environment():
+    """Set up environment file."""
+    env_example = Path(".env.example")
+    env_file = Path(".env")
+
+    if not env_file.exists() and env_example.exists():
+        print("📝 Creating .env file from template...")
+        env_file.write_text(env_example.read_text())
+        print("✅ .env file created. Please edit it with your Canvas credentials.")
+    elif env_file.exists():
+        print("✅ .env file already exists")
+    else:
+        print("⚠️ No .env.example template found")
+
+
+def main():
+    """Run the setup process."""
+    print("🚀 Setting up Canvas Course Gamification Framework\n")
+
+    check_python_version()
+    install_dependencies()
+    setup_environment()
+
+    print("\n🎉 Setup complete!")
+    print("\n📋 Next steps:")
+    print("1. Edit .env file with your Canvas API credentials")
+    print("2. Run: python main.py --help")
+    print("3. Check out examples/ directory for sample courses")
+
+
+if __name__ == "__main__":
+    main()

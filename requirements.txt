@@ -5,44 +5,23 @@ requests>=2.31.0
 canvasapi>=3.0.0
 python-dotenv>=1.0.0
 pyyaml>=6.0
+pydantic>=2.0.0
 
-# New autonomous system dependencies
-aiohttp>=3.12.0       # Async HTTP client for security and APIs
-pandas>=2.3.0         # Data analysis for research analytics
-matplotlib>=3.10.0    # Plotting and visualization
-seaborn>=0.13.0       # Statistical visualization
-scipy>=1.16.0         # Scientific computing and statistics
-numpy>=2.3.0          # Numerical computing
-beautifulsoup4>=4.13.0 # HTML parsing for content curation
-openai>=1.0.0         # AI-powered content analysis (optional)
-cryptography>=41.0.0  # Encryption for sensitive data
-
-# Flask web application dependencies
+# Web framework
 Flask>=3.0.0
 Flask-WTF>=1.2.0
-WTForms>=3.1.0
-Werkzeug>=3.0.0
-Jinja2>=3.1.0
 
-# Database and storage
-# sqlite3 is built-in to Python
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
 
-# Optional dependencies for enhanced features
-rich>=13.0.0           # Enhanced console output
-typer>=0.9.0          # CLI framework
-pydantic>=2.0.0       # Data validation
-click>=8.1.0          # CLI utilities
-redis>=4.5.0          # Caching backend (optional)
-
-# Development dependencies
+# Development and testing
 pytest>=7.4.0
 pytest-cov>=4.1.0
 black>=23.7.0
 flake8>=6.0.0
-mypy>=1.5.0
-responses>=0.23.0     # HTTP request mocking for tests
-pytest-mock>=3.11.0  # Enhanced mocking capabilities
 
-# Documentation
-sphinx>=7.1.0
-sphinx-rtd-theme>=1.3.0
+# CLI tools
+typer>=0.9.0
+rich>=13.0.0
+click>=8.1.0
