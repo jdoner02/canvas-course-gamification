@@ -1,0 +1,26 @@
+{
+  "e877ec49-bd7f-4401-97ac-76b45d9594b8": {
+    "name": "Test Faculty",
+    "email": "test.faculty@example.edu",
+    "institution": "Eastern Washington University",
+    "department": "Mathematics",
+    "canvas_user_id": "b9dfa063-24b9-4e8f-9093-c14202d4729e",
+    "technical_comfort_level": "beginner",
+    "gamification_preferences": {},
+    "course_preferences": {},
+    "onboarding_completed": true,
+    "created_at": "2025-07-04T18:57:07.057641"
+  },
+  "d5d006c4-b687-43ce-b97b-1f6eff732351": {
+    "name": "Dr Math",
+    "email": "dr.math@university.edu",
+    "institution": "Eastern Washington University",
+    "department": "Mathematics",
+    "canvas_user_id": "56d2c3ec-b6c5-47da-8af6-8d9d084a5ed7",
+    "technical_comfort_level": "beginner",
+    "gamification_preferences": {},
+    "course_preferences": {},
+    "onboarding_completed": true,
+    "created_at": "2025-07-04T19:04:23.201837"
+  }
+}

@@ -1,0 +1,271 @@
+# Eagle Adventures 2 - Public Demo Portal Configuration
+# ====================================================
+
+demo_portal:
+  # Portal Settings
+  portal_url: "https://demo.eagleadventures.ewu.edu"
+  portal_name: "Eagle Adventures 2 Demo Portal"
+  session_timeout: 3600  # 1 hour
+  max_concurrent_sessions: 100
+  default_language: "en"
+  
+  # Multi-language Support
+  supported_languages:
+    - "en"  # English
+    - "es"  # Spanish
+    - "fr"  # French
+    - "de"  # German
+    - "zh"  # Chinese
+  
+  # Analytics and Tracking
+  analytics_enabled: true
+  track_user_journey: true
+  track_interaction_patterns: true
+  track_completion_rates: true
+  track_conversion_funnel: true
+  privacy_compliant: true
+  anonymized_data: true
+  
+  # Contact and Lead Generation
+  contact_integration: true
+  crm_integration: "hubspot"  # Options: hubspot, salesforce, pipedrive
+  auto_lead_scoring: true
+  follow_up_automation: true
+  demo_to_onboarding_pipeline: true
+  
+  # Feedback System
+  feedback_collection: true
+  post_demo_survey: true
+  real_time_feedback: true
+  nps_tracking: true
+  feature_preference_tracking: true
+  
+  # Performance and Optimization
+  performance_tracking: true
+  page_load_optimization: true
+  cdn_enabled: true
+  image_compression: true
+  lazy_loading: true
+  caching_strategy: "aggressive"
+  
+  # Security Settings
+  security:
+    https_required: true
+    content_security_policy: true
+    rate_limiting: true
+    ddos_protection: true
+    session_security: "enhanced"
+  
+  # Accessibility Features
+  accessibility_features: true
+  screen_reader_support: true
+  keyboard_navigation: true
+  high_contrast_mode: true
+  font_scaling: true
+  alt_text_images: true
+  
+  # Demo Scenarios Configuration
+  scenarios:
+    student_journey:
+      enabled: true
+      estimated_duration: 15  # minutes
+      interactive_elements:
+        - "character_creation"
+        - "pet_interaction"
+        - "quest_completion"
+        - "skill_unlocking"
+        - "guild_collaboration"
+      target_audience: ["prospective_students", "parents"]
+      
+    faculty_setup:
+      enabled: true
+      estimated_duration: 10
+      interactive_elements:
+        - "course_configuration"
+        - "skill_tree_generation"
+        - "student_analytics"
+        - "automation_showcase"
+      target_audience: ["faculty_members", "administrators"]
+      
+    research_analytics:
+      enabled: true
+      estimated_duration: 12
+      interactive_elements:
+        - "data_visualization"
+        - "research_insights"
+        - "publication_pipeline"
+        - "collaboration_network"
+      target_audience: ["researchers", "administrators"]
+      
+    gamification_showcase:
+      enabled: true
+      estimated_duration: 20
+      interactive_elements:
+        - "all_features"
+      target_audience: ["all_users"]
+      
+    mobile_experience:
+      enabled: true
+      estimated_duration: 8
+      interactive_elements:
+        - "mobile_ui"
+        - "touch_interaction"
+        - "offline_mode"
+        - "push_notifications"
+      target_audience: ["students", "mobile_users"]
+      
+    institutional_overview:
+      enabled: true
+      estimated_duration: 18
+      interactive_elements:
+        - "scalability_demo"
+        - "integration_showcase"
+        - "cost_analysis"
+        - "implementation_timeline"
+      target_audience: ["administrators", "decision_makers"]
+  
+  # User Type Personalization
+  user_personalization:
+    prospective_student:
+      focus_areas: ["engagement", "learning_experience", "peer_collaboration"]
+      demo_scenario_recommendations: ["student_journey", "mobile_experience"]
+      call_to_actions: ["start_learning", "join_pilot"]
+      
+    faculty_member:
+      focus_areas: ["time_savings", "student_outcomes", "ease_of_use"]
+      demo_scenario_recommendations: ["faculty_setup", "research_analytics"]
+      call_to_actions: ["schedule_consultation", "start_pilot"]
+      
+    administrator:
+      focus_areas: ["scalability", "cost_effectiveness", "institutional_impact"]
+      demo_scenario_recommendations: ["institutional_overview", "research_analytics"]
+      call_to_actions: ["enterprise_consultation", "pilot_program"]
+      
+    researcher:
+      focus_areas: ["data_collection", "research_capabilities", "collaboration"]
+      demo_scenario_recommendations: ["research_analytics", "gamification_showcase"]
+      call_to_actions: ["research_partnership", "data_access"]
+      
+    parent:
+      focus_areas: ["student_engagement", "learning_outcomes", "safety"]
+      demo_scenario_recommendations: ["student_journey", "mobile_experience"]
+      call_to_actions: ["learn_more", "school_recommendation"]
+  
+  # Sample Data Configuration
+  sample_data:
+    realistic_student_profiles: 5
+    course_analytics_timespan: "semester"  # Options: week, month, semester, year
+    research_data_scale: "large"  # Options: small, medium, large
+    performance_metrics_detail: "comprehensive"
+    
+  # Interactive Elements
+  interactive_features:
+    character_creation:
+      enabled: true
+      customization_options: 8
+      preview_quality: "high"
+      animation_level: "full"
+      
+    pet_interaction:
+      enabled: true
+      response_types: 12
+      emotional_range: "wide"
+      ai_demonstrations: true
+      
+    skill_tree_navigation:
+      enabled: true
+      zoom_levels: [0.5, 1.0, 1.5, 2.0]
+      interactive_nodes: true
+      progress_animation: true
+      
+    quest_completion_simulation:
+      enabled: true
+      problem_solving_demo: true
+      reward_animation: true
+      narrative_context: true
+      
+    analytics_dashboard:
+      enabled: true
+      real_time_updates: true
+      interactive_charts: true
+      drill_down_capability: true
+  
+  # Content Management
+  content:
+    video_quality: "1080p"
+    image_optimization: true
+    loading_animations: true
+    progress_indicators: true
+    interactive_hotspots: true
+    
+  # Social Proof and Testimonials
+  social_proof:
+    testimonials_enabled: true
+    video_testimonials: true
+    institution_logos: true
+    success_statistics: true
+    research_publications: true
+    
+  # Call-to-Action Configuration
+  cta_buttons:
+    primary_color: "#1976d2"
+    hover_effects: true
+    conversion_tracking: true
+    a_b_testing_enabled: true
+    
+  # Integration Settings
+  integrations:
+    calendly:
+      enabled: true
+      scheduling_link: "https://calendly.com/eagleadventures/demo"
+      
+    hubspot:
+      enabled: true
+      form_integration: true
+      lead_scoring: true
+      
+    google_analytics:
+      enabled: true
+      tracking_id: "GA_TRACKING_ID"
+      enhanced_ecommerce: true
+      
+    hotjar:
+      enabled: false  # Privacy consideration
+      heatmaps: false
+      session_recording: false
+      
+    intercom:
+      enabled: true
+      live_chat: true
+      help_widget: true
+  
+  # Email Marketing
+  email_marketing:
+    enabled: true
+    welcome_series: true
+    nurture_campaigns: true
+    demo_follow_up: true
+    educational_content: true
+    
+  # Mobile Optimization
+  mobile_optimization:
+    responsive_design: true
+    touch_friendly: true
+    mobile_specific_content: true
+    app_download_prompts: false  # No native app yet
+    
+  # Performance Monitoring
+  performance:
+    page_speed_target: 3  # seconds
+    core_web_vitals_monitoring: true
+    error_tracking: true
+    uptime_monitoring: true
+    cdn_performance: true
+    
+  # Development and Testing
+  development:
+    staging_environment: "https://demo-staging.eagleadventures.ewu.edu"
+    a_b_testing: true
+    feature_flags: true
+    debug_mode: false
+    performance_profiling: false

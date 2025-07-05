@@ -31,141 +31,167 @@ import seaborn as sns
 
 class AcademicPublicationGenerator:
     """Generate research publications from gamification data"""
-    
+
     def __init__(self, data_path: str = None):
         self.data_path = data_path
         self.research_data = None
         self.analysis_results = {}
         self.paper_sections = {}
-        
+
     def load_simulation_data(self, data_path: str = None) -> Dict[str, Any]:
         """Load AI persona simulation data for analysis"""
         if data_path:
             self.data_path = data_path
-            
-        with open(self.data_path, 'r') as f:
+
+        with open(self.data_path, "r") as f:
             self.research_data = json.load(f)
-            
+
         return self.research_data
-    
+
     def conduct_statistical_analysis(self) -> Dict[str, Any]:
         """Perform comprehensive statistical analysis of the data"""
-        
+
         # Convert to DataFrame for analysis
-        sessions_df = pd.DataFrame(self.research_data['session_data'])
-        personas_df = pd.DataFrame(self.research_data['personas'])
-        
+        sessions_df = pd.DataFrame(self.research_data["session_data"])
+        personas_df = pd.DataFrame(self.research_data["personas"])
+
         # Merge persona characteristics with session data
-        merged_df = sessions_df.merge(personas_df, on='persona_id', how='left')
-        
+        merged_df = sessions_df.merge(personas_df, on="persona_id", how="left")
+
         results = {}
-        
+
         # 1. Descriptive Statistics
-        results['descriptive_stats'] = {
-            'total_sessions': len(sessions_df),
-            'unique_personas': len(personas_df),
-            'mean_performance': float(sessions_df['performance_score'].mean()),
-            'std_performance': float(sessions_df['performance_score'].std()),
-            'mean_engagement': float(sessions_df['engagement_level'].mean()),
-            'std_engagement': float(sessions_df['engagement_level'].std()),
-            'help_seeking_rate': float((sessions_df['help_sought'] == True).mean())
+        results["descriptive_stats"] = {
+            "total_sessions": len(sessions_df),
+            "unique_personas": len(personas_df),
+            "mean_performance": float(sessions_df["performance_score"].mean()),
+            "std_performance": float(sessions_df["performance_score"].std()),
+            "mean_engagement": float(sessions_df["engagement_level"].mean()),
+            "std_engagement": float(sessions_df["engagement_level"].std()),
+            "help_seeking_rate": float((sessions_df["help_sought"] == True).mean()),
         }
-        
+
         # 2. Neurodivergence Impact Analysis
         neurotypical_performance = merged_df[
-            merged_df['neurodivergence'] == 'neurotypical'
-        ]['performance_score']
-        
+            merged_df["neurodivergence"] == "neurotypical"
+        ]["performance_score"]
+
         neurodivergent_performance = merged_df[
-            merged_df['neurodivergence'] != 'neurotypical'
-        ]['performance_score']
-        
+            merged_df["neurodivergence"] != "neurotypical"
+        ]["performance_score"]
+
         if len(neurotypical_performance) > 0 and len(neurodivergent_performance) > 0:
-            t_stat, p_value = stats.ttest_ind(neurotypical_performance, neurodivergent_performance)
-            results['neurodivergence_analysis'] = {
-                'neurotypical_mean': float(neurotypical_performance.mean()),
-                'neurodivergent_mean': float(neurodivergent_performance.mean()),
-                't_statistic': float(t_stat),
-                'p_value': float(p_value),
-                'effect_size': float(abs(neurotypical_performance.mean() - neurodivergent_performance.mean()) / 
-                                   np.sqrt((neurotypical_performance.var() + neurodivergent_performance.var()) / 2))
+            t_stat, p_value = stats.ttest_ind(
+                neurotypical_performance, neurodivergent_performance
+            )
+            results["neurodivergence_analysis"] = {
+                "neurotypical_mean": float(neurotypical_performance.mean()),
+                "neurodivergent_mean": float(neurodivergent_performance.mean()),
+                "t_statistic": float(t_stat),
+                "p_value": float(p_value),
+                "effect_size": float(
+                    abs(
+                        neurotypical_performance.mean()
+                        - neurodivergent_performance.mean()
+                    )
+                    / np.sqrt(
+                        (
+                            neurotypical_performance.var()
+                            + neurodivergent_performance.var()
+                        )
+                        / 2
+                    )
+                ),
             }
-        
+
         # 3. Academic Major Analysis
-        major_performance = merged_df.groupby('academic_major')['performance_score'].agg(['mean', 'std', 'count'])
-        results['major_analysis'] = major_performance.to_dict('index')
-        
+        major_performance = merged_df.groupby("academic_major")[
+            "performance_score"
+        ].agg(["mean", "std", "count"])
+        results["major_analysis"] = major_performance.to_dict("index")
+
         # ANOVA for academic majors
-        major_groups = [group['performance_score'].values for name, group in merged_df.groupby('academic_major')]
+        major_groups = [
+            group["performance_score"].values
+            for name, group in merged_df.groupby("academic_major")
+        ]
         if len(major_groups) > 1:
             f_stat, anova_p = stats.f_oneway(*major_groups)
-            results['major_anova'] = {
-                'f_statistic': float(f_stat),
-                'p_value': float(anova_p)
+            results["major_anova"] = {
+                "f_statistic": float(f_stat),
+                "p_value": float(anova_p),
             }
-        
+
         # 4. Gamification Engagement Analysis
         gamification_interactions = []
-        for session in sessions_df.to_dict('records'):
-            interaction_count = len(session.get('gamification_interactions', {}))
+        for session in sessions_df.to_dict("records"):
+            interaction_count = len(session.get("gamification_interactions", {}))
             gamification_interactions.append(interaction_count)
-        
-        sessions_df['gamification_interaction_count'] = gamification_interactions
-        
+
+        sessions_df["gamification_interaction_count"] = gamification_interactions
+
         # Correlation between gamification interactions and performance
         correlation, corr_p = stats.pearsonr(
-            sessions_df['gamification_interaction_count'],
-            sessions_df['performance_score']
+            sessions_df["gamification_interaction_count"],
+            sessions_df["performance_score"],
         )
-        
-        results['gamification_correlation'] = {
-            'correlation_coefficient': float(correlation),
-            'p_value': float(corr_p),
-            'interpretation': self._interpret_correlation(correlation)
+
+        results["gamification_correlation"] = {
+            "correlation_coefficient": float(correlation),
+            "p_value": float(corr_p),
+            "interpretation": self._interpret_correlation(correlation),
         }
-        
+
         # 5. Learning Progression Analysis
         # Track performance improvement over sessions for each persona
         progression_data = []
-        for persona_id in sessions_df['persona_id'].unique():
-            persona_sessions = sessions_df[sessions_df['persona_id'] == persona_id].sort_values('timestamp')
+        for persona_id in sessions_df["persona_id"].unique():
+            persona_sessions = sessions_df[
+                sessions_df["persona_id"] == persona_id
+            ].sort_values("timestamp")
             if len(persona_sessions) > 1:
-                first_session = persona_sessions.iloc[0]['performance_score']
-                last_session = persona_sessions.iloc[-1]['performance_score']
+                first_session = persona_sessions.iloc[0]["performance_score"]
+                last_session = persona_sessions.iloc[-1]["performance_score"]
                 improvement = last_session - first_session
                 progression_data.append(improvement)
-        
+
         if progression_data:
-            results['learning_progression'] = {
-                'mean_improvement': float(np.mean(progression_data)),
-                'std_improvement': float(np.std(progression_data)),
-                'percent_improved': float((np.array(progression_data) > 0).mean() * 100)
+            results["learning_progression"] = {
+                "mean_improvement": float(np.mean(progression_data)),
+                "std_improvement": float(np.std(progression_data)),
+                "percent_improved": float(
+                    (np.array(progression_data) > 0).mean() * 100
+                ),
             }
-        
+
         # 6. Predictive Modeling
         # Predict performance based on persona characteristics
-        features = ['math_anxiety', 'baseline_performance']
+        features = ["math_anxiety", "baseline_performance"]
         X = merged_df[features].fillna(merged_df[features].mean())
-        y = merged_df['performance_score']
-        
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        
+        y = merged_df["performance_score"]
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42
+        )
+
         model = RandomForestRegressor(n_estimators=100, random_state=42)
         model.fit(X_train, y_train)
-        
+
         y_pred = model.predict(X_test)
         r2 = r2_score(y_test, y_pred)
         rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-        
-        results['predictive_model'] = {
-            'r2_score': float(r2),
-            'rmse': float(rmse),
-            'feature_importance': dict(zip(features, model.feature_importances_.astype(float)))
+
+        results["predictive_model"] = {
+            "r2_score": float(r2),
+            "rmse": float(rmse),
+            "feature_importance": dict(
+                zip(features, model.feature_importances_.astype(float))
+            ),
         }
-        
+
         self.analysis_results = results
         return results
-    
+
     def _interpret_correlation(self, correlation: float) -> str:
         """Interpret correlation coefficient"""
         abs_corr = abs(correlation)
@@ -179,7 +205,7 @@ class AcademicPublicationGenerator:
             return "strong"
         else:
             return "very strong"
-    
+
     def generate_methodology_section(self) -> str:
         """Generate methodology section for academic paper"""
         methodology = f"""
@@ -229,7 +255,7 @@ Effect sizes were calculated using Cohen's d for practical significance assessme
 This research employed synthetic AI personas rather than human participants, eliminating privacy concerns while maintaining ecological validity. The simulation methodology was designed to comply with educational research ethics and FERPA requirements for future human subject studies.
 """
         return methodology.strip()
-    
+
     def generate_results_section(self) -> str:
         """Generate results section with statistical findings"""
         results = f"""
@@ -243,9 +269,9 @@ Help-seeking behavior occurred in {self.analysis_results['descriptive_stats']['h
 
 ### Impact of Neurodivergence on Learning Outcomes
 """
-        
-        if 'neurodivergence_analysis' in self.analysis_results:
-            neuro_analysis = self.analysis_results['neurodivergence_analysis']
+
+        if "neurodivergence_analysis" in self.analysis_results:
+            neuro_analysis = self.analysis_results["neurodivergence_analysis"]
             results += f"""
 Comparison of academic performance between neurotypical (M = {neuro_analysis['neurotypical_mean']:.3f}) and neurodivergent (M = {neuro_analysis['neurodivergent_mean']:.3f}) personas revealed {
     'significantly different' if neuro_analysis['p_value'] < 0.05 else 'no significant difference'
@@ -258,10 +284,10 @@ The effect size of d = {neuro_analysis['effect_size']:.3f} indicates a {
     else 'requires additional accessibility features for'
 } neurodivergent learners.
 """
-        
+
         # Add gamification engagement analysis
-        if 'gamification_correlation' in self.analysis_results:
-            gam_analysis = self.analysis_results['gamification_correlation']
+        if "gamification_correlation" in self.analysis_results:
+            gam_analysis = self.analysis_results["gamification_correlation"]
             results += f"""
 
 ### Gamification Engagement and Learning Outcomes
@@ -271,29 +297,29 @@ Analysis revealed a {gam_analysis['interpretation']} positive correlation betwee
     else 'comparable'
 } learning outcomes.
 """
-        
+
         # Add learning progression analysis
-        if 'learning_progression' in self.analysis_results:
-            prog_analysis = self.analysis_results['learning_progression']
+        if "learning_progression" in self.analysis_results:
+            prog_analysis = self.analysis_results["learning_progression"]
             results += f"""
 
 ### Learning Progression Over Time
 
 Longitudinal analysis of performance across sessions demonstrated significant learning progression. On average, personas improved by {prog_analysis['mean_improvement']:.3f} points (SD = {prog_analysis['std_improvement']:.3f}) from their first to final session. Notably, {prog_analysis['percent_improved']:.1f}% of personas showed positive improvement, indicating the gamification system's effectiveness in supporting sustained learning growth.
 """
-        
+
         # Add predictive modeling results
-        if 'predictive_model' in self.analysis_results:
-            model_analysis = self.analysis_results['predictive_model']
+        if "predictive_model" in self.analysis_results:
+            model_analysis = self.analysis_results["predictive_model"]
             results += f"""
 
 ### Predictive Factors for Academic Success
 
 Random Forest regression modeling achieved R² = {model_analysis['r2_score']:.3f} in predicting academic performance from persona characteristics. Feature importance analysis revealed that math anxiety (importance = {model_analysis['feature_importance'].get('math_anxiety', 0):.3f}) and baseline performance (importance = {model_analysis['feature_importance'].get('baseline_performance', 0):.3f}) were the strongest predictors of learning outcomes.
 """
-        
+
         return results.strip()
-    
+
     def generate_discussion_section(self) -> str:
         """Generate discussion section with implications"""
         discussion = """
@@ -336,16 +362,16 @@ For educators and instructional designers, these findings suggest that autonomou
 The Eagle Adventures 2 autonomous gamification platform demonstrates promise for transforming mathematics education through evidence-based game design. The system's ability to accommodate diverse learners while maintaining academic rigor positions it as a valuable tool for educational innovation.
 """
         return discussion.strip()
-    
+
     def generate_complete_paper(self, title: str = None, authors: str = None) -> str:
         """Generate a complete academic paper"""
-        
+
         if not title:
             title = "Autonomous Gamification in Mathematics Education: A Simulation Study of Diverse Learning Populations"
-        
+
         if not authors:
             authors = "AI Research Team, Eagle Adventures Development Consortium"
-        
+
         paper = f"""
 # {title}
 
@@ -452,33 +478,36 @@ The AI persona simulation data supporting this study's conclusions are available
 *Conflicts of Interest: None declared*
 *Ethics Approval: Not applicable (synthetic data only)*
 """
-        
-        self.paper_sections['complete_paper'] = paper
+
+        self.paper_sections["complete_paper"] = paper
         return paper.strip()
-    
+
     def save_paper(self, filename: str = None) -> str:
         """Save the generated paper to file"""
         if not filename:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"autonomous_gamification_research_paper_{timestamp}.md"
-        
-        if not hasattr(self, 'paper_sections') or 'complete_paper' not in self.paper_sections:
+
+        if (
+            not hasattr(self, "paper_sections")
+            or "complete_paper" not in self.paper_sections
+        ):
             self.generate_complete_paper()
-        
-        with open(filename, 'w') as f:
-            f.write(self.paper_sections['complete_paper'])
-        
+
+        with open(filename, "w") as f:
+            f.write(self.paper_sections["complete_paper"])
+
         return filename
-    
+
     def generate_submission_package(self) -> Dict[str, str]:
         """Generate complete submission package for academic journal"""
-        
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
+
         # Main manuscript
         paper_file = f"manuscript_{timestamp}.md"
         self.save_paper(paper_file)
-        
+
         # Cover letter
         cover_letter = f"""
 Dear Editor,
@@ -503,11 +532,11 @@ Sincerely,
 AI Research Team
 Eagle Adventures Development Consortium
 """
-        
+
         cover_letter_file = f"cover_letter_{timestamp}.txt"
-        with open(cover_letter_file, 'w') as f:
+        with open(cover_letter_file, "w") as f:
             f.write(cover_letter.strip())
-        
+
         # Data availability statement
         data_statement = f"""
 Data Availability Statement for "Autonomous Gamification in Mathematics Education"
@@ -524,16 +553,16 @@ All code is available under MIT license for replication and extension.
 Repository: https://github.com/[username]/canvas-course-gamification
 Data DOI: [To be assigned upon publication]
 """
-        
+
         data_file = f"data_availability_{timestamp}.txt"
-        with open(data_file, 'w') as f:
+        with open(data_file, "w") as f:
             f.write(data_statement.strip())
-        
+
         return {
-            'manuscript': paper_file,
-            'cover_letter': cover_letter_file,
-            'data_statement': data_file,
-            'submission_ready': True
+            "manuscript": paper_file,
+            "cover_letter": cover_letter_file,
+            "data_statement": data_file,
+            "submission_ready": True,
         }
 
 
@@ -541,27 +570,34 @@ Data DOI: [To be assigned upon publication]
 if __name__ == "__main__":
     print("📚 Academic Publication Generator")
     print("=" * 50)
-    
+
     # Initialize generator
     generator = AcademicPublicationGenerator()
-    
+
     # Load sample data (would be from actual simulation)
     sample_data = {
         "metadata": {
             "generated_at": datetime.now().isoformat(),
             "total_personas": 20,
             "total_sessions": 100,
-            "simulation_version": "1.0"
+            "simulation_version": "1.0",
         },
         "personas": [
             {
                 "persona_id": f"persona_{i}",
-                "academic_major": "engineering" if i < 5 else "psychology" if i < 10 else "art",
-                "neurodivergence": "neurotypical" if i % 3 == 0 else "adhd_combined" if i % 3 == 1 else "autism_systematic",
+                "academic_major": (
+                    "engineering" if i < 5 else "psychology" if i < 10 else "art"
+                ),
+                "neurodivergence": (
+                    "neurotypical"
+                    if i % 3 == 0
+                    else "adhd_combined" if i % 3 == 1 else "autism_systematic"
+                ),
                 "motivation_style": "mastery_oriented",
                 "baseline_performance": 0.7 + (i * 0.01),
-                "math_anxiety": 0.3 + (i * 0.01)
-            } for i in range(20)
+                "math_anxiety": 0.3 + (i * 0.01),
+            }
+            for i in range(20)
         ],
         "session_data": [
             {
@@ -575,35 +611,44 @@ if __name__ == "__main__":
                 "engagement_level": 0.7 + np.random.normal(0, 0.1),
                 "motivation_level": 0.6 + np.random.normal(0, 0.1),
                 "stress_level": 0.3 + np.random.normal(0, 0.1),
-                "gamification_interactions": {"checked_xp_progress": True} if j % 2 == 0 else {}
-            } for j in range(100)
-        ]
+                "gamification_interactions": (
+                    {"checked_xp_progress": True} if j % 2 == 0 else {}
+                ),
+            }
+            for j in range(100)
+        ],
     }
-    
+
     # Save sample data
     with open("sample_research_data.json", "w") as f:
         json.dump(sample_data, f, indent=2)
-    
+
     # Load and analyze data
     generator.load_simulation_data("sample_research_data.json")
     analysis_results = generator.conduct_statistical_analysis()
-    
+
     print("✅ Statistical analysis complete:")
-    print(f"   - {analysis_results['descriptive_stats']['total_sessions']} sessions analyzed")
-    print(f"   - {analysis_results['descriptive_stats']['unique_personas']} personas included")
-    print(f"   - Mean performance: {analysis_results['descriptive_stats']['mean_performance']:.3f}")
-    
+    print(
+        f"   - {analysis_results['descriptive_stats']['total_sessions']} sessions analyzed"
+    )
+    print(
+        f"   - {analysis_results['descriptive_stats']['unique_personas']} personas included"
+    )
+    print(
+        f"   - Mean performance: {analysis_results['descriptive_stats']['mean_performance']:.3f}"
+    )
+
     # Generate complete paper
     paper = generator.generate_complete_paper()
     print(f"\n📄 Generated paper ({len(paper.split())} words)")
-    
+
     # Create submission package
     submission_files = generator.generate_submission_package()
     print(f"\n📦 Submission package created:")
     for file_type, filename in submission_files.items():
         if filename != True:  # Skip the boolean flag
             print(f"   - {file_type}: {filename}")
-    
+
     print(f"\n🎯 Ready for journal submission!")
     print(f"   Target journals: Computers & Education, BJET, JETS")
     print(f"   Estimated review time: 4-6 months")
