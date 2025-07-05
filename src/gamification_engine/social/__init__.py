@@ -15,11 +15,11 @@ from .mentorship_system import MentorshipChain, PeerTeachingEngine
 from .competition_system import PvPBattleEngine, TournamentManager
 
 __all__ = [
-    'GuildManager',
-    'Guild', 
-    'StudyParty',
-    'MentorshipChain',
-    'PeerTeachingEngine',
-    'PvPBattleEngine',
-    'TournamentManager'
+    "GuildManager",
+    "Guild",
+    "StudyParty",
+    "MentorshipChain",
+    "PeerTeachingEngine",
+    "PvPBattleEngine",
+    "TournamentManager",
 ]
