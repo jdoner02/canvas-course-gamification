@@ -1,0 +1,21 @@
+title: "Linear Algebra Course Builder"
+description: "Production-ready educational platform with Canvas integration"
+url: "https://jdoner02.github.io"
+baseurl: "/canvas-course-gamification"
+
+plugins:
+  - jekyll-default-layout
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-relative-links
+
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - requirements.txt
+  - "*.py"
+  - .env*
+
+include:
+  - _redirects

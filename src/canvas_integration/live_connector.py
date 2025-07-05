@@ -759,9 +759,13 @@ class CanvasAPIConnector:
                             name=assignment_data["name"],
                             description=assignment_data.get("description", ""),
                             points_possible=assignment_data.get("points_possible", 0),
-                            due_at=self._parse_canvas_date(assignment_data.get("due_at")),
+                            due_at=self._parse_canvas_date(
+                                assignment_data.get("due_at")
+                            ),
                             course_id=self.course_id,
-                            assignment_type=self._categorize_assignment(assignment_data),
+                            assignment_type=self._categorize_assignment(
+                                assignment_data
+                            ),
                             skill_category=self._map_to_skill_category(assignment_data),
                             xp_value=self._calculate_xp_value(assignment_data),
                             prerequisites=[],
@@ -787,7 +791,9 @@ class CanvasAPIConnector:
             return AssignmentType.QUIZ
         elif any(keyword in name for keyword in ["project", "paper", "essay"]):
             return AssignmentType.PROJECT
-        elif any(keyword in name for keyword in ["participation", "discussion", "forum"]):
+        elif any(
+            keyword in name for keyword in ["participation", "discussion", "forum"]
+        ):
             return AssignmentType.PARTICIPATION
         elif "online_quiz" in submission_types:
             return AssignmentType.QUIZ
@@ -846,7 +852,9 @@ class CanvasAPIConnector:
 
                     for student_data in students_data:
                         # Apply privacy protection
-                        protected_data = self.privacy_system.protect_student_data(student_data)
+                        protected_data = self.privacy_system.protect_student_data(
+                            student_data
+                        )
 
                         student = CanvasStudent(
                             canvas_id=student_data["id"],
@@ -862,7 +870,9 @@ class CanvasAPIConnector:
 
                         self.students[student.canvas_id] = student
 
-                    logger.info(f"👥 Loaded {len(self.students)} students (privacy protected)")
+                    logger.info(
+                        f"👥 Loaded {len(self.students)} students (privacy protected)"
+                    )
 
         except Exception as e:
             logger.error(f"❌ Failed to load students: {e}")
@@ -917,7 +927,9 @@ class CanvasAPIConnector:
                     column_data = await response.json()
                     return column_data.get("id")
                 else:
-                    logger.error(f"❌ Failed to create XP column: HTTP {response.status}")
+                    logger.error(
+                        f"❌ Failed to create XP column: HTTP {response.status}"
+                    )
                     return None
 
         except Exception as e:

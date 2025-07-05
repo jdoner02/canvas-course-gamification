@@ -15,6 +15,17 @@ scipy>=1.16.0         # Scientific computing and statistics
 numpy>=2.3.0          # Numerical computing
 beautifulsoup4>=4.13.0 # HTML parsing for content curation
 openai>=1.0.0         # AI-powered content analysis (optional)
+cryptography>=41.0.0  # Encryption for sensitive data
+
+# Flask web application dependencies
+Flask>=3.0.0
+Flask-WTF>=1.2.0
+WTForms>=3.1.0
+Werkzeug>=3.0.0
+Jinja2>=3.1.0
+
+# Database and storage
+# sqlite3 is built-in to Python
 
 # Optional dependencies for enhanced features
 rich>=13.0.0           # Enhanced console output

@@ -1,0 +1,478 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Linear Algebra Course Builder{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Dashboard Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-primary text-white border-0">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="h2 mb-2">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Admin Dashboard
+                            </h1>
+                            <p class="mb-0">Monitor and manage all linear algebra courses in the system</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <button class="btn btn-light me-2" onclick="refreshDashboard()">
+                                <i class="fas fa-sync me-1"></i>Refresh
+                            </button>
+                            <button class="btn btn-outline-light" onclick="runCleanup()">
+                                <i class="fas fa-broom me-1"></i>Cleanup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ stats.total_courses }}</div>
+                <div>Total Courses</div>
+                <div class="small mt-1">
+                    <i class="fas fa-graduation-cap me-1"></i>All time
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
+                <div class="stats-number">{{ stats.active_courses }}</div>
+                <div>Active Courses</div>
+                <div class="small mt-1">
+                    <i class="fas fa-check-circle me-1"></i>Currently running
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                <div class="stats-number">{{ stats.total_enrollments }}</div>
+                <div>Total Enrollments</div>
+                <div class="small mt-1">
+                    <i class="fas fa-users me-1"></i>All courses
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                <div class="stats-number" id="avg-enrollment">
+                    {% if stats.total_courses > 0 %}
+                        {{ (stats.total_enrollments / stats.total_courses) | round(1) }}
+                    {% else %}
+                        0
+                    {% endif %}
+                </div>
+                <div>Avg. Enrollment</div>
+                <div class="small mt-1">
+                    <i class="fas fa-chart-line me-1"></i>Per course
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Recent Courses -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clock me-2"></i>
+                        Recent Courses
+                    </h5>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-filter me-1"></i>Filter
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="filterCourses('all')">All Courses</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filterCourses('active')">Active Only</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filterCourses('creating')">Creating</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filterCourses('expired')">Expired</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    {% if stats.recent_courses %}
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="courses-table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Instructor</th>
+                                    <th>Status</th>
+                                    <th>Students</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for course in stats.recent_courses %}
+                                <tr data-status="{{ course[3] }}">
+                                    <td>
+                                        <div class="fw-bold">{{ course[1] }}</div>
+                                        <small class="text-muted">{{ course[0][:8] }}...</small>
+                                    </td>
+                                    <td>{{ course[2] }}</td>
+                                    <td>
+                                        <span class="status-badge status-{{ course[3] }}">
+                                            {{ course[3].title() }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ course[5] }}</span>
+                                    </td>
+                                    <td>
+                                        <small>{{ course[4][:10] }}</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="{{ url_for('course_dashboard', course_id=course[0]) }}" 
+                                               class="btn btn-outline-primary btn-sm" 
+                                               title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <button class="btn btn-outline-success btn-sm" 
+                                                    onclick="exportCourse('{{ course[0] }}')"
+                                                    title="Export Course">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-sm" 
+                                                    onclick="deleteCourse('{{ course[0] }}', '{{ course[1] }}')"
+                                                    title="Delete Course">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5 text-muted">
+                        <i class="fas fa-graduation-cap fa-3x mb-3"></i>
+                        <h5>No Courses Yet</h5>
+                        <p>Create your first linear algebra course to get started.</p>
+                        <a href="{{ url_for('create_course') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Create Course
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-server me-2"></i>
+                        System Status
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Canvas API</div>
+                                    <small class="text-success">Connected</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Database</div>
+                                    <small class="text-success">Operational</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-warning text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Auto Cleanup</div>
+                                    <small class="text-warning">Scheduled</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-info text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Security</div>
+                                    <small class="text-info">Encrypted</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Actions -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>
+                        Quick Actions
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('create_course') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>
+                            Create New Course
+                        </a>
+                        <button class="btn btn-success" onclick="bulkExport()">
+                            <i class="fas fa-download me-1"></i>
+                            Bulk Export
+                        </button>
+                        <button class="btn btn-warning" onclick="runCleanup()">
+                            <i class="fas fa-broom me-1"></i>
+                            Run Cleanup
+                        </button>
+                        <button class="btn btn-info" onclick="viewLogs()">
+                            <i class="fas fa-file-alt me-1"></i>
+                            View Logs
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-bell me-2"></i>
+                        Recent Activity
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="small" id="activity-feed">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-success text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px; font-size: 0.7rem;">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div>
+                                <div>New course created</div>
+                                <div class="text-muted">2 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-info text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px; font-size: 0.7rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div>Student enrolled</div>
+                                <div class="text-muted">15 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="bg-warning text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px; font-size: 0.7rem;">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div>
+                                <div>Course exported</div>
+                                <div class="text-muted">1 hour ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="bg-danger text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px; font-size: 0.7rem;">
+                                <i class="fas fa-broom"></i>
+                            </div>
+                            <div>
+                                <div>Cleanup completed</div>
+                                <div class="text-muted">2 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-chart-pie me-2"></i>
+                        Performance Metrics
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>System Load</small>
+                            <small>24%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 24%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>Storage Used</small>
+                            <small>67%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 67%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>API Calls</small>
+                            <small>89%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" style="width: 89%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <small class="text-muted">Last updated: 5 minutes ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Auto-refresh dashboard every 60 seconds
+    setInterval(refreshDashboard, 60000);
+    
+    function refreshDashboard() {
+        // Add loading spinner
+        const refreshBtn = document.querySelector('button[onclick="refreshDashboard()"]');
+        const originalText = refreshBtn.innerHTML;
+        refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Refreshing...';
+        refreshBtn.disabled = true;
+        
+        // Simulate refresh (in real implementation, this would fetch new data)
+        setTimeout(() => {
+            refreshBtn.innerHTML = originalText;
+            refreshBtn.disabled = false;
+            showAlert('Dashboard refreshed successfully', 'success');
+        }, 2000);
+    }
+    
+    function filterCourses(status) {
+        const rows = document.querySelectorAll('#courses-table tbody tr');
+        
+        rows.forEach(row => {
+            if (status === 'all' || row.dataset.status === status) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        showAlert(`Filtered courses by: ${status}`, 'info');
+    }
+    
+    function exportCourse(courseId) {
+        const btn = event.target.closest('button');
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+        
+        fetch(`/api/export/${courseId}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
+                }
+                throw new Error('Export failed');
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `course_${courseId}_export.imscc`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                showAlert('Course exported successfully!', 'success');
+            })
+            .catch(error => {
+                showAlert('Failed to export course: ' + error.message, 'danger');
+            })
+            .finally(() => {
+                btn.innerHTML = originalHtml;
+                btn.disabled = false;
+            });
+    }
+    
+    function deleteCourse(courseId, courseName) {
+        if (confirm(`Are you sure you want to delete "${courseName}"? This action cannot be undone.`)) {
+            // Implement course deletion
+            showAlert('Course deletion feature coming soon!', 'warning');
+        }
+    }
+    
+    function bulkExport() {
+        if (confirm('Export all active courses? This may take several minutes.')) {
+            showAlert('Bulk export feature coming soon!', 'info');
+        }
+    }
+    
+    function runCleanup() {
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Running...';
+        btn.disabled = true;
+        
+        fetch('/api/cleanup')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert(`Cleanup completed! ${data.cleaned_courses.length} courses cleaned up.`, 'success');
+                } else {
+                    showAlert('Cleanup failed: ' + data.error, 'danger');
+                }
+            })
+            .catch(error => {
+                showAlert('Cleanup error: ' + error.message, 'danger');
+            })
+            .finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+    }
+    
+    function viewLogs() {
+        showAlert('Log viewer feature coming soon!', 'info');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block title %}Course Dashboard - {{ course.course_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Course Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm border-0 bg-primary text-white">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="h3 mb-2">
+                                <i class="fas fa-graduation-cap me-2"></i>
+                                {{ course.course_name }}
+                            </h1>
+                            <p class="mb-1">
+                                <i class="fas fa-user me-2"></i>
+                                Instructor: {{ course.instructor_name }}
+                            </p>
+                            <p class="mb-0">
+                                <i class="fas fa-envelope me-2"></i>
+                                {{ course.instructor_email }}
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <span class="status-badge status-{{ course.status }}">
+                                {{ course.status.title() }}
+                            </span>
+                            <div class="small mt-2">
+                                Created: {{ course.created_date[:10] }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Statistics -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ course.enrollment_count }}</div>
+                <div>Students Enrolled</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">{{ course.exports|length }}</div>
+                <div>Course Exports</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">
+                    {% if course.cleanup_date %}
+                        {{ ((course.cleanup_date | as_datetime) - (course.created_date | as_datetime)).days }}
+                    {% else %}
+                        ∞
+                    {% endif %}
+                </div>
+                <div>Days Remaining</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="stats-card">
+                <div class="stats-number">
+                    <i class="fas fa-{{ 'check' if course.canvas_course_id else 'times' }}"></i>
+                </div>
+                <div>Canvas Status</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Course Links -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-link me-2"></i>
+                        Course Access Links
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if course.join_code %}
+                    <div class="mb-4">
+                        <h6>Student Join Code</h6>
+                        <div class="join-code">
+                            {{ course.join_code }}
+                        </div>
+                        <div class="d-flex gap-2 mt-2">
+                            <button class="btn btn-outline-primary btn-sm" 
+                                    onclick="copyToClipboard('{{ course.join_code }}', this)">
+                                <i class="fas fa-copy me-1"></i>Copy Code
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" 
+                                    onclick="copyToClipboard('{{ request.url_root }}join/{{ course.join_code }}', this)">
+                                <i class="fas fa-link me-1"></i>Copy Join Link
+                            </button>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if course.canvas_url %}
+                    <div class="mb-3">
+                        <h6>Canvas Course URL</h6>
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="{{ course.canvas_url }}" readonly>
+                            <button class="btn btn-outline-primary" 
+                                    onclick="copyToClipboard('{{ course.canvas_url }}', this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="{{ course.canvas_url }}" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt me-1"></i>Open Canvas
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if course.join_url %}
+                    <div class="mb-3">
+                        <h6>Public Join URL</h6>
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="{{ course.join_url }}" readonly>
+                            <button class="btn btn-outline-primary" 
+                                    onclick="copyToClipboard('{{ course.join_url }}', this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <a href="{{ course.join_url }}" target="_blank" class="btn btn-success">
+                                <i class="fas fa-users me-1"></i>Student Portal
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Course Management -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-cogs me-2"></i>
+                        Course Management
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-success w-100" onclick="exportCourse()">
+                                <i class="fas fa-download me-2"></i>
+                                Export Course
+                            </button>
+                            <small class="text-muted d-block mt-1">Download as Canvas cartridge (.imscc)</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-info w-100" onclick="viewAnalytics()">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                View Analytics
+                            </button>
+                            <small class="text-muted d-block mt-1">Student progress and engagement</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-warning w-100" onclick="editCourse()">
+                                <i class="fas fa-edit me-2"></i>
+                                Edit Course
+                            </button>
+                            <small class="text-muted d-block mt-1">Modify course settings</small>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-outline-danger w-100" onclick="deleteCourse()">
+                                <i class="fas fa-trash me-2"></i>
+                                Delete Course
+                            </button>
+                            <small class="text-muted d-block mt-1">Permanent deletion</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export History -->
+            {% if course.exports %}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>
+                        Export History
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>File</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for export in course.exports %}
+                                <tr>
+                                    <td>{{ export[2][:10] }}</td>
+                                    <td>{{ export[1].split('/')[-1] }}</td>
+                                    <td>
+                                        <span class="badge bg-info">
+                                            {{ "%.1f"|format(export[3]/1024/1024) }} MB
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('api_export_course', course_id=course.course_id) }}" 
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-download me-1"></i>Download
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Actions -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>
+                        Quick Actions
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ course.canvas_url }}" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="fas fa-external-link-alt me-1"></i>
+                            Open in Canvas
+                        </a>
+                        <button class="btn btn-success btn-sm" onclick="shareJoinLink()">
+                            <i class="fas fa-share me-1"></i>
+                            Share Join Link
+                        </button>
+                        <button class="btn btn-info btn-sm" onclick="sendInvitations()">
+                            <i class="fas fa-envelope me-1"></i>
+                            Send Invitations
+                        </button>
+                        <a href="{{ url_for('create_course') }}" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-plus me-1"></i>
+                            Create Another Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Course Information
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2">
+                        <strong>Course ID:</strong>
+                        <br><code>{{ course.course_id }}</code>
+                    </div>
+                    <div class="mb-2">
+                        <strong>Created:</strong>
+                        <br>{{ course.created_date[:16].replace('T', ' ') }}
+                    </div>
+                    {% if course.cleanup_date %}
+                    <div class="mb-2">
+                        <strong>Auto-Delete:</strong>
+                        <br><span class="text-warning">{{ course.cleanup_date[:10] }}</span>
+                    </div>
+                    {% endif %}
+                    <div class="mb-2">
+                        <strong>Status:</strong>
+                        <br><span class="status-badge status-{{ course.status }}">{{ course.status.title() }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help & Support -->
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-question-circle me-2"></i>
+                        Help & Support
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="small">
+                        <div class="mb-2">
+                            <strong>How to share with students:</strong>
+                            <br>Send them the join code or direct link above.
+                        </div>
+                        <div class="mb-2">
+                            <strong>Exporting your course:</strong>
+                            <br>Download the .imscc file to import into any Canvas instance.
+                        </div>
+                        <div class="mb-2">
+                            <strong>Auto-deletion:</strong>
+                            <br>Test courses are automatically deleted after 7 days to keep the system clean.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Share Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Share Course</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Share this course with your students using any of these methods:</p>
+                <div class="mb-3">
+                    <label class="form-label">Join Code:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{{ course.join_code }}" readonly>
+                        <button class="btn btn-outline-primary" onclick="copyToClipboard('{{ course.join_code }}', this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Direct Link:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="{{ request.url_root }}join/{{ course.join_code }}" readonly>
+                        <button class="btn btn-outline-primary" onclick="copyToClipboard('{{ request.url_root }}join/{{ course.join_code }}', this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function exportCourse() {
+        const btn = event.target;
+        showLoading(btn);
+        
+        fetch(`/api/export/{{ course.course_id }}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
+                }
+                throw new Error('Export failed');
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `{{ course.course_name.replace(' ', '_') }}_export.imscc`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                showAlert('Course exported successfully!', 'success');
+            })
+            .catch(error => {
+                showAlert('Failed to export course: ' + error.message, 'danger');
+            })
+            .finally(() => {
+                hideLoading(btn);
+            });
+    }
+    
+    function shareJoinLink() {
+        const modal = new bootstrap.Modal(document.getElementById('shareModal'));
+        modal.show();
+    }
+    
+    function sendInvitations() {
+        // Implement invitation functionality
+        showAlert('Invitation feature coming soon!', 'info');
+    }
+    
+    function viewAnalytics() {
+        // Implement analytics view
+        showAlert('Analytics feature coming soon!', 'info');
+    }
+    
+    function editCourse() {
+        // Implement course editing
+        showAlert('Course editing feature coming soon!', 'info');
+    }
+    
+    function deleteCourse() {
+        if (confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
+            // Implement course deletion
+            showAlert('Course deletion feature coming soon!', 'warning');
+        }
+    }
+    
+    // Auto-refresh enrollment count every 30 seconds
+    setInterval(function() {
+        fetch(`/api/courses`)
+            .then(response => response.json())
+            .then(courses => {
+                const course = courses.find(c => c.course_id === '{{ course.course_id }}');
+                if (course) {
+                    document.querySelector('.stats-number').textContent = course.enrollment_count;
+                }
+            })
+            .catch(error => console.log('Error refreshing data:', error));
+    }, 30000);
+</script>
+{% endblock %}

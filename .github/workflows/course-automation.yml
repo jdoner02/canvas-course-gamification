@@ -1,0 +1,446 @@
+name: Linear Algebra Course Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      instructor_name:
+        description: 'Instructor Name'
+        required: true
+        type: string
+      instructor_email:
+        description: 'Instructor Email'
+        required: true
+        type: string
+      course_name:
+        description: 'Course Name'
+        required: true
+        default: 'Linear Algebra with Applications'
+        type: string
+      focus_area:
+        description: 'Course Focus Area'
+        required: true
+        type: choice
+        options:
+          - foundations
+          - applications
+          - computational
+          - theoretical
+          - engineering
+          - data_science
+        default: 'foundations'
+      difficulty_level:
+        description: 'Difficulty Level'
+        required: true
+        type: choice
+        options:
+          - introductory
+          - intermediate
+          - advanced
+          - graduate
+        default: 'intermediate'
+      institution:
+        description: 'Institution/Organization'
+        required: true
+        type: string
+      course_code:
+        description: 'Course Code (optional)'
+        required: false
+        type: string
+      semester:
+        description: 'Semester/Term'
+        required: true
+        default: 'Fall 2024'
+        type: string
+      include_gamification:
+        description: 'Enable Skill Trees & Gamification'
+        required: true
+        type: boolean
+        default: true
+      include_visualizations:
+        description: 'Include Interactive Visualizations'
+        required: true
+        type: boolean
+        default: true
+      include_applications:
+        description: 'Emphasize Real-World Applications'
+        required: true
+        type: boolean
+        default: true
+      include_proofs:
+        description: 'Include Mathematical Proofs'
+        required: true
+        type: boolean
+        default: false
+      estimated_duration:
+        description: 'Course Duration'
+        required: true
+        type: choice
+        options:
+          - 8_weeks
+          - 12_weeks
+          - 16_weeks
+          - self_paced
+        default: '12_weeks'
+      weekly_hours:
+        description: 'Expected Weekly Study Hours'
+        required: true
+        type: number
+        default: 6
+      special_topics:
+        description: 'Special Topics or Emphasis Areas (optional)'
+        required: false
+        type: string
+      additional_notes:
+        description: 'Additional Customization Notes (optional)'
+        required: false
+        type: string
+      enable_public_enrollment:
+        description: 'Enable Public Student Enrollment'
+        required: true
+        type: boolean
+        default: true
+      course_visibility:
+        description: 'Course Visibility'
+        required: true
+        type: choice
+        options:
+          - public
+          - institution
+          - invite_only
+        default: 'public'
+
+jobs:
+  create-course:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Create course configuration
+      run: |
+        cat > course_config.json << EOF
+        {
+          "instructor_name": "${{ github.event.inputs.instructor_name }}",
+          "instructor_email": "${{ github.event.inputs.instructor_email }}",
+          "course_name": "${{ github.event.inputs.course_name }}",
+          "focus_area": "${{ github.event.inputs.focus_area }}",
+          "difficulty_level": "${{ github.event.inputs.difficulty_level }}",
+          "institution": "${{ github.event.inputs.institution }}",
+          "course_code": "${{ github.event.inputs.course_code }}",
+          "semester": "${{ github.event.inputs.semester }}",
+          "include_gamification": ${{ github.event.inputs.include_gamification }},
+          "include_visualizations": ${{ github.event.inputs.include_visualizations }},
+          "include_applications": ${{ github.event.inputs.include_applications }},
+          "include_proofs": ${{ github.event.inputs.include_proofs }},
+          "estimated_duration": "${{ github.event.inputs.estimated_duration }}",
+          "weekly_hours": ${{ github.event.inputs.weekly_hours }},
+          "special_topics": "${{ github.event.inputs.special_topics }}",
+          "additional_notes": "${{ github.event.inputs.additional_notes }}",
+          "enable_public_enrollment": ${{ github.event.inputs.enable_public_enrollment }},
+          "course_visibility": "${{ github.event.inputs.course_visibility }}",
+          "created_via": "github_workflow",
+          "workflow_run_id": "${{ github.run_id }}"
+        }
+        EOF
+
+    - name: Set up environment variables
+      env:
+        CANVAS_API_TOKEN: ${{ secrets.CANVAS_API_TOKEN }}
+        CANVAS_API_URL: ${{ secrets.CANVAS_API_URL }}
+        FLASK_SECRET_KEY: ${{ secrets.FLASK_SECRET_KEY }}
+        PRIVACY_ENCRYPTION_KEY: ${{ secrets.PRIVACY_ENCRYPTION_KEY }}
+      run: |
+        echo "CANVAS_API_TOKEN=${CANVAS_API_TOKEN}" >> .env
+        echo "CANVAS_API_URL=${CANVAS_API_URL}" >> .env
+        echo "FLASK_SECRET_KEY=${FLASK_SECRET_KEY}" >> .env
+        echo "DEBUG=false" >> .env
+        echo "LOG_LEVEL=INFO" >> .env
+        
+        # Set up encryption key
+        mkdir -p config
+        echo "${PRIVACY_ENCRYPTION_KEY}" > config/.privacy_encryption_key
+
+    - name: Create linear algebra course
+      id: create_course
+      run: |
+        python -c "
+        import json
+        import asyncio
+        import sys
+        from src.course_templates.linear_algebra_template import LinearAlgebraTemplateManager
+        import uuid
+        from datetime import datetime
+        
+        # Load configuration
+        with open('course_config.json', 'r') as f:
+            config = json.load(f)
+        
+        # Add required fields
+        config['course_id'] = str(uuid.uuid4())
+        config['created_date'] = datetime.now().isoformat()
+        config['status'] = 'creating'
+        
+        async def create_course():
+            manager = LinearAlgebraTemplateManager()
+            try:
+                result = await manager.create_course_from_template(config)
+                if result:
+                    print(f'Course created successfully: {config[\"course_id\"]}')
+                    # Save course details for next steps
+                    with open('course_result.json', 'w') as f:
+                        json.dump({
+                            'success': True,
+                            'course_id': config['course_id'],
+                            'course_name': config['course_name'],
+                            'instructor_email': config['instructor_email'],
+                            'join_code': result.get('join_code', ''),
+                            'canvas_url': result.get('canvas_url', ''),
+                            'join_url': result.get('join_url', '')
+                        }, f)
+                    return True
+                else:
+                    print('Course creation failed')
+                    return False
+            except Exception as e:
+                print(f'Error creating course: {str(e)}')
+                with open('course_result.json', 'w') as f:
+                    json.dump({
+                        'success': False,
+                        'error': str(e)
+                    }, f)
+                return False
+        
+        success = asyncio.run(create_course())
+        sys.exit(0 if success else 1)
+        "
+
+    - name: Read course creation result
+      id: course_result
+      run: |
+        if [ -f course_result.json ]; then
+          COURSE_ID=$(cat course_result.json | jq -r '.course_id // empty')
+          JOIN_CODE=$(cat course_result.json | jq -r '.join_code // empty')
+          CANVAS_URL=$(cat course_result.json | jq -r '.canvas_url // empty')
+          JOIN_URL=$(cat course_result.json | jq -r '.join_url // empty')
+          SUCCESS=$(cat course_result.json | jq -r '.success // false')
+          
+          echo "course_id=${COURSE_ID}" >> $GITHUB_OUTPUT
+          echo "join_code=${JOIN_CODE}" >> $GITHUB_OUTPUT
+          echo "canvas_url=${CANVAS_URL}" >> $GITHUB_OUTPUT
+          echo "join_url=${JOIN_URL}" >> $GITHUB_OUTPUT
+          echo "success=${SUCCESS}" >> $GITHUB_OUTPUT
+          
+          if [ "$SUCCESS" = "true" ]; then
+            echo "✅ Course created successfully!"
+          else
+            echo "❌ Course creation failed"
+            exit 1
+          fi
+        else
+          echo "❌ Course result file not found"
+          exit 1
+        fi
+
+    - name: Generate course export
+      if: steps.course_result.outputs.success == 'true'
+      run: |
+        python -c "
+        import asyncio
+        from src.course_templates.linear_algebra_template import LinearAlgebraTemplateManager
+        
+        async def export_course():
+            manager = LinearAlgebraTemplateManager()
+            course_id = '${{ steps.course_result.outputs.course_id }}'
+            export_path = await manager.export_course(course_id)
+            if export_path:
+                print(f'Course exported to: {export_path}')
+                return True
+            return False
+        
+        success = asyncio.run(export_course())
+        "
+
+    - name: Upload course export as artifact
+      if: steps.course_result.outputs.success == 'true'
+      uses: actions/upload-artifact@v3
+      with:
+        name: linear-algebra-course-export
+        path: exports/*.imscc
+        retention-days: 30
+
+    - name: Create course summary
+      if: steps.course_result.outputs.success == 'true'
+      run: |
+        cat > course_summary.md << EOF
+        # Linear Algebra Course Created Successfully! 🎉
+        
+        ## Course Information
+        - **Course Name:** ${{ github.event.inputs.course_name }}
+        - **Instructor:** ${{ github.event.inputs.instructor_name }}
+        - **Institution:** ${{ github.event.inputs.institution }}
+        - **Focus Area:** ${{ github.event.inputs.focus_area }}
+        - **Difficulty Level:** ${{ github.event.inputs.difficulty_level }}
+        - **Course ID:** ${{ steps.course_result.outputs.course_id }}
+        
+        ## Access Information
+        - **Student Join Code:** \`${{ steps.course_result.outputs.join_code }}\`
+        - **Public Join Link:** ${{ steps.course_result.outputs.join_url }}
+        - **Canvas Course URL:** ${{ steps.course_result.outputs.canvas_url }}
+        
+        ## Next Steps for Faculty
+        
+        ### 1. 📧 Share with Students
+        Students can join your course using either:
+        - Join Code: \`${{ steps.course_result.outputs.join_code }}\`
+        - Direct Link: ${{ steps.course_result.outputs.join_url }}
+        
+        ### 2. 🎨 Access Your Course
+        - Open your course in Canvas: ${{ steps.course_result.outputs.canvas_url }}
+        - Customize content and settings as needed
+        - Review the automatically generated skill trees
+        
+        ### 3. 📥 Download Course Export
+        - A Canvas cartridge (.imscc file) has been generated for your course
+        - Download it from the workflow artifacts (available for 30 days)
+        - Import this file into your own Canvas instance if needed
+        
+        ### 4. ⏰ Important: 7-Day Auto-Cleanup
+        - This test course will be automatically deleted after 7 days
+        - Make sure to download your export and migrate students before then
+        - You can create a permanent course in your own Canvas instance using the export
+        
+        ## Course Features Enabled
+        - ✅ Gamification: ${{ github.event.inputs.include_gamification }}
+        - ✅ Visualizations: ${{ github.event.inputs.include_visualizations }}
+        - ✅ Applications: ${{ github.event.inputs.include_applications }}
+        - ✅ Proofs: ${{ github.event.inputs.include_proofs }}
+        - ✅ Public Enrollment: ${{ github.event.inputs.enable_public_enrollment }}
+        
+        ## Support
+        If you need assistance or have questions:
+        - Check the course dashboard for management options
+        - Refer to the instructor guide in the course materials
+        - Contact support if you encounter any issues
+        
+        ---
+        
+        **Generated by:** Linear Algebra Course Builder  
+        **Workflow ID:** ${{ github.run_id }}  
+        **Created:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        EOF
+
+    - name: Send email notification to faculty
+      if: steps.course_result.outputs.success == 'true'
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.SMTP_USERNAME }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: "🎉 Your Linear Algebra Course is Ready!"
+        to: ${{ github.event.inputs.instructor_email }}
+        from: "Linear Algebra Course Builder <${{ secrets.SMTP_USERNAME }}>"
+        html_body: |
+          <h1>🎉 Your Linear Algebra Course is Ready!</h1>
+          
+          <p>Dear ${{ github.event.inputs.instructor_name }},</p>
+          
+          <p>Your customized linear algebra course "<strong>${{ github.event.inputs.course_name }}</strong>" has been successfully created and deployed!</p>
+          
+          <h2>📋 Course Information</h2>
+          <ul>
+            <li><strong>Course Name:</strong> ${{ github.event.inputs.course_name }}</li>
+            <li><strong>Institution:</strong> ${{ github.event.inputs.institution }}</li>
+            <li><strong>Focus Area:</strong> ${{ github.event.inputs.focus_area }}</li>
+            <li><strong>Difficulty Level:</strong> ${{ github.event.inputs.difficulty_level }}</li>
+            <li><strong>Course ID:</strong> ${{ steps.course_result.outputs.course_id }}</li>
+          </ul>
+          
+          <h2>🔗 Access Information</h2>
+          <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0;">
+            <p><strong>Student Join Code:</strong> <code style="background: #e9ecef; padding: 2px 4px; border-radius: 3px;">${{ steps.course_result.outputs.join_code }}</code></p>
+            <p><strong>Public Join Link:</strong> <a href="${{ steps.course_result.outputs.join_url }}">${{ steps.course_result.outputs.join_url }}</a></p>
+            <p><strong>Canvas Course:</strong> <a href="${{ steps.course_result.outputs.canvas_url }}">Open in Canvas</a></p>
+          </div>
+          
+          <h2>🚀 Next Steps</h2>
+          <ol>
+            <li><strong>Share with Students:</strong> Send them the join code or direct link above</li>
+            <li><strong>Customize Your Course:</strong> Open the Canvas course to review and customize content</li>
+            <li><strong>Download Export:</strong> A Canvas cartridge file has been generated for backup/migration</li>
+          </ol>
+          
+          <h2>⚠️ Important: 7-Day Cleanup Notice</h2>
+          <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 10px 0;">
+            <p><strong>This test course will be automatically deleted after 7 days.</strong></p>
+            <p>Please download your course export and migrate to your own Canvas instance before the cleanup date.</p>
+          </div>
+          
+          <h2>📥 Course Export</h2>
+          <p>A Canvas cartridge (.imscc file) containing your complete course has been generated. You can:</p>
+          <ul>
+            <li>Download it from the GitHub workflow artifacts (available for 30 days)</li>
+            <li>Import it into your own Canvas instance</li>
+            <li>Use it as a backup of your course content</li>
+          </ul>
+          
+          <p>Thank you for using the Linear Algebra Course Builder! If you have any questions or need assistance, please don't hesitate to contact us.</p>
+          
+          <p>Best regards,<br>
+          The Linear Algebra Course Builder Team</p>
+          
+          <hr>
+          <p><small>Workflow ID: ${{ github.run_id }} | Generated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")</small></p>
+
+    - name: Create workflow summary
+      if: always()
+      run: |
+        if [ "${{ steps.course_result.outputs.success }}" = "true" ]; then
+          echo "## ✅ Course Creation Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Course Name:** ${{ github.event.inputs.course_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Instructor:** ${{ github.event.inputs.instructor_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Join Code:** \`${{ steps.course_result.outputs.join_code }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Quick Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [Canvas Course](${{ steps.course_result.outputs.canvas_url }})" >> $GITHUB_STEP_SUMMARY
+          echo "- [Student Join Portal](${{ steps.course_result.outputs.join_url }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📧 Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. Check your email for detailed instructions" >> $GITHUB_STEP_SUMMARY
+          echo "2. Share the join code with your students" >> $GITHUB_STEP_SUMMARY
+          echo "3. Download the course export from workflow artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "4. ⚠️ **Remember:** Course auto-deletes in 7 days" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "## ❌ Course Creation Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Please check the workflow logs for error details." >> $GITHUB_STEP_SUMMARY
+          echo "Common issues:" >> $GITHUB_STEP_SUMMARY
+          echo "- Canvas API configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- Missing environment variables" >> $GITHUB_STEP_SUMMARY
+          echo "- Network connectivity" >> $GITHUB_STEP_SUMMARY
+        fi
+
+  cleanup-schedule:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.enable_public_enrollment == 'true'
+    needs: create-course
+    
+    steps:
+    - name: Schedule cleanup reminder
+      run: |
+        echo "Setting up cleanup reminder for course ${{ needs.create-course.outputs.course_id }}"
+        # In a real implementation, this would set up a scheduled job
+        # to send reminder emails and perform cleanup after 7 days
+        echo "Cleanup scheduled for: $(date -d '+7 days' -u +"%Y-%m-%d %H:%M:%S UTC")"

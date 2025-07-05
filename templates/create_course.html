@@ -1,0 +1,370 @@
+{% extends "base.html" %}
+
+{% block title %}Create Linear Algebra Course{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h2 class="mb-0">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        Create Your Linear Algebra Course
+                    </h2>
+                    <p class="mb-0 mt-2">Customize every aspect of your course to match your teaching style and student needs</p>
+                </div>
+                
+                <div class="card-body p-5">
+                    <form method="POST" id="course-form">
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Faculty Information Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-user-graduate me-2"></i>
+                                Faculty Information
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.instructor_name.label(class="form-label fw-bold") }}
+                                    {{ form.instructor_name(class="form-control") }}
+                                    {% if form.instructor_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.instructor_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.instructor_email.label(class="form-label fw-bold") }}
+                                    {{ form.instructor_email(class="form-control") }}
+                                    {% if form.instructor_email.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.instructor_email.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.institution.label(class="form-label fw-bold") }}
+                                {{ form.institution(class="form-control") }}
+                                {% if form.institution.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.institution.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Course Configuration Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-cog me-2"></i>
+                                Course Configuration
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    {{ form.course_name.label(class="form-label fw-bold") }}
+                                    {{ form.course_name(class="form-control") }}
+                                    {% if form.course_name.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.course_name.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    {{ form.course_code.label(class="form-label fw-bold") }}
+                                    {{ form.course_code(class="form-control") }}
+                                    {% if form.course_code.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.course_code.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.semester.label(class="form-label fw-bold") }}
+                                {{ form.semester(class="form-control") }}
+                                {% if form.semester.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.semester.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Course Customization Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-palette me-2"></i>
+                                Course Customization
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.focus_area.label(class="form-label fw-bold") }}
+                                    {{ form.focus_area(class="form-select") }}
+                                    {% if form.focus_area.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.focus_area.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.difficulty_level.label(class="form-label fw-bold") }}
+                                    {{ form.difficulty_level(class="form-select") }}
+                                    {% if form.difficulty_level.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.difficulty_level.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Learning Preferences -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Learning Features</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-2">
+                                            {{ form.include_gamification(class="form-check-input") }}
+                                            {{ form.include_gamification.label(class="form-check-label") }}
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            {{ form.include_visualizations(class="form-check-input") }}
+                                            {{ form.include_visualizations.label(class="form-check-label") }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-2">
+                                            {{ form.include_applications(class="form-check-input") }}
+                                            {{ form.include_applications.label(class="form-check-label") }}
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            {{ form.include_proofs(class="form-check-input") }}
+                                            {{ form.include_proofs.label(class="form-check-label") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Structure Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Course Structure
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.estimated_duration.label(class="form-label fw-bold") }}
+                                    {{ form.estimated_duration(class="form-select") }}
+                                    {% if form.estimated_duration.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.estimated_duration.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.weekly_hours.label(class="form-label fw-bold") }}
+                                    {{ form.weekly_hours(class="form-control") }}
+                                    {% if form.weekly_hours.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.weekly_hours.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Customization Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-edit me-2"></i>
+                                Additional Customization
+                            </h4>
+                            <div class="mb-3">
+                                {{ form.special_topics.label(class="form-label fw-bold") }}
+                                {{ form.special_topics(class="form-control", rows="3") }}
+                                {% if form.special_topics.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.special_topics.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                {{ form.additional_notes.label(class="form-label fw-bold") }}
+                                {{ form.additional_notes(class="form-control", rows="3") }}
+                                {% if form.additional_notes.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.additional_notes.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Deployment Options Section -->
+                        <div class="mb-5">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-globe me-2"></i>
+                                Deployment Options
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        {{ form.enable_public_enrollment(class="form-check-input") }}
+                                        {{ form.enable_public_enrollment.label(class="form-check-label fw-bold") }}
+                                    </div>
+                                    <small class="text-muted">Students can join using a public link</small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.course_visibility.label(class="form-label fw-bold") }}
+                                    {{ form.course_visibility(class="form-select") }}
+                                    {% if form.course_visibility.errors %}
+                                        <div class="text-danger small mt-1">
+                                            {% for error in form.course_visibility.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Section -->
+                        <div class="text-center pt-4 border-top">
+                            <p class="text-muted mb-4">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Your course will be created instantly and ready for student enrollment
+                            </p>
+                            <button type="submit" class="btn btn-primary btn-lg px-5" id="submit-btn">
+                                <span class="btn-text">
+                                    <i class="fas fa-rocket me-2"></i>
+                                    Create Linear Algebra Course
+                                </span>
+                                <span class="loading-spinner">
+                                    <i class="fas fa-spinner fa-spin me-2"></i>
+                                    Creating Course...
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Help Section -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card bg-light border-0">
+                <div class="card-body p-4">
+                    <h5 class="text-primary mb-3">
+                        <i class="fas fa-question-circle me-2"></i>
+                        Need Help Customizing Your Course?
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Focus Areas:</h6>
+                            <ul class="small">
+                                <li><strong>Mathematical Foundations:</strong> Emphasis on theory and proofs</li>
+                                <li><strong>Applications:</strong> Real-world problem solving</li>
+                                <li><strong>Computational:</strong> Programming and algorithms</li>
+                                <li><strong>Engineering:</strong> Applied mathematics for engineers</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Difficulty Levels:</h6>
+                            <ul class="small">
+                                <li><strong>Introductory:</strong> Basic concepts, minimal prerequisites</li>
+                                <li><strong>Intermediate:</strong> Standard undergraduate level</li>
+                                <li><strong>Advanced:</strong> Upper-level undergraduate</li>
+                                <li><strong>Graduate:</strong> Research-oriented approach</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('course-form').addEventListener('submit', function(e) {
+        const submitBtn = document.getElementById('submit-btn');
+        showLoading(submitBtn);
+    });
+    
+    // Form validation and enhancement
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add form validation feedback
+        const form = document.getElementById('course-form');
+        form.addEventListener('input', function(e) {
+            if (e.target.classList.contains('form-control') || e.target.classList.contains('form-select')) {
+                e.target.classList.remove('is-invalid');
+                if (e.target.value.trim()) {
+                    e.target.classList.add('is-valid');
+                }
+            }
+        });
+        
+        // Dynamic course name suggestion based on focus area
+        const focusArea = document.getElementById('focus_area');
+        const courseName = document.getElementById('course_name');
+        
+        focusArea.addEventListener('change', function() {
+            if (courseName.value === 'Linear Algebra with Applications' || courseName.value === '') {
+                const suggestions = {
+                    'foundations': 'Linear Algebra: Theory and Proofs',
+                    'applications': 'Linear Algebra with Applications',
+                    'computational': 'Computational Linear Algebra',
+                    'theoretical': 'Advanced Linear Algebra Theory',
+                    'engineering': 'Linear Algebra for Engineers',
+                    'data_science': 'Linear Algebra for Data Science'
+                };
+                
+                if (suggestions[this.value]) {
+                    courseName.value = suggestions[this.value];
+                }
+            }
+        });
+        
+        // Show/hide proof option based on difficulty level
+        const difficultyLevel = document.getElementById('difficulty_level');
+        const includeProofs = document.getElementById('include_proofs');
+        
+        difficultyLevel.addEventListener('change', function() {
+            if (this.value === 'advanced' || this.value === 'graduate') {
+                includeProofs.checked = true;
+            } else if (this.value === 'introductory') {
+                includeProofs.checked = false;
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+{% block title %}Linear Algebra Course Builder - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1><i class="fas fa-calculator me-3"></i>Linear Algebra Course Builder</h1>
+                <p class="lead">Create customized, gamified linear algebra courses with Canvas integration and public student enrollment</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('create_course') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-plus me-2"></i>Create Course
+                    </a>
+                    <a href="{{ url_for('student_portal') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-users me-2"></i>Join as Student
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Powerful Features for Modern Education</h2>
+                <p class="lead text-muted">Everything you need to create engaging linear algebra courses</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>Customizable Templates</h4>
+                    <p>Tailor courses to your specific needs with focus areas, difficulty levels, and specialized topics. Perfect for any institution or teaching style.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h4>Gamified Learning</h4>
+                    <p>Engage students with skill trees, achievements, and interactive visualizations that make linear algebra concepts more accessible and fun.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h4>Canvas Integration</h4>
+                    <p>Seamlessly integrate with Canvas Free for Teachers. Automatic course creation, enrollment management, and grade synchronization.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Public Enrollment</h4>
+                    <p>Generate public join links for easy student enrollment. No complex setup - students just click and join your course instantly.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4>Course Export</h4>
+                    <p>Export your customized courses as Canvas cartridges for import into any Canvas instance. Take your content anywhere.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Auto Management</h4>
+                    <p>Automatic 7-day cleanup for test courses, enrollment tracking, and course lifecycle management. Focus on teaching, not administration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">How It Works</h2>
+                <p class="lead text-muted">Get your linear algebra course running in minutes</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h5>1. Customize</h5>
+                    <p>Fill out our detailed form to specify your course requirements, focus areas, and teaching preferences.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h5>2. Deploy</h5>
+                    <p>Our system automatically creates your course in Canvas with all customizations and generates enrollment links.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h5>3. Share</h5>
+                    <p>Share the public join link with students for instant enrollment, or use Canvas integration for institutional access.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h5>4. Teach</h5>
+                    <p>Focus on teaching while our system handles enrollment, progress tracking, and course management automatically.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sample Courses Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-5 fw-bold">Course Templates</h2>
+                <p class="lead text-muted">Choose from our pre-designed course focuses</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calculator text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Mathematical Foundations</h5>
+                        <p class="card-text">Focus on theoretical understanding, proofs, and mathematical rigor. Perfect for pure mathematics programs.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Vector spaces theory</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Linear transformations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Eigenvalues and eigenvectors</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Proof-based approach</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-laptop-code text-info mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Data Science Applications</h5>
+                        <p class="card-text">Emphasize machine learning, data analysis, and computational applications with Python integration.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Principal Component Analysis</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Matrix factorization</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Dimensionality reduction</li>
+                            <li><i class="fas fa-check text-success me-2"></i>NumPy/SciPy examples</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cogs text-warning mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Engineering Applications</h5>
+                        <p class="card-text">Real-world engineering problems, mechanical systems, and applied mathematics focus.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>System of equations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Mechanical vibrations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Circuit analysis</li>
+                            <li><i class="fas fa-check text-success me-2"></i>MATLAB integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="h2 fw-bold" id="courses-created">250+</div>
+                <p>Courses Created</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="h2 fw-bold" id="students-enrolled">15,000+</div>
+                <p>Students Enrolled</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="h2 fw-bold" id="institutions">50+</div>
+                <p>Institutions</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="h2 fw-bold" id="success-rate">98%</div>
+                <p>Success Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="display-5 fw-bold mb-4">Ready to Transform Your Linear Algebra Course?</h2>
+                <p class="lead mb-4">Join hundreds of educators who have already created engaging, interactive linear algebra courses with our platform.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('create_course') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Get Started Now
+                    </a>
+                    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-chart-line me-2"></i>View Examples
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Animate numbers on scroll
+    function animateNumbers() {
+        const numbers = [
+            { element: document.getElementById('courses-created'), target: 250, suffix: '+' },
+            { element: document.getElementById('students-enrolled'), target: 15000, suffix: '+' },
+            { element: document.getElementById('institutions'), target: 50, suffix: '+' },
+            { element: document.getElementById('success-rate'), target: 98, suffix: '%' }
+        ];
+        
+        numbers.forEach(item => {
+            let current = 0;
+            const increment = item.target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= item.target) {
+                    current = item.target;
+                    clearInterval(timer);
+                }
+                item.element.textContent = Math.floor(current) + item.suffix;
+            }, 20);
+        });
+    }
+    
+    // Trigger animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateNumbers();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    });
+    
+    const statsSection = document.querySelector('.bg-primary');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+</script>
+{% endblock %}
